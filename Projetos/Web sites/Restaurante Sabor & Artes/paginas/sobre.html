@@ -16,16 +16,16 @@
 <nav id="menu">
     <div>
         <a href="index.html">INÍCIO</a>
-        <a href="#">MENU</a>    
-        <a href="#">RESERVAS</a>    
+        <a href="menu.html">MENU</a>    
+        <a href="reservas.html">RESERVAS</a>    
         <a href="paginas/sobre.html">SOBRE NÓS</a>  
-        <a href="#">CONTATO</a> 
+        <a href="contato.html">CONTATO</a> 
         <a href="#" class="btn-reservar">RESERVAR AGORA</a>
     </div>
 </nav>  
         
 <div class="header-actions">
-    <button id="btn-menu"><i class="fa fa-bars"></i></button>
+    <button id="btn-menu" type="button" aria-label="Abrir menu"><i class="fa fa-bars" aria-hidden="true"></i></button>
     
 
 </div>
@@ -45,20 +45,18 @@
                 <p><small>Desde</small></p>
                 <div class="trecho"></div>
             </div>
-            <div>Descobri</div>
         </div>
         </div> 
     </section>
     <!--=============================
      Historia
      =============================-->
-     <section class="sobre">
-        <article class="conj-imagens">
-            <img src="../assets/img/sobre/mulher-cozinhando.png" alt="uma mulher a cozinha">
-            <img src="../assets/img/sobre/homem-servindo.png" alt="A imagem de wy">
-            <img src="../assets/img/sobre/mesa-servida.png" alt="mesa servida">
-        </article>
-            <article class="story">
+     <section class="sobre"> 
+       
+        <article class="story">
+            <div>
+                <img src="../assets/img/sobre/cara-cortando.png" alt="">   
+            </div>
             <div class="eyebrow">A nossa história</div>
             <h2>Tudo começou<i> com uma mesa</i></h2>
             <div class="story-text">
@@ -104,14 +102,90 @@
         </div>
      </section>
     <!--=============================
-     reservas
+     Menu
      =============================-->
-    <section class="reservas">
-            <article class="reservas-copy">
-                <h3 class="eyebow">UMA MESA ESPERA POR SI</h3>
-                <h1>Venha viver a experiência <br>Sabor & Artes.</h1>
-            </article>
-        </section>
+    <section class="menu">
+        <article class="conj-imagens">
+            <img src="../assets/img/sobre/mulher-cozinhando.png" alt="">
+            <img src="../assets/img/sobre/homem-servindo.png" alt="">
+            <img src="../assets/img/sobre/mesa-servida.png" alt="">
+        </article>
+        <article class="menu-copy">
+            <div class="eyebrow">Da cozinha para a mesa</div>
+            <h2>Cada detalhe tem<em> um propósito</em>.</h2>
+            <p>Do primeiro corte à última folha no prato, cada gesto é pensado para revelar equilíbrio, sabor e beleza sem excessos.</p>
+            <a href="menu.html">Conheça o nosso menu &#8594;</a>
+        </article>
+    </section>
+    <!--=============================
+    Membros
+    =============================-->
+    <section class="membros">
+        <div>
+            <div class="eyebrow">Pessoas que fazem acontecer</div>
+            <h2>A nossa equipa</h2>
+            <p>Uma equipa unida pela curiosidade, pela generosidade e pelo prazer de bem receber.</p>
+        </div>
+        <article class="membro-grid">
+            <div class="membro">
+                <img src="../assets/img/sobre/Chef Executivo.png" alt="">
+                <h4>Chef Executivo</h4>
+                <h3>Daniela Mbanza</h3>
+                <p>A sua cozinha honra a origem e não tem medo de abrir novos caminhos.</p>
+            </div>
+            <div class="membro">
+                <img src="../assets/img/sobre/Chef de Cozinha.png" alt="">
+                <h4>Chef de Cozinha</h4>
+                <h3>Tomás Nunes</h3>
+                <p>Encontrou na precisão e no fogo a sua forma de contar histórias.</p>
+            </div>
+            <div class="membro">
+                <div class="membro-imagem"><img src="../assets/img/sobre/Sommelier1.png" alt=""></div>
+                <h4>Sommelier</h4>
+                <h3>Micaela Lopes</h3>
+                <p>Acredita que cada vinho ganha mais sentido quando é partilhado.</p>
+            </div>
+        </article>
+    </section>
+     <!--=============================
+    Aside
+    =============================-->
+    <aside>
+        <article>
+            <div class="text-center">
+                <h3>2026</h3>
+                <p>Ano de fundação</p>
+            </div>
+            <div class="text-center">
+                <h3>15+</h3>
+                <p>Pratos Autorias</p>
+            </div>
+            <div class="text-center">
+                <h3>8+</h3>
+                <p>Anos de história</p>
+            </div>
+            <div class="text-center">
+                <h3>1000+</h3>
+                <p>Momentos partilhados</p>
+            </div>
+        </article>
+    </aside>
+     <!--=============================
+    Reserva
+    =============================-->
+    <section class="reserva">
+        <img src="../assets/img/sobre/reserva1200x600.png" alt="">
+        <div class="reserva-copy">
+            <p class="eyebrow">Uma mesa espera por si</p>
+            <h2>Venha viver a experiência <br> <i>Sabor & Artes.</i></h2>
+            <p>Descubra os nossos pratos, reserve a sua mesa e faça parte da nossa história.</p>
+            <div class="reservar-buttons">
+                <a href="reservas.html" class="btn-reservar">Reservar agora</a>
+                <a href="menu.html" class="btn-menu">Ver menu</a>
+            </div>
+        </div>
+    </section>
+   
 </main>
 
 
@@ -124,23 +198,23 @@
         </div>
         <p>Cozinha contemporânea com raízes em Luanda,<br>Feitas para encontros que ficam na memória.</p>
         <div class="social">
-            <div><i class="fa-brands fa-whatsapp icone"></i></div>
-            <div><i class="fa-brands fa-instagram icone"></i></div>
-            <div><i class="fa-brands fa-facebook icone"></i></div>
+            <div><i class="fa-brands fa-whatsapp  fa-xl icone"></i></div>
+            <div><i class="fa-brands fa-instagram fa-xl  icone"></i></div>
+            <div><i class="fa-brands fa-facebook  fa-xl icone"></i></div>
         </div>
     </div>
     <div>
         <h4>NAVEGAÇÃO</h4>
-        <a href="#">Início</a>
-        <a href="#">Menu</a>
+        <a href="../index.html">Início</a>
+        <a href="menu.html">Menu</a>
         <a href="paginas/sobre.html">Sobre nós</a>
-        <a href="#">Reservas</a>
-        <a href="#">Contato</a>
+        <a href="reservas.html">Reservas</a>
+        <a href="contato.html">Contato</a>
     </div>
     <div>
         <h4>INFORMAÇÕES</h4>
-        <a href="#">Política de Privacidade</a>
-        <a href="#">Termos de Uso</a>
+        <a href="politica.html">Política de Privacidade</a>
+        <a href="termosUso.html">Termos de Uso</a>
         <a href="#">Perguntas Frequentes</a>
     </div>
     <div>

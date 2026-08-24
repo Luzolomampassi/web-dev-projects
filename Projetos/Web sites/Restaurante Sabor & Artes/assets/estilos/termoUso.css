@@ -1,0 +1,121 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none
+}
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Sriracha&display=swap');
+
+.manrope{
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  
+}
+
+.bodoni-moda{
+  font-family: "Bodoni Moda", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+:root {
+
+  /* Marca e elementos interativos */
+  --color-brand-green: #0C2922;
+  --color-brand-green-deep: #0A231E;
+  --color-brand-green-hover: #1F453A;
+  --color-brand-gold: #B59563;
+  --color-cream-background: #F6F2EA;
+
+  /* Texto */
+  --color-text-primary: #132D26;
+  --color-text-secondary: #78766C;
+
+  /* Bordas e estrutura */
+  --color-border-subtle: #DED8CA;
+  --color-border-warm: #CBBFAE;
+
+  /* Estados e detalhes */
+  --font-bodoni:"Bodoni Moda", serif;
+  --font-manrope: "Manrope", sans-serif;
+  --color-white:#ffffff;
+}
+body{
+    background-color: var(--color-cream-background);
+}
+main{
+    background-color: var(--color-white);
+}
+.inicio{
+    margin-bottom: 20px;
+}
+
+header{
+    background-color: var(--color-white);
+}
+
+.termos-list{
+    display: grid;
+    padding: 10px 20px;
+    width: 96%;
+    border-radius: 8px;
+    margin: 0 auto 20px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.187);
+}
+.termos-list .termo h2{
+    color: var(--color-text-primary);
+    font-family: var(--font-bodoni);
+    margin-bottom: 10px;
+}
+.termos-list .termo:last-child{
+    border-bottom: 0;
+}
+.termo{
+    padding: 20px 10px;
+    border-bottom: 1px solid var(--color-border-subtle);
+    margin-bottom: 20px;
+}
+
+.opcions{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    padding: 20px 10px;
+
+}
+.duvida{
+    background-color: #F6F0E7;
+    display: flex;
+    width: 80%;
+    border: 1px solid var(--color-brand-gold);
+    border-radius: 8px;
+    padding: 10px;
+    margin: auto;
+
+}
+.icone{
+    background-color: var(--color-brand-green);
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.link-contato{
+    color: var(--color-brand-gold);
+}
+.btn-voltar{
+    text-align: center;
+    display: inline-block;
+    margin: 0 auto;
+    background-color: var(--color-brand-green-deep);
+    color:var(--color-white);
+    text-transform: uppercase;
+    border-radius: 16px;
+    width: 80%;
+    padding: 5px;
+}
