@@ -58,6 +58,56 @@ header{
     background-color: var(--color-white);
 }
 
+.inicio {
+    position: relative;
+}
+
+.inicio img {
+    width: 100%;
+    display: block;
+}
+
+.inicio > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    z-index: 1;
+    color: var(--color-white);
+    text-align: center;
+    font-family: var(--font-manrope);
+}
+.trecho{
+    color: var(--color-brand-gold);
+    position: relative;
+}
+.trecho::before{
+    content: '';
+    position: absolute;
+    left: 10%;
+    top: 40%;
+    width: 70px;
+    height: 1px;
+    background-color: #795F24;
+    padding: 1px;
+}
+.trecho::after{
+    content: '';
+    position: absolute;
+    right: 10%;
+    top: 40%;
+    width: 70px;
+    height: 1px;
+    background-color: #795F24;
+    padding: 1px;
+}
+.inicio > div p:nth-last-child() {
+   font-size: clamp(.5rem,1vw,3em);
+}
+
+/* ========== Lista de termos ==========  */
+
 .termos-list{
     display: grid;
     padding: 10px 20px;
@@ -74,11 +124,28 @@ header{
 .termos-list .termo:last-child{
     border-bottom: 0;
 }
+/* ========== termos ==========  */
+
 .termo{
     padding: 20px 10px;
     border-bottom: 1px solid var(--color-border-subtle);
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
+.termo div{
+    border-right: 3px solid ;
+}
+.icon{
+    color: #AF834D;
+    background-color: #F4EADF;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: clamp(3rem,5vw,8em);
+}
+
+/* ========== Duvidas ==========  */
 
 .opcions{
     display: flex;
@@ -98,11 +165,6 @@ header{
     padding: 10px;
     margin: auto;
 
-}
-.icone{
-    background-color: var(--color-brand-green);
-    border-radius: 50%;
-    padding: 8px;
 }
 
 .link-contato{
