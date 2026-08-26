@@ -112,24 +112,7 @@ main p{
 /* =========================================
 Menu de navegação
 ========================================= */
-header{
-   display: flex;
-   justify-content: space-between;
-   padding: 10px 20px;
-   border-bottom: 1px solid var(--color-border-warm);
-   background: none;
-   position: relative;
-}
-#menu{
-   display: none;
-   width: 100%;
-   position: absolute;
-   left: 0;
-   top: 100%;
-   background-color: var(--color-charcoal);
-   padding: 20px;
-   border-bottom:1px solid var(--color-border);
-}
+
 #menu.drop{
    display: flex;
    flex-direction: column;
@@ -138,7 +121,6 @@ header{
    pointer-events: auto;
    z-index: 20;
 }
-
 
 #menu div  a{
    display: block;
@@ -579,7 +561,7 @@ footer h4{
 Media query
 ========================================= */
 
-@media (min-width:766px) and (max-width:911px){
+@media (min-width:768px) and (max-width:911px){
 
 .conj-imagens{
    display: grid;
@@ -635,23 +617,9 @@ Media query
 }
 
 }
-@media (min-width:1023px){
-#menu{
-   display: flex;
-   z-index: 40;
-   flex-direction: row;
-}
-#btn-menu{
-   display: none;
-}
+@media (min-width:1024px){
 
-#menu.drop{
-   display: flex;
-   flex-direction: row;
-   opacity: 1;
-   transform: translateY(0);
-   z-index: 20;
-}
+
 .menu{
    display: flex;
    flex-direction: row-reverse;

@@ -33,6 +33,15 @@
   --font-bodoni:"Bodoni Moda", serif;
   --font-manrope: "Manrope", sans-serif;
 }
+
+::-webkit-scrollbar{
+  background-color: var(--color-white); 
+}
+::-webkit-scrollbar-thumb{
+  background-color: var(--color-brand-green);
+  border-radius:50px;
+}
+
 .topline{
     justify-content: center;
     background-color: var(--color-brand-green);
@@ -41,20 +50,20 @@
     font-weight: 100;
 }
 header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: var(--color-page-background-transparente);
     color: var(--color-white);
     padding: 10px;   
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 18px;
-    height: 67px;
+    height: 100px;
     position: sticky;
     top: 0;
     z-index: 10;
     width: 100%;
     box-shadow: 4px 3px 5px rgba(0, 0, 0, 0.165);
-    margin-bottom: 10vh;
     transition: .35s ease;
+    margin-bottom: 0;
 }
 .header-fixo {
     position: fixed;
@@ -65,39 +74,37 @@ header{
 }
 .header-actions{
     display: flex;
-    gap: 7px;
+    gap: 17px;
     align-items: center;
 }
 
-.menu-nav{
+#menu{
     background-color: var(--color-page-background);
     display: none;
     justify-content: space-between;
 }
-.menu-nav a{
+#menu a{
     text-decoration: none;
     color: var(--color-brand-green-deep); 
     transition: color .3s;
 }
-.menu-nav ul{
+#menu ul{
     list-style-type: none;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.menu-nav a:hover{
+#menu a:hover{
     color: var(--color-brand-gold-cta);
 }
 
-
-
 .logo img{
-    width:230px;
+    width:210px;
     object-fit: cover;
 }
 #btn-menu{
     background: transparent;
-    border: none;
+    border: 0;
     font-size: 1em;
 }
 #reserva{
@@ -108,7 +115,7 @@ header{
     
 }
 
-.menu-nav.drop{
+#menu.drop{
     display: flex;
     gap: 20px;
     padding-left: 20px;
@@ -120,19 +127,60 @@ header{
     border-bottom: 1px solid var(--color-border-subtle);
 }
 
-@media (min-width:1023px){
-    header{
-        align-items: center;
-    }
-    #btn-menu{
-        display: none;
+@media (min-width:1024px){
+header{
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 0;
+    z-index: 30;
 }
-  .menu-nav{
+
+#menu{
     display: flex;
-    
 }
-  .menu-nav ul{
-    flex-direction: row;
-    gap: 30px;
+
+#menu{
+   display: flex;
+   flex-direction: row;
+   background-color: transparent;
+   position: sticky;
+   gap: 30px;
+   top: 0;
+   border: 0;
+}
+
+#menu a{
+   color: black;
+}
+#btn-menu{
+   display: none;
+}
+
+}
+
+
+@view-transition{
+  navigation:auto;
+}
+
+::view-transition-old(root){
+  animation: found-out 0.3s ease;
+  
+}
+::view-transition-new(root){
+  animation: found-in 0.3s ease;
+}
+
+@keyframes found-in{
+  from {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+}
+@keyframes found-out{
+
+ to{
+  opacity: 0;
 }
 }

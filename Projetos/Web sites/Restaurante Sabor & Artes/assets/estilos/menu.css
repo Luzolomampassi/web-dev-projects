@@ -1,0 +1,238 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root {
+  /* Fundos e superfícies */
+  --color-page-background-transparente: rgb(246, 242, 233,.9);
+  --color-page-background: #F6F2E9;
+  --color-surface-primary: #FFFDF8;
+  --color-surface-warm-beige: #E6DED0;
+  --color-surface-category-hover: #EFEADF;
+
+  /* Marca e elementos interativos */
+  --color-brand-green: #0C2922;
+  --color-brand-green-deep: #0A231E;
+  --color-brand-green-hover: #1F453A;
+  --color-brand-gold: #B59563;
+  --color-brand-gold-cta: #C6AA7C;
+  --color-brand-gold-light: #DFC593;
+
+  /* Texto */
+  --color-text-primary: #132D26;
+  --color-text-secondary: #78766C;
+  --color-text-on-dark: #F7F0E4;
+  --color-text-on-dark-muted: #BDC4B6;
+  --color-text-on-gold: #0C2922;
+
+  /* Bordas e estrutura */
+  --color-border-subtle: #DED8CA;
+  --color-border-dark: #294139;
+  --color-border-warm: #CBBFAE;
+
+  /* Estados e detalhes */
+  --color-success-message: #D3BD91;
+  --color-icon-muted: #A59984;
+  --color-white: #FFFFFF;
+  --font-bodoni:"Bodoni Moda", serif;
+  --font-manrope: "Manrope", sans-serif;
+}
+
+body{
+    background-color: var(--color-page-background);
+    font-family: var(--font-manrope);
+
+}
+/* =============== Geral ================== */
+
+h1,h2,h3{
+    color: var(--color-text-primary);
+    font-family: var(--font-bodoni);
+    font-weight: 500;
+}
+.eyebrow{
+    color: var(--color-brand-gold);
+    font-size: var(--text-xs);
+    font-family: var(--font-manrope);
+    letter-spacing: .2em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+}
+.eyebrow::before{
+    content:"";
+    width: 2em;
+    height: 1px;
+    background: currentColor;
+    opacity: .8;
+}
+/* ===============Início================== */
+
+.inicio-copy{
+    padding: 60px 20px;
+}
+
+/* ===============Opcions================== */
+.opcions{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    overflow-x: scroll;
+    padding: 10px 20px;
+}
+.opcions button{
+    border-radius: 20px;
+    background: transparent;
+    padding: 10px;
+    border: 1px solid var(--color-border-warm);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    flex: 1;
+}
+
+.opcions button:focus{
+    border: 0;
+    background-color: var(--color-brand-green);
+    color: var(--color-white);
+    font-weight: bold;
+    position: relative;
+    transition: .4s;
+}
+.opcions button::after{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0px;
+    background-color: var(--color-brand-gold);
+    transform: translateX(-50%);
+}
+.opcions button:focus:after{
+    width: 20%;
+    left: 50%;
+}
+
+
+
+
+
+/* =============== Card ================== */
+
+
+.destaque-grid,
+.dish-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px 10px;
+}
+.destaque-card,
+.dish-card{
+    background-color: var(--color-surface-primary);
+    border: 1px solid var(--color-border-subtle);
+    padding: 10px;
+    border-radius: 16px;
+    width: 96%;
+}
+.card-bottom{
+    display: flex;
+    justify-content: space-between;
+}
+
+.destaque-grid,
+.dish-grid 
+p{
+   color: var(--color-text-secondary);
+}
+
+
+/* ===============prato destque================== */
+.pratos-destaques{
+    background-color: var(--color-brand-green);
+    color: var(--color-white);
+}
+.pratos-destaques div{
+    padding: 10px;
+}
+.pratos-destaques h2{
+    color: var(--color-white);
+}
+
+/* =============== Reservas ================== */
+.reservar{
+    display: flex;
+    justify-content: space-evenly;
+    height: auto;
+    padding: 20px 10px;
+}
+
+.content-reservar{
+    line-height: 1.5;
+    width: 45%;
+
+}
+.card-infor{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 40%;
+    border: 1px solid var(--color-brand-gold-light);
+    border-radius: 8px;
+    padding: 15px;
+}
+.item-infor{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    gap: 10px;
+    width: 96%;
+    text-align: center;
+    padding: 10px;
+}
+.buttons a:first-child{
+    color: var(--color-text-primary);
+    background-color: var(--color-brand-gold-cta);
+    padding:10px;
+    border-radius: 18px;
+    text-decoration: none;
+    font-weight: bold;
+         
+}
+.buttons a:last-child{
+    color: var(--color-white);
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 18px;
+    border: 1px solid var(--color-border-subtle);
+    text-decoration: none;
+    font-weight: bold;          
+}
+
+.reservar div{
+    padding: 10px 20px;
+}
+
+
+
+
+
+@media(min-width:768px){
+    .content-reservar span{
+    font-style: italic;
+    color: var(--color-brand-gold-cta);
+
+}
+
+}

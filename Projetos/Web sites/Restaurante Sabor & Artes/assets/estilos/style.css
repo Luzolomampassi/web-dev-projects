@@ -56,13 +56,7 @@
   --font-manrope: "Manrope", sans-serif;
 }
 
-::-webkit-scrollbar{
-  background-color: var(--color-white); 
-}
-::-webkit-scrollbar-thumb{
-  background-color: var(--color-brand-green);
-  border-radius:50px;
-}
+
 .eyebrow {
   font-size: 10px;
   letter-spacing: .18em;
@@ -603,28 +597,6 @@ b{
   object-fit: cover;
 }
 
-
-
-
-
-
-
-
-
-
-
-@keyframes reveal{
-  0% {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-100% {
-  opacity: 1;
-  transform: none;
-}
-}
-
 /*================================
                 MediaQueries
 ==================================*/
@@ -760,3 +732,22 @@ b{
   font-size: clamp(4em,10vh,20em);
 }
 }
+
+
+
+/*================================
+                Animações
+==================================*/
+
+@keyframes reveal{
+  0% {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+100% {
+  opacity: 1;
+  transform: none;
+}
+}
+
