@@ -78,6 +78,10 @@ header{
     align-items: center;
 }
 
+.login{
+    color: var(--color-brand-green);
+}
+
 #menu{
     background-color: var(--color-page-background);
     display: none;

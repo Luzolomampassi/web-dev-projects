@@ -1,0 +1,144 @@
+/* =========== Reset =========== */
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root {
+  /* Fundos e superfícies */
+   --color-page-background-transparente: rgb(246, 242, 233,.9);
+  --color-page-background: #F6F2E9;
+  --color-surface-primary: #FFFDF8;
+  --color-surface-secondary: #EDE7D9;
+  --color-surface-warm-beige: #E6DED0;
+  --color-surface-category-hover: #EFEADF;
+
+  /* Marca e elementos interativos */
+  --color-brand-green: #0C2922;
+  --color-brand-green-deep: #0f352d;
+  --color-brand-green-hover: #1F453A;
+  --color-brand-gold: #B59563;
+  --color-brand-gold-cta: #C6AA7C;
+  --color-brand-gold-light: #DFC593;
+
+  /* Texto */
+  --color-text-primary: #132D26;
+  --color-text-secondary: #78766C;
+  --color-text-on-dark: #F7F0E4;
+  --color-text-on-dark-muted: #BDC4B6;
+  --color-text-on-gold: #0C2922;
+
+  /* Bordas e estrutura */
+  --color-border-subtle: #DED8CA;
+  --color-border-dark: #294139;
+  --color-border-warm: #CBBFAE;
+
+  /* Estados e detalhes */
+  --color-success-message: #D3BD91;
+  --color-icon-muted: #A59984;
+  --color-white: #FFFFFF;
+  --font-bodoni:"Bodoni Moda", serif;
+  --font-manrope: "Manrope", sans-serif;
+}
+/* =========== Config gerais =========== */
+
+h1,h2,h3{
+    color: var(--color-text-primary);
+    font-family: var(--font-bodoni);
+}
+.eyebrow{
+    color: var(--color-brand-gold);
+    grid-column: 2;
+}
+.iconeContato{
+    color: var(--color-brand-gold);
+}
+
+body{
+    background-color: var(--color-page-background);
+    font-family: var(--font-manrope);
+    color: var(--color-text-secondary);
+}
+/* =========== Cadastro / Foláriormu =========== */
+.cadastro{
+    padding: 10px 40px;
+}
+select,
+textarea,
+input{
+    background-color: var(--color-surface-secondary);
+    border: 1px solid var(--color-brand-gold-cta);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    min-height: 50px;
+    transition: border .3s;
+}
+textarea{
+    min-height: 100px;
+    max-height: 300px;
+}
+textarea:focus-visible,
+input:focus-visible{
+    outline: 3px solid var(--color-brand-gold-light);
+}
+#btn-send{
+    gap: 10px;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    border: 0;
+    color: var(--color-white);
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: var(--color-brand-green-deep);
+}
+/* =========== Formas de contato =========== */
+.contatar{
+    padding: 10px 40px;
+    background-color: #F5F0E6;
+}
+/* Contatos */
+.contatar article{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding: 20px;
+}
+.contatar article p{
+    color: var(--color-text-secondary);
+}
+.contatar article:last-child{
+    border-bottom: 0;
+}
+/* icone */
+.iconeContatar{
+    background-color: var(--color-surface-warm-beige);
+    color: var(--color-brand-gold-cta);
+    border-bottom: 1px solid var(--color-brand-gold-cta);
+    padding: 10px;
+    border-radius: 50%;
+}
+
+
+
+/* =========== Ações rápidas =========== */
+.servicos{
+    background-color: #EDE7D9;
+    padding: 10px 15px;
+}
+.actions-grip{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    padding: 10px 20px;
+    gap: 10px;
+}
+.action-card{
+    background-color: var(--color-surface-primary);
+    padding: 10px;
+    border-radius: 18px;
+    box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.241);
+}

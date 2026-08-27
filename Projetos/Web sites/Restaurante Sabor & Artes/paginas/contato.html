@@ -6,6 +6,7 @@
     <title>Sabor & Artes</title>
     <link rel="stylesheet" href="../assets/estilos/header.css">
     <link rel="stylesheet" href="../assets/estilos/sobre.css">
+    <link rel="stylesheet" href="../assets/estilos/contato.css">
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
     
     <script src="https://kit.fontawesome.com/f6a9b3f1e7.js" crossorigin="anonymous"></script>
@@ -19,16 +20,189 @@
     <nav id="menu">
         <a href="../index.html">INÍCIO</a>
         <a href="menu.html">MENU</a>    
-        <a href="reservas.html">RESERVAS</a>    
         <a href="sobre.html">SOBRE NÓS</a>  
         <a href="contato.html">CONTATO</a> 
-    </nav>  
-    <a href="#" class="login" aria-label="Btn login" >
-        <i class="fa-solid fa-circle-user fa-2xl"></i>
-    </a>
+    </nav>  <div class="header-actions">
+        <i class="fa-solid fa-bag-shopping fa-2xl"></i>
+        <a href="#" class="login" aria-label="Btn login" > <i class="fa-solid fa-circle-user fa-2xl"></i>
+        </a>
     <button id="btn-menu" type="button" aria-label="Abrir menu"><i class="fa fa-bars" aria-hidden="true"></i></button>
-
+    </div>
+    <!-- <i class="ri-shopping-bag-line"></i> -->
     </header>
+<main>
     
+    <section class="cadastro">
+        <div>
+            <h2>Fale Conosco</h2>
+            <p>Tem alguma dúvida, sugestão ou deseja fazer uma reserva? Preencha o formulário abaixo e entraremos em contato.</p>
+        </div>
+        <form action="#" method="post">
+            <!-- =================== Nome ========================== -->
+            <article>
+                <i class="fa-regular fa-user"></i>
+                <input type="text" name="nome" id="nome" autocomplete="name" placeholder="Nome completo" required>
+            </article>
+            <!-- =================== Email ========================== -->
+            <article>
+                <i class="fa-regular fa-envelope"></i>
+                <input type="email" name="email" id="email" autocomplete="name" placeholder="E-mail" required>
+            </article>
+            <!-- =================== Telefone ========================== -->
+            <article>
+                <i class="fa-solid fa-phone"></i>
+                <input type="number" name="num" id="num" autocomplete="cc-number" placeholder="Telefone">
+            </article>
+            <!-- =================== Assunto ========================== -->
+            <article>
+    
+                <select name="assunto" id="assunto" name="assunto">
+                    <option value="">Selecione um assunto</option>
+                    <option value="eventos">Eventos Especiais</option>
+                    <option value="reserva">reserva de mesa</option>
+                    <option value="cardapio">Cardapio e Pratos</option>
+                    <option value=elogio"">Elogio / Sugestão</option>
+                    <option value="reclamação">Reclamação</option>
+                    <option value="Outro">Outro assunto</option>
+                </select>
+            </article>
+            <!-- =================== Mensagem ========================== -->
+            <article>
+    
+                <textarea name="mensagem" id="mensagem" placeholder="Sua mensagem..."></textarea>
+            </article>
+            <button type="submit" aria-label="Enviar mensagem" id="btn-send">
+                <i class="fa-regular fa-paper-plane iconeContato" aria-hidden="true"></i>
+                Enviar Mensagem
+            </button>
+            <p>Seus dados estão seguros e não serão compartilhados.</p>
+        </form>
+    </section>
+    <section class="contatar">
+        <p class="eyebrow">OUTRAS FORMAS DE NOS ENCONTRAR</p>
+        <article>
+            <i class="fa-solid fa-location-dot fa-xl iconeContatar"></i>
+            <div>
+                <h3>Endereço</h3>
+                <p>
+                    Av. da Liberdade, 1234 <br>
+                    Luanda, Angola
+                </p>
+            </div>
+        </article>
+        <article>
+            <i class="fa-solid fa-phone fa-xl iconeContatar"></i>
+            <div>
+                <h3>Telefone</h3>
+                <p> +244 912 345 678 <br>
+                    +244 923 456 789
+                </p>
+            </div>
+        </article>
+        <article>
+            <i class="fa-brands fa-whatsapp fa-xl iconeContatar"></i>
+            <div>
+                <h3>WhatsApp</h3>
+                <p>+244 912 345 678</p>
+                <a href="#" aria-label="entre em contato">Clique para conversar</a>
+            </div>
+        </article>
+        <article>
+            <i class="fa-regular fa-clock fa-xl iconeContatar"></i>
+            <div>
+                <h3>Horário de Atendimento</h3>
+                <p>Seg - Sex: 11h – 22h<br>
+                Sáb - Dom: 10h – 23h</p>
+            </div>
+        </article>
+    </section>
+    
+    <!-- ======================================================
+    Ações rapidas
+    ======================================================= -->
+    <section class="servicos">
+        <div>
+            <p class="eyebrow">SERVIÇOS</p>
+            <h2>Ações Rápidas</h2>
+        </div>
+        <article class="actions-grip">
+            <div class="action-card">
+                <i class="fa-regular fa-calendar fa-xl iconeContato"></i>
+                <div>
+                    <h3>Reservas</h3>
+                    <p>Faça sua reserva e garanta sua mesa</p>
+                </div>
+            </div>
+            <div class="action-card">
+                <i class="fa-solid fa-book fa-xl iconeContato"></i>
+                <div>
+                    <h3>Cardápio</h3>
+                    <p>Conheça nosso cardápio com pratos especiais</p>
+                </div>
+            </div>
+            <div class="action-card">
+    
+                <div>
+                    <h3>Eventos</h3>
+                    <p>Realizamos eventos e ocasiões especiais</p>
+                </div>
+            </div>
+            <div class="action-card">
+                <i class="fa-regular fa-star fa-xl iconeContato"></i>
+                <div>
+                    <h3>Feedback</h3>
+                    <p>Sua opinião é muito importante para nós</p>
+                </div>
+            </div>
+        </article>
+    </section>
+</main>
+
+
+<footer>
+<div class="footer-grid">
+    <div class="footer-brand">
+        <div>
+            <h2>Sabor & Artes</h2>
+        </div>
+        <p>Cozinha contemporânea com raízes em Luanda,<br>Feita para encontros que ficam na memória.</p>
+        <div class="social">
+            <div><i class="fa-brands fa-whatsapp  fa-xl icone"></i></div>
+            <div><i class="fa-brands fa-instagram fa-xl  icone"></i></div>
+            <div><i class="fa-brands fa-facebook  fa-xl icone"></i></div>
+        </div>
+    </div>
+    <div>
+        <h4>NAVEGAÇÃO</h4>
+        <a href="../index.html">Início</a>
+        <a href="menu.html">Menu</a>
+        <a href="paginas/sobre.html">Sobre nós</a>
+        <a href="reservas.html">Reservas</a>
+        <a href="contato.html">Contato</a>
+    </div>
+    <div>
+        <h4>INFORMAÇÕES</h4>
+        <a href="politica.html">Política de Privacidade</a>
+        <a href="termosUso.html">Termos de Uso</a>
+        <a href="#">Perguntas Frequentes</a>
+    </div>
+    <div>
+        <h4>CONTATO</h4>
+        <p>+244 923 000 000</p>
+        <p>ola@sabores.com</p>
+        <p>Rua da missão, 48 Luanda Angola</p>
+    </div>
+    <div>
+        <h4>HORÁRIO</h4>
+        <p>Seg-Sex <span>12h-23h</span></p>
+        <p>Sábado <span>12h-00h</span></p>
+        <p>Domingo <span>12h-18h</span></p>
+    </div>
+</div>
+<div class="footer-bottom">
+    <p>&copy;2026 Sabor & Artes Restaurante</p>
+    <p>Feito em Luanda, com muito sabor</p>
+</div>
+</footer>
 </body>
 </html>
