@@ -85,7 +85,31 @@ h3 {
 .inicio-copy {
     padding: 60px 20px;
 }
-
+.inicio-copy h1{
+    color: var(--color-white);
+    font-size: clamp(2.5em,5.4vh,8em);
+}
+.inicio-bottom{
+    display: none;
+    text-align: center;
+    padding: 15px 10px;
+    border-top: 1px solid var(--color-border-dark);
+}
+.inicio-bottom div {
+    padding: 20px 10px;
+}
+.inicio-bottom div:nth-child(2){
+    border-left: 1px solid var(--color-border-dark);
+    border-right: 1px solid var(--color-border-dark);
+}
+.inicio-bottom div:nth-child(3){
+    border-right: 1px solid var(--color-border-dark);
+}
+.inicio-bottom div h3{
+    color: var(--color-brand-gold-light);
+    font-size: clamp(2em,3vh,8em);
+    font-family: var(--font-bodoni);
+}
 .hero {
     padding: 20px;
 }
@@ -162,12 +186,11 @@ h3 {
 }
 
 
+/* =============== Cards ================== */
 
-
-
-/* =============== Card ================== */
-
-
+.menu{
+    padding: 20px 10px;
+}
 .destaque-grid,
 .dish-grid {
     display: grid;
@@ -175,7 +198,7 @@ h3 {
     gap: 20px;
     padding: 20px 10px;
 }
-.dish-grid a{
+.ver-mais{
     border-radius: 18px;
     background-color: transparent;
     border: 2px solid var(--color-brand-gold);
@@ -185,6 +208,7 @@ h3 {
     text-decoration: none;
     text-transform: uppercase;
 }
+
 .destaque-card,
 .dish-card {
     background-color: var(--color-surface-primary);
@@ -228,7 +252,7 @@ h3 {
     padding: 10px 8px;
     border-radius: 50%;
 }
-/* ===============prato destque================== */
+/* ===============Cards Destque================== */
 .pratos-destaques {
     background-color: var(--color-brand-green);
     color: var(--color-white);
@@ -292,25 +316,22 @@ h3 {
     text-align: center;
     padding: 10px;
 }
-
+.buttons a{
+    border-radius: 20px;
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
 .buttons a:first-child {
     color: var(--color-text-primary);
     background-color: var(--color-brand-gold-cta);
-    padding: 10px;
-    border-radius: 18px;
-    text-decoration: none;
-    font-weight: bold;
-
 }
 
 .buttons a:last-child {
     color: var(--color-white);
     background-color: transparent;
-    padding: 10px;
-    border-radius: 18px;
     border: 1px solid var(--color-border-subtle);
-    text-decoration: none;
-    font-weight: bold;
+  
 }
 
 
@@ -320,27 +341,61 @@ h3 {
 
 
 @media(min-width:768px) {
-    .content-reservar span {
-        font-style: italic;
-        color: var(--color-brand-gold-cta);
 
-    }
+.inicio{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    background-color: var(--color-brand-green);
+}
+.content-reservar span {
+    font-style: italic;
+    color: var(--color-brand-gold-cta);
+}
+span{
+    color: var(--color-brand-gold-light);
+    font-style: italic;
+}
+.inicio-bottom{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-column: span 2;
+}
 
-    .reservar {
-        display: flex;
-        justify-content: space-evenly;
-        height: auto;
-        padding: 20px 10px;
-    }
+.dish-grid{
+    grid-template-columns: repeat(3,1fr);
+}
+.destaque-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.ver-mais{
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+}
+.dish-card .card-bottom{
+    border-top: 1px solid var(--color-border-subtle);
+}
+.destaque-card .card-bottom{
+    flex-direction: column;
+}
 
-    .content-reservar {
-        line-height: 1.5;
-        width: 45%;
-    }
 
-    .card-infor {
-        display: none;
+.reservar {
+    display: flex;
+    justify-content: space-evenly;
+    height: auto;
+    padding: 20px 10px;
+}
 
-    }
+.content-reservar {
+    line-height: 1.5;
+    width: 45%;
+}
+
+.card-infor {
+    display: none;
+
+}
 
 }

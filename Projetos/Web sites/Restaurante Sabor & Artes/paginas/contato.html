@@ -24,38 +24,117 @@
         <a href="contato.html">CONTATO</a> 
     </nav>  <div class="header-actions">
         <i class="fa-solid fa-bag-shopping fa-2xl"></i>
-        <a href="#" class="login" aria-label="Btn login" > <i class="fa-solid fa-circle-user fa-2xl"></i>
+        <!-- <a href="#" class="login" aria-label="Btn login" > <i class="fa-solid fa-circle-user fa-2xl"></i> -->
         </a>
     <button id="btn-menu" type="button" aria-label="Abrir menu"><i class="fa fa-bars" aria-hidden="true"></i></button>
     </div>
     <!-- <i class="ri-shopping-bag-line"></i> -->
     </header>
 <main>
-    
+    <section class="inicio">
+        <img src="../assets/img/desktop.png" alt="Imagem de um rstaurante" loading="lazy">
+        <div>
+            <p class="trecho">
+                <svg 
+                    width="40" 
+                    height="40" 
+                    viewBox="0 0 65 59" 
+                    xmlns="http://www.w3.org/2000/svg"
+>
+                                <!-- Círculo central -->
+                            <circle
+                                cx="32.5"
+                                cy="29.5"
+                                r="21.5"
+                                fill="none"
+                                stroke="#C5A64A"
+                                stroke-width="4"
+                            />
+
+                            <!-- Círculo esquerdo -->
+                            <circle
+                                cx="14.5"
+                                cy="29.5"
+                                r="11.5"
+                                fill="#C5A64A"
+                            />
+
+                                <!-- Círculo direito -->
+                                <circle
+                                    cx="50.5"
+                                    cy="29.5"
+                                    r="11.5"
+                                    fill="#C5A64A"
+                                />
+                </svg>
+            </p>
+            <h1>Contato</h1>
+            <p>Estamos prontos para te atender e tornar a sua  expriência ainda melhor</p>
+            <p>Fale conosco!</p>
+            <p class="trecho2">
+                <svg 
+                    width="40" 
+                    height="40" 
+                    viewBox="0 0 65 59" 
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <!-- Círculo central -->
+                    <circle
+                        cx="32.5"
+                        cy="29.5"
+                        r="21.5"
+                        fill="none"
+                        stroke="#C5A64A"
+                        stroke-width="4"
+                    />
+
+                        <!-- Círculo esquerdo -->
+                        <circle
+                            cx="14.5"
+                            cy="29.5"
+                            r="11.5"
+                            fill="#C5A64A"
+                        />
+
+                        <!-- Círculo direito -->
+                        <circle
+                            cx="50.5"
+                            cy="29.5"
+                            r="11.5"
+                            fill="#C5A64A"
+                        />
+                                    </svg>
+            </p>
+        </div>  
+    </section>
+    <!-- ======================================================
+    Formulário
+    ======================================================= -->
     <section class="cadastro">
         <div>
+            <p class="eyebrow">Envie Uma Mensagem</p>
             <h2>Fale Conosco</h2>
             <p>Tem alguma dúvida, sugestão ou deseja fazer uma reserva? Preencha o formulário abaixo e entraremos em contato.</p>
         </div>
         <form action="#" method="post">
             <!-- =================== Nome ========================== -->
             <article>
-                <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-user input-icone"></i>
                 <input type="text" name="nome" id="nome" autocomplete="name" placeholder="Nome completo" required>
             </article>
             <!-- =================== Email ========================== -->
             <article>
-                <i class="fa-regular fa-envelope"></i>
+                <i class="fa-regular fa-envelope input-icone"></i>
                 <input type="email" name="email" id="email" autocomplete="name" placeholder="E-mail" required>
             </article>
             <!-- =================== Telefone ========================== -->
             <article>
-                <i class="fa-solid fa-phone"></i>
+                <i class="fa-solid fa-phone input-icone"></i>
                 <input type="number" name="num" id="num" autocomplete="cc-number" placeholder="Telefone">
             </article>
             <!-- =================== Assunto ========================== -->
             <article>
-    
+                <i class="fa-regular fa-message input-icone"></i>
                 <select name="assunto" id="assunto" name="assunto">
                     <option value="">Selecione um assunto</option>
                     <option value="eventos">Eventos Especiais</option>
@@ -68,7 +147,7 @@
             </article>
             <!-- =================== Mensagem ========================== -->
             <article>
-    
+                <i class="fa-regular fa-message input-icone-msg"></i>
                 <textarea name="mensagem" id="mensagem" placeholder="Sua mensagem..."></textarea>
             </article>
             <button type="submit" aria-label="Enviar mensagem" id="btn-send">
@@ -122,9 +201,10 @@
     ======================================================= -->
     <section class="servicos">
         <div>
-            <p class="eyebrow">SERVIÇOS</p>
+            <p class="eyebro">SERVIÇOS</p>
             <h2>Ações Rápidas</h2>
         </div>
+
         <article class="actions-grip">
             <div class="action-card">
                 <i class="fa-regular fa-calendar fa-xl iconeContato"></i>
@@ -157,7 +237,6 @@
         </article>
     </section>
 </main>
-
 
 <footer>
 <div class="footer-grid">
@@ -204,5 +283,6 @@
     <p>Feito em Luanda, com muito sabor</p>
 </div>
 </footer>
+<script src="../assets/scripts/main.js"></script>
 </body>
 </html>

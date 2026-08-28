@@ -51,6 +51,7 @@ h1,h2,h3{
     color: var(--color-brand-gold);
     grid-column: 2;
 }
+
 .iconeContato{
     color: var(--color-brand-gold);
 }
@@ -60,9 +61,74 @@ body{
     font-family: var(--font-manrope);
     color: var(--color-text-secondary);
 }
-/* =========== Cadastro / Foláriormu =========== */
+/* =========== Início =========== */
+.inicio{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.inicio img{
+    width: 100%;
+    min-height: 100px;
+    overflow: hidden;
+    object-fit: cover;
+}
+.inicio div{
+    line-height: 1.5em;
+    position: absolute;
+    align-content: center;
+    background-color: rgb(12, 41, 34,.20);
+    height: 100%;
+    z-index: 20;
+}
+.inicio div p,
+.inicio div h1{
+    color: var(--color-white);
+    line-height: 1.5em;
+}
+.trecho2,
+.trecho{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* trecho */
+.trecho2::before,
+.trecho::before{
+    content: "";
+    position: absolute;
+    left: 20%;
+    width: 20%;
+    height: 3px;
+    background-color: var(--color-brand-gold);
+    color: var(--color-brand-gold);   
+}
+.trecho2::after,
+.trecho::after{
+    content: "";
+    position: absolute;
+    right: 20%;
+    width: 20%;
+    height: 3px;
+    background-color: var(--color-brand-gold);
+    color: var(--color-brand-gold);   
+}
+
+/* trecho 2 */
+
+
+
+
+/* =========== Cadastro / Formulário =========== */
 .cadastro{
     padding: 10px 40px;
+}
+.cadastro div h2{
+    font-size: clamp(2rem,4vh,8em);
 }
 select,
 textarea,
@@ -75,10 +141,28 @@ input{
     width: 100%;
     min-height: 50px;
     transition: border .3s;
+    padding-left: 40px;
+}
+form article{
+    position: relative;
+}
+.input-icone{
+    position: absolute;
+    left: 15px;
+    top: 45%;
+    transform: translateY(-60%);
+    color: var(--color-brand-gold);
+}
+.input-icone-msg{
+    position: absolute;
+    top: 5%;
+    color: var(--color-brand-gold);
+    left: 5%;
 }
 textarea{
     min-height: 100px;
-    max-height: 300px;
+    max-height: 200px;
+    max-width: 300px;
 }
 textarea:focus-visible,
 input:focus-visible{
@@ -128,7 +212,13 @@ input:focus-visible{
 /* =========== Ações rápidas =========== */
 .servicos{
     background-color: #EDE7D9;
-    padding: 10px 15px;
+    padding: 40px 15px;
+}
+.servicos > div{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
 }
 .actions-grip{
     display: grid;
@@ -140,5 +230,61 @@ input:focus-visible{
     background-color: var(--color-surface-primary);
     padding: 10px;
     border-radius: 18px;
-    box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.241);
+    transition: box-shadow .3s;
+}
+
+.eyebro{
+    color: var(--color-brand-gold);
+}
+
+/* =========== Responsividade =========== */
+@media(min-width:768px){
+form{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+form article:has(textarea){
+    grid-column: span 2;
+    width: 100%;
+}
+textarea{
+    min-height: 200px;
+    max-height: 400px;
+    max-width: 100%;
+}
+.input-icone-msg{
+    position: absolute;
+    top: 4%;
+    color: var(--color-brand-gold);
+    left: 1%;
+}
+
+form #btn-send{
+    grid-column: span 2;
+}
+.contatar{
+    display: grid;
+    grid-template-columns: 0.5fr 1fr .5fr;
+}
+.contatar article{
+    grid-column: 2/3;
+}
+.actions-grip{
+    justify-items: center;
+    row-gap: 10px;
+    width: 50%;
+    margin: 0 auto;
+}
+.action-card{
+    width: 100%;
+    min-height: 100px;
+}
+.action-card:hover{
+    box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.241);
+}
+.action-card:active{
+    transform: scale(.99);
+}
+
 }
