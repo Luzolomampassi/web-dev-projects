@@ -31,57 +31,17 @@
     </header>
     <main>
 
-        <section class="inicio">
-            <article class="inicio-copy">
-                <p class="eyebrow">O NOSSO MENU</p>
-                <h1>
-                    Sabores que
-                    <span>contam histórias</span>.
-                </h1>
-                <p>Cada prato nasce da união entre ingredientes locais, técnica e criatividade — feito para transformar cada refeição num momento especial.</p>
-            </article>
-            <article class="hero">
-                <div class="hero-card">
-                    <img src="https://images.unsplash.com/photo-1750943082231-0d84cfabc4dd?w=800&h=500&fit=crop&auto=format" alt="">
-                     <div class="hero-description">
-                         <div>
-                             <h2>Prato do Chef</h2>
-                             <p>Seleção sazonal · Ingredientes locais</p>
-                         </div>
-                         <i class="fa-regular fa-star"></i>
-                     </div>
-                </div>
-            </article>
-            <article class="inicio-bottom">
-                <div>
-                    <h3>1+</h3>
-                    <p>Entrega em Luanda</p>
-                </div>
-                <div>
-                    <h3>120+</h3>
-                    <p>Pratos no menu</p>
-                </div>
-                <div>
-                    <h3>1500kz</h3>
-                    <p>Pedido mínimo</p>
-                </div>
-                <div>
-                    <h3>30min</h3>
-                    <p>Tempo médio de entrega</p>
-                </div>
-            </article>
-        </section>
-
         <div class="opcions">
             <button aria-label="btn todos">Todos</button>
             <button aria-label="btn entrdas">Entradas</button>
             <button aria-label="btn pratos principais">Pratos Principais</button>
             <button aria-label="btn sobremesas">Sobremesas</button>
             <button aria-label="btn bebidas">Bebidas</button>
+            <input type="search" name="search" id="search" aria-label="Pesquisar pratos" placeholder="Pesquisar pratos">
         </div>
         <!-- ========= Pratos ======= -->
 
-        <section class="menu">
+         <section class="menu">
             <article class="dish-grid">
                 <div class="dish-card">
                     <div>
@@ -204,64 +164,12 @@
                 </div>
             
             </article>
-             <a href="pratos.html" aria-label="Ver todos os pratos" class="ver-mais">Ver todos os pratos</a>
+            <button id="loadingmore" class="ver-mais">Carregar mais</button>
         </section>
-
-
 
 
         <!-- =========pratos de destaque======= -->
-        <section class="pratos-destaques">
-            <div>
-                <p class="eyebrow">DESTAQUES DA CASA</p>
-                <h2>Pratos autorais que celebram a nossa essência.</h2>
-            </div>
-
-            <article class="destaque-grid">
-                <div class="destaque-card">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1761314036542-6570ef45dbb3?w=700&h=500&fit=crop&auto=format" alt="" loading="lazy">
-                    </div>
-                    <div class="card-description">
-                        <h2>Caldeirada de Marisco</h2>
-                    </div>
-                    <div class="card-bottom">
-                        <p>Mariscos frescos em caldo aromático com pão de alho tostado.</p>
-                        <h3>9.200 Kz</h3>
-                    </div>
-                </div>
-
-                <div class="destaque-card">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1750943041213-db8328856b48?w=700&h=500&fit=crop&auto=format" alt="" loading="lazy">
-                    </div>
-                    <div class="card-description">
-                        <h2>Magret de Pato</h2>
-                    </div>
-                    <div class="card-bottom">
-                        <p>Peito de pato com molho de laranja e amêndoas tostadas.</p>
-                        <h3>8.800 Kz</h3>
-                    </div>
-                </div>
-
-                <div class="destaque-card">
-                   
-                        <img src="https://images.unsplash.com/photo-1629368713374-31b95085d63e?w=700&h=500&fit=crop&auto=format" alt="" loading="lazy">
-                  
-                    <div class="card-description">
-                        <h2>Camarão ao Alho</h2>
-                    </div>
-                    <div class="card-bottom">
-                        <p>Camarão jumbo salteado em manteiga, alho e vinho branco.</p>
-                        <h3>7.600 Kz</h3>
-                    </div>
-                </div>
-            </article>
-        </section>
-
-        
-       
-
+   
     </main>
     <footer>
 <div class="footer-grid">
@@ -308,6 +216,5 @@
 </div>
 </footer>
     <script src="../assets/scripts/main.js"></script>
-    <script src="../assets/scripts/menu.js"></script>
 </body>
 </html>

@@ -84,10 +84,10 @@ h3 {
 
 .inicio-copy {
     padding: 60px 20px;
+    font-size: clamp(2.5em,5.4vh,8em);
 }
 .inicio-copy h1{
-    color: var(--color-white);
-    font-size: clamp(2.5em,5.4vh,8em);
+    color: var(--color-text-primary);
 }
 .inicio-bottom{
     display: none;
@@ -145,6 +145,7 @@ h3 {
 /* ===============Opcions================== */
 .opcions {
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
     gap: 10px;
     overflow-x: scroll;
@@ -215,6 +216,7 @@ h3 {
     border: 1px solid var(--color-border-subtle);
     border-radius: 16px;
     width: 96%;
+    height: auto;
 }
 
 
@@ -251,6 +253,15 @@ h3 {
     background-color: var(--color-brand-green);
     padding: 10px 8px;
     border-radius: 50%;
+    cursor: pointer;
+}
+.fa-plus:hover{
+  background-color: var(--color-brand-green-hover);
+}
+.btn-add{
+    background: transparent;
+    border: 0;
+    outline: 0;
 }
 /* ===============Cards Destque================== */
 .pratos-destaques {
@@ -335,17 +346,34 @@ h3 {
 }
 
 
-
+/* =============== Secção de todos os pratos ================== */
+#search{
+    width: 100%;
+    padding: 10px;
+    border-radius: 16px;
+    border: 1px solid var(--color-brand-gold-cta);
+}
+#search:focus-visible{
+    outline: 1px solid var(--color-brand-gold-cta);
+    outline-offset: 2px;
+}
 
 
 
 
 @media(min-width:768px) {
+.inicio-copy h1{
+    color: var(--color-white);
+}
 
 .inicio{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     background-color: var(--color-brand-green);
+}
+.hero {
+    display: flex;
+    align-items: center;
 }
 .content-reservar span {
     font-style: italic;
