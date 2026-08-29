@@ -33,7 +33,7 @@
   --font-bodoni:"Bodoni Moda", serif;
   --font-manrope: "Manrope", sans-serif;
 }
-
+/*===== Scroll  =====*/
 ::-webkit-scrollbar{
   background-color: var(--color-white); 
 }
@@ -49,6 +49,7 @@
     font-family: var(--font-manrope);
     font-weight: 100;
 }
+/*===== Header  =====*/
 header{
     display: flex;
     justify-content: space-between;
@@ -59,7 +60,7 @@ header{
     height: 100px;
     position: sticky;
     top: 0;
-    z-index: 30;
+    z-index: 40;
     width: 100%;
     box-shadow: 4px 3px 5px rgba(0, 0, 0, 0.165);
     transition: .35s ease;
@@ -70,14 +71,17 @@ header{
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 20;
+    z-index: 40;
 }
 .header-actions{
     display: flex;
     gap: 17px;
     align-items: center;
 }
-
+.logo img{
+    width:210px;
+    object-fit: cover;
+}
 
 .fa-bag-shopping{
     color: var(--color-brand-green);
@@ -87,10 +91,28 @@ header{
     color: var(--color-brand-gold-light);
 }
 
+/*===== menu/sidebar =====*/
 #menu{
-    background-color: var(--color-page-background);
-    display: none;
-    justify-content: space-between;
+    display: grid;
+    position: absolute;
+    left: 0;
+    width: 60%;
+    height: 50vh;
+    top: 100%;
+    opacity: 0;
+    background-color: var(--color-page-background-transparente);
+    transform: translateX(-100%);
+    z-index: 40;
+    transition: transform .3s , opacity .3s;
+}
+#menu.drop{
+    
+    gap: 20px;
+    padding-left: 20px;
+    opacity: 1;
+    width: 60%;
+    transform: translateX(0%);
+    border-bottom: 1px solid var(--color-border-subtle);
 }
 #menu a{
     text-decoration: none;
@@ -98,44 +120,43 @@ header{
     transition: color .3s;
 }
 #menu ul{
+    display: grid;
+    row-gap: 1.3em;
+    grid-template-rows: auto;
     list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    align-items: center;
+}
+#menu li{
+    border-bottom: 1px solid var(--color-brand-gold-light);
+    padding: 10px;
 }
 #menu a:hover{
     color: var(--color-brand-gold-cta);
 }
 
-.logo img{
-    width:210px;
-    object-fit: cover;
-}
 #btn-menu{
     background: transparent;
     border: 0;
     font-size: 1em;
 }
-#reserva{
-    display: inline-block;
-    background-color: var(--color-brand-green-deep);
-    color: var(--color-white);
-    padding: 10px;
-    
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 10;
 }
 
-#menu.drop{
-    display: flex;
-    gap: 20px;
-    padding-left: 20px;
-    width: 100%;
-    position: absolute;
-    flex-direction: column;
-    top: 100%;
-    left: 0;
-    border-bottom: 1px solid var(--color-border-subtle);
+.overlay.ativo {
+    opacity: 1;
+    visibility: visible;
 }
-
+/*===================================================
+ Responsividade
+ ===================================================*/
 @media (min-width:1024px){
 header{
     align-items: center;
@@ -167,7 +188,9 @@ header{
 
 }
 
-
+/*===================================================
+ Transição de páginas
+ ===================================================*/
 @view-transition{
   navigation:auto;
 }

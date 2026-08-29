@@ -9,18 +9,41 @@ window.addEventListener('scroll', () => {
         header.classList.remove('header-fixo');
     }
 });
-// ============menu drop========
+// ============Menu sidebar ==============================
 const btn_menu = document.getElementById("btn-menu")
 const menu = document.getElementById("menu")
+const overlay = document.getElementById("overlay")
 
-btn_menu.addEventListener('click', () =>{
+// ========= Funções ===========
+function abrirMenu(){
+ 
     menu.classList.toggle('drop')
+    overlay.classList.toggle('ativo')
 
     if(menu.classList.contains("drop")){
         btn_menu.innerHTML= '<i class="fa-solid fa-xmark"></i>'
-    }else{
+    }
+   
+    else{
          btn_menu.innerHTML= '<i class="fa fa-bars"></i>'
     }
+}
+function fecharMenu(){
+    menu.classList.remove('drop')
+    overlay.classList.remove('ativo')
+    btn_menu.innerHTML= '<i class="fa fa-bars"></i>'
+   
+}
+
+// ========= Eventos ===========
+btn_menu.addEventListener('click', () =>{
+   abrirMenu()
 })
-// ============menu drop========
+overlay.addEventListener('click', () =>{
+
+    fecharMenu()
+})
+
+
+
 

@@ -72,6 +72,7 @@ body{
 .inicio img{
     width: 100%;
     min-height: 100px;
+    max-height: 500px;
     overflow: hidden;
     object-fit: cover;
 }
@@ -81,7 +82,7 @@ body{
     align-content: center;
     background-color: rgb(12, 41, 34,.20);
     height: 100%;
-    z-index: 20;
+    width: 100%;
 }
 .inicio div p,
 .inicio div h1{
@@ -118,10 +119,6 @@ body{
     color: var(--color-brand-gold);   
 }
 
-/* trecho 2 */
-
-
-
 
 /* =========== Cadastro / Formulário =========== */
 .cadastro{
@@ -146,6 +143,7 @@ input{
 form article{
     position: relative;
 }
+
 .input-icone{
     position: absolute;
     left: 15px;
@@ -244,15 +242,17 @@ form{
     grid-template-columns: repeat(2,1fr);
     gap: 20px;
 }
+textarea{
+    min-height: 200px;
+    max-height: 400px;
+    min-width: 50%;
+    max-width: 100%;
+}
 form article:has(textarea){
     grid-column: span 2;
     width: 100%;
 }
-textarea{
-    min-height: 200px;
-    max-height: 400px;
-    max-width: 100%;
-}
+
 .input-icone-msg{
     position: absolute;
     top: 4%;
