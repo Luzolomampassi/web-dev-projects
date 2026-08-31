@@ -21,17 +21,18 @@
     </div>
     
     <nav id="menu">
-        <a href="../index.html">INÍCIO</a>
-        <a href="menu.html">MENU</a>      
-        <a href="sobre.html">SOBRE NÓS</a>  
-        <a href="contato.html">CONTATO</a> 
+        <ul>
+            <li><a href="../index.html"> <i class="fa-solid fa-house fa-xl menu-icone"></i>INÍCIO</a></li>
+            <li><a href="menu.html"><i class="fa-solid fa-plate-wheat   fa-xl menu-icone"></i>MENU</a></li>      
+            <li><a href="sobre.html"><i class="fa-solid fa-info   fa-xl menu-icone"></i>SOBRE NÓS</a>  </li>
+            <li><a href="contato.html"><i class="fa-solid fa-envelope   fa-xl menu-icone"></i>CONTATO</a> </li>
+        </ul>
+       
     </nav>
     <div>
         <i class="fa-solid fa-bag-shopping fa-2xl"></i>
     </div>
-   
-    <!-- <i class="ri-shopping-bag-line"></i> -->
-</header>
+    </header>
 <div class="overlay" id="overlay"></div>
     <main>
 
@@ -77,20 +78,31 @@
         </section>
 
         <div class="opcions">
-            <button aria-label="btn todos">Todos</button>
-            <button aria-label="btn entrdas">Entradas</button>
-            <button aria-label="btn pratos principais">Pratos Principais</button>
-            <button aria-label="btn sobremesas">Sobremesas</button>
-            <button aria-label="btn bebidas">Bebidas</button>
+            <button aria-label="btn todos" id="btn-todos" class="btn-filtros"
+            data-categoria="todos">Todos</button>
+
+            <button aria-label="btn entradas" id="btn-entradas" class="btn-filtros"
+            data-categoria="entradas">Entradas</button>
+
+            <button aria-label="btn pratos principais" id="btn-principais" class="btn-filtros"
+            data-categoria="principais">Pratos Principais</button>
+
+            <button aria-label="btn sobremesas" id="btn-sobremesas" class="btn-filtros"
+            data-categoria="sobremesas">Sobremesas</button>
+
+            <button aria-label="btn bebidas" id="btn-bebidas" class="btn-filtros"
+            data-categoria="bebidas">Bebidas</button>
+
+            <input type="search" name="search" id="search" aria-label="Pesquisar pratos" placeholder="Pesquisar pratos">
         </div>
         <!-- ========= Pratos ======= -->
 
         <section class="menu">
             <article class="dish-grid">
-                <div class="dish-card">
+                <div class="dish-card" data-categoria="entradas">
                     <div>
                         <img src="https://images.unsplash.com/photo-1761314037083-329b3050b351?w=700&h=480&fit=crop&auto=format" alt="" loading="lazy">
-                        <p class="entradas"></p>
+                        <p class="Categoria"><span class="star">✦</span> Entradas</p>
                     </div>
                     <div class="card-description">
                         <h2>Ceviche de Peixe do Dia</h2>
@@ -98,13 +110,14 @@
                     </div>
                     <div class="card-bottom">
                         <h3>3.500 Kz</h3>
-                        <button type="button" aria-label="Adicionar Prato"><i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+                        <button  class="btn-add" type="button" aria-label="Adicionar Prato"
+                        ><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
-                <div class="dish-card">
+                <div class="dish-card" data-categoria="entradas">
                     <div>
                         <img src="https://images.unsplash.com/photo-1578935149228-66b184c83e69?w=700&h=480&fit=crop&auto=format" alt="" loading="lazy">
-                        <p class="entradas"></p>
+                        <p class="Categoria"><span class="star">✦</span> Entradas</p>
                     </div>
                     <div class="card-description">
                         <h2>Polvo Grelhado</h2>
@@ -116,10 +129,10 @@
                         ><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
-                <div class="dish-card">
+                <div class="dish-card" data-categoria="entradas">
                     <div>
                         <img src="https://images.unsplash.com/photo-1750943082231-0d84cfabc4dd?w=700&h=480&fit=crop&auto=format" alt="" loading="lazy">
-                        <p class="entradas"></p>
+                        <p class="Categoria"><span class="star">✦</span> Entradas</p>
                     </div>
                     <div class="card-description">
                         <h2>Risotto de Camarão</h2>
@@ -131,10 +144,10 @@
                         class="btn-add"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
-                <div class="dish-card">
+                <div class="dish-card" data-categoria="principais">
                     <div>
                         <img src="https://images.unsplash.com/photo-1750943031775-f18a5dba24c3?w=700&h=480&fit=crop&auto=format" alt="" loading="lazy">
-                        <p class="entradas"></p>
+                        <p class="Categoria"><span class="star">✦</span> Principais</p>
                     </div>
                     <div class="card-description">
                         <h2>Lombo de Novilho</h2>
@@ -146,10 +159,10 @@
                         class="btn-add"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
-                <div class="dish-card">
+                <div class="dish-card" data-categoria="principais">
                     <div>
                         <img src="https://images.unsplash.com/photo-1775498053538-ec293e32b963?w=700&h=480&fit=crop&auto=format" alt="" loading="lazy">
-                        <p class="entradas"></p>
+                        <p class="Categoria"><span class="star">✦</span> Principais</p>
                     </div>
                     <div class="card-description">
                         <h2>Peixe com Crosta de Ervas</h2>
@@ -161,10 +174,10 @@
                         class="btn-add"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
-                <div class="dish-card">
+                <div class="dish-card" data-categoria="principais">
                     <div>
                         <img src="https://images.unsplash.com/photo-1519077336050-4ca5cac9d64f?w=700&h=480&fit=crop&auto=format" alt="" loading="lazy">
-                        <p class="entradas"></p>
+                        <p class="Categoria"><span class="star">✦</span> Principais</p>
                     </div>
                     <div class="card-description">
                         <h2>Tagliatelle de Cogumelos</h2>
@@ -176,10 +189,10 @@
                         class="btn-add"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
-                 <div class="dish-card">
+                <div class="dish-card" data-categoria="sobremesas">
                     <div>
                         <img src="https://images.unsplash.com/photo-1750943036999-81e666b2296c?w=700&h=480&fit=crop&auto=format" alt="" loading="lazy">
-                        <p class="entradas"></p>
+                        <p class="Categoria"><span class="star">✦</span> Sobremesas</p>
                     </div>
                     <div class="card-description">
                         <h2>Petit Gâteau de Chocolate</h2>
@@ -191,10 +204,10 @@
                         class="btn-add"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
-                <div class="dish-card">
+                <div class="dish-card" data-categoria="sobremesas">
                     <div>
                         <img src="https://images.unsplash.com/photo-1616669945251-3e8168f6f89a?w=700&h=480&fit=crop&auto=format" alt="" loading="lazy">
-                        <p class="entradas"></p>
+                        <p class="Categoria"><span class="star">✦</span> Sobremesas</p>
                     </div>
                     <div class="card-description">
                         <h2>Cheesecake de Maracujá</h2>

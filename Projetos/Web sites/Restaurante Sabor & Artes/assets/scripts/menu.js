@@ -1,3 +1,8 @@
 const btnAdd = document.getElementsByClassName("btn-add")
-const btnCarregarMais = document.getElementById("loadingmore")
+const pratos = document.getElementsByClassName("dish-card")
+const btnFiltros = document.querySelectorAll(".btn-filtros")
+
+
+
+
 

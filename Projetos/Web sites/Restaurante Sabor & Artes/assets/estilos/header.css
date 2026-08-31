@@ -159,24 +159,25 @@ header{
  ===================================================*/
 @media (min-width:1024px){
 header{
-    align-items: center;
+    align-content: center;
     justify-content: space-evenly;
     margin-bottom: 0;
-    z-index: 30;
+    z-index: 40;
 }
 
 #menu{
     display: flex;
+    position: sticky;
+    opacity: 1;
+    transform: translateX(0%);
+    background: 0;
+    height: 100%;
+    text-align: center;
 }
-
-#menu{
-   display: flex;
-   flex-direction: row;
-   background-color: transparent;
-   position: sticky;
-   gap: 30px;
-   top: 0;
-   border: 0;
+#menu ul{
+    display: flex;
+    gap: 2em;
+    align-content: center;
 }
 
 #menu a{

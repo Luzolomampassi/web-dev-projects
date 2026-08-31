@@ -15,6 +15,7 @@
 
     /* Marca e elementos interativos */
     --color-brand-green: #0C2922;
+    --color-brand-green-trans: rgb(12, 41, 34 , .75);
     --color-brand-green-deep: #0A231E;
     --color-brand-green-hover: #1F453A;
     --color-brand-gold: #B59563;
@@ -217,8 +218,28 @@ h3 {
     border-radius: 16px;
     width: 96%;
     height: auto;
+    position: relative;
+    transition: transform .4s;
+    overflow: hidden;
+
+}
+.dish-card:hover{
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.351);
+    transform: translateY(-6px);
 }
 
+.Categoria{
+    position: absolute;
+    color: white;
+    top: 5%;
+    left: 5%;
+    text-transform: uppercase;
+    padding: 0 5px;
+    z-index: 10;
+    background-color: var(--color-brand-green-trans);
+    border-radius: 12px;
+    padding: 5px;
+}
 
 .card-description{
     padding: 10px 15px;
@@ -230,6 +251,11 @@ h3 {
     display: block;
     width: 100%;
     object-fit: cover;
+    transition: transform .3s;
+}
+.dish-card img:hover{
+    transform: scale(1.03);
+
 }
 
 .card-bottom {
@@ -243,8 +269,8 @@ h3 {
    font-family: var(--font-manrope);
 }
 
-.destaque-grid p ,
-.dish-grid p {
+.card-description p ,
+.card-description p {
     color: var(--color-text-secondary);
 }
 
