@@ -14,9 +14,17 @@ const btn_menu = document.getElementById("btn-menu")
 const menu = document.getElementById("menu")
 const overlay = document.getElementById("overlay")
 
+
+// ========= Eventos ===========
+btn_menu.addEventListener('click', () =>{
+   abrirMenu()
+})
+overlay.addEventListener('click', () =>{
+
+    fecharMenu()
+})
 // ========= Funções ===========
 function abrirMenu(){
- 
     menu.classList.toggle('drop')
     overlay.classList.toggle('ativo')
 
@@ -35,14 +43,8 @@ function fecharMenu(){
    
 }
 
-// ========= Eventos ===========
-btn_menu.addEventListener('click', () =>{
-   abrirMenu()
-})
-overlay.addEventListener('click', () =>{
 
-    fecharMenu()
-})
+
 
 
 
