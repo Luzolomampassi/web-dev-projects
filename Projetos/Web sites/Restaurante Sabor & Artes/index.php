@@ -24,12 +24,12 @@
      <button id="btn-menu" type="button" aria-label="Abrir menu"><i class="fa fa-bars" aria-hidden="true"></i></button>
     </div>
     <div class="logo">
-        <img src="../assets/img/sabor_e_artes_logo.svg" alt="Logo do restaurante">
+        <img src="assets/img/sabor_e_artes_logo.svg" alt="Logo do restaurante">
     </div>
     
     <nav id="menu">
         <ul>
-            <li><a href="index.html"> <i class="fa-solid fa-house fa-xl menu-icone"></i>INÍCIO</a></li>
+            <li><a href="index.php"> <i class="fa-solid fa-house fa-xl menu-icone"></i>INÍCIO</a></li>
             <li><a href="paginas/menu.html"><i class="fa-solid fa-plate-wheat   fa-xl menu-icone"></i>MENU</a></li>      
             <li><a href="paginas/sobre.html"><i class="fa-solid fa-info   fa-xl menu-icone"></i>SOBRE NÓS</a>  </li>
             <li><a href="paginas/contato.html"><i class="fa-solid fa-envelope   fa-xl menu-icone"></i>CONTATO</a> </li>
@@ -176,8 +176,8 @@
         </div>
         <div>
             <h4>NAVEGAÇÃO</h4>
-            <a href="index.html">Início</a>
-            <a href="paginas/menu.html">Menu</a>
+            <a href="index.php">Início</a>
+            <a href="paginas/sobre.html">Menu</a>
             <a href="paginas/sobre.html">Sobre nós</a>
             <a href="paginas/contato.html">Contato</a>
         </div>
