@@ -81,11 +81,12 @@
    <!--========== Barra de Pesquisa e Filtros =========-->
    <section class="search_container">
         <div class="filters">
-            <button>Todos</button>
-            <button>Front-end</button>
-            <button>JavaScript</button>
-            <button>UI/UX</button>
-            <button>Landing Pages</button>
+            <button class="btn-filtros" aria-label="btn de filtro" data-categoria="todos">Todos</button>
+            <button class="btn-filtros" aria-label="btn de filtro" data-categoria="frontEnd">Front-end</button>
+            <button class="btn-filtros" aria-label="btn de filtro" data-categoria="website">Websites</button>
+            <button class="btn-filtros" aria-label="btn de filtro" data-categoria="javascript">JavaScript</button>
+            <button class="btn-filtros" aria-label="btn de filtro" data-categoria="interfaces">Interfaces</button>
+            <button class="btn-filtros" aria-label="btn de filtro" data-categoria="landingPages">Landing Pages</button>
         </div>
           <div class="search_bar">
             <input type="search" name="search" id="search" placeholder=" Buscar projetoVer mais">
@@ -98,7 +99,7 @@
 <section class="projets">
         <article class="cards_projets">
             <!--==== Card do portfólio ====-->
-            <div class="item ">
+            <div class="item" data-categoria="website">
                 
                 <div class="imagem">
                     <img src="../icones/trechos/img portofolio simples.png" alt="captura de tela do portfólio pessoal" loading="lazy">
@@ -136,7 +137,7 @@
                 </div>              
             </div>  
                 <!--==== Card do restaurante ====-->
-             <div class="item ">
+             <div class="item" data-categoria="website">
                 <!-- Captura de tela do restaurante --> 
                 
                 <div class="imagem">
@@ -160,7 +161,7 @@
         
                 <!-- Descrição do Restaurante --> 
                 <div class="description">
-                      <h3>Restaurante Artes & Sabor </h3>
+                    <h3>Restaurante Artes & Sabor </h3>
                     <p>ite de restaurante criado para exibir o cardápio, pratos, bebidas<details> <summary>Ver mais</summary>
                          e informações do estabelecimento, oferecendo uma navegação intuitiva e uma experiência agradável para os clientes.</details></p>
                     <div class="badges">
@@ -171,13 +172,13 @@
                   </div>
                   <div class="card-buttons">
                     <a href="https://github.com/Luzolomampassi/Projectos-HTML-CSS-Javascript1/tree/main/Projetos/Web%20sites/Restaurante%20Sabor%20%26%20Artes" class="btn-primary" target="_blank" ><i class="fa-brands fa-github icone-card fa-xl"></i><span class="txt_escondido">Github</span></a>
-                    <a href="../../Projetos/Web sites/Restaurante Sabor & Artes/index.html" target="_blank" class="btn-secundary" >Ver Projeto  <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="../../Projetos/Web sites/Restaurante Sabor & Artes/index.html" class="btn-secundary" target="_blank">Ver Projeto  <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>   <!-- Fim do restaurante --> 
                  
             </div>    
              <!--==== Card do Landing Pages ====-->        
-             <div class="item">
+             <div class="item" data-categoria="landingPages">
                 <!-- Captura de tela do Landing Page --> 
                 
                 <div class="imagem">
@@ -217,7 +218,7 @@
                 </div>       
              </div> 
             <!--==== Card do Cosmos ====-->
-            <div class="item">
+            <div class="item" data-categoria="interfaces">
                 <!-- Imagem do cosmos --> 
                 
                 <div class="imagem">
@@ -274,4 +275,5 @@
   
 </main>
     <script src="../../interacoes.js"></script>
+    <script src="../../projetos.js"></script>
 </body>
