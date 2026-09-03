@@ -1,8 +1,21 @@
 const btnAdd = document.getElementsByClassName("btn-add")
 const pratos = document.querySelectorAll(".dish-card")
 const btnFiltros = document.querySelectorAll(".btn-filtros")
-const search = document.getElementById("search")
+const search = document.querySelector("#search")
 
+
+
+search.addEventListener("input", () => {
+    pratos.forEach(prato => {
+    const nomePrato = prato.querySelector("h2").textContent.toLowerCase().trim()
+
+    if(nomePrato.includes(search.value.toLowerCase().trim())){
+        prato.style.display = "block"
+    }else{
+        prato.style.display = 'none'
+    }
+})
+})
 // =========================== Filtros =========================== 
 btnFiltros.forEach(filtroSelecionado =>{
     filtroSelecionado.addEventListener('click',()=>{
@@ -25,4 +38,6 @@ btnFiltros.forEach(filtroSelecionado =>{
     })
 })
 // =========================== Barra de pesquisa =========================== 
+
+
 

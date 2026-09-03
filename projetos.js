@@ -1,7 +1,17 @@
 const btnFiltros = document.querySelectorAll(".btn-filtros")
 const projetos = document.querySelectorAll(".item")
+const search = document.querySelector("#search")
 
-
+search.addEventListener('input', () =>{
+    projetos.forEach(projeto =>{
+        const nomeProjeto = projeto.querySelector("h3").textContent.toLocaleLowerCase()
+        if(nomeProjeto.includes(search.value.toLocaleLowerCase())){
+            projeto.style.display = 'grid'
+        }else{
+            projeto.style.display = 'none'
+        }
+    })
+})
 btnFiltros.forEach(btnSelecionado => {
     btnSelecionado.addEventListener('click', () =>{
 

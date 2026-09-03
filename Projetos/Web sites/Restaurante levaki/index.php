@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sabor & Artes</title>
+    <title>Levaki</title>
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/estilos/style.css">
     <link rel="stylesheet" href="assets/estilos/header.css">
@@ -32,7 +32,7 @@
             <li><a href="index.php"> <i class="fa-solid fa-house fa-xl menu-icone"></i>INÍCIO</a></li>
             <li><a href="paginas/menu.html"><i class="fa-solid fa-plate-wheat   fa-xl menu-icone"></i>MENU</a></li>      
             <li><a href="paginas/sobre.html"><i class="fa-solid fa-info   fa-xl menu-icone"></i>SOBRE NÓS</a>  </li>
-            <li><a href="paginas/contato.html"><i class="fa-solid fa-envelope   fa-xl menu-icone"></i>CONTATO</a> </li>
+            <li><a href="paginas/contato.php"><i class="fa-solid fa-envelope   fa-xl menu-icone"></i>CONTATO</a> </li>
         </ul>
        
     </nav>
@@ -179,7 +179,7 @@
             <a href="index.php">Início</a>
             <a href="paginas/sobre.html">Menu</a>
             <a href="paginas/sobre.html">Sobre nós</a>
-            <a href="paginas/contato.html">Contato</a>
+            <a href="paginas/contato.php">Contato</a>
         </div>
         <div>
             <h4>INFORMAÇÕES</h4>
@@ -201,7 +201,7 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy;2026 Sabor & Artes Restaurante</p>
+        <p>&copy;2026 Levaki</p>
         <p>Feito em Luanda, com muito sabor</p>
     </div>
 </footer>

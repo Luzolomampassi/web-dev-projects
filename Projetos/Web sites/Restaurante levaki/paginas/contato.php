@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sabor & Artes</title>
+    <title>Levaki</title>
     <link rel="stylesheet" href="../assets/estilos/header.css">
     <link rel="stylesheet" href="../assets/estilos/sobre.css">
     <link rel="stylesheet" href="../assets/estilos/contato.css">
@@ -12,12 +12,13 @@
     <script src="https://kit.fontawesome.com/f6a9b3f1e7.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="overlay" id="overlay"></div>
     <header>
      <div class="header-actions">
      <button id="btn-menu" type="button" aria-label="Abrir menu"><i class="fa fa-bars" aria-hidden="true"></i></button>
     </div>
     <div class="logo">
-        <img src="../assets/img/sabor_e_artes_logo.svg" alt="Logo do restaurante">
+        <img src="../assets/img/sabor_e_artes_logo.svg" alt="Logo">
     </div>
     
     <nav id="menu">
@@ -25,7 +26,7 @@
             <li><a href="../index.php"> <i class="fa-solid fa-house fa-xl menu-icone"></i>INÍCIO</a></li>
             <li><a href="menu.html"><i class="fa-solid fa-plate-wheat   fa-xl menu-icone"></i>MENU</a></li>      
             <li><a href="sobre.html"><i class="fa-solid fa-info   fa-xl menu-icone"></i>SOBRE NÓS</a>  </li>
-            <li><a href="contato.html"><i class="fa-solid fa-envelope   fa-xl menu-icone"></i>CONTATO</a> </li>
+            <li><a href="contato.php"><i class="fa-solid fa-envelope   fa-xl menu-icone"></i>CONTATO</a> </li>
         </ul>
        
     </nav>
@@ -33,7 +34,7 @@
         <i class="fa-solid fa-bag-shopping fa-2xl"></i>
     </div>
     </header>
-<div class="overlay" id="overlay"></div>
+
 <main>
     <section class="inicio">
         <img src="../assets/img/desktop.png" alt="Imagem de um rstaurante" loading="lazy">
@@ -120,7 +121,7 @@
             <h2>Fale Conosco</h2>
             <p>Tem alguma dúvida, sugestão ou deseja fazer uma reserva? Preencha o formulário abaixo e entraremos em contato.</p>
         </div>
-        <form action="#" method="post">
+        <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
             <!-- =================== Nome ========================== -->
             <article>
                 <i class="fa-regular fa-user input-icone"></i>
@@ -246,7 +247,7 @@
 <div class="footer-grid">
     <div class="footer-brand">
         <div>
-            <h2>Sabor & Artes</h2>
+            <h2>Levaki</h2>
         </div>
         <p>Cozinha contemporânea com raízes em Luanda,<br>Feita para encontros que ficam na memória.</p>
         <div class="social">
@@ -261,7 +262,7 @@
         <a href="menu.html">Menu</a>
         <a href="sobre.html">Sobre nós</a>
         <a href="reservas.html">Reservas</a>
-        <a href="contato.html">Contato</a>
+        <a href="contato.php">Contato</a>
     </div>
     <div>
         <h4>INFORMAÇÕES</h4>
@@ -282,7 +283,7 @@
     </div>
 </div>
 <div class="footer-bottom">
-    <p>&copy;2026 Sabor & Artes Restaurante</p>
+    <p>&copy;2026 Levaki</p>
     <p>Feito em Luanda, com muito sabor</p>
 </div>
 </footer>
