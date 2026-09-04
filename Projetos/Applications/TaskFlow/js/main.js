@@ -1,4 +1,69 @@
+
+// Botões de adicionar tarefa e cancelar
+const modal = document.querySelector(".modal")
+const btnAdd = document.querySelectorAll(".btn-add")
+const btnCancel = document.querySelectorAll(".btn-cancel")
+const overlay = document.querySelector(".overlay")
+const btnNewTask = document.querySelector("#btn-new-task")
+btnCancel.forEach( btnCancel =>{
+    btnCancel.addEventListener('click', ()=>{
+        modal.style.display = 'none'
+        overlay.classList.remove("ativo")
+    })
+})
+btnAdd.forEach(btnAdd =>{
+        btnAdd.addEventListener('click', () =>{
+         modal.style.display = 'flex'
+        overlay.classList.toggle("ativo")
+        overlay.addEventListener('click', () =>{
+            modal.style.display = 'none'
+            overlay.classList.remove("ativo")
+        })
+    })
+})
+// =============================================================
+
+
+// Contando o número de tarefas
+const tarefas = document.querySelectorAll(".task");
 const filtros = document.querySelectorAll(".btn-filters")
-const tasks = document.querySelectorAll(".task")
+
+
+
+tarefas.forEach(tarefa => {
+    const check = tarefa.querySelector(".check")
+
+    check.addEventListener('change', () => {
+        if (check.checked) {
+            tarefa.dataset.categoria = 'concluidas'
+            const titulo = tarefa.querySelector("h3")
+            tarefa.classList.add("concluida")
+            titulo.style.textDecoration = "line-through";
+
+        } else {
+            tarefa.dataset.categoria = 'pendentes'
+        }
+    })
+})
+
+
+filtros.forEach(filtroSelecionado => {
+    filtroSelecionado.addEventListener('click', () => {
+
+        tarefas.forEach(tarefa => {
+
+            if (filtroSelecionado.dataset.categoria == 'todos') {
+                tarefa.style.display = 'grid'
+
+            } else if (filtroSelecionado.dataset.categoria === tarefa.dataset.categoria) {
+                tarefa.style.display = 'grid'
+
+            } else {
+                tarefa.style.display = 'none'
+            }
+
+        })
+    })
+})  
 
 

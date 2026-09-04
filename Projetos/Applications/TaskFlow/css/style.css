@@ -7,6 +7,7 @@
     --background-color:#F9FAFB;
     --color-primary:#4F39F6;
     --color-primary-hover:#EEF2FF;
+    --color-secondary-hover:#5a57fdbd;
     --color-secondary:#615FFF;
     --color-border:#E5E7EB;
     --color-border-warm:#e3e4e6;
@@ -61,12 +62,103 @@ main{
 .inicio .btn-add{
     display: none;
 }
- /*  Barra de pesquisar e filtros  */
-.search{
+/*======== Modal========== */
+.modal{
+    display: none;
+    flex-direction: column;
+    background-color: var(--color-white);
+    padding: 10px 20px;
+    border-radius: 16px;
+    z-index: 30;
+    gap: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%,-50%);  
+}
+.modal-top{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid var(--color-border);
+}
+.modal label{
+    color: var(--text-secondary);
+}
+select,
+textarea,
+.modal input{
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+select:focus,
+textarea:focus,
+.modal input:focus{
+    outline: 2px solid var(--color-secondary-hover);
+}
+.selects{
+    display: flex;
+    justify-content: space-between;
+}
+.form-button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+.form-button button{
+    margin-top: 20px;
+    padding: 10px;
+    width: 50%;
+    border-radius: 12px;
+}
+.modal-top .btn-cancel{
+    color: var(--text-secondary);
+    border: 0;
+    background-color: transparent;
+    font-weight: bold;
+}
+.btn-cancel{
+    color: var(--text-secondary);
+    border: 1px solid var(--color-border);
+    background-color: transparent;
+    font-weight: bold;
+}
+#btn-new-task{
+    background-color: var(--color-secondary);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 2px 2px 3px #D8E0FD;
+    font-weight: bold;
+    color: var(--color-white);
+    cursor: pointer;
 
 }
+#btn-new-task:focus{
+    background-color: var(--color-primary);
+}
+.overlay{
+    position: fixed;
+   
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 20;
+}
+.overlay.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+ /*  Barra de pesquisar e filtros  */
 
-form{
+
+.search form{
     display: flex;
     gap: 1em;
     justify-content: space-between;
@@ -82,6 +174,7 @@ form{
     border: 1px solid var(--color-border);
     font-weight: 500;
 }
+
 .btn-add{
     display: flex;
     align-items: center;
@@ -126,7 +219,6 @@ form{
     box-shadow: 2px 2px 3px #D8E0FD;
     color: var(--color-white);
 }
-
 /* Tarefas */
 .list-tasks{
     display: flex;
@@ -146,13 +238,17 @@ form{
     margin: 0 auto;
     box-shadow: 0px 1px 1px var(--color-border);
 }
-#check {
+.task h3 , p{
+    font-size: clamp(.9em,1vw,4em);
+}
+.task.concluida{
+    filter: grayscale(100%);
+}
+.check {
     accent-color: blue;
     cursor: pointer;
-    transform: scale(2);
+    transform: scale(1.4);
 }
-
-
 .campos{
     display: none;
     background-color: #F9FAFB;
@@ -171,17 +267,36 @@ form{
     justify-content: center;
     align-items: center;
 }
-#check{
-    padding: 10px;
-    height: 30px;
-    width: 10px;
-}
-/* Badges */
-.badges{
+.task-actions{
     display: flex;
 }
-.badge{
-    flex: 1 1 auto;
+.task-actions button{
+    background-color: transparent;
+    border: 0;
+    justify-items: center;
+    transition: color .3s , background-color .3s;
+    border-radius: 20px;
+}
+.btn-edit:hover{
+    color: blue;
+    background-color: rgb(238, 242, 255);
+}
+.btn-delet:hover{
+    color: red;
+    background-color: rgba(237, 106, 106, 0.733); 
+}
+
+
+/* Badges */
+.badges{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.badges .badge:nth-child(2){
+    display: flex;
+    width: 48px;
 }
 
 /*============== Resumo ==============*/
@@ -200,6 +315,7 @@ form{
     text-align: center;
     width: calc(100% - 25px);
     padding: 10px;
+    border-radius: 12px;
 }
 .card h3{
     font-size: clamp(1.5em,2vw,4rem);
@@ -237,20 +353,27 @@ header{
     border-right: 1px solid var(--color-border);
 }
 .logo{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     border-bottom: 1px solid var(--color-border);
     height: 100px;
+    padding: 21px 20px;
+
 }
 #menu ul{
     display: flex;
 }
+/* Topline main */
 .inicio{
     display: flex;
-    padding: 30px 20px;
+    padding: 21px 20px;
     border-left: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
     justify-content: space-between;
 }
-.btn-add{
+.inicio .btn-add{
+    display: block;
     width: 20%;
     padding: 0px;
 }
@@ -267,13 +390,13 @@ main{
     display: none;
 }
 /* Pesquisar e filtros */
-form{
+.search form{
     width: 30%;
 }
-.search  #bar-search{
+#bar-search{
     width: 100%;
 }
-.search .filtros{
+.filtros{
     background-color: transparent;
     border: 0;
     width: 60%;
@@ -286,26 +409,82 @@ form{
 .search .btn-add{
     display: none;
 }
+/*========= Tarefas ========= */
 .campos{
     display: grid;
-    grid-template-columns: 1fr 2fr repeat(3,0.5fr);
-    gap: 1em;
+    grid-template-columns: 1fr 2fr repeat(2,.5fr) repeat(2,.3fr);
 }
 .list-tasks{
     display: flex;
     flex-direction: column;
     gap: 0px;
 }
+.list-tasks .task:last-child{
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
 .task{
+    grid-template-columns: .4fr 5.1fr .4fr;
     margin: 0;
     width: 100%;
     justify-items: left;
     border: 0;
     border-top: 1px solid var(--color-border);
     border-radius: 0;
+    min-height: 70px;
+
 }
-.list-tasks .task:last-child{
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 16px;
+
+.task div{
+    display: grid;
+    grid-template-columns:1fr 4fr 1fr;
+    column-gap: 10px;
+    align-items: center;
+
 }
+.badges{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+
+}
+.badge{
+    display: flex;
+    text-align: center;
+}
+.task-actions button{
+    opacity: 0;
+    transition: opacity .3s;
+}
+.task-actions:hover button{
+    opacity: 1;
+}
+
+/*======= modal===== */
+.modal{
+    width: 60%;
+    min-height: 70%;
+    padding: 10px 20px;
+    top: 50%;
+    left: 50%;
+    padding-bottom: 20px;
+}
+
+textarea,
+.modal input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+textarea{
+    max-height: 200px;
+    max-width: 100%;
+}
+.selects div{
+    display: flex;
+    flex-direction: column;
+    width: 47%;
+}
+
 }
