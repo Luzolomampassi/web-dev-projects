@@ -32,15 +32,14 @@ const filtros = document.querySelectorAll(".btn-filters")
 
 tarefas.forEach(tarefa => {
     const check = tarefa.querySelector(".check")
-
+    tarefa.dataset.categoria = 'pendentes'
     check.addEventListener('change', () => {
-        if (check.checked) {
+        if (check.checked){
             tarefa.dataset.categoria = 'concluidas'
-            const titulo = tarefa.querySelector("h3")
-            tarefa.classList.add("concluida")
-            titulo.style.textDecoration = "line-through";
-
-        } else {
+            tarefa.querySelector("h3").style.textDecoration = "line-through";
+            tot += 1
+          
+        }else{
             tarefa.dataset.categoria = 'pendentes'
         }
     })
@@ -49,13 +48,13 @@ tarefas.forEach(tarefa => {
 
 filtros.forEach(filtroSelecionado => {
     filtroSelecionado.addEventListener('click', () => {
-
+        
         tarefas.forEach(tarefa => {
-
+            
             if (filtroSelecionado.dataset.categoria == 'todos') {
                 tarefa.style.display = 'grid'
 
-            } else if (filtroSelecionado.dataset.categoria === tarefa.dataset.categoria) {
+            }else if(filtroSelecionado.dataset.categoria === tarefa.dataset.categoria) {
                 tarefa.style.display = 'grid'
 
             } else {

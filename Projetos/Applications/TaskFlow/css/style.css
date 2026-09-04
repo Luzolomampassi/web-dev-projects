@@ -241,9 +241,7 @@ textarea:focus,
 .task h3 , p{
     font-size: clamp(.9em,1vw,4em);
 }
-.task.concluida{
-    filter: grayscale(100%);
-}
+
 .check {
     accent-color: blue;
     cursor: pointer;
