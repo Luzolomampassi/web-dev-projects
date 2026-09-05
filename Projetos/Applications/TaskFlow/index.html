@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskFlow</title>
+    <title>TaskPulse</title>
     <script src="https://kit.fontawesome.com/f6a9b3f1e7.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -69,7 +69,7 @@
                     <button type="button" aria-label="Cancelar a criação da tarefa" class="btn-cancel"> <i class="fa-solid fa-x"></i></button>
                    
                 </div>
-                <form action="#">
+                <form action="#" id="modal">
                     <label for="tarefa">Título</label>
                     <input type="text" name="tarefa" id="tarefa" placeholder="Ex.:Revisar documentanção da API">
 
@@ -98,13 +98,28 @@
                     <label for="data">Data de Vencimento</label>
                     <input type="date" name="data" id="data">
                     <div class="form-button">
-                        <button type="reset" aria-label="Cancelar a criação da tarefa" class="btn-cancel">Cancelar</button>
-                        <button type="submit" aria-label="Cria um nova tarefa" id="btn-new-task">Adicionar Tarefa</button>
+                        <button type="button"  aria-label="Cancelar a criação da tarefa" class="btn-cancel">Cancelar</button>
+                        <button  type="submit" aria-label="Cria um nova tarefa" id="btn-new-task">Adicionar Tarefa</button>
                     </div>
+                   
                 </form>
+                 
             </article>
         </section>
-        
+        <div class="custom-alert" id="alert">
+     <div class="alert-content">
+        <div class="alert-icon">
+            <i class="fa-solid fa-circle-exclamation"></i>
+        </div>
+
+        <div class="alert-text">
+            <h3>Campos incompletos</h3>
+            <p>Preencha todos os campos obrigatórios para criar a tarefa.</p>
+        </div>
+
+        <button id="btn-alert">Entendi</button>
+    </div>
+        </div>
         <!-- Barra de pesquisar e filtros -->
         <section class="search">
             <form action="#">
@@ -132,81 +147,7 @@
             </div>
             <article class="list-tasks">
                 <!-- Task -->
-                <div class="task" >    
-                    <label for="check" aria-label="Marcar tarefa como concluída">
-                        <input type="checkbox" name="check" class="check">
-                    </label>
-                    <div>
-                        <h3>Estudar JavaScript</h3>
-                        <p>Revisar closures, promises e async/await</p>
-                    <div class="badges">
-                        <div class="badge">Estudo</div>
-                        <div class="badge">08 Set</div>
-                        <div class="badge">Alta</div>
-                    </div>
-                    </div>
-                    <div class="task-actions">
-                        <button aria-label="Editar a tarefa"  class="btn-edit">
-                            <i class="fa-regular fa-pen-to-square"></i>
-                        </button>
-                        <button aria-label="Deletar a tarefa" class="btn-delet">
-                            <i class="fa-regular fa-trash-can"></i>
-                        </button>
-                    </div>
-                   
-                </div>
-                <!-- Task -->
-                <div class="task" >    
-                    <label for="check" aria-label="Marcar tarefa como concluída">
-                        <input type="checkbox" name="check" class="check">
-                    </label>
-                 
-                    <div>
-                        <h3>Finalizar projeto da To-Do List</h3>
-                        <p>Implementar filtros e persistência com LocalStorage</p>
-                        <div class="badges">
-                        <div class="badge">Projeto</div>
-                        <div class="badge">08 Set</div>
-                        <div class="badge">média</div>
-
-                    </div>
-                    </div>
-
-                    <div class="task-actions">
-                        <button aria-label="Editar a tarefa"  class="btn-edit">
-                            <i class="fa-regular fa-pen-to-square"></i>
-                        </button>
-                        <button aria-label="Deletar a tarefa" class="btn-delet">
-                            <i class="fa-regular fa-trash-can"></i>
-                        </button>
-                    </div>
-                   
-                </div>
-                <!-- Task -->
-                <div class="task">    
-                    <label for="check" aria-label="Marcar tarefa como concluída">
-                        <input type="checkbox" name="check" class="check">
-                    </label>
-                    <div>
-                        <h3>Estudar MySQL</h3>
-                        <p>raticar JOINs e subconsultas</p>
-                        <div class="badges">
-                        <div class="badge">Estudo</div>
-                        <div class="badge">08 Set</div>
-                        <div class="badge">baixa</div>
-
-                    </div>
-                    </div>
-                     <div class="task-actions">
-                        <button aria-label="Editar a tarefa"  class="btn-edit">
-                            <i class="fa-regular fa-pen-to-square"></i>
-                        </button>
-                        <button aria-label="Deletar a tarefa" class="btn-delet">
-                            <i class="fa-regular fa-trash-can"></i>
-                        </button>
-                    </div>
-                   
-                </div>
+               
             </article>
         </section>
 
@@ -233,5 +174,7 @@
         </section>
     </main>
     <script src="js/main.js"></script>
+    <script src="js/tasks.js"></script>
+
 </body>
 </html>
