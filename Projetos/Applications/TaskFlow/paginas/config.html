@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskPulse</title>
+    <script src="https://kit.fontawesome.com/f6a9b3f1e7.js"></script>
+    <link rel="stylesheet" href="css paginas/header-config.css">
+    <link rel="stylesheet" href="css paginas/style-config.css">
+</head>
+<body>
+    <div class="overlay"></div>
+    
+    <header>
+        <div class="header-content">
+            <button id="btn-menu" aria-label="Abre o menu"><i class="fa-solid fa-bars fa-xl"></i></button>
+            <h2>Configurações</h2>
+        </div>
+        <div class="menu-conteiner">
+            <div class="logo">
+                <h2>TaskFlow</h2>
+            </div>
+            <nav id="menu" class="menu">
+                <ul>
+                    <li><a href="../index.html"><i class="fa-regular fa-house fa-xl"></i>Visão geral</a></li>
+                    <li><a href="#"><i class="fa-solid fa-clipboard-check fa-xl"></i>Minhas tarefas</a></li>
+                    <li><a href="#"><i class="fa-regular fa-calendar fa-xl"></i>Calendário</a></li>
+                    <li><a href="#"><i class="fa-solid fa-bars fa-xl"></i>Categorias</a></li>
+                    <li><a href="#"><i class="fa-solid fa-chart-simple fa-xl"></i>Estatísticas</a></li>
+                    <li><a href="config.html"><i class="fa-solid fa-gear fa-xl"></i>Configurações</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+<main>
+    <!--  ===================================
+      Perfil
+       =================================== -->
+    <section class="perfil">
+        <div class="section-content">
+            <h3>Pefil</h3>
+            <p>Suas informações pessoais e foto de exibição.</p>
+        </div>
+        <div class="foto">
+            <img src="#" alt="Foto de perfil do usuário">
+        </div>
+        <form action="#">
+            <label for="nome">Nome completo</label>
+            <input type="text" name="nome" id="nome">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email">
+            <button type="submit" aria-label="Btn para mudar o conteúdo do perfil">
+                <i class="fa-regular fa-pen-to-square"></i>
+                Editar perfil
+            </button>
+        </form>
+        
+    </section>
+    <!-- ===================================
+      Aparencia
+      =================================== -->
+    <section class="aparencia">
+        <div class="section-content">
+            <h3>Aparência</h3>
+            <p>Escolha como o TaskFlow aparece para você.</p>
+        </div>
+        <div class="cards-theme">
+            <button aria-label="Adiconar o tema claro" data-theme="claro" class="card">
+                <svg
+                    class="theme-preview"
+                    viewBox="0 0 300 120"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                >
+                    <!-- Fundo -->
+                    <rect width="300" height="120" rx="12" fill="#F8F8FB"/>
+
+                    <!-- Sidebar -->
+                    <rect
+                        x="0"
+                        y="0"
+                        width="52"
+                        height="120"
+                        fill="#FFFFFF"
+                    />
+
+                    <!-- Separador -->
+                    <line
+                        x1="52"
+                        y1="0"
+                        x2="52"
+                        y2="120"
+                        stroke="#E5E7EF"
+                    />
+
+                    <!-- Menu -->
+                    <rect x="10" y="18" width="30" height="7" rx="3.5" fill="#E5E7EF"/>
+                    <rect x="10" y="32" width="30" height="7" rx="3.5" fill="#E5E7EF"/>
+                    <rect x="10" y="46" width="30" height="7" rx="3.5" fill="#E5E7EF"/>
+                    <rect x="10" y="60" width="30" height="7" rx="3.5" fill="#E5E7EF"/>
+                    <rect x="10" y="74" width="30" height="7" rx="3.5" fill="#9C9AFF"/>
+
+                    <!-- Conteúdo -->
+                    <rect x="68" y="16" width="82" height="10" rx="5" fill="#E5E7EF"/>
+
+                    <!-- Card 1 -->
+                    <rect
+                        x="68"
+                        y="36"
+                        width="214"
+                        height="30"
+                        rx="9"
+                        fill="#FFFFFF"
+                        stroke="#E5E7EF"
+                    />
+
+                    <!-- Card 2 -->
+                    <rect
+                        x="68"
+                        y="74"
+                        width="214"
+                        height="30"
+                        rx="9"
+                        fill="#FFFFFF"
+                        stroke="#E5E7EF"
+                        opacity="0.65"
+                    />
+                </svg>
+                <p><i class="fa-regular fa-sun"></i> Claro</p>
+            </button >
+
+            <button aria-label="Adiconar o tema escuro" data-theme="escuro" class="card">
+                <svg
+                    class="theme-preview"
+                    viewBox="0 0 300 120"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
+                        <!-- Fundo -->
+                        <rect width="300" height="120" rx="12" fill="#111827"/>
+
+                        <!-- Sidebar -->
+                        <rect
+                            x="0"
+                            y="0"
+                            width="52"
+                            height="120"
+                            fill="#1F2937"
+                        />
+
+                        <!-- Separador -->
+                        <line
+                            x1="52"
+                            y1="0"
+                            x2="52"
+                            y2="120"
+                            stroke="#374151"
+                        />
+
+                        <!-- Menu -->
+                        <rect x="10" y="18" width="30" height="7" rx="3.5" fill="#374151"/>
+                        <rect x="10" y="32" width="30" height="7" rx="3.5" fill="#374151"/>
+                        <rect x="10" y="46" width="30" height="7" rx="3.5" fill="#374151"/>
+                        <rect x="10" y="60" width="30" height="7" rx="3.5" fill="#374151"/>
+                        <rect x="10" y="74" width="30" height="7" rx="3.5" fill="#6366F1"/>
+
+                        <!-- Conteúdo -->
+                        <rect x="68" y="16" width="82" height="10" rx="5" fill="#374151"/>
+
+                        <!-- Card 1 -->
+                        <rect
+                            x="68"
+                            y="36"
+                            width="214"
+                            height="30"
+                            rx="9"
+                            fill="#1F2937"
+                            stroke="#374151"
+                        />
+
+                        <!-- Card 2 -->
+                        <rect
+                            x="68"
+                            y="74"
+                            width="214"
+                            height="30"
+                            rx="9"
+                            fill="#1F2937"
+                            stroke="#374151"
+                            opacity="0.7"
+                        />
+                </svg>
+                <p><i class="fa-regular fa-moon"></i> Escuro</p>
+            </button>
+            <button aria-label="Adiconar o tema do sistema" data-theme="sistema" class="card">
+                <svg
+                    class="theme-preview"
+                    viewBox="0 0 300 120"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                >
+                    <!-- Metade clara -->
+                    <clipPath id="system-left">
+                        <rect width="150" height="120" rx="12"/>
+                    </clipPath>
+
+                    <g clip-path="url(#system-left)">
+                        <rect width="150" height="120" fill="#F8F8FB"/>
+
+                        <!-- Sidebar -->
+                        <rect
+                            width="28"
+                            height="120"
+                            fill="#FFFFFF"
+                        />
+
+                        <line
+                            x1="28"
+                            y1="0"
+                            x2="28"
+                            y2="120"
+                            stroke="#E5E7EF"
+                        />
+
+                        <!-- Menu -->
+                        <rect x="7" y="20" width="14" height="5" rx="2.5" fill="#E5E7EF"/>
+                        <rect x="7" y="31" width="14" height="5" rx="2.5" fill="#E5E7EF"/>
+                        <rect x="7" y="42" width="14" height="5" rx="2.5" fill="#E5E7EF"/>
+
+                        <!-- Cards -->
+                        <rect
+                            x="36"
+                            y="18"
+                            width="104"
+                            height="20"
+                            rx="5"
+                            fill="#FFFFFF"
+                            stroke="#E5E7EF"
+                        />
+
+                        <rect
+                            x="36"
+                            y="45"
+                            width="104"
+                            height="20"
+                            rx="5"
+                            fill="#FFFFFF"
+                            stroke="#E5E7EF"
+                            opacity="0.7"
+                        />
+
+                        <rect
+                            x="36"
+                            y="72"
+                            width="104"
+                            height="20"
+                            rx="5"
+                            fill="#FFFFFF"
+                            stroke="#E5E7EF"
+                            opacity="0.5"
+                        />
+                    </g>
+
+                    <!-- Metade escura -->
+                    <clipPath id="system-right">
+                        <rect x="150" width="150" height="120" rx="12"/>
+                    </clipPath>
+
+                    <g clip-path="url(#system-right)">
+                        <rect x="150" width="150" height="120" fill="#111827"/>
+
+                        <!-- Sidebar -->
+                        <rect
+                            x="150"
+                            width="28"
+                            height="120"
+                            fill="#1F2937"
+                        />
+
+                        <line
+                            x1="178"
+                            y1="0"
+                            x2="178"
+                            y2="120"
+                            stroke="#374151"
+                        />
+
+                        <!-- Menu -->
+                        <rect x="157" y="20" width="14" height="5" rx="2.5" fill="#374151"/>
+                        <rect x="157" y="31" width="14" height="5" rx="2.5" fill="#374151"/>
+                        <rect x="157" y="42" width="14" height="5" rx="2.5" fill="#374151"/>
+
+                        <!-- Cards -->
+                        <rect
+                            x="186"
+                            y="18"
+                            width="104"
+                            height="20"
+                            rx="5"
+                            fill="#1F2937"
+                            stroke="#374151"
+                        />
+
+                        <rect
+                            x="186"
+                            y="45"
+                            width="104"
+                            height="20"
+                            rx="5"
+                            fill="#1F2937"
+                            stroke="#374151"
+                            opacity="0.7"
+                        />
+
+                        <rect
+                            x="186"
+                            y="72"
+                            width="104"
+                            height="20"
+                            rx="5"
+                            fill="#1F2937"
+                            stroke="#374151"
+                            opacity="0.5"
+                        />
+                    </g>
+                </svg>
+                <p><i class="fa-solid fa-display"></i> Sistema</p>
+            </button>
+            <p id="theme-text"></p>
+        </div>
+    </section>
+    <!-- ===================================
+     Preferencias de tarefas
+      =================================== -->
+     <section class="preferências-de-tarefas">
+        <div class="section-content">
+            <h3>Preferências de tarefas</h3>
+            <p>Defina padrões para novas tarefas criadas..</p>
+        </div>
+
+    </section>
+    <!-- ===================================
+     notificações
+      =================================== -->
+     <section class="notificações">
+        <div class="section-content">
+            <h3>Notificações</h3>
+            <p>Controle quais alertas você deseja receber.</p>
+        </div>
+    </section>
+    <!-- ===================================
+     Interface 
+      ===================================-->
+     <section class="interface">
+        <div class="section-content">
+            <h3>Interface</h3>
+            <p>Ajuste o comportamento e a densidade da interface.</p>
+        </div>
+    </section>
+    <!-- ===================================
+     dados 
+      ===================================-->
+     <section class="dados">
+        <div class="section-content">
+            <h3>Aparência</h3>
+            <p>Escolha como o TaskFlow aparece para você.</p>
+        </div>
+    </section>
+
+
+
+</main>
+    
+    <script src="js/main.js"></script>
+    <script src="javascript/config.js"></script>
+</body>
+</html>

@@ -24,6 +24,32 @@ body{
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
 }
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --background-color:#F9FAFB;
+    --color-primary:#4F39F6;
+    --color-primary-hover:#EEF2FF;
+    --color-secondary-hover:#5a57fdbd;
+    --color-secondary:#615FFF;
+    --color-border:#E5E7EB;
+    --color-border-warm:#e3e4e6;
+    --text-secondary:#99A1AF;
+    --color-white:#FFFFFF;
+}
+input[type='data'],
+select,
+button{
+    cursor: pointer;
+}
+body{
+    width:100%;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
 header{
     display: flex;
     justify-content: space-between;
@@ -608,17 +634,28 @@ textarea{
 }
 
 }
-/* ===============Animação============ */
-@keyframes alert{
-    from{
-        visibility: hidden;
-        opacity: 0;
-        transform: translateX(-100%);
 
-    }
-    to{
-        visibility: visible;
-        opacity: 1;
-        transform: translateX(0%);
-    }
+
+
+@view-transition(){
+    navigation:auto;
 }
+::view-transition-old(root){
+    animation: esconder .3s ease;   
+}
+::view-transition-new(root){
+    animation: aparecer .3s ease;   
+}
+
+ @keyframes esconder{
+    to{
+        opacity: 0;
+    }
+
+ }
+  @keyframes aparecer{
+    from{
+        opacity: 0;
+    }
+    
+ }
