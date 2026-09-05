@@ -280,6 +280,18 @@ h1,h2,h3,h4{
     color: #DE571B;
     background-color:#0F0916 ;
 }
+.badge_php {
+    color: #777BB4;
+    background-color: #111426;
+}
+
+.badge_mysql {
+    color: #4479A1;
+    background-color: #0B1218;
+}
+.sql{
+    color:#DD8700 ;
+}
 /*Botões do card*/
 
 .card-buttons{

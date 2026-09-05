@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskPulse</title>
     <script src="https://kit.fontawesome.com/f6a9b3f1e7.js"></script>
-    <link rel="stylesheet" href="css paginas/header-config.css">
-    <link rel="stylesheet" href="css paginas/style-config.css">
+    <link rel="stylesheet" href="css/header-config.css">
+    <link rel="stylesheet" href="css/style-config.css">
 </head>
 <body>
     <div class="overlay"></div>
@@ -332,38 +332,223 @@
     <!-- ===================================
      Preferencias de tarefas
       =================================== -->
-     <section class="preferências-de-tarefas">
-        <div class="section-content">
-            <h3>Preferências de tarefas</h3>
-            <p>Defina padrões para novas tarefas criadas..</p>
+    <!-- ===================================
+     Preferências de tarefas
+=================================== -->
+<section class="preferencias-tarefas">
+    <div class="section-content">
+        <h3>Preferências de tarefas</h3>
+        <p>Defina padrões para novas tarefas criadas.</p>
+    </div>
+
+    <div class="task-preferences">
+
+        <div class="setting">
+            <label for="prioridade">Prioridade padrão</label>
+
+            <select name="prioridade" id="prioridade">
+                <option value="baixa">Baixa</option>
+                <option value="media">Média</option>
+                <option value="alta">Alta</option>
+            </select>
         </div>
 
-    </section>
-    <!-- ===================================
-     notificações
-      =================================== -->
-     <section class="notificações">
-        <div class="section-content">
-            <h3>Notificações</h3>
-            <p>Controle quais alertas você deseja receber.</p>
+        <div class="setting">
+            <label for="categoria">Categoria padrão</label>
+
+            <select name="categoria" id="categoria">
+                <option value="pessoal">Pessoal</option>
+                <option value="trabalho">Trabalho</option>
+                <option value="estudo">Estudo</option>
+                <option value="saude">Saúde</option>
+                <option value="financas">Finanças</option>
+            </select>
         </div>
-    </section>
-    <!-- ===================================
-     Interface 
-      ===================================-->
-     <section class="interface">
-        <div class="section-content">
-            <h3>Interface</h3>
-            <p>Ajuste o comportamento e a densidade da interface.</p>
+
+        <div class="setting">
+            <label for="prazo">Prazo padrão</label>
+
+            <select name="prazo" id="prazo">
+                <option value="nenhum">Nenhum</option>
+                <option value="hoje">Hoje</option>
+                <option value="amanha">Amanhã</option>
+            </select>
         </div>
-    </section>
+
+    </div>
+
+    <div class="settings-list">
+        <article class="setting-option">
+            <div>
+                <h4>Arquivar tarefas concluídas</h4>
+                <p>Tarefas concluídas são movidas para o arquivo após 7 dias.</p>
+            </div>
+            <label class="switch">
+                <input type="checkbox" aria-label="Exibir tarefas concluídas">
+                <span class="slider"></span>
+            </label>
+        </article>
+
+        <article class="setting-option">
+            <div>
+                <h4>Confirmar exclusão de tarefas</h4>
+                <p>Exibe um diálogo de confirmação antes de excluir uma tarefa.</p>
+            </div>
+            <label class="switch">
+                <input type="checkbox" aria-label="Animações de interface">
+                <span class="slider"></span>
+            </label>
+        </article>
+
+        <article class="setting-option">
+            <div>
+                <h4>Adição rápida de tarefas</h4>
+                <p>Permite criar tarefas com Enter sem abrir o formulário completo.</p>
+            </div>
+            <label class="switch">
+                <input type="checkbox" aria-label="Animações de interface">
+                <span class="slider"></span>
+            </label>
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================
+     Notificações
+=================================== -->
+<section class="notificacoes">
+
+    <div class="section-content">
+        <h3>Notificações</h3>
+        <p>Controle quais alertas você deseja receber.</p>
+    </div>
+
+    <p class="notification-info">
+        <i class="fa-regular fa-bell"></i>
+        As notificações dependem das permissões do seu navegador.
+    </p>
+
+    <div class="settings-list">
+
+        <article class="setting-option">
+            <div>
+                <h4>Lembretes de tarefas</h4>
+                <p>Receba lembretes antes do prazo das suas tarefas.</p>
+            </div>
+            <label class="switch">
+                <input type="checkbox" aria-label="Animações de interface" aria-label="Cabeçalho fixo">
+                <span class="slider"></span>
+            </label>
+        </article>
+
+        <article class="setting-option">
+            <div>
+                <h4>Tarefas vencendo</h4>
+                <p>Seja notificado quando uma tarefa estiver atrasada.</p>
+            </div>
+            <label class="switch">
+                <input type="checkbox" aria-label="Animações de interface">
+                <span class="slider"></span>
+            </label>
+        </article>
+
+        <article class="setting-option">
+            <div>
+                <h4>Tarefas concluídas</h4>
+                <p>Receba uma confirmação quando uma tarefa for concluída.</p>
+            </div>
+            <label class="switch">
+                <input type="checkbox" aria-label="Animações de interface">
+                <span class="slider"></span>
+            </label>
+        </article>
+
+        <article class="setting-option">
+            <div>
+                <h4>Resumo diário</h4>
+                <p>Receba um resumo das suas tarefas toda manhã às 8h.</p>
+            </div>
+            <label class="switch">
+                <input type="checkbox" aria-label="Animações de interface">
+                <span class="slider"></span>
+            </label>
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================
+     Interface
+=================================== -->
+<section class="interface">
+
+    <div class="section-content">
+        <h3>Interface</h3>
+        <p>Ajuste o comportamento e a densidade da interface.</p>
+    </div>
+
+    <div class="settings-list">
+
+        <article class="setting-option">
+            <div>
+                <h4>Modo compacto</h4>
+                <p>Reduz o espaçamento entre elementos para exibir mais conteúdo.</p>
+            </div>
+            <label class="switch">
+                <input type="checkbox" aria-label="Animações de interface">
+                <span class="slider"></span>
+            </label>
+        </article>
+
+        <article class="setting-option">
+            <div>
+                <h4>Exibir tarefas concluídas</h4>
+                <p>Mostra tarefas concluídas na lista principal de tarefas.</p>
+            </div>
+            <label class="switch">
+                <input type="checkbox" aria-label="Animações de interface">
+                <span class="slider"></span>
+            </label>
+        </article>
+
+        <article class="setting-option">
+            <div>
+                <h4>Animações de interface</h4>
+                <p>Ativa transições e animações visuais.</p>
+            </div>
+            <label class="switch">
+                <input type="checkbox" aria-label="Animações de interface">
+                <span class="slider"></span>
+            </label>
+        </article>
+
+        <article class="setting-option">
+            <div>
+                <h4>Cabeçalho fixo</h4>
+                <p>Mantém o cabeçalho visível durante a rolagem da página.</p>
+            </div>
+            <label class="switch">
+                <input type="checkbox" aria-label="Animações de interface">
+                <span class="slider"></span>
+            </label>
+        </article>
+
+    </div>
+
+</section>
+
+
     <!-- ===================================
      dados 
-      ===================================-->
+    ===================================-->
      <section class="dados">
         <div class="section-content">
-            <h3>Aparência</h3>
-            <p>Escolha como o TaskFlow aparece para você.</p>
+            <h3>Dados</h3>
         </div>
     </section>
 
@@ -372,6 +557,6 @@
 </main>
     
     <script src="js/main.js"></script>
-    <script src="javascript/config.js"></script>
+    <script src="js/config.js"></script>
 </body>
 </html>

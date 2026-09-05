@@ -73,9 +73,10 @@ section{
     background-color: var(--color-white);
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.457);
     margin-bottom: 20px;
+    padding: 15px;
 }
 .section-content{
-    padding: 10px;
+    padding: 20px;
     border-bottom: 1px solid var(--color-border);
 }
 .cards-theme {
@@ -121,6 +122,51 @@ section{
 .card.active {
     border-color: var(--color-primary);
 }
+/* =====================================
+Settings
+======================================= */
+.setting{
+    padding: 10px;
+    
+}
+select{
+    width: 96%;
+    border-radius: 8px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.setting-option{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px 20px;
+    border-bottom: 1px solid var(--color-border-warm);
+}
+.setting-option:last-child{
+    border-bottom: 0px;
+}
+
+/* Switch */
+.switch{
+    background-color: gray;
+    padding: 5px;
+    border-radius: 20px;
+    height: fit-content;
+    width: max(50px);
+    position: relative;
+}
+.slider{
+    padding: 10px;
+    position: absolute;
+    left:7%;
+    top: 10%;
+    padding: 5px;
+    height: 80%;
+    width:50%;
+    background-color: var(--color-white);
+    border-radius: 50%;
+}
 
 /* Mediaqueries */
 
@@ -144,6 +190,17 @@ header{
 }
 #menu ul{
     display: flex;
+}
+.menu-conteiner{
+    display: block;
+}
+/* Cards */
+.section-content{
+    margin-bottom: 30px;
+}
+.cards-theme {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
 }
 }
 

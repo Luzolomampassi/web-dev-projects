@@ -25,9 +25,12 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 header{
+    position: fixed;
     display: flex;
-    padding: 20px;
+    padding: 20px 27px;
+    height: 100%;
     border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-white);
 }
 #btn-menu{
     background-color: transparent;
@@ -69,7 +72,6 @@ header h2{
 .menu-conteiner{
     display: none;
     justify-content: space-between;
-    background-color: var(--color-white);
 }
 
 
