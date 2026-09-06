@@ -28,6 +28,11 @@ header{
     display: flex;
     justify-content: space-between;
     background-color: var(--color-white);
+    width: fit-content;
+    padding: 0;
+}
+.header-content{
+    display: none;
 }
 #menu ul{
     display: none;
@@ -56,4 +61,31 @@ header{
 }
 header h2{
     color: var(--color-primary);
+}
+
+@media(min-width:768px){
+
+header{
+    grid-column: 1/2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .1fr 2fr .5fr;
+    border-right: 1px solid var(--color-border);
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: 1px solid var(--color-border);
+    height: 100px;
+    padding: 21px 20px;
+
+}
+#menu ul{
+    display: flex;
+}
+.menu-conteiner{
+    display: none;
+}
+
 }

@@ -19,7 +19,7 @@
     --text-secondary: #6B7280;
 
     --color-white: #FFFFFF;
-
+    --color-red: #EF4444;
     --main-background: #9999B5;
 }
 
@@ -56,14 +56,15 @@ body{
 
 /* MAIN */
 main{
-    background-color: #9999b5;
-    
+    background-color: var(--background-color);
+    transition: color .3s , background-color .3s;
 }
 .dados,
 .interface,
 .notificações,
 .perfil{
     background-color: var(--background-color);
+    transition: color .5s , background-color .5s;
 }
 section{
     width: 95%;
@@ -74,6 +75,7 @@ section{
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.457);
     margin-bottom: 20px;
     padding: 15px;
+
 }
 .section-content{
     padding: 20px;
@@ -93,9 +95,29 @@ section{
     align-items: center;
     width: 100%;
     padding: 16px;
-    border: 2px solid var(--color-border);
+    border: 3px solid var(--color-border);
     border-radius: 18px;
     cursor: pointer;
+    transition: border .3s;
+    position: relative;
+}
+.card:hover {
+    border-color: var(--color-primary);
+}
+
+.card.active {
+    border-color: var(--color-primary);
+}
+.card.ativo > .fa-circle-check{
+    opacity: 1;
+}
+.fa-circle-check{
+    opacity: 0;
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    color: var(--color-primary);
+    transition: opacity .3s;
 }
 
 .svg {
@@ -115,19 +137,12 @@ section{
     margin: 16px 0 0;
 }
 
-.card:hover {
-    border-color: var(--color-primary);
-}
 
-.card.active {
-    border-color: var(--color-primary);
-}
 /* =====================================
 Settings
 ======================================= */
 .setting{
     padding: 10px;
-    
 }
 select{
     width: 96%;
@@ -146,48 +161,109 @@ select{
 .setting-option:last-child{
     border-bottom: 0px;
 }
-
+/* ================ botões dos options ============= */
 /* Switch */
 .switch{
     background-color: gray;
     padding: 5px;
     border-radius: 20px;
     height: fit-content;
-    width: max(50px);
+    min-width:50px;
     position: relative;
 }
 .slider{
     padding: 10px;
     position: absolute;
-    left:7%;
-    top: 10%;
-    padding: 5px;
-    height: 80%;
-    width:50%;
+    left:6%;
+    top: 14%;
+    padding: 1px 0px;
+    height: 70%;
+    width:40%;
     background-color: var(--color-white);
     border-radius: 50%;
+    transform: translateX(0%);
+    transition: transform .2s;
+    box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.133);
+}
+.checkbox {
+    opacity: 0;
+}
+.checkbox:checked + .slider {
+    transform: translateX(115%) scale(1.05);
+}
+.switch:has(.checkbox:checked) {
+    background-color: var(--color-primary);
+}
+/* ================ Dados ============= */
+.warning{
+    background-color: #FEF2F2;
+    border: 1px solid var(--color-red);
+    color: darkred;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.txt-aviso{
+    margin-top: 10px;
+    display: none;
 }
 
-/* Mediaqueries */
-
-@media(min-width:1024px){
-
-header{
-    grid-column: 1/2;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: .1fr 2fr .5fr;
-    border-right: 1px solid var(--color-border);
+.btn-delete{
+    color: var(--color-white);
+    background-color:var(--color-red);
+    padding: 10px;
+    border-radius: 12px;
+    border:0;
+    margin-top: 20px;
+    font-weight: bold;
 }
-.logo{
+.btn-cancelar{
+    display: none;
+    color: var(--color-red);
+    background-color:var(--color-white);
+    padding: 10px;
+    border-radius: 12px;
+    border:1px solid var(--color-red);
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.confirmando .btn-cancelar {
+    display: inline;
+}
+
+.confirmando .txt-aviso {
+    display: block;
+}
+/* exportar dados */
+.exportar{
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    border-bottom: 1px solid var(--color-border);
-    height: 100px;
-    padding: 21px 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #F8F8FB;
+    border: 1px solid var(--color-border-warm);
+    border-radius: 12px;
 
 }
+.buttons-exportar{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.btn-exportar{
+    padding: 10px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-warm);
+    border-radius: 12px;
+    width: 40%;
+}
+
+
+@media(min-width:768px){
+
 #menu ul{
     display: flex;
 }
@@ -202,6 +278,30 @@ header{
     display: grid;
     grid-template-columns: repeat(3,1fr);
 }
+}
+
+
+
+
+@media(min-width:1024px){
+
+#menu ul{
+    display: flex;
+}
+.menu-conteiner{
+    display: block;
+}
+/* Cards */
+.section-content{
+    margin-bottom: 30px;
+}
+.cards-theme {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+
+
 }
 
 

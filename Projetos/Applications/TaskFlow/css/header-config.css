@@ -25,7 +25,6 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 header{
-    position: fixed;
     display: flex;
     padding: 20px 27px;
     height: 100%;
@@ -38,7 +37,6 @@ header{
 }
 .header-content{
     display: flex;
-    gap: 20px;
     align-items: center;
 }
 #menu ul{
@@ -73,6 +71,47 @@ header h2{
     display: none;
     justify-content: space-between;
 }
+   
+
+@media(min-width:1024px){
+
+header{
+    grid-column: 1/2;
+    width: calc(20% - 10px);
+    display: grid;
+    position: fixed;
+    grid-template-columns: 1fr;
+    grid-template-rows: .1fr 2fr .5fr;
+    border-right: 1px solid var(--color-border);
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: 1px solid var(--color-border);
+    height: 100px;
+    padding: 21px 20px;
+
+}
+#menu ul{
+    display: flex;
+}
+.menu-conteiner{
+    display: block;
+}
+/* Cards */
+.section-content{
+    margin-bottom: 30px;
+}
+.cards-theme {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+}
+
+
+
+
 
 
 

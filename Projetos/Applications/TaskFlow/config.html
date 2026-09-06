@@ -126,6 +126,7 @@
                         opacity="0.65"
                     />
                 </svg>
+                <i class="fa-solid fa-circle-check fa-xl"></i>
                 <p><i class="fa-regular fa-sun"></i> Claro</p>
             </button >
 
@@ -190,6 +191,7 @@
                             opacity="0.7"
                         />
                 </svg>
+                <i class="fa-solid fa-circle-check fa-xl"></i>
                 <p><i class="fa-regular fa-moon"></i> Escuro</p>
             </button>
             <button aria-label="Adiconar o tema do sistema" data-theme="sistema" class="card">
@@ -324,6 +326,7 @@
                         />
                     </g>
                 </svg>
+                <i class="fa-solid fa-circle-check fa-xl"></i>
                 <p><i class="fa-solid fa-display"></i> Sistema</p>
             </button>
             <p id="theme-text"></p>
@@ -384,8 +387,8 @@
                 <p>Tarefas concluídas são movidas para o arquivo após 7 dias.</p>
             </div>
             <label class="switch">
-                <input type="checkbox" aria-label="Exibir tarefas concluídas">
-                <span class="slider"></span>
+                <input type="checkbox" class="checkbox"  aria-label="Exibir tarefas concluídas">
+                <div class="slider"></div>
             </label>
         </article>
 
@@ -395,7 +398,7 @@
                 <p>Exibe um diálogo de confirmação antes de excluir uma tarefa.</p>
             </div>
             <label class="switch">
-                <input type="checkbox" aria-label="Animações de interface">
+                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface">
                 <span class="slider"></span>
             </label>
         </article>
@@ -406,7 +409,7 @@
                 <p>Permite criar tarefas com Enter sem abrir o formulário completo.</p>
             </div>
             <label class="switch">
-                <input type="checkbox" aria-label="Animações de interface">
+                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface">
                 <span class="slider"></span>
             </label>
         </article>
@@ -439,7 +442,7 @@
                 <p>Receba lembretes antes do prazo das suas tarefas.</p>
             </div>
             <label class="switch">
-                <input type="checkbox" aria-label="Animações de interface" aria-label="Cabeçalho fixo">
+                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface" aria-label="Cabeçalho fixo">
                 <span class="slider"></span>
             </label>
         </article>
@@ -450,7 +453,7 @@
                 <p>Seja notificado quando uma tarefa estiver atrasada.</p>
             </div>
             <label class="switch">
-                <input type="checkbox" aria-label="Animações de interface">
+                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface">
                 <span class="slider"></span>
             </label>
         </article>
@@ -461,7 +464,7 @@
                 <p>Receba uma confirmação quando uma tarefa for concluída.</p>
             </div>
             <label class="switch">
-                <input type="checkbox" aria-label="Animações de interface">
+                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface">
                 <span class="slider"></span>
             </label>
         </article>
@@ -472,7 +475,7 @@
                 <p>Receba um resumo das suas tarefas toda manhã às 8h.</p>
             </div>
             <label class="switch">
-                <input type="checkbox" aria-label="Animações de interface">
+                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface">
                 <span class="slider"></span>
             </label>
         </article>
@@ -500,7 +503,7 @@
                 <p>Reduz o espaçamento entre elementos para exibir mais conteúdo.</p>
             </div>
             <label class="switch">
-                <input type="checkbox" aria-label="Animações de interface">
+                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface">
                 <span class="slider"></span>
             </label>
         </article>
@@ -511,7 +514,7 @@
                 <p>Mostra tarefas concluídas na lista principal de tarefas.</p>
             </div>
             <label class="switch">
-                <input type="checkbox" aria-label="Animações de interface">
+                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface">
                 <span class="slider"></span>
             </label>
         </article>
@@ -522,7 +525,7 @@
                 <p>Ativa transições e animações visuais.</p>
             </div>
             <label class="switch">
-                <input type="checkbox" aria-label="Animações de interface">
+                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface">
                 <span class="slider"></span>
             </label>
         </article>
@@ -533,7 +536,7 @@
                 <p>Mantém o cabeçalho visível durante a rolagem da página.</p>
             </div>
             <label class="switch">
-                <input type="checkbox" aria-label="Animações de interface">
+                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface">
                 <span class="slider"></span>
             </label>
         </article>
@@ -547,16 +550,37 @@
      dados 
     ===================================-->
      <section class="dados">
-        <div class="section-content">
+        <article class="section-content">
             <h3>Dados</h3>
+        </article>
+        <article class="warning">
+            <h3>Limpar todos os dados </h3>
+            <p>Esta ação remove permanentemente todas as tarefas, categorias e configurações salvas localmente. Não é possível desfazer essa ação.</p>
+
+        <div>
+            <p class="txt-aviso">Tem certeza? Esta ação não pode ser desfeita.</p>
+            
+            <button id="btn-delete" class="btn-delete"><i class="fa-regular fa-trash-can"></i> Limpar todos os dados</button>
+            <button id="btn-cancelar" class="btn-cancelar">Cancelar</button>
         </div>
+        </article>
+        <article class="exportar">
+            <div>
+                <h3>Exportar dados</h3>
+                <p>Baixe suas tarefas em formato JSON ou CSV.</p>
+            </div>
+            <div class="buttons-exportar">
+                <button type="button" class="btn-exportar">JSON</button>
+                <button type="button" class="btn-exportar">CSV</button>
+            </div>
+        </article>
+        
     </section>
 
 
 
 </main>
     
-    <script src="js/main.js"></script>
     <script src="js/config.js"></script>
 </body>
 </html>
