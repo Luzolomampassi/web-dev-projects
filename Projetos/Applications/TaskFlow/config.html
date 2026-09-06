@@ -5,33 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskPulse</title>
     <script src="https://kit.fontawesome.com/f6a9b3f1e7.js"></script>
-    <link rel="stylesheet" href="css/header-config.css">
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/style-config.css">
 </head>
 <body>
     <div class="overlay"></div>
     
-    <header>
-        <div class="header-content">
-            <button id="btn-menu" aria-label="Abre o menu"><i class="fa-solid fa-bars fa-xl"></i></button>
-            <h2>Configurações</h2>
+<header>
+    <div class="header-content">
+        <button id="btn-menu" aria-label="Abrir menu">
+            <i class="fa-solid fa-bars fa-xl"></i>
+        </button>
+
+        <h2>Configurações</h2>
+    </div>
+
+    <div class="menu-container">
+        <div class="logo">
+            <h2>TaskFlow</h2>
         </div>
-        <div class="menu-conteiner">
-            <div class="logo">
-                <h2>TaskFlow</h2>
-            </div>
-            <nav id="menu" class="menu">
-                <ul>
-                    <li><a href="../index.html"><i class="fa-regular fa-house fa-xl"></i>Visão geral</a></li>
-                    <li><a href="#"><i class="fa-solid fa-clipboard-check fa-xl"></i>Minhas tarefas</a></li>
-                    <li><a href="#"><i class="fa-regular fa-calendar fa-xl"></i>Calendário</a></li>
-                    <li><a href="#"><i class="fa-solid fa-bars fa-xl"></i>Categorias</a></li>
-                    <li><a href="#"><i class="fa-solid fa-chart-simple fa-xl"></i>Estatísticas</a></li>
-                    <li><a href="config.html"><i class="fa-solid fa-gear fa-xl"></i>Configurações</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+
+        <nav id="menu" class="menu">
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fa-regular fa-house fa-xl"></i>
+                        <span>Visão geral</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../index.html">
+                        <i class="fa-solid fa-clipboard-check fa-xl"></i>
+                        <span>Tarefas</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-regular fa-calendar fa-xl"></i>
+                        <span>Calendário</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-bars fa-xl"></i>
+                        <span>Categorias</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-chart-simple fa-xl"></i>
+                        <span>Estatísticas</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="config.html">
+                        <i class="fa-solid fa-gear fa-xl"></i>
+                        <span>Configurações</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
 <main>
     <!--  ===================================
       Perfil
@@ -607,5 +647,6 @@
 </main>
     
     <script src="js/config.js"></script>
+    <script src="js/main.js"></script> 
 </body>
 </html>
