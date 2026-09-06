@@ -58,3 +58,23 @@ btnCancelar.addEventListener("click", () => {
     btnDeletData.innerHTML = '<i class="fa-regular fa-trash-can"></i> Limpar todos os dados'
     container.classList.remove("confirmando")
 })
+// ============ ultima atualização===========
+const btnSave = document.querySelector("#btn-save")
+const lastUpdate = document.querySelector(".last-update")
+
+btnSave.addEventListener("click", () =>{
+    
+    const today = new Date()
+    const year = today.getFullYear()
+
+    const hours = today.toLocaleString("pt-BR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    })
+    const month = today.toLocaleString("pt-BR", {
+        month: "long"
+    })
+    const day = String(today.getDate()).padStart(2, "0")
+    lastUpdate.innerHTML = `Última atualização:${day} de ${month} de ${year}, ${hours}`
+})
