@@ -148,7 +148,7 @@ header nav {
     border: 1px solid rgba(255, 255, 255, 0.2);
 
     border-radius: 20px;
-
+    -webkit-backdrop-filter:blur(15px) ;
     backdrop-filter: blur(15px);
 }
 .menu a {
@@ -242,6 +242,7 @@ header nav {
     background:linear-gradient(to right ,#070608 80%,rgb(33, 26, 25));
     border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: 30px;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 }
 
@@ -366,6 +367,7 @@ header nav {
         );
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 18px;
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
 }
 
@@ -413,6 +415,7 @@ header nav {
         );
     border: 1px solid rgba(130, 110, 220, 0.45);
     border-radius: 18px;
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
 }
 
@@ -484,6 +487,7 @@ header nav {
         );
     border: 1px solid rgba(255, 255, 255, 0.28);
     border-radius: 18px;
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(15px);
     box-shadow:
         0 15px 35px rgba(0, 0, 0, 0.2);
@@ -747,6 +751,7 @@ footer {
        
         display: grid;
         grid-template-columns: repeat(2,1fr);
+        -webkit-backdrop-filter: blur(0px);
         backdrop-filter: blur(0px);
     }
     .card{
@@ -764,6 +769,7 @@ footer {
         grid-column: 1/-1;
         flex-wrap: wrap;
         height: auto;
+        -webkit-backdrop-filter: blur(1px);
         backdrop-filter: blur(1px);
     }
     .caixa{
