@@ -1,10 +1,11 @@
+// ========================== Theme ==========================
 const body = document.body
 const cardsTheme = document.querySelectorAll(".card")
 const textThme = document.querySelector("#theme-text")
 cardsTheme.forEach(theme => {
     theme.addEventListener("click",() => {
 
-         cardsTheme.forEach(card => {
+        cardsTheme.forEach(card => {
             card.classList.remove("ativo")
         })
 
@@ -31,7 +32,7 @@ cardsTheme.forEach(theme => {
 
 
 
-// =========== Switch =========
+// ========================== Switch ==========================
 
 const checkbox = document.querySelectorAll(".checkbox")
 
@@ -58,6 +59,8 @@ btnCancelar.addEventListener("click", () => {
     btnDeletData.innerHTML = '<i class="fa-regular fa-trash-can"></i> Limpar todos os dados'
     container.classList.remove("confirmando")
 })
+
+
 // ============ ultima atualização===========
 const btnSave = document.querySelector("#btn-save")
 const lastUpdate = document.querySelector(".last-update")
@@ -67,7 +70,7 @@ btnSave.addEventListener("click", () =>{
     const today = new Date()
     const year = today.getFullYear()
 
-    const hours = today.toLocaleString("pt-BR", {
+    const hours = today.toLocaleString("pt-AO", {
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit"

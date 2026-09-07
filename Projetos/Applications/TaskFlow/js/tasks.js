@@ -17,8 +17,8 @@ form.addEventListener("submit", (event) => {
         return
     }
 
-    const tarefa = conversao()
-    criaTarefa(tarefa)
+    const dados = conversao()
+    criaTarefa(dados)
 })
 
 function dispararAlert() {

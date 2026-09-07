@@ -81,15 +81,6 @@ section{
     padding: 20px;
     border-bottom: 1px solid var(--color-border);
 }
-/* ================ Perfil ============= */
-.perfil {
-    background-color: var(--color-white);
-    border: 1px solid var(--color-border);
-    border-radius: 18px;
-    overflow: hidden;
-    color: var(--text-color);
-}
-
 .section-content {
     padding: 16px 28px 20px;
     border-bottom: 1px solid var(--color-border);
@@ -109,6 +100,14 @@ section{
     font-size: 15px;
     line-height: 1.5;
     color: var(--color-text-secondary);
+    color: var(--text-color);
+}
+/* ================ Perfil ============= */
+.perfil {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 18px;
+    overflow: hidden;
     color: var(--text-color);
 }
 
@@ -188,6 +187,7 @@ section{
     font: inherit;
     outline: none;
     color: var(--text-color);
+    pointer-events: none;
 }
 
 .form-group input:focus {
@@ -223,7 +223,9 @@ section{
     color: var(--color-primary);
 }
 
-/* ================ Temas ============= */
+/* =========================
+    Temas 
+============================ */
 .cards-theme {
     display: grid;
     grid-template-columns: 1fr;
@@ -304,10 +306,12 @@ select{
 .setting-option:last-child{
     border-bottom: 0px;
 }
-/* ================ botões dos options ============= */
+/* =================================
+    botões dos options 
+================================ */
 /* Switch */
 .switch{
-    background-color: gray;
+    background-color: rgb(94, 89, 89);
     padding: 5px;
     border-radius: 20px;
     height: fit-content;
@@ -337,7 +341,9 @@ select{
 .switch:has(.checkbox:checked) {
     background-color: var(--color-primary);
 }
-/* ================ Dados ============= */
+/* ================================== 
+    Dados
+===================================== */
 .warning{
     background-color: #FEF2F2;
     border: 1px solid var(--color-red);

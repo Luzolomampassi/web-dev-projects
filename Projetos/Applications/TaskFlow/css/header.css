@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+
 :root {
     --background-color: #F9FAFB;
     --color-primary: #4F39F6;
@@ -29,13 +30,19 @@ body {
     background-color: var(--background-color);
 }
 
-/* HEADER MOBILE */
+/* =========================
+   HEADER MOBILE
+========================= */
 
 header {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 70px;
     background-color: var(--color-white);
     border-bottom: 1px solid var(--color-border);
+    z-index: 20;
 }
 
 .header-content {
@@ -46,58 +53,71 @@ header {
     padding: 0 20px;
 }
 
-.header-content button {
-    border: none;
-    background: transparent;
-    color: var(--color-primary);
-    padding: 8px;
-}
-
 header h2 {
     color: var(--color-primary);
     font-size: 20px;
 }
 
+#btn-menu {
+    border: none;
+    background: transparent;
+    color: var(--color-primary);
+    padding: 8px;
+    font-size: 20px;
+}
+
+/* =========================
+   MENU MOBILE
+========================= */
+
 .menu-container {
     position: fixed;
-    z-index: 30;
-    top: 10%;
+    top: 70px;
     left: 0;
+
+    width: 250px;
+    height: calc(100vh - 70px);
+
+    background-color: var(--background-color);
+    border-right: 1px solid var(--color-border-warm);
+
     opacity: 0;
-    width: fit-content;
     transform: translateX(-100%);
-}
-.menu-container  .logo{
-   padding: 20px;
+    pointer-events: none;
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
 }
 
 #menu {
-    border: 1px solid var(--color-border-warm);
-    
     opacity: 0;
     pointer-events: none;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+
+    transition:
+        opacity 0.3s ease;
 }
 
 #menu.ativo {
-    
     opacity: 1;
     pointer-events: auto;
-    
 }
-.menu-container:has(#menu.ativo){
-    top: 0;
-    background-color: var(--background-color);
-    height: 100%;
+
+.menu-container:has(#menu.ativo) {
     opacity: 1;
     transform: translateX(0);
-
+    pointer-events: auto;
 }
+
+/* =========================
+   LINKS DO MENU
+========================= */
 
 #menu ul {
     display: flex;
     flex-direction: column;
     gap: 10px;
+
     list-style: none;
     padding: 15px 20px;
 }
@@ -107,7 +127,7 @@ header h2 {
     align-items: center;
     gap: 15px;
 
-    color: #808080;
+    color: var(--text-secondary);
     font-weight: 500;
     text-decoration: none;
 
@@ -115,8 +135,8 @@ header h2 {
     border-radius: 16px;
 
     transition:
-        background-color .3s,
-        color .3s;
+        background-color 0.3s ease,
+        color 0.3s ease;
 }
 
 #menu a:hover,
@@ -125,19 +145,41 @@ header h2 {
     color: var(--color-primary);
 }
 
-#menu a i {
-    width: 25px;
+#menu a:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
 }
 
-/* DESKTOP */
+#menu a i {
+    width: 25px;
+    text-align: center;
+}
 
+/* =========================
+   MAIN
+========================= */
+
+main {
+    width: 100%;
+    min-height: 100vh;
+    padding: 90px 20px 30px;
+}
+
+/* =========================
+   DESKTOP
+========================= */
 @media (min-width: 768px) {
 
+   body {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    width: 100%;
+    }
     header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 250px;
+        position: static;
+        grid-column: 1;
+        grid-row: 1;
+        width: auto;
         height: 100vh;
         border-right: 1px solid var(--color-border);
         border-bottom: none;
@@ -149,21 +191,29 @@ header h2 {
     }
 
     .menu-container {
-        display: block;
-        height: 100%;
+        position: static;
+        width: auto;
+        height: 100vh;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+        border: none;
+        background-color: var(--color-white);
+        padding: 10px;
+    }
+
+    #menu {
+        opacity: 1;
+        pointer-events: auto;
+        width: fit-content;
     }
 
     .logo {
         display: flex;
         align-items: center;
-        height: 100px;
-        padding: 20px;
-
-        border-bottom: 1px solid var(--color-border);
-    }
-
-    #menu {
-        display: block;
+        height: fit-content;
+        padding: 10px;
+        border-bottom: 0;
     }
 
     #menu ul {
@@ -173,4 +223,148 @@ header h2 {
     #menu a {
         padding: 14px 15px;
     }
+    main {
+        grid-column: 2;
+        grid-row: 1;
+        width: 100%;
+        min-height: 100vh;
+        margin-left: 0;
+        padding: 30px;
+    }
 }
+/* @media (min-width: 768px) {
+
+    body {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        width: 100%;
+    }
+
+    header {
+       position: static;
+
+    grid-column: 1;
+    grid-row: 1;
+
+    width: auto;
+    height: 100vh;
+
+    border-right: 1px solid var(--color-border);
+    border-bottom: none;
+
+    background-color: var(--color-white);
+    }
+
+    .header-content {
+        display: none;
+    }
+
+    .menu-container {
+        position: static;
+
+        width: auto;
+        height: 100vh;
+
+        opacity: 1;
+        transform: translateX(0);
+
+        pointer-events: auto;
+
+        border: none;
+        background-color: var(--color-white);
+
+        padding: 10px;
+    }
+
+    #menu {
+        opacity: 1;
+        pointer-events: auto;
+
+        width: fit-content;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+
+        height: fit-content;
+        padding: 10px;
+
+        border-bottom: 0;
+    }
+
+    #menu ul {
+        padding: 30px 15px;
+    }
+
+    #menu a {
+        padding: 14px 15px;
+    }
+
+    main {
+        grid-column: 2 / 3;
+
+        width: 100%;
+        min-height: 100vh;
+
+        margin-left: 0;
+        padding: 30px;
+    }
+} */
+/* =========================
+   ANIMAÇÃO DA SIDEBAR
+========================= */
+
+@keyframes sidebar {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* =========================
+   VIEW TRANSITIONS
+========================= */
+
+@view-transition {
+    navigation: auto;
+}
+
+
+::view-transition-old(root) {
+    animation: fade-out 0.25s ease;
+}
+
+
+::view-transition-new(root) {
+    animation: fade-in 0.25s ease;
+}
+
+
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
