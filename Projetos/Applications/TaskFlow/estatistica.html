@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskPulse</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/estatisticas.css">
+    <script src="https://kit.fontawesome.com/f6a9b3f1e7.js"></script>
+</head>
+<body>
+    <div class="overlay"></div> 
+<header>
+    <div class="header-content">
+        <button id="btn-menu" aria-label="Abrir menu">
+            <i class="fa-solid fa-bars fa-xl"></i>
+        </button>
+
+        <h2>Configurações</h2>
+    </div>
+
+    <div class="menu-container">
+        <div class="logo">
+            <h2>TaskFlow</h2>
+        </div>
+
+        <nav id="menu" class="menu">
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fa-regular fa-house fa-xl"></i>
+                        <span>Visão geral</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../tarefas.html">
+                        <i class="fa-solid fa-clipboard-check fa-xl"></i>
+                        <span>Tarefas</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-regular fa-calendar fa-xl"></i>
+                        <span>Calendário</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-bars fa-xl"></i>
+                        <span>Categorias</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="estatistica.html">
+                        <i class="fa-solid fa-chart-simple fa-xl"></i>
+                        <span>Estatísticas</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="config.html">
+                        <i class="fa-solid fa-gear fa-xl"></i>
+                        <span>Configurações</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main>
+    <!-- ==============Data=============== -->
+    <section class="data-bar">
+        <button class="btn-filtro" data-categoria="hoje">
+            Hoje
+        </button>
+
+        <button class="btn-filtro" data-categoria="semanal">
+            <p>7<br>dias</p>
+        </button>
+
+        <button class="btn-filtro" data-categoria="mesal">
+            <p>30<br>dias</p>
+        </button>
+
+        <button class="btn-filtro" data-categoria="personalizados">
+            <p>Personalizados</p>
+        </button>
+    </section>
+    <!-- ============== Resumo =============== -->
+    <section class="cards-grid">
+        <article class="card">
+            <p class="card-title">Total de Tarefas <i class="fa-solid fa-list fa-lg"></i></p>
+            <h2 class="card-value num-total">100</h2>
+            <p class="card-comparison"><i class="fa-solid fa-arrow-up"></i> +8 VS.periodo anterior</p>
+        </article>
+
+        <article class="card">
+            <p class="card-title">
+                Concluídas
+                <i class="fa-regular fa-square-check fa-lg"></i></p>
+            <p class="card-value num-concluidas">47</p>
+            <p class="card-comparison"><i class="fa-solid fa-arrow-up"></i> +12 VS.periodo anterior</p>
+        </article>
+
+        <article class="card">
+            <p class="card-title">
+                Pendentes
+                <i class="fa-regular fa-clock fa-lg"></i>
+            </p>
+            <p class="card-value num-pendentes">28</p>
+            <p class="card-comparison">
+                <i class="fa-solid fa-arrow-up"></i>
+                +12 VS.periodo anterior
+            </p>
+        </article>
+
+        <article class="card">
+            <p class="card-title">
+                Atrasadas
+                <i class="fa-solid fa-triangle-exclamation fa-lg"></i>
+            </p>
+            <p class="card-value num-atrasadas">11</p>
+            <p class="card-comparison">
+                <i class="fa-solid fa-arrow-down"></i>
+                +2 VS.periodo anterior
+            </p>
+        </article>
+
+        <article class="card">
+            <p class="card-title">
+                Taxa de conclusão
+                <i class="fa-solid fa-percent fa-lg"></i> 
+            </p>
+            <p class="card-value taxa-conclusao">47%</p>
+            <p class="card-comparison">
+                <i class="fa-solid fa-arrow-up"></i>
+                +5 VS.periodo anterior
+            </p>
+        </article>
+    </section>
+
+    <!-- ============== Produtividade =============== -->
+    <section class="charts-grid">
+        <article class="produtividade">
+            <h2 class="section-title" >Produtividade semanal</h2>
+            <p>Tarefas concluídas vs tarefas criadas por dia</p>
+            <p>
+                <span id="square-concluidas"><i class="fa-solid fa-square"></i></span> Concluídas
+                <span id="square-criadas">
+                    <i class="fa-solid fa-square"></i></span>
+                    Criadas
+            </p>
+        </article>
+        <!-- ================ Distribuição ================ -->
+        <article class="distribuicao">
+            <h2 class="section-title" >Distribuição de tarefas</h2>
+            <p>Proporção por status no período</p>
+            <div class="distribuicao-content">
+                <article class="graphic">
+                    <div class="graphic-center">
+                         100
+                        <span>tarefas</span>
+                    </div>
+                </article>
+                <article class="estatisticas">
+                    <div class="status">
+                        <p>
+                            <span id="square-concluidas"><i class="fa-solid fa-square"></i></span>
+                            <span>Concluídas</span>
+                        </p>
+                        <div>
+                            <p class="percentagem">47</p>
+                            <p>47%</p>
+                        </div>
+                    </div>
+                    <div class="status">
+                        <p>
+                            <span id="square-pendentes"><i class="fa-solid fa-square"></i></span>
+                            <span>Pendentes</span>
+                        </p>
+                        <div>
+                            <p class="percentagem">28</p>
+                            <p>28%</p>
+                        </div>
+                    </div>
+                    <div class="status">
+                        <p>
+                            <span id="square-atrasadas"><i class="fa-solid fa-square"></i></span>
+                            <span>Atrasasdas</span>
+                        </p>
+                        <div>
+                            <p class="percentagem">11</p>
+                            <p>11%</p>
+                        </div>
+                    </div>
+                    <div class="status">
+                        <p>
+                            <span id="square-andamento"><i class="fa-solid fa-square"></i></span>
+                            <span>Em andamento</span>
+                        </p>
+                        <div>
+                            <p class="percentagem">14</p>
+                            <p>14%</p>
+                        </div>
+                    </div>
+                </article>
+            </div>        
+    </article>
+    </section>
+
+    <!-- ================ Estatísticas adicionais ================ -->
+<section class="grid-bottom">
+        <article class="estatisticas-adicionais">
+        <h2 class="section-title" >Estatísticas adicionais</h2>
+        <article class="boxes-grid">
+            <div class="box">
+                <p>Média Diária</p>
+                <h3>8,3</h3>
+                <p>tarefas/dia</p>
+            </div>
+
+            <div class="box">
+                <p>Tempo médio</p>
+                <h3>2,4h</h3>
+                <p>por tarefa</p>
+            </div>
+
+            <div class="box">
+                <p>Streak Atual</p>
+                <h3>12</h3>
+                <p>dias consecutivos</p>
+            </div>
+
+            <div class="box">
+                <p>Melhor dia</p>
+                <h3>Qui</h3>
+                <p>14 concluídas</p>
+            </div>
+
+            <div class="box">
+                <p>Projetos ativos</p>
+                <h3>7</h3>
+                <p>em andamento</p>
+            </div>
+
+            <div class="box">
+                <p>Colaboradores</p>
+                <h3>4</h3>
+                <p>contruibuindo</p>
+            </div>
+        </article>
+    </article>
+
+    <!-- ================ Atividades recentes ================ -->
+    <article class="atividades">
+        <div class="atividade">
+            <h2 class="section-title" >Atividade recente</h2>
+            <a href="#">Ver Tudo</a>
+        </div>
+        <div class="atividade">
+            <div>
+                <p>Revisão de design do dashboard</p>
+                <p>TaskPulse Web · há 12 min</p>
+            </div>
+            <div>
+                Concluída
+            </div>
+        </div>
+
+        <div class="atividade">
+            <div>
+                <p>Integração com API de pagamentos</p>
+                <p>Backend Core · há 34 min</p>
+            </div>
+            <div>
+                Criada
+            </div>
+        </div>
+
+        <div class="atividade">
+            <div>
+                <p>Testes de regressão Q3</p>
+                <p>QA Sprint · há 1h 20min</p>
+            </div>
+            <div>
+                Atrasada
+            </div>
+        </div>
+
+        <article class="atividade">
+            <div>
+                <p>Documentação de endpoints</p>
+                <p>Backend Core · há 2h 05min</p>
+            </div>
+            <div>
+                Atualizada
+            </div>
+        </article>
+
+        <div class="atividade">
+            <div>
+                <p>Onboarding de novos usuários</p>
+                <p>Growth · há 3h</p>
+            </div>
+            <div>
+                Concluída
+            </div>
+        </div>
+
+        <div class="atividade">
+            <div>
+                <p>Análise de métricas de conversão</p>
+                <p>Growth · ontem 18:42</p>
+            </div>
+            <div>
+                Concluída
+            </div>
+        </div>
+    </article>
+</section>
+
+</main>  
+   
+</body>
+</html>

@@ -1,0 +1,430 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --background-color: #F8F8FB;
+
+    --color-primary: #6366F1;
+    --color-primary-hover: #EEF2FF;
+
+    --color-secondary-hover: #7671F5;
+    --color-secondary: #818CF8;
+
+    --color-border: #E5E7EF;
+    --color-border-warm: #DCDEE5;
+
+    --text-color: #1F2937;
+    --text-secondary: #6B7280;
+
+    --text-surface: #F4F4F5;
+
+    --color-white: #FFFFFF;
+    --color-red: #EF4444;
+    --color-green: #22C55E;
+    --main-background: #9999B5;
+}
+
+body.dark{
+    --background-color: #111827;
+
+    --color-primary: #6366F1;
+    --color-primary-hover: #252C3D;
+
+    --color-secondary-hover: #7671F5;
+    --color-secondary: #818CF8;
+
+    --color-border: #374151;
+    --color-border-warm: #4B5563;
+
+    --text-color: #F3F4F6;
+    --text-secondary: #9CA3AF;
+
+    --color-white: #1F2937;
+
+    --main-background: #0F172A;
+}
+
+body{
+    width:100%;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text-color);
+}
+button,
+a{
+    cursor: pointer;
+}
+
+.section-title{
+    margin-bottom: 20px;
+}
+
+
+/*=================================
+    Filtro
+=================================*/
+
+.data-bar{
+    display: flex;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 4px;
+    gap: 4px;
+    margin-bottom: 20px;
+}
+.btn-filtro{
+    padding: 7px 16px;
+    border-radius: 7px;
+    border-width: medium;
+    border-style: none;
+    border-image: none;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: var(--font-body);
+    transition: 0.15s;
+}
+.btn-filtro:hover{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+/*=================================
+    Cards de resumo
+=================================*/
+/* card */
+.cards-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+.card{
+    background-color: var(--color-white);
+    padding: 20px;
+    transition: transform .3s , box-shadow .3s;
+    
+    border-radius: 12px;
+    border: 1px solid var(--color-border-warm);
+}
+.card:hover{
+    transform: translateY(-5px);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.300);
+}
+.card-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.card-value{
+    font-weight: bold;
+    font-size: clamp(2em,2vw,6em);
+}
+/* Card value */
+.num-total {
+    color: var(--text-color);
+}
+/* Cores do icone dos cards */
+.fa-clock,
+.fa-percent,
+.fa-square-check,
+.fa-triangle-exclamation{
+    padding: 4px;
+    border-radius: 5px;
+}
+
+.fa-square-check,
+.num-concluidas {
+    color: var(--color-green);
+}
+.fa-square-check{
+    background-color: #ecfaf0;
+}
+.fa-clock,
+.num-pendentes {
+    color: var(--color-primary);
+}
+.fa-clock{
+    background-color: #edeafc;
+   
+}
+.fa-triangle-exclamation,
+.num-atrasadas {
+    color: var(--color-red);
+}
+.fa-triangle-exclamation{
+    background-color: #fdeded;
+   
+}
+.fa-percent,
+.taxa-conclusao {
+    color: var(--color-primary);
+}
+.fa-percent{
+    background-color: #e9eeff;
+   
+}
+/* card-comparison */
+.card-comparison{
+    color: var(--color-green);
+}
+.card:nth-child(4) .card-comparison{
+    color: var(--color-red);
+}
+
+
+/*=================================charts-grid================================= */
+.charts-grid{
+    background-color: transparent;
+    display: grid;
+    gap: 20px;
+    border: 0;
+    padding: 10px;
+}
+/*=================================
+    Produtividade
+=================================*/
+.produtividade{
+    width: 100%;
+    background-color: var(--color-white);
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid var(--color-border-warm);
+}
+.square-concluidas{
+    color: var(--color-primary);
+}
+.square-criadas{
+    color: gray;
+}
+
+/*=================================
+    Estatísticas
+=================================*/
+.distribuicao{
+    width: 100%;
+    background-color: var(--color-white);
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid var(--color-border-warm);
+}
+.status{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
+    padding: 5px;
+    gap: 10px;
+}
+.status:hover{
+    background-color: var(--color-border);
+}
+.status div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.status div > p:nth-child(2){
+    color: var(--text-secondary);
+    font-size: .9em;
+}
+
+#square-concluidas{
+    color: var(--color-green);
+}
+#square-pendentes{
+    color: var(--color-primary);
+}
+#square-atrasadas{
+    color: red;
+}
+#square-andamento{
+    color: orange;
+}
+.percentagem{
+    font-weight: bolder;
+    font-size: 1.1em;
+}
+/*=================================
+    O grafico
+=================================*/
+
+.graphic {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+
+    background: conic-gradient(
+        var(--color-green) 0% 47%,
+        var(--color-primary) 47% 75%,
+        var(--color-red) 75% 86%,
+        #f59e0b 86% 100%
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0px;
+}
+
+.graphic::before {
+    content: "";
+    position: absolute;
+    width: 115px;
+    height: 115px;
+    background: white;
+    border-radius: 50%;
+}
+
+.graphic-center {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.graphic-center strong {
+    font-size: 30px;
+}
+
+.graphic-center span {
+    color: #999;
+    font-size: 14px;
+}
+
+
+/*=================================Grid bottom================================= */
+.grid-bottom{
+    background-color: transparent;
+    display: grid;
+    gap: 20px;
+    border: 0;
+    padding: 10px;
+}
+/*=================================
+    Estatísticas adicionais
+=================================*/
+.estatisticas-adicionais{
+    width: 100%;
+    background-color: var(--color-white);
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid var(--color-border-warm);
+}
+.boxes-grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+.box{
+    background-color: var(--text-surface);
+    border-radius: 12px;
+    border: 1px solid var(--color-border-warm);
+    padding: 10px;
+    transition: border .3s;
+}
+.box:hover{
+    border: 1px solid var(--color-primary);
+}
+
+/*=================================
+    Atividades
+=================================*/
+.atividades{
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: var(--color-white);
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid var(--color-border-warm);
+}
+.atividade{
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+
+/*=================================
+    @MediaQueries
+=================================*/
+@media(min-width:400px){
+    .cards-grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+    .distribuicao{
+     display: grid;
+}
+    .distribuicao-content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+}   
+    .estatisticas{
+        display: grid;
+        gap:20px;
+}   
+    .graphic {
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+}
+}
+
+@media (min-width:768px){
+    .charts-grid,
+    .grid-bottom{
+    background-color: transparent;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+    }
+    .data-bar{
+        width: fit-content;
+        background-color: var(--color-white);
+    }
+    .boxes-grid{
+    grid-template-columns: 1fr;
+    }
+    .cards-grid{
+        grid-template-columns: repeat(3,1fr);
+    }  
+}
+
+@media(min-width:1024px){
+    .cards-grid{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+}
+    .distribuicao{
+    display: grid;
+}
+    .distribuicao-content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+}   
+    .estatisticas{
+        display: grid;
+        gap:20px;
+}   
+.graphic {
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+}
+}
+
