@@ -3,16 +3,29 @@
     padding: 0;
     box-sizing: border-box;
 }
-:root{
-    --background-color:#F9FAFB;
-    --color-primary:#4F39F6;
-    --color-primary-hover:#EEF2FF;
-    --color-secondary-hover:#5a57fdbd;
-    --color-secondary:#615FFF;
-    --color-border:#E5E7EB;
-    --color-border-warm:#e3e4e6;
-    --text-secondary:#99A1AF;
-    --color-white:#FFFFFF;
+:root {
+    --color-primary: #2563EB;
+    --color-primary-dark: #1D4ED8;
+    --color-primary-light: #DBEAFE;
+    --color-danger: #EF4444;
+
+    --color-background: #F8FAFC;
+    --color-surface: #FFFFFF;
+    --color-white: #FFFFFF;
+
+    --color-text: #0F172A;
+    --color-text-secondary: #64748B;
+
+    --color-border: #E2E8F0;
+
+    --color-success: #16A34A;
+    --color-success-light: #DCFCE7;
+
+    --color-warning: #D97706;
+    --color-warning-light: #FEF3C7;
+
+    --color-danger: #DC2626;
+    --color-danger-light: #FEE2E2;
 }
 input[type='data'],
 select,

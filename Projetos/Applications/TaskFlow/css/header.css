@@ -6,15 +6,27 @@
 
 
 :root {
-    --background-color: #F9FAFB;
-    --color-primary: #4F39F6;
-    --color-primary-hover: #EEF2FF;
-    --color-secondary-hover: #5a57fdbd;
-    --color-secondary: #615FFF;
-    --color-border: #E5E7EB;
-    --color-border-warm: #E3E4E6;
-    --text-secondary: #82878f;
+    --color-primary: #2563EB;
+    --color-primary-dark: #1D4ED8;
+    --color-primary-light: #DBEAFE;
+
+    --color-background: #F8FAFC;
+    --color-surface: #FFFFFF;
     --color-white: #FFFFFF;
+
+    --color-text: #0F172A;
+    --color-text-secondary: #64748B;
+
+    --color-border: #E2E8F0;
+
+    --color-success: #16A34A;
+    --color-success-light: #DCFCE7;
+
+    --color-warning: #D97706;
+    --color-warning-light: #FEF3C7;
+
+    --color-danger: #DC2626;
+    --color-danger-light: #FEE2E2;
 }
 
 input[type="date"],
@@ -40,7 +52,7 @@ header {
     left: 0;
     width: 100%;
     height: 70px;
-    background-color: var(--color-white);
+    background-color: var(--color-surface);
     border-bottom: 1px solid var(--color-border);
     z-index: 20;
 }
@@ -78,8 +90,8 @@ header h2 {
     width: 250px;
     height: calc(100vh - 70px);
 
-    background-color: var(--background-color);
-    border-right: 1px solid var(--color-border-warm);
+    background-color: var(--color-background);
+    border-right: 1px solid var(--color-border);
 
     opacity: 0;
     transform: translateX(-100%);
@@ -127,7 +139,7 @@ header h2 {
     align-items: center;
     gap: 15px;
 
-    color: var(--text-secondary);
+    color: var(--color-primary-dark);
     font-weight: 500;
     text-decoration: none;
 
@@ -141,7 +153,7 @@ header h2 {
 
 #menu a:hover,
 #menu a:focus {
-    background-color: var(--color-primary-hover);
+    background-color: var(--color-primary-dark);
     color: var(--color-primary);
 }
 
@@ -183,7 +195,7 @@ main {
         height: 100vh;
         border-right: 1px solid var(--color-border);
         border-bottom: none;
-        background-color: var(--color-white);
+        background-color: var(--color-surface);
     }
 
     .header-content {
@@ -198,7 +210,7 @@ main {
         transform: translateX(0);
         pointer-events: auto;
         border: none;
-        background-color: var(--color-white);
+        background-color: var(--color-surface);
         padding: 10px;
     }
 

@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    estatistica-box-sizing: border-estatistica-box;
 }
 :root{
     --background-color: #F8F8FB;
@@ -102,14 +102,14 @@ a{
 .card{
     background-color: var(--color-white);
     padding: 20px;
-    transition: transform .3s , box-shadow .3s;
+    transition: transform .3s , estatistica-box-shadow .3s;
     
     border-radius: 12px;
     border: 1px solid var(--color-border-warm);
 }
 .card:hover{
     transform: translateY(-5px);
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.300);
+    estatistica-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.300);
 }
 .card-title{
     display: flex;
@@ -198,7 +198,30 @@ a{
 .square-criadas{
     color: gray;
 }
+.chart-card {
+    width: 100%;
+    padding: 24px;
+    background: #fff;
+    border-radius: 16px;
+}
 
+.chart-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.chart-header p {
+    margin: 6px 0 24px;
+    font-size: 14px;
+    color: #8b8d98;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 320px;
+}
 /*=================================
     Estatísticas
 =================================*/
@@ -209,7 +232,7 @@ a{
     border-radius: 12px;
     border: 1px solid var(--color-border-warm);
 }
-.status{
+.status-tarefa{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -217,29 +240,29 @@ a{
     padding: 5px;
     gap: 10px;
 }
-.status:hover{
+.status-tarefa:hover{
     background-color: var(--color-border);
 }
-.status div{
+.status-tarefa div{
     display: flex;
     align-items: center;
     gap: 10px;
 }
-.status div > p:nth-child(2){
+.status-tarefa div > p:nth-child(2){
     color: var(--text-secondary);
     font-size: .9em;
 }
 
-#square-concluidas{
+#indicador-concluidas{
     color: var(--color-green);
 }
-#square-pendentes{
+#indicador-pendentes{
     color: var(--color-primary);
 }
-#square-atrasadas{
+#indicador-atrasadas{
     color: red;
 }
-#square-andamento{
+#indicador-andamento{
     color: orange;
 }
 .percentagem{
@@ -250,7 +273,7 @@ a{
     O grafico
 =================================*/
 
-.graphic {
+.grafico-distribuicao {
     width: 140px;
     height: 140px;
     border-radius: 50%;
@@ -268,7 +291,7 @@ a{
     margin: 20px 0px;
 }
 
-.graphic::before {
+.grafico-distribuicao::before {
     content: "";
     position: absolute;
     width: 115px;
@@ -277,7 +300,7 @@ a{
     border-radius: 50%;
 }
 
-.graphic-center {
+.grafico-centro {
     position: relative;
     z-index: 1;
     display: flex;
@@ -285,11 +308,11 @@ a{
     align-items: center;
 }
 
-.graphic-center strong {
+.grafico-centro strong {
     font-size: 30px;
 }
 
-.graphic-center span {
+.grafico-centro span {
     color: #999;
     font-size: 14px;
 }
@@ -306,26 +329,26 @@ a{
 /*=================================
     Estatísticas adicionais
 =================================*/
-.estatisticas-adicionais{
+.lista-estatisticas-adicionais{
     width: 100%;
     background-color: var(--color-white);
     padding: 10px;
     border-radius: 12px;
     border: 1px solid var(--color-border-warm);
 }
-.boxes-grid{
+.estatisticas-grid{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap: 20px;
 }
-.box{
+.estatistica-box{
     background-color: var(--text-surface);
     border-radius: 12px;
     border: 1px solid var(--color-border-warm);
     padding: 10px;
     transition: border .3s;
 }
-.box:hover{
+.estatistica-box:hover{
     border: 1px solid var(--color-primary);
 }
 
@@ -340,7 +363,7 @@ a{
     border-radius: 12px;
     border: 1px solid var(--color-border-warm);
 }
-.atividade{
+.atividade-item{
     display: flex;
     margin-bottom: 20px;
     align-items: center;
@@ -366,11 +389,11 @@ a{
         align-items: center;
         gap: 30px;
 }   
-    .estatisticas{
+    .lista-estatisticas{
         display: grid;
         gap:20px;
 }   
-    .graphic {
+    .grafico-distribuicao {
     width: 160px;
     height: 160px;
     display: flex;
@@ -392,7 +415,7 @@ a{
         width: fit-content;
         background-color: var(--color-white);
     }
-    .boxes-grid{
+    .estatisticas-grid{
     grid-template-columns: 1fr;
     }
     .cards-grid{
@@ -407,6 +430,8 @@ a{
 }
     .distribuicao{
     display: grid;
+    grid-template-rows: .4fr 2fr;
+    padding: 10px 20px;
 }
     .distribuicao-content{
         display: flex;
@@ -414,17 +439,20 @@ a{
         align-items: center;
         gap: 30px;
 }   
-    .estatisticas{
+    .lista-estatisticas{
         display: grid;
         gap:20px;
 }   
-.graphic {
-    width: 160px;
-    height: 160px;
+.grafico-distribuicao {
+    width: 180px;
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0px;
+}
+.estatisticas-grid{
+    grid-template-columns: repeat(3,1fr);
 }
 }
 

@@ -1,0 +1,417 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
+}
+
+:root {
+    --color-primary: #2563EB;
+    --color-primary-dark: #1D4ED8;
+    --color-primary-light: #DBEAFE;
+
+    --color-background: #F8FAFC;
+    --color-surface: #FFFFFF;
+    --color-white: #FFFFFF;
+
+    --color-text: #0F172A;
+    --color-text-secondary: #64748B;
+    --color-border: #E2E8F0;
+
+    --color-success: #16A34A;
+    --color-success-light: #DCFCE7;
+
+    --color-warning: #D97706;
+    --color-warning-light: #FEF3C7;
+
+    --color-danger: #DC2626;
+    --color-danger-light: #FEE2E2;
+
+    --font-inter: 'Inter', sans-serif;
+}
+
+body {
+    font-family: var(--font-inter);
+    color: var(--color-text);
+}
+
+main {
+    background-color: var(--color-background);
+}
+
+/* =========================
+   CARDS SUPERIORES
+========================= */
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.card-item {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    min-height: 58px;
+}
+
+/* =========================
+   BOTÃO ADICIONAR
+========================= */
+
+.btn-add {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 9px 12px;
+
+    background-color: var(--color-primary);
+    color: var(--color-white);
+
+    border: none;
+    border-radius: 8px;
+
+    font-weight: 600;
+    font-size: 0.9rem;
+
+    box-shadow: 0 2px 5px rgba(37, 99, 235, 0.18);
+
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btn-add:hover {
+    background-color: var(--color-primary-dark);
+}
+
+/* =========================
+   PESQUISA E FILTROS
+========================= */
+
+.search-bar {
+    position: relative;
+    margin-bottom: 16px;
+    color: var(--color-text-secondary);
+}
+
+select,
+.search {
+    width: 100%;
+    padding: 10px 11px;
+
+    background-color: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+
+    font-family: inherit;
+    font-size: 0.9rem;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+select:hover,
+.search:hover {
+    border-color: #B8C4D4;
+}
+
+select:focus,
+.search:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+.search::placeholder {
+    font-weight: 400;
+    color: var(--color-text-secondary);
+}
+
+.lupa {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* =========================
+   FILTROS
+========================= */
+
+.filtros {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   CATEGORIAS
+========================= */
+
+.categorias-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--color-surface);
+
+    min-height: 180px;
+    padding: 12px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+
+    transition:
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.item-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 16px;
+}
+
+.item-top-info {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    padding: 7px;
+
+    background-color: var(--color-success);
+    border-radius: 8px;
+
+    font-size: 1.1rem;
+}
+
+.btn-edit {
+    padding: 6px;
+
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+
+    font-size: 0.95rem;
+
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-edit:hover {
+    background-color: var(--color-border);
+}
+
+/* =========================
+   BADGES
+========================= */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    padding: 3px 7px;
+
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+
+    border-radius: 999px;
+
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge::before {
+    content: "•";
+    font-size: 0.95rem;
+}
+
+/* =========================
+   ESTADO DAS TAREFAS
+========================= */
+
+.task-concluidas,
+.task-pendentes {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    color: var(--color-text-secondary);
+
+    font-size: 0.78rem;
+}
+
+.task-concluidas::before,
+.task-pendentes::before {
+    content: "•";
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.task-concluidas::before {
+    color: var(--color-success);
+}
+
+.task-pendentes::before {
+    color: var(--color-warning);
+}
+
+/* =========================
+   PROGRESSO
+========================= */
+
+.bar-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.8rem;
+}
+
+.bar progress {
+    width: 100%;
+}
+
+/* =========================
+   ADICIONAR CATEGORIA
+========================= */
+
+#item-add {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 180px;
+    padding: 20px 10px;
+
+    background-color: transparent;
+
+    border: 2px dashed var(--color-border);
+    border-radius: 10px;
+
+    color: var(--color-text-secondary);
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+#item-add:hover {
+    border-color: var(--color-primary);
+    background-color: rgba(37, 99, 235, 0.04);
+    color: var(--color-primary);
+}
+
+#item-add > .fa-plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    margin-bottom: 12px;
+
+    background-color: var(--color-border);
+    border-radius: 50%;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+#item-add:hover > .fa-plus {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (min-width: 768px) {
+
+    .inicio {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .btn-add {
+        width: fit-content;
+    }
+
+    .search-container {
+        display: flex;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .search-bar {
+        width: 50%;
+    }
+
+    .filtros {
+        flex-direction: row;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .categorias-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media (min-width: 1024px) {
+
+    .categorias-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .item:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        transform: translateY(-1px);
+    }
+}

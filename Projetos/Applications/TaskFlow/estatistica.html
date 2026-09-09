@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/estatisticas.css">
     <script src="https://kit.fontawesome.com/f6a9b3f1e7.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   
 </head>
 <body>
     <div class="overlay"></div> 
@@ -16,7 +18,7 @@
             <i class="fa-solid fa-bars fa-xl"></i>
         </button>
 
-        <h2>Configurações</h2>
+        <h2>Estatísticas</h2>
     </div>
 
     <div class="menu-container">
@@ -48,7 +50,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="categorias.html">
                         <i class="fa-solid fa-bars fa-xl"></i>
                         <span>Categorias</span>
                     </a>
@@ -82,7 +84,7 @@
             <p>7<br>dias</p>
         </button>
 
-        <button class="btn-filtro" data-categoria="mesal">
+        <button class="btn-filtro" data-categoria="mensal">
             <p>30<br>dias</p>
         </button>
 
@@ -94,7 +96,7 @@
     <section class="cards-grid">
         <article class="card">
             <p class="card-title">Total de Tarefas <i class="fa-solid fa-list fa-lg"></i></p>
-            <h2 class="card-value num-total">100</h2>
+            <h2 class="card-value total-tarefas">100</h2>
             <p class="card-comparison"><i class="fa-solid fa-arrow-up"></i> +8 VS.periodo anterior</p>
         </article>
 
@@ -102,7 +104,7 @@
             <p class="card-title">
                 Concluídas
                 <i class="fa-regular fa-square-check fa-lg"></i></p>
-            <p class="card-value num-concluidas">47</p>
+            <p class="card-value tarefas-concluidas">47</p>
             <p class="card-comparison"><i class="fa-solid fa-arrow-up"></i> +12 VS.periodo anterior</p>
         </article>
 
@@ -111,7 +113,7 @@
                 Pendentes
                 <i class="fa-regular fa-clock fa-lg"></i>
             </p>
-            <p class="card-value num-pendentes">28</p>
+            <p class="card-value tarefas-pendentes">28</p>
             <p class="card-comparison">
                 <i class="fa-solid fa-arrow-up"></i>
                 +12 VS.periodo anterior
@@ -123,7 +125,7 @@
                 Atrasadas
                 <i class="fa-solid fa-triangle-exclamation fa-lg"></i>
             </p>
-            <p class="card-value num-atrasadas">11</p>
+            <p class="card-value tarefas-atrasadas">11</p>
             <p class="card-comparison">
                 <i class="fa-solid fa-arrow-down"></i>
                 +2 VS.periodo anterior
@@ -149,61 +151,77 @@
             <h2 class="section-title" >Produtividade semanal</h2>
             <p>Tarefas concluídas vs tarefas criadas por dia</p>
             <p>
-                <span id="square-concluidas"><i class="fa-solid fa-square"></i></span> Concluídas
+                <span id="indicador-concluida"><i class="fa-solid fa-square"></i></span> Concluídas
                 <span id="square-criadas">
                     <i class="fa-solid fa-square"></i></span>
                     Criadas
             </p>
+            <article class="colunas">
+                        <div class="chart-card">
+                        <div class="chart-header">
+                        <div>
+                            <h3>Tarefas por dia</h3>
+                            <p>Comparação entre tarefas concluídas e pendentes</p>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="tasksChart"></canvas>
+                    </div>
+                </div>
+            </article>
         </article>
         <!-- ================ Distribuição ================ -->
         <article class="distribuicao">
-            <h2 class="section-title" >Distribuição de tarefas</h2>
-            <p>Proporção por status no período</p>
+            <div>
+                <h2 class="section-title" >Distribuição de tarefas</h2>
+                <p>Proporção por status-tarefa no período</p>
+            </div>
             <div class="distribuicao-content">
-                <article class="graphic">
-                    <div class="graphic-center">
+                <article class="grafico-distribuicao">
+                    <div class="grafico-centro">
                          100
                         <span>tarefas</span>
                     </div>
                 </article>
-                <article class="estatisticas">
-                    <div class="status">
+                <article class="lista-estatisticas">
+                    <div class="status-tarefa">
                         <p>
-                            <span id="square-concluidas"><i class="fa-solid fa-square"></i></span>
+                            <span id="indicador-concluidas"><i class="fa-solid fa-square"></i></span>
                             <span>Concluídas</span>
                         </p>
                         <div>
-                            <p class="percentagem">47</p>
+                            <p class="quantidade-status">47</p>
                             <p>47%</p>
                         </div>
                     </div>
-                    <div class="status">
+                    <div class="status-tarefa">
                         <p>
-                            <span id="square-pendentes"><i class="fa-solid fa-square"></i></span>
+                            <span id="indicador-pendentes"><i class="fa-solid fa-square"></i></span>
                             <span>Pendentes</span>
                         </p>
                         <div>
-                            <p class="percentagem">28</p>
+                            <p class="quantidade-status">28</p>
                             <p>28%</p>
                         </div>
                     </div>
-                    <div class="status">
+                    <div class="status-tarefa">
                         <p>
-                            <span id="square-atrasadas"><i class="fa-solid fa-square"></i></span>
-                            <span>Atrasasdas</span>
+                            <span id="indicador-atrasadas"><i class="fa-solid fa-square"></i></span>
+                            <span>Atrasadas</span>
                         </p>
                         <div>
-                            <p class="percentagem">11</p>
+                            <p class="quantidade-status">11</p>
                             <p>11%</p>
                         </div>
                     </div>
-                    <div class="status">
+                    <div class="status-tarefa">
                         <p>
-                            <span id="square-andamento"><i class="fa-solid fa-square"></i></span>
+                            <span id="indicador-andamento"><i class="fa-solid fa-square"></i></span>
                             <span>Em andamento</span>
                         </p>
                         <div>
-                            <p class="percentagem">14</p>
+                            <p class="quantidade-status">14</p>
                             <p>14%</p>
                         </div>
                     </div>
@@ -216,52 +234,52 @@
 <section class="grid-bottom">
         <article class="estatisticas-adicionais">
         <h2 class="section-title" >Estatísticas adicionais</h2>
-        <article class="boxes-grid">
-            <div class="box">
+        <article class="estatisticas-grid">
+            <div class="estatistica-box">
                 <p>Média Diária</p>
                 <h3>8,3</h3>
                 <p>tarefas/dia</p>
             </div>
 
-            <div class="box">
+            <div class="estatistica-box">
                 <p>Tempo médio</p>
                 <h3>2,4h</h3>
                 <p>por tarefa</p>
             </div>
 
-            <div class="box">
+            <div class="estatistica-box">
                 <p>Streak Atual</p>
                 <h3>12</h3>
                 <p>dias consecutivos</p>
             </div>
 
-            <div class="box">
+            <div class="estatistica-box">
                 <p>Melhor dia</p>
                 <h3>Qui</h3>
                 <p>14 concluídas</p>
             </div>
 
-            <div class="box">
+            <div class="estatistica-box">
                 <p>Projetos ativos</p>
                 <h3>7</h3>
                 <p>em andamento</p>
             </div>
 
-            <div class="box">
+            <div class="estatistica-box">
                 <p>Colaboradores</p>
                 <h3>4</h3>
-                <p>contruibuindo</p>
+                <p>contribuindo</p>
             </div>
         </article>
     </article>
 
     <!-- ================ Atividades recentes ================ -->
     <article class="atividades">
-        <div class="atividade">
+        <div class="atividade-item">
             <h2 class="section-title" >Atividade recente</h2>
             <a href="#">Ver Tudo</a>
         </div>
-        <div class="atividade">
+        <div class="atividade-item">
             <div>
                 <p>Revisão de design do dashboard</p>
                 <p>TaskPulse Web · há 12 min</p>
@@ -271,7 +289,7 @@
             </div>
         </div>
 
-        <div class="atividade">
+        <div class="atividade-item">
             <div>
                 <p>Integração com API de pagamentos</p>
                 <p>Backend Core · há 34 min</p>
@@ -281,7 +299,7 @@
             </div>
         </div>
 
-        <div class="atividade">
+        <div class="atividade-item">
             <div>
                 <p>Testes de regressão Q3</p>
                 <p>QA Sprint · há 1h 20min</p>
@@ -291,7 +309,7 @@
             </div>
         </div>
 
-        <article class="atividade">
+        <article class="atividade-item">
             <div>
                 <p>Documentação de endpoints</p>
                 <p>Backend Core · há 2h 05min</p>
@@ -301,7 +319,7 @@
             </div>
         </article>
 
-        <div class="atividade">
+        <div class="atividade-item">
             <div>
                 <p>Onboarding de novos usuários</p>
                 <p>Growth · há 3h</p>
@@ -311,7 +329,7 @@
             </div>
         </div>
 
-        <div class="atividade">
+        <div class="atividade-item">
             <div>
                 <p>Análise de métricas de conversão</p>
                 <p>Growth · ontem 18:42</p>
@@ -324,6 +342,6 @@
 </section>
 
 </main>  
-   
+    <script src="js/estatisticas.js"></script>
 </body>
 </html>
