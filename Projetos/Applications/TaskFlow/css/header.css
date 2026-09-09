@@ -90,7 +90,7 @@ header h2 {
     width: 250px;
     height: calc(100vh - 70px);
 
-    background-color: var(--color-background);
+    background-color: var(--color-surface);
     border-right: 1px solid var(--color-border);
 
     opacity: 0;
@@ -167,35 +167,34 @@ header h2 {
     text-align: center;
 }
 
-/* =========================
-   MAIN
-========================= */
 
-main {
-    width: 100%;
-    min-height: 100vh;
-    padding: 90px 20px 30px;
-}
+
 
 /* =========================
    DESKTOP
 ========================= */
 @media (min-width: 1024px) {
 
-   body {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    width: 100%;
+    body {
+        width: 100%;
+        min-height: 100vh;
     }
+    main {
+    margin-left: 250px;
+}
     header {
-        position: static;
-        grid-column: 1;
-        grid-row: 1;
-        width: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 250px;
         height: 100vh;
+
         border-right: 1px solid var(--color-border);
         border-bottom: none;
+
         background-color: var(--color-surface);
+        z-index: 20;
     }
 
     .header-content {
@@ -204,28 +203,31 @@ main {
 
     .menu-container {
         position: static;
-        width: auto;
+
+        width: 100%;
         height: 100vh;
+
+        padding: 10px;
+
         opacity: 1;
         transform: translateX(0);
         pointer-events: auto;
+
         border: none;
         background-color: var(--color-surface);
-        padding: 10px;
     }
 
     #menu {
+        width: 100%;
+
         opacity: 1;
         pointer-events: auto;
-        width: fit-content;
     }
 
     .logo {
         display: flex;
         align-items: center;
-        height: fit-content;
         padding: 10px;
-        border-bottom: 0;
     }
 
     #menu ul {
@@ -235,97 +237,9 @@ main {
     #menu a {
         padding: 14px 15px;
     }
-    main {
-        grid-column: 2;
-        grid-row: 1;
-        width: 100%;
-        min-height: 100vh;
-        margin-left: 0;
-        padding: 30px;
-    }
+
+   
 }
-/* @media (min-width: 768px) {
-
-    body {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        width: 100%;
-    }
-
-    header {
-       position: static;
-
-    grid-column: 1;
-    grid-row: 1;
-
-    width: auto;
-    height: 100vh;
-
-    border-right: 1px solid var(--color-border);
-    border-bottom: none;
-
-    background-color: var(--color-white);
-    }
-
-    .header-content {
-        display: none;
-    }
-
-    .menu-container {
-        position: static;
-
-        width: auto;
-        height: 100vh;
-
-        opacity: 1;
-        transform: translateX(0);
-
-        pointer-events: auto;
-
-        border: none;
-        background-color: var(--color-white);
-
-        padding: 10px;
-    }
-
-    #menu {
-        opacity: 1;
-        pointer-events: auto;
-
-        width: fit-content;
-    }
-
-    .logo {
-        display: flex;
-        align-items: center;
-
-        height: fit-content;
-        padding: 10px;
-
-        border-bottom: 0;
-    }
-
-    #menu ul {
-        padding: 30px 15px;
-    }
-
-    #menu a {
-        padding: 14px 15px;
-    }
-
-    main {
-        grid-column: 2 / 3;
-
-        width: 100%;
-        min-height: 100vh;
-
-        margin-left: 0;
-        padding: 30px;
-    }
-} */
-/* =========================
-   ANIMAÇÃO DA SIDEBAR
-========================= */
 
 @keyframes sidebar {
     from {
