@@ -11,7 +11,6 @@ cardsTheme.forEach(theme => {
 
         theme.classList.add("ativo")
 
-
         if(theme.dataset.theme === 'escuro'){
             body.classList.add("dark")
             textThme.innerHTML = "Interface escura ativada para ambientes com pouca luz."

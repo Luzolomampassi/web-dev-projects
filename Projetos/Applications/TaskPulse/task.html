@@ -137,8 +137,17 @@
                             </select>
                         </div>
                     </div>
-                    <label for="data">Data de Vencimento</label>
-                    <input type="date" name="data" id="data">
+                    <div class="data-horario">
+                        <div>
+                            <label for="data">Data de Vencimento</label>
+                            <input type="date" name="data" id="data">
+                        </div>
+                    
+                        <div>
+                            <label for="time">Horário(opcional)</label>
+                            <input type="time" name="time" id="time">
+                        </div>
+                    </div>
                     <div class="form-button">
                         <button type="button"  aria-label="Cancelar a criação da tarefa" class="btn-cancel">Cancelar</button>
                         <button  type="submit" aria-label="Cria um nova tarefa" id="btn-new-task">Adicionar Tarefa</button>

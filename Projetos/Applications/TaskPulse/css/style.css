@@ -153,6 +153,13 @@ main{
 .modal label{
     color: var(--text-secondary);
 }
+.data-horario{
+    display: flex;
+    justify-content: space-between;
+}
+#time{
+    min-width: 200px;
+}
 select,
 textarea,
 .modal input{
@@ -196,7 +203,7 @@ textarea:focus,
     font-weight: bold;
 }
 #btn-new-task{
-    background-color: var(--color-secondary);
+    background-color: var(--color-primary);
     border: 0;
     border-radius: 8px;
     box-shadow: 2px 2px 3px #D8E0FD;
@@ -247,7 +254,7 @@ textarea:focus,
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background-color: var(--color-secondary);
+    background-color: var(--color-primary);
     padding: 5px 10px;
     border: 0;
     border-radius: 8px;
@@ -281,7 +288,7 @@ textarea:focus,
       cursor: pointer;
 }
 .btn-filters:focus{
-    background-color: var(--color-secondary);
+    background-color: var(--color-primary);
     box-shadow: 2px 2px 3px #D8E0FD;
     color: var(--color-white);
 }

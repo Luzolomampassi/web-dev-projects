@@ -3,73 +3,321 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskPulse</title>
+    <title>TaskPulse — Calendário</title>
     <script src="https://kit.fontawesome.com/f6a9b3f1e7.js"></script>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/calendario.css">
 </head>
 <body>
+
     <div class="overlay"></div>
-    <header>
-    <div class="header-content">
-        <button id="btn-menu" aria-label="Abrir menu">
-            <i class="fa-solid fa-bars fa-xl"></i>
-        </button>
 
-        <h2>TaskPulse</h2>
-    </div>
+    <header class="header">
+        <div class="header-content">
 
-    <div class="menu-container">
-        <div class="logo">
-            <h2>TaskPulse</h2>
+            <button
+                type="button"
+                id="btn-menu"
+                class="btn-menu"
+                aria-label="Abrir menu"
+            >
+                <i class="fa-solid fa-bars fa-xl"></i>
+            </button>
+
+            <h2 class="header-title">TaskPulse</h2>
+
         </div>
 
-        <nav id="menu" class="menu">
-            <ul>
-                <li>
-                    <a href="index.html">
-                        <i class="fa-regular fa-house fa-xl"></i>
-                        <span>Visão geral</span>
-                    </a>
-                </li>
+        <div class="menu-container">
 
-                <li>
-                    <a href="task.html">
-                        <i class="fa-solid fa-clipboard-check fa-xl"></i>
-                        <span>Tarefas</span>
-                    </a>
-                </li>
+            <div class="logo">
+                <h2>TaskPulse</h2>
+            </div>
 
-                <li>
-                    <a href="calendario.html">
-                        <i class="fa-regular fa-calendar fa-xl"></i>
-                        <span>Calendário</span>
-                    </a>
-                </li>
+            <nav id="menu" class="menu" aria-label="Menu principal">
+                <ul class="menu-list">
 
-                <li>
-                    <a href="categorias.html">
-                        <i class="fa-solid fa-bars fa-xl"></i>
-                        <span>Categorias</span>
-                    </a>
-                </li>
+                    <li class="menu-item">
+                        <a href="index.html" class="menu-link">
+                            <i class="fa-regular fa-house fa-xl"></i>
+                            <span>Visão geral</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="estatistica.html">
-                        <i class="fa-solid fa-chart-simple fa-xl"></i>
-                        <span>Estatísticas</span>
-                    </a>
-                </li>
+                    <li class="menu-item">
+                        <a href="task.html" class="menu-link">
+                            <i class="fa-solid fa-clipboard-check fa-xl"></i>
+                            <span>Tarefas</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="config.html">
-                        <i class="fa-solid fa-gear fa-xl"></i>
-                        <span>Configurações</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</header>
+                    <li class="menu-item">
+                        <a href="calendario.html" class="menu-link">
+                            <i class="fa-regular fa-calendar fa-xl"></i>
+                            <span>Calendário</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="categorias.html" class="menu-link">
+                            <i class="fa-solid fa-bars fa-xl"></i>
+                            <span>Categorias</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="estatistica.html" class="menu-link">
+                            <i class="fa-solid fa-chart-simple fa-xl"></i>
+                            <span>Estatísticas</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="config.html" class="menu-link">
+                            <i class="fa-solid fa-gear fa-xl"></i>
+                            <span>Configurações</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Cabeçalho da página -->
+        <section class="page-header">
+            <div class="section-heading">
+                <h1>
+                    <i class="fa-regular fa-calendar"></i>
+                    Calendário
+                </h1>
+
+                <p>
+                    Visualize e organize suas tarefas por data
+                </p>
+            </div>
+            <button type="button" id="btn-nova-tarefa" class="btn-primary" > <i class="fa-solid fa-plus"></i> Nova tarefa </button>
+        </section>
+
+        <!-- Controles do calendário -->
+        <section class="calendar-controls">
+
+            <div class="calendar-navigation">
+
+                <button type="button" id="btn-hoje" class="btn-calendar" aria-label="Ver tarefas de hoje">Hoje</button>
+
+                <div class="calendar-arrows">
+                    <button type="button" id="btn-mes-anterior" class="btn-icon" aria-label="Ir para o mês anterior">
+                        <i class="fa-solid fa-chevron-left"></i> 
+                    </button>
+                    <button type="button" id="btn-mes-proximo" class="btn-icon" aria-label="Ir para o próximo mês" > <i class="fa-solid fa-chevron-right"></i></button>
+
+                    <h3 id="mes-atual">
+                        Setembro 2026
+                    </h3>
+                </div>
+
+            </div>
+
+            <div class="calendar-view">
+                <button type="button" id="btn-mes" class="btn-filter is-active" >Mês</button>
+                <button type="button" id="btn-semana" class="btn-filter" >Semana</button>
+                <button type="button" id="btn-dia" class="btn-filter">Dia</button>
+
+            </div>
+            <div class="calendar-filter">
+
+                <label for="filtro-categoria">
+                    <i class="fa-solid fa-filter"></i>
+                </label>
+
+                <select
+                    name="filtro-categoria"
+                    id="filtro-categoria"
+                    aria-label="Filtrar por categoria"
+                >
+                    <option value="todas">Todas</option>
+                    <option value="desenvolvimento">Desenvolvimento</option>
+                    <option value="design">Design</option>
+                    <option value="estudos">Estudos</option>
+                    <option value="pessoal">Pessoal</option>
+                    <option value="trabalho">Trabalho</option>
+                </select>
+
+            </div>
+
+        </section>
+
+        <!-- Calendário -->
+        <section class="calendar-section">
+
+            <div
+                id="calendario"
+                class="calendar"
+                aria-label="Calendário de tarefas"
+            >
+                <!-- O calendário será gerado pelo JavaScript -->
+            </div>
+
+        </section>
+
+        <!-- Próximas tarefas -->
+        <section class="upcoming-tasks">
+
+            <div class="section-heading">
+                <h2>Próximas tarefas</h2>
+            </div>
+
+            <div id="lista-proximas-tarefas" class="task-list">
+
+                <article class="task-item">
+                    <div class="task-info">
+                        <h3>Entrega do trabalho</h3>
+                        <p>12/09/2026 · 18:00</p>
+                    </div>
+
+                    <span class="task-priority priority-high">
+                        Alta
+                    </span>
+                </article>
+
+                <article class="task-item">
+                    <div class="task-info">
+                        <h3>Estudar PHP</h3>
+                        <p>15/09/2026 · 08:30</p>
+                    </div>
+
+                    <span class="task-priority priority-medium">
+                        Média
+                    </span>
+                </article>
+
+                <article class="task-item">
+                    <div class="task-info">
+                        <h3>Planejar tarefas</h3>
+                        <p>16/09/2026 · 11:00</p>
+                    </div>
+
+                    <span class="task-priority priority-low">
+                        Baixa
+                    </span>
+                </article>
+
+                <article class="task-item">
+                    <div class="task-info">
+                        <h3>Code Review</h3>
+                        <p>18/09/2026 · 15:00</p>
+                    </div>
+
+                    <span class="task-priority priority-medium">
+                        Média
+                    </span>
+                </article>
+
+                <article class="task-item">
+                    <div class="task-info">
+                        <h3>Reunião de equipe</h3>
+                        <p>22/09/2026 · 10:00</p>
+                    </div>
+
+                    <span class="task-priority priority-high">
+                        Alta
+                    </span>
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- Resumo do dia -->
+        <section class="day-summary">
+
+            <div class="section-heading">
+                <h2>Resumo do dia</h2>
+                <p id="data-resumo">10/09/2026</p>
+            </div>
+
+            <div class="summary-grid">
+
+                <article class="summary-card">
+                    <h3 id="total-tarefas-dia">1</h3>
+                    <p>Total</p>
+                </article>
+
+                <article class="summary-card">
+                    <h3 id="tarefas-concluidas-dia">1</h3>
+                    <p>Concluídas</p>
+                </article>
+
+                <article class="summary-card">
+                    <h3 id="tarefas-pendentes-dia">0</h3>
+                    <p>Pendentes</p>
+                </article>
+
+                <article class="summary-card">
+                    <h3 id="tarefas-prioridade-alta">0</h3>
+                    <p>Alta prioridade</p>
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- Tarefas do dia selecionado -->
+        <section class="day-tasks">
+
+            <div class="section-heading">
+                <h2 id="data-tarefas-dia">
+                    10/09/2026
+                </h2>
+            </div>
+
+            <div id="lista-tarefas-dia" class="day-task-list">
+
+                <article class="day-task">
+
+                    <div class="day-task-info">
+                        <p class="day-task-title">
+                            Revisar CSS
+                        </p>
+
+                        <p class="day-task-time">
+                            10:00
+                        </p>
+                    </div>
+
+                    <div class="day-task-actions">
+
+                        <button
+                            type="button"
+                            class="btn-task-action btn-complete"
+                            aria-label="Concluir tarefa"
+                        >
+                            <i class="fa-solid fa-check"></i>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn-task-action btn-delete"
+                            aria-label="Excluir tarefa"
+                        >
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="js/calendario.js"></script>
+
 </body>
-</html>
+
+</htm

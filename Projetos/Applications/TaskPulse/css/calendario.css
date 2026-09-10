@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    --color-primary: #2563EB;
+    --color-primary-dark: #1D4ED8;
+    --color-primary-light: #DBEAFE;
+
+    --color-background: #eef5fd;
+    --color-surface: #FFFFFF;
+    --color-white: #FFFFFF;
+
+    --color-text: #0F172A;
+    --color-text-secondary: #64748B;
+
+    --color-border: #E2E8F0;
+
+    --color-success: #16A34A;
+    --color-success-light: #DCFCE7;
+
+    --color-warning: #D97706;
+    --color-warning-light: #FEF3C7;
+
+    --color-danger: #DC2626;
+    --color-danger-light: #FEE2E2;
+}
+
+body{
+    background-color: var(--color-background);
+}
+main{
+    padding: 40px 10px;
+}
+.page-header{
+    line-height: 2em;
+}
+.fa-calendar{
+    color: var(--color-primary);
+}
+.btn-primary{
+    background-color: var(--color-primary);
+    border: 0;
+    padding: 10px;
+    border-radius: 12px;
+    color: var(--color-white);
+
+}
+.calendar-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.calendar-navigation{
+    display: flex;
+     align-items: center;
+    gap: 10px;
+}
+.calendar-arrows{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.calendar-navigation 
+button{
+    background-color: var(--color-surface);
+    color: var(--color-text-secondary);
+    border-radius: 8px;
+    padding: 5px;
+    height: fit-content;
+    border: 1.5px solid var(--color-border);
+    font-weight: bold;
+}
+.calendar-view {
+    display: flex;
+    width: fit-content;
+}
+.btn-filter {
+    background-color: var(--color-surface);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    height: 32px;
+    padding: 0 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.calendar-view .btn-filter:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.calendar-view .btn-filter:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.is-active{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+
+}
+.calendar-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.calendar-filter select {
+    height: 32px;
+    padding: 0 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-weight: bold;
+}
