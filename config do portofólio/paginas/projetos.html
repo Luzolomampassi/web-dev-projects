@@ -1,320 +1,1095 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-      content="Portfólio de Luzolo Mampassi.">
- 
-    
-    <title>Projetos</title>
-    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <meta
+        name="description"
+        content="Projetos desenvolvidos por Luzolo Mampassi durante sua jornada de aprendizado em desenvolvimento web."
+    >
+    <meta name="author" content="Luzolo Mampassi">
+
+    <title>Projetos | Luzolo Mampassi</title>
+
+    <!-- ============================== Ícones ============================== -->
+
     <link
-  href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
-  rel="stylesheet"
-/>
-    <link rel="stylesheet" href="../../style.css"">
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+    >
+
+    <script
+        src="https://kit.fontawesome.com/f6a9b3f1e7.js"
+        crossorigin="anonymous">
+    </script>
+
+    <!-- ============================== CSS ============================== -->
+
+    <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="../estilos/header.css">
     <link rel="stylesheet" href="../estilos/footer.css">
     <link rel="stylesheet" href="../estilos/Estilos das páginas/Banner-projetos.css">
-    <script src="https://kit.fontawesome.com/f6a9b3f1e7.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
- <header>
+
+    <!-- ============================== Header ============================== -->
+
+    <header>
+
         <nav>
-             <h1><i class="fa-solid fa-code  icone-nav"></i><a href="../../index.html">Luzolo Mampassi</a></h1>
-            <button id="menu-btn">☰</button>
+
+            <h1>
+                <i
+                    class="fa-solid fa-code icone-nav"
+                    aria-hidden="true">
+                </i>
+
+                <a href="../../index.html">
+                    Luzolo Mampassi
+                </a>
+            </h1>
+
+            <button
+                id="menu-btn"
+                type="button"
+                aria-label="Abrir menu"
+                aria-controls="menu"
+                aria-expanded="false">
+                ☰
+            </button>
 
             <div id="menu">
-                
+
                 <ul>
-                    <li><a href="../../index.html">Início</a></li>
-                    <li><a href="projetos.html">Projetos</a></li>
-                    <li><a href="sobreMim.html">Sobre mim</a></li>
-                    <li><a href="contato.html">Contato</a></li>
+
+                    <li>
+                        <a href="../../index.html">
+                            Início
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="projetos.html"
+                            aria-current="page">
+                            Projetos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="sobreMim.html">
+                            Sobre mim
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contato.html">
+                            Contato
+                        </a>
+                    </li>
+
                 </ul>
 
-
                 <div class="icone-bar">
-                    <a href="https://github.com/Luzolomampassi"
+
+                    <a
+                        href="https://github.com/Luzolomampassi"
                         target="_blank"
-                        rel="noopener noreferrer">
-                        <i class="fa-brands fa-github fa-xl"></i>
+                        rel="noopener noreferrer"
+                        aria-label="GitHub">
+
+                        <i
+                            class="fa-brands fa-github fa-xl"
+                            aria-hidden="true">
+                        </i>
+
                     </a>
 
-                    <i class="fa-brands fa-linkedin fa-xl"></i>
+                    <span
+                        class="social-icon-disabled"
+                        aria-label="LinkedIn indisponível">
 
-                    <a href="mailto:Luzolomampassi8@gmail.com"
-                        rel="noopener noreferrer">
-                        <i class="fa-regular fa-envelope fa-xl"></i>
+                        <i
+                            class="fa-brands fa-linkedin fa-xl"
+                            aria-hidden="true">
+                        </i>
+
+                    </span>
+
+                    <a
+                        href="mailto:Luzolomampassi8@gmail.com"
+                        aria-label="Enviar e-mail">
+
+                        <i
+                            class="fa-regular fa-envelope fa-xl"
+                            aria-hidden="true">
+                        </i>
+
                     </a>
-                    <a href="https://www.instagram.com/luzolomampassi8/"target="_blank"
-                        rel="noopener noreferrer"><i class="fa-brands fa-instagram fa-xl"></i></a>
+
+                    <a
+                        href="https://www.instagram.com/luzolomampassi8/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram">
+
+                        <i
+                            class="fa-brands fa-instagram fa-xl"
+                            aria-hidden="true">
+                        </i>
+
+                    </a>
+
                 </div>
-             
+
             </div>
+
         </nav>
-    </header>  
-<main>
-   <section class="banner">
-        <div class="banner-content">
-            <h1>Meus <span class="banner-text-mark">Projetos</span></h1>
-            <p>Alguns projetos que desenvolvi aplicando minhas <br>habilidades em desenvolvimento front-end e criando experiências incríveis.</p>
-        </div>
-        <div class="cards">
-            <div class="card"><i class="fa-solid fa-code banner_icon"></i>
-            <h2>3</h2>
-            <p>Projetos Concluídos</p>
-        </div>
-            <div class="card"><i class="fa-solid fa-layer-group banner_icon"></i>
-                <h2>3</h2>
-                <p>Tecnologias Utilizadas</p>
+
+    </header>
+
+    <main>
+
+        <!-- ============================== Banner ============================== -->
+
+        <section class="banner">
+
+            <div class="banner-content">
+
+                <h2>
+                    Meus
+                    <span class="banner-text-mark">
+                        Projetos
+                    </span>
+                </h2>
+
+                <p>
+                    Alguns projetos que desenvolvi aplicando minhas
+                    <br>
+                    habilidades em desenvolvimento front-end e criando
+                    experiências digitais.
+                </p>
+
             </div>
-            <div class="card"><i class="fa-solid fa-rocket banner_icon"></i>
-                <h2>1</h2>
-                <p>Ano de aprendizado</p>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <i
+                        class="fa-solid fa-code banner_icon"
+                        aria-hidden="true">
+                    </i>
+
+                    <h3>5</h3>
+
+                    <p>Projetos concluídos</p>
+
+                </div>
+
+                <div class="card">
+
+                    <i
+                        class="fa-solid fa-layer-group banner_icon"
+                        aria-hidden="true">
+                    </i>
+
+                    <h3>5</h3>
+
+                    <p>Tecnologias principais</p>
+
+                </div>
+
+                <div class="card">
+
+                    <i
+                        class="fa-solid fa-rocket banner_icon"
+                        aria-hidden="true">
+                    </i>
+
+                    <h3>1</h3>
+
+                    <p>Ano de aprendizado</p>
+
+                </div>
+
             </div>
-        </div>
-   </section>
-   <!--========== Barra de Pesquisa e Filtros =========-->
-   <section class="search_container">
-        <div class="filters">
-            <button class="btn-filtros" aria-label="btn de filtro" data-categoria="todos">Todos</button>
-            <button class="btn-filtros" aria-label="btn de filtro" data-categoria="frontEnd">Front-end</button>
-            <button class="btn-filtros" aria-label="btn de filtro" data-categoria="website">Websites</button>
-            <button class="btn-filtros" aria-label="btn de filtro" data-categoria="javascript">JavaScript</button>
-            <button class="btn-filtros" aria-label="btn de filtro" data-categoria="interfaces">Interfaces</button>
-            <button class="btn-filtros" aria-label="btn de filtro" data-categoria="landingPages">Landing Pages</button>
-        </div>
-          <div class="search_bar">
-            <input type="search" name="search" id="search" placeholder=" Buscar projetoVer mais">
-            <i class="fa-brands fa-sistrix lupa "></i>
-        </div>
-   </section>
-   <!--========== Grade de projetos =========-->
-    
-   
-<section class="projets">
-        <article class="cards_projets">
-            <!--==== Card do portfólio ====-->
-            <div class="item" data-categoria="website">
-                
-                <div class="imagem">
-                    <img src="../icones/trechos/capa-do-portfolio.png" alt="captura de tela do portfólio pessoal" loading="lazy">
-                    <div class="links_container">
-                        <p>Projeto complementar</p>
-                    <div class="links_content">
-                        <a href="https://github.com/Luzolomampassi" class="links_icon" target="_blank"rel="noopener noreferrer">
-                            <i class="fa-brands fa-github icone-link "></i>
-                        </a>
-                        <a href="#" class="links_icon" rel="noopener noreferrer">
-                            <i class="fa-brands fa-linkedin icone-link "></i>
-                        </a>
-                        <a href="https://www.instagram.com/luzolomampassi8/" target="_blank" class="links_icon" rel="noopener noreferrer">
-                            <i class="fa-brands fa-instagram icone-link "></i>
-                        </a>
-                    </div>   
-                        
-                    </div>
-                </div>
-                <div class="description">
-                      <h3>Portfólio Pessoal (simples)</h3>
-                    <p>Meu Portfólio Pessoal desenvolvido para apresentar meus projetos, .</p>
-                    <div class="badges">
-                    <p class="badge badge_html">HTML</p>
-                    <p class="badge badge_css">CSS</p>
-                    <p class="badge badge_js">JS</p>
-                  </div>
-                  <div class="card-buttons">
-                    <a href="https://github.com/Luzolomampassi/web-dev-projects/tree/main/Projetos/Web%20sites/Portfolios/Portofolio-1" class="btn-primary" target="_blank"  rel="noopener noreferrer"><i class="fa-brands fa-github icone-card fa-xl"></i><span class="txt_escondido">Github</span></a>
-                    <a href="../../Projetos/Web sites/Portfolios/Portofolio-1/inicio.html" class="btn-secundary" target="_blank">Ver Projeto <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>              
-            </div>  
-                <!--==== Card do restaurante ====-->
-             <div class="item" data-categoria="website">
-                <!-- Captura de tela do restaurante --> 
-                
-                <div class="imagem">
-                    <img src="../icones/trechos/capa-do-levaki.png" alt="captura de tela do  academy landing page" loading="lazy">
-                    <div class="links_container">
-                        <p>Destaque</p>
-                    <div class="links_content">
-                        <a href="https://github.com/Luzolomampassi" class="links_icon" target="_blank"rel="noopener noreferrer">
-                            <i class="fa-brands fa-github icone-link "></i>
-                        </a>
-                        <a href="#" class="links_icon" rel="noopener noreferrer">
-                            <i class="fa-brands fa-linkedin icone-link "></i>
-                        </a>
-                        <a href="https://www.instagram.com/luzolomampassi8/" target="_blank" class="links_icon" rel="noopener noreferrer">
-                            <i class="fa-brands fa-instagram icone-link "></i>
-                        </a>
-                    </div>   
-                        
-                    </div>
-                </div>
-        
-                <!-- Descrição do Restaurante --> 
-                <div class="description">
-                    <h3>Restaurante Artes & Sabor </h3>
-                    <p>Site de restaurante criado para exibir o cardápio, pratos, bebidas<details> <summary>Ver mais</summary>
-                         e informações do estabelecimento, oferecendo uma navegação intuitiva e uma experiência agradável para os clientes.</details></p>
-                    <div class="badges">
-                    <p class="badge badge_html">HTML</p>
-                    <p class="badge badge_css">CSS</p>
-                    <p class="badge badge_js">JS</p>
-                    <p class="badge badge_php">PHP</p>
-                    <p class="badge badge_mysql">My<span class="sql">SQL</span></p>
-                  </div>
-                  <div class="card-buttons">
-                    <a href="https://github.com/Luzolomampassi/web-dev-projects/tree/main/Projetos/Web%20sites/Restaurante%20Sabor%20%26%20Artes" class="btn-primary" target="_blank" ><i class="fa-brands fa-github icone-card fa-xl"></i><span class="txt_escondido">Github</span></a>
-                    <a href="../../Projetos/Web sites/Restaurante levaki/index.html" class="btn-secundary" target="_blank">Ver Projeto<i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>   <!-- Fim do restaurante --> 
-                 
-            </div>    
-             <!--==== Card do Landing Pages ====-->        
-             <div class="item" data-categoria="landingPages">
-                <!-- Captura de tela do Landing Page --> 
-                
-                <div class="imagem">
-                    <img src="../icones/trechos/img landing page.png" alt="captura de tela do site do restaurante " loading="lazy">
-                    <div class="links_container">
-                       <p>Projeto complementar</p>
-                    <div class="links_content">
-                        <a href="https://github.com/Luzolomampassi" class="links_icon" target="_blank"rel="noopener noreferrer">
-                            <i class="fa-brands fa-github icone-link "></i>
-                        </a>
-                        <a href="#" class="links_icon" rel="noopener noreferrer">
-                            <i class="fa-brands fa-linkedin icone-link "></i>
-                        </a>
-                        <a href="https://www.instagram.com/luzolomampassi8/" target="_blank" class="links_icon" rel="noopener noreferrer">
-                            <i class="fa-brands fa-instagram icone-link "></i>
-                        </a>
-                    </div>   
-                        
-                    </div>
-                </div>
-        
-                <!-- Descrição do Landing Page --> 
-                <div class="description">
-                      <h3>Academy Landing Page</h3>
-                    <p>Landing page moderna para uma plataforma de cursos de programação, <details> <summary>Ver mais</summary>
-                        desenvolvida para apresentar os cursos, destacar seus benefícios e incentivar novas inscrições.</details></span>
-                                </p>
-                    <div class="badges">
-                    <p class="badge badge_html">HTML</p>
-                    <p class="badge badge_css">CSS</p>
-                    <p class="badge badge_js">JS</p>
-                  </div>
-                  <div class="card-buttons">
-                    <a href="https://github.com/Luzolomampassi/web-dev-projects/tree/main/Projetos/Web%20sites/Landings%20pages/Dashbord%20anality" class="btn-primary"><i class="fa-brands fa-github icone-card fa-xl" target="_blank"  rel="noopener noreferrer"></i><span class="txt_escondido">Github</span> </a>
-                    <a href="../../Projetos/Web sites/Landings pages/Dashbord anality/inicio.html" class="btn-secundary" target="_blank">Ver Projeto  <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>       
-             </div> 
-            <!--==== Card do Cosmos ====-->
-            <div class="item" data-categoria="interfaces">
-                <!-- Imagem do cosmos --> 
-                
-                <div class="imagem">
-                    <img src="../icones/trechos/capa-do-cosmos.png" alt="Layout da interace cosmos" loading="lazy">
-                    <div class="links_container">
-                      <p>Projeto complementar</p>
-                    <div class="links_content">
-                        <a href="https://github.com/Luzolomampassi" class="links_icon" target="_blank"rel="noopener noreferrer">
-                            <i class="fa-brands fa-github icone-link "></i>
-                        </a>
-                        <a href="#" class="links_icon" rel="noopener noreferrer">
-                            <i class="fa-brands fa-linkedin icone-link "></i>
-                        </a>
-                        <a href="https://www.instagram.com/luzolomampassi8/" target="_blank" class="links_icon" rel="noopener noreferrer">
-                            <i class="fa-brands fa-instagram icone-link "></i>
-                        </a>
-                    </div>   
-                        
-                    </div>
-                </div>
-        
-                <!-- Descrição do Cosmos --> 
-                <div class="description">
-                      <h3>Cosmos</h3>
-                    <p>Cosmos é uma interface web moderna e imersiva desenvolvida para apresentar conteúdos sobre astronomia <details>
-                        <summary>Ver mais</summary>
-                        e exploração espacial,A interface foi estruturada para proporcionar uma experiência de navegação clara e visualmente envolvente, com seções de , estatísticas, conteúdos exploráveis, newsletter e links para redes sociais.</details></span>
-                                </p>
-                    <div class="badges">
-                    <p class="badge badge_html">HTML</p>
-                    <p class="badge badge_css">CSS</p>
-                  </div>
-                  <div class="card-buttons">
-                    <a href="https://github.com/Luzolomampassi/web-dev-projects/tree/main/Projetos/Interfaces/Cosmos" class="btn-primary" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github icone-card fa-xl"></i><span class="txt_escondido">Github</span> </a>
-                    <a href="../../Projetos/Interfaces/Cosmos/index.html" class="btn-secundary" target="_blank">Ver Projeto  <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>       
-            </div> 
-            <!--==== Card da TO-DO-LIST ====-->
-            <div class="item"  data-categoria="website">
-                
-                <div class="imagem">
-                    <img src="../icones/trechos/capa-do-taskPulse.png" alt="Layout da interace cosmos" loading="lazy">
-                    <div class="links_container">
-                     <p>Destaque</p>
-                    <div class="links_content">
-                        <a href="https://github.com/Luzolomampassi" class="links_icon" target="_blank"rel="noopener noreferrer">
-                            <i class="fa-brands fa-github icone-link "></i>
-                        </a>
-                        <a href="#" class="links_icon" rel="noopener noreferrer">
-                            <i class="fa-brands fa-linkedin icone-link "></i>
-                        </a>
-                        <a href="https://www.instagram.com/luzolomampassi8/" target="_blank" class="links_icon" rel="noopener noreferrer">
-                            <i class="fa-brands fa-instagram icone-link "></i>
-                        </a>
-                    </div>   
-                        
-                    </div>
-                </div>
-        
-                <!-- Descrição do to-do-list --> 
-                <div class="description">
-                      <h3>TaskPulse</h3>
-                    <p>Aplicação de gerenciamento de tarefas desenvolvida com HTML, CSS e JavaScript. <details>
-                        <summary>Ver mais</summary>
-                        Permite adicionar, concluir, pesquisar e filtrar tarefas
-                        de forma simples e intuitiva, com uma interface responsiva e focada na organização e produtividade do utilizador.</details></span>
-                                </p>
-                    <div class="badges">
-                    <p class="badge badge_html">HTML</p>
-                    <p class="badge badge_css">CSS</p>
-                    <p class="badge badge_js">JS</p>
-                    <p class="badge badge_php">PHP</p>
-                    <p class="badge badge_mysql">My<span class="sql">SQL</span></p>
-                  </div>
-                  <div class="card-buttons">
-                    <a href="https://github.com/Luzolomampassi/web-dev-projects/tree/main/Projetos/Applications/TaskFlow/index.html" class="btn-primary" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github icone-card fa-xl"></i><span class="txt_escondido">Github</span> </a>
-                    <a href="../../Projetos/Applications/TaskPulse/index.html" class="btn-secundary" target="_blank">Ver Projeto  <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>       
-            </div> 
-            
-         
 
-                    
-    </article>
+        </section>
 
-      
-           
-            
-      
-       
-</section>
+        <!-- ============================== Pesquisa e Filtros ============================== -->
 
-            <!--========= Menu =========-->
+        <section class="search_container">
 
-  
-</main>
+            <div class="filters">
+
+                <button
+                    type="button"
+                    class="btn-filtros"
+                    aria-label="Mostrar todos os projetos"
+                    data-categoria="todos">
+                    Todos
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-filtros"
+                    aria-label="Filtrar projetos de front-end"
+                    data-categoria="frontEnd">
+                    Front-end
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-filtros"
+                    aria-label="Filtrar websites"
+                    data-categoria="website">
+                    Websites
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-filtros"
+                    aria-label="Filtrar projetos JavaScript"
+                    data-categoria="javascript">
+                    JavaScript
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-filtros"
+                    aria-label="Filtrar interfaces"
+                    data-categoria="interfaces">
+                    Interfaces
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-filtros"
+                    aria-label="Filtrar landing pages"
+                    data-categoria="landingPages">
+                    Landing Pages
+                </button>
+
+            </div>
+
+            <div class="search_bar">
+
+                <label
+                    for="search"
+                    class="sr-only">
+                    Pesquisar projeto
+                </label>
+
+                <input
+                    type="search"
+                    name="search"
+                    id="search"
+                    placeholder="Buscar projeto"
+                    autocomplete="off"
+                >
+
+                <i
+                    class="fa-solid fa-magnifying-glass lupa"
+                    aria-hidden="true">
+                </i>
+
+            </div>
+
+        </section>
+
+        <!-- ============================== Grade de Projetos ============================== -->
+
+        <section class="projets">
+
+            <article class="cards_projets">
+
+                <!-- ============================== Portfólio ============================== -->
+
+                <div
+                    class="item"
+                    data-categoria="website">
+
+                    <div class="imagem">
+
+                        <img
+                            src="../icones/trechos/capa-do-portfolio.png"
+                            alt="Captura de tela do portfólio pessoal"
+                            loading="lazy"
+                        >
+
+                        <div class="links_container">
+
+                            <p>Projeto complementar</p>
+
+                            <div class="links_content">
+
+                                <a
+                                    href="https://github.com/Luzolomampassi"
+                                    class="links_icon"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="GitHub">
+
+                                    <i
+                                        class="fa-brands fa-github icone-link"
+                                        aria-hidden="true">
+                                    </i>
+
+                                </a>
+
+                                <span
+                                    class="links_icon social-icon-disabled"
+                                    aria-label="LinkedIn indisponível">
+
+                                    <i
+                                        class="fa-brands fa-linkedin icone-link"
+                                        aria-hidden="true">
+                                    </i>
+
+                                </span>
+
+                                <a
+                                    href="https://www.instagram.com/luzolomampassi8/"
+                                    class="links_icon"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Instagram">
+
+                                    <i
+                                        class="fa-brands fa-instagram icone-link"
+                                        aria-hidden="true">
+                                    </i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="description">
+
+                        <h3>
+                            Portfólio Pessoal
+                        </h3>
+
+                        <p>
+                            Meu portfólio pessoal desenvolvido para
+                            apresentar meus projetos e minha evolução
+                            no desenvolvimento web.
+                        </p>
+
+                        <div class="badges">
+
+                            <span class="badge badge_html">
+                                HTML
+                            </span>
+
+                            <span class="badge badge_css">
+                                CSS
+                            </span>
+
+                            <span class="badge badge_js">
+                                JavaScript
+                            </span>
+
+                        </div>
+
+                        <div class="card-buttons">
+
+                            <a
+                                href="https://github.com/Luzolomampassi/web-dev-projects/tree/main/Projetos/Web%20sites/Portfolios/Portofolio-1"
+                                class="btn-primary"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                <i
+                                    class="fa-brands fa-github icone-card fa-xl"
+                                    aria-hidden="true">
+                                </i>
+
+                                <span class="txt_escondido">
+                                    GitHub
+                                </span>
+
+                            </a>
+
+                            <a
+                                href="../../Projetos/Web sites/Portfolios/Portofolio-1/inicio.html"
+                                class="btn-secundary"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                Ver projeto
+
+                                <i
+                                    class="fa-solid fa-arrow-right"
+                                    aria-hidden="true">
+                                </i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ============================== Levaki ============================== -->
+
+                <div
+                    class="item"
+                    data-categoria="website">
+
+                    <div class="imagem">
+
+                        <img
+                            src="../icones/trechos/capa-do-levaki.png"
+                            alt="Captura de tela do website do restaurante Levaki"
+                            loading="lazy"
+                        >
+
+                        <div class="links_container">
+
+                            <p>Destaque</p>
+
+                            <div class="links_content">
+
+                                <a
+                                    href="https://github.com/Luzolomampassi"
+                                    class="links_icon"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="GitHub">
+
+                                    <i
+                                        class="fa-brands fa-github icone-link"
+                                        aria-hidden="true">
+                                    </i>
+
+                                </a>
+
+                                <span
+                                    class="links_icon social-icon-disabled"
+                                    aria-label="LinkedIn indisponível">
+
+                                    <i
+                                        class="fa-brands fa-linkedin icone-link"
+                                        aria-hidden="true">
+                                    </i>
+
+                                </span>
+
+                                <a
+                                    href="https://www.instagram.com/luzolomampassi8/"
+                                    class="links_icon"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Instagram">
+
+                                    <i
+                                        class="fa-brands fa-instagram icone-link"
+                                        aria-hidden="true">
+                                    </i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="description">
+
+                        <h3>
+                            Levaki
+                        </h3>
+
+                        <p>
+                            Site de restaurante criado para exibir o
+                            cardápio, pratos, bebidas e informações do
+                            estabelecimento.
+
+                            <details>
+                                <summary>Ver mais</summary>
+
+                                A interface foi desenvolvida com foco
+                                em navegação intuitiva e experiência
+                                agradável para os clientes, com evolução
+                                planejada para integração com PHP e MySQL.
+
+                            </details>
+
+                        </p>
+
+                        <div class="badges">
+
+                            <span class="badge badge_html">
+                                HTML
+                            </span>
+
+                            <span class="badge badge_css">
+                                CSS
+                            </span>
+
+                            <span class="badge badge_js">
+                                JavaScript
+                            </span>
+
+                            <span class="badge badge_php">
+                                PHP
+                            </span>
+
+                            <span class="badge badge_mysql">
+                                My<span class="sql">SQL</span>
+                            </span>
+
+                        </div>
+
+                        <div class="card-buttons">
+
+                            <a
+                                href="https://github.com/Luzolomampassi/web-dev-projects/tree/main/Projetos/Web%20sites/Restaurante%20Sabor%20%26%20Artes"
+                                class="btn-primary"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                <i
+                                    class="fa-brands fa-github icone-card fa-xl"
+                                    aria-hidden="true">
+                                </i>
+
+                                <span class="txt_escondido">
+                                    GitHub
+                                </span>
+
+                            </a>
+
+                            <a
+                                href="../../Projetos/Web sites/Restaurante levaki/index.html"
+                                class="btn-secundary"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                Ver projeto
+
+                                <i
+                                    class="fa-solid fa-arrow-right"
+                                    aria-hidden="true">
+                                </i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ============================== Academy Landing Page ============================== -->
+
+                <div
+                    class="item"
+                    data-categoria="landingPages">
+
+                    <div class="imagem">
+
+                        <img
+                            src="../icones/trechos/img landing page.png"
+                            alt="Captura de tela da Academy Landing Page"
+                            loading="lazy"
+                        >
+
+                        <div class="links_container">
+
+                            <p>Projeto complementar</p>
+
+                            <div class="links_content">
+
+                                <a
+                                    href="https://github.com/Luzolomampassi"
+                                    class="links_icon"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="GitHub">
+
+                                    <i
+                                        class="fa-brands fa-github icone-link"
+                                        aria-hidden="true">
+                                    </i>
+
+                                </a>
+
+                                <span
+                                    class="links_icon social-icon-disabled"
+                                    aria-label="LinkedIn indisponível">
+
+                                    <i
+                                        class="fa-brands fa-linkedin icone-link"
+                                        aria-hidden="true">
+                                    </i>
+
+                                </span>
+
+                                <a
+                                    href="https://www.instagram.com/luzolomampassi8/"
+                                    class="links_icon"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Instagram">
+
+                                    <i
+                                        class="fa-brands fa-instagram icone-link"
+                                        aria-hidden="true">
+                                    </i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="description">
+
+                        <h3>
+                            Academy Landing Page
+                        </h3>
+
+                        <p>
+                            Landing page moderna para uma plataforma
+                            de cursos de programação.
+
+                            <details>
+                                <summary>Ver mais</summary>
+
+                                Desenvolvida para apresentar os cursos,
+                                destacar seus benefícios e incentivar
+                                novas inscrições.
+
+                            </details>
+
+                        </p>
+
+                        <div class="badges">
+
+                            <span class="badge badge_html">
+                                HTML
+                            </span>
+
+                            <span class="badge badge_css">
+                                CSS
+                            </span>
+
+                            <span class="badge badge_js">
+                                JavaScript
+                            </span>
+
+                        </div>
+
+                        <div class="card-buttons">
+
+                            <a
+                                href="https://github.com/Luzolomampassi/web-dev-projects/tree/main/Projetos/Web%20sites/Landings%20pages/Dashbord%20anality"
+                                class="btn-primary"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                <i
+                                    class="fa-brands fa-github icone-card fa-xl"
+                                    aria-hidden="true">
+                                </i>
+
+                                <span class="txt_escondido">
+                                    GitHub
+                                </span>
+
+                            </a>
+
+                            <a
+                                href="../../Projetos/Web sites/Landings pages/Dashbord anality/inicio.html"
+                                class="btn-secundary"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                Ver projeto
+
+                                <i
+                                    class="fa-solid fa-arrow-right"
+                                    aria-hidden="true">
+                                </i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ============================== Cosmos ============================== -->
+
+                <div
+                    class="item"
+                    data-categoria="interfaces">
+
+                    <div class="imagem">
+
+                        <img
+                            src="../icones/trechos/capa-do-cosmos.png"
+                            alt="Captura de tela da interface Cosmos"
+                            loading="lazy"
+                        >
+
+                        <div class="links_container">
+
+                            <p>Projeto complementar</p>
+
+                            <div class="links_content">
+
+                                <a
+                                    href="https://github.com/Luzolomampassi"
+                                    class="links_icon"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="GitHub">
+
+                                    <i
+                                        class="fa-brands fa-github icone-link"
+                                        aria-hidden="true">
+                                    </i>
+
+                                </a>
+
+                                <span
+                                    class="links_icon social-icon-disabled"
+                                    aria-label="LinkedIn indisponível">
+
+                                    <i
+                                        class="fa-brands fa-linkedin icone-link"
+                                        aria-hidden="true">
+                                    </i>
+
+                                </span>
+
+                                <a
+                                    href="https://www.instagram.com/luzolomampassi8/"
+                                    class="links_icon"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Instagram">
+
+                                    <i
+                                        class="fa-brands fa-instagram icone-link"
+                                        aria-hidden="true">
+                                    </i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="description">
+
+                        <h3>
+                            Cosmos
+                        </h3>
+
+                        <p>
+                            Cosmos é uma interface web moderna e imersiva
+                            desenvolvida para apresentar conteúdos sobre
+                            astronomia.
+
+                            <details>
+                                <summary>Ver mais</summary>
+
+                                A interface foi estruturada para proporcionar
+                                uma navegação clara e visualmente envolvente,
+                                com seções informativas e conteúdos
+                                exploráveis.
+
+                            </details>
+
+                        </p>
+
+                        <div class="badges">
+
+                            <span class="badge badge_html">
+                                HTML
+                            </span>
+
+                            <span class="badge badge_css">
+                                CSS
+                            </span>
+
+                        </div>
+
+                        <div class="card-buttons">
+
+                            <a
+                                href="https://github.com/Luzolomampassi/web-dev-projects/tree/main/Projetos/Interfaces/Cosmos"
+                                class="btn-primary"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                <i
+                                    class="fa-brands fa-github icone-card fa-xl"
+                                    aria-hidden="true">
+                                </i>
+
+                                <span class="txt_escondido">
+                                    GitHub
+                                </span>
+
+                            </a>
+
+                            <a
+                                href="../../Projetos/Interfaces/Cosmos/index.html"
+                                class="btn-secundary"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                Ver projeto
+
+                                <i
+                                    class="fa-solid fa-arrow-right"
+                                    aria-hidden="true">
+                                </i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ============================== TaskPulse ============================== -->
+
+                <div
+                    class="item"
+                    data-categoria="website">
+
+                    <div class="imagem">
+
+                        <img
+                            src="../icones/trechos/capa-do-taskPulse.png"
+                            alt="Captura de tela da aplicação TaskPulse"
+                            loading="lazy"
+                        >
+
+                        <div class="links_container">
+
+                            <p>Destaque</p>
+
+                            <div class="links_content">
+
+                                <a
+                                    href="https://github.com/Luzolomampassi"
+                                    class="links_icon"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="GitHub">
+
+                                    <i
+                                        class="fa-brands fa-github icone-link"
+                                        aria-hidden="true">
+                                    </i>
+
+                                </a>
+
+                                <span
+                                    class="links_icon social-icon-disabled"
+                                    aria-label="LinkedIn indisponível">
+
+                                    <i
+                                        class="fa-brands fa-linkedin icone-link"
+                                        aria-hidden="true">
+                                    </i>
+
+                                </span>
+
+                                <a
+                                    href="https://www.instagram.com/luzolomampassi8/"
+                                    class="links_icon"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Instagram">
+
+                                    <i
+                                        class="fa-brands fa-instagram icone-link"
+                                        aria-hidden="true">
+                                    </i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="description">
+
+                        <h3>
+                            TaskPulse
+                        </h3>
+
+                        <p>
+                            Aplicação de gerenciamento de tarefas
+                            desenvolvida com HTML, CSS e JavaScript.
+
+                            <details>
+                                <summary>Ver mais</summary>
+
+                                Permite adicionar, concluir, pesquisar
+                                e filtrar tarefas de forma simples e
+                                intuitiva, com evolução planejada para
+                                integração com PHP e MySQL.
+
+                            </details>
+
+                        </p>
+
+                        <div class="badges">
+
+                            <span class="badge badge_html">
+                                HTML
+                            </span>
+
+                            <span class="badge badge_css">
+                                CSS
+                            </span>
+
+                            <span class="badge badge_js">
+                                JavaScript
+                            </span>
+
+                            <span class="badge badge_php">
+                                PHP
+                            </span>
+
+                            <span class="badge badge_mysql">
+                                My<span class="sql">SQL</span>
+                            </span>
+
+                        </div>
+
+                        <div class="card-buttons">
+
+                            <a
+                                href="https://github.com/Luzolomampassi/web-dev-projects/tree/main/Projetos/Applications/TaskFlow"
+                                class="btn-primary"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                <i
+                                    class="fa-brands fa-github icone-card fa-xl"
+                                    aria-hidden="true">
+                                </i>
+
+                                <span class="txt_escondido">
+                                    GitHub
+                                </span>
+
+                            </a>
+
+                            <a
+                                href="../../Projetos/Applications/TaskPulse/index.html"
+                                class="btn-secundary"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                Ver projeto
+
+                                <i
+                                    class="fa-solid fa-arrow-right"
+                                    aria-hidden="true">
+                                </i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- ============================== Footer ============================== -->
+
+    <footer>
+
+        <p>
+
+            <i
+                class="fa-regular fa-copyright icon-footer"
+                aria-hidden="true">
+            </i>
+
+            2026 Luzolo Mampassi. Todos os direitos reservados.
+
+        </p>
+
+        <p>
+
+            <i
+                class="fa-solid fa-heart fa-lg icon-footer"
+                aria-hidden="true">
+            </i>
+
+            Feito com dedicação para aprender e evoluir.
+
+        </p>
+
+        <a
+            href="https://github.com/Luzolomampassi"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub">
+
+            <i
+                class="fa-brands fa-github fa-xl"
+                aria-hidden="true">
+            </i>
+
+            <i
+                class="bi bi-box-arrow-up-right"
+                aria-hidden="true">
+            </i>
+
+        </a>
+
+    </footer>
+
+    <!-- ============================== JavaScript ============================== -->
+
     <script src="../../interacoes.js"></script>
     <script src="../../projetos.js"></script>
+
 </body>
+
+</html>
+

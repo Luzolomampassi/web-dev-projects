@@ -1,14 +1,43 @@
-footer{  
+
+/*========================== FOOTER ==========================*/
+
+footer {
     display: flex;
     justify-content: space-evenly;
-    padding:20px;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 20px;
+
     border: 1px solid var(--color-border);
-    position: sticky;
+
+    background-color: var(--color-header);
+
     flex-wrap: wrap;
 }
-.icon-footer{
+
+/*========================== ÍCONES ==========================*/
+
+.icon-footer {
     color: white;
 }
-.fa-heart{
+
+.icon-footer.fa-heart {
     color: red;
 }
+
+/*========================== LINKS ==========================*/
+
+footer a {
+    color: var(--color-text-muted);
+
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--color-text);
+}
+

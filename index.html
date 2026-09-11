@@ -1,241 +1,453 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="description"
-      content="Portfólio de Luzolo Mampassi.">
+        content="Portfólio de Luzolo Mampassi.">
     <meta name="author" content="Luzolo Mampassi">
-    
-    <title>Luzolo Mampassi</title>
+
+    <title>Luzolo Mampassi | Portfólio</title>
+
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- ============================== CSS ============================== -->
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="config do portofólio/estilos/banner.css">
     <link rel="stylesheet" href="config do portofólio/estilos/footer.css">
     <link rel="stylesheet" href="config do portofólio/estilos/header.css">
     <link rel="stylesheet" href="config do portofólio/estilos/projects-inicio.css">
- 
-   
 
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- ============================== Ícones ============================== -->
+
     <link
-  href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
-  rel="stylesheet"
-/>
-    <script src="https://kit.fontawesome.com/f6a9b3f1e7.js" crossorigin="anonymous"></script>
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css">
+
+    <script
+        src="https://kit.fontawesome.com/f6a9b3f1e7.js"
+        crossorigin="anonymous">
+    </script>
 </head>
 
 <body>
 
+    <!-- ============================== Header ============================== -->
+
     <header>
         <nav>
-             <h1><i class="fa-solid fa-code  icone-nav"></i><a href="index.html" class="logo">Luzolo Mampassi</a></h1>
-            <button id="menu-btn">☰</button>
-     
+
+            <h1>
+                <i
+                    class="fa-solid fa-code icone-nav"
+                    aria-hidden="true">
+                </i>
+
+                <a href="index.html" class="logo">
+                    Luzolo Mampassi
+                </a>
+            </h1>
+
+            <button
+                id="menu-btn"
+                type="button"
+                aria-label="Abrir menu"
+                aria-controls="menu"
+                aria-expanded="false">
+                ☰
+            </button>
+
             <div id="menu">
-                
+
                 <ul>
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="config do portofólio/paginas/projetos.html">Projetos</a></li>
-                    <li><a href="config do portofólio/paginas/sobreMim.html">Sobre mim</a></li>
-                    <li><a href="config do portofólio/paginas/contato.html">Contato</a></li>
+
+                    <li>
+                        <a href="index.html">
+                            Início
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="config do portofólio/paginas/projetos.html">
+                            Projetos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="config do portofólio/paginas/sobreMim.html">
+                            Sobre mim
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="config do portofólio/paginas/contato.html">
+                            Contato
+                        </a>
+                    </li>
+
                 </ul>
 
-               
-
                 <div class="icone-bar">
-                    <a href="https://github.com/Luzolomampassi"
+
+                    <a
+                        href="https://github.com/Luzolomampassi"
                         target="_blank"
-                        rel="noopener noreferrer">
-                        <i class="fa-brands fa-github fa-xl"></i>
+                        rel="noopener noreferrer"
+                        aria-label="GitHub">
+
+                        <i
+                            class="fa-brands fa-github fa-xl"
+                            aria-hidden="true">
+                        </i>
+
                     </a>
 
-                    <i class="fa-brands fa-linkedin fa-xl"></i>
+                    <span
+                        class="social-icon-disabled"
+                        aria-label="LinkedIn indisponível">
 
-                    <a href="mailto:Luzolomampassi8@gmail.com"
-                        rel="noopener noreferrer">
-                        <i class="fa-regular fa-envelope fa-xl"></i>
+                        <i
+                            class="fa-brands fa-linkedin fa-xl"
+                            aria-hidden="true">
+                        </i>
+
+                    </span>
+
+                    <a
+                        href="mailto:Luzolomampassi8@gmail.com"
+                        aria-label="Enviar e-mail">
+
+                        <i
+                            class="fa-regular fa-envelope fa-xl"
+                            aria-hidden="true">
+                        </i>
+
                     </a>
-                    <a href="https://www.instagram.com/luzolomampassi8/"target="_blank"
-                        rel="noopener noreferrer"><i class="fa-brands fa-instagram fa-xl"></i></a>
+
+                    <a
+                        href="https://www.instagram.com/luzolomampassi8/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram">
+
+                        <i
+                            class="fa-brands fa-instagram fa-xl"
+                            aria-hidden="true">
+                        </i>
+
+                    </a>
+
                 </div>
+
             </div>
-            
-            
+
         </nav>
     </header>
 
     <main>
 
-        <!--============================== Banner ==============================-->
+        <!-- ============================== Banner ============================== -->
 
         <section class="banner">
-               <article class="banner-container">
 
-                <div class="boas-vinda">
+            <article class="banner-container">
+
+                <div class="boas-vindas">
                     <p>✋ Bem-vindo ao meu portfólio</p>
                 </div>
 
                 <div class="banner-content">
-                    <h1>
+
+                    <h2>
                         Meus projetos,<br>
                         minha <span class="banner-text-mark">evolução.</span>
-                    </h1>
+                    </h2>
 
                     <p>
                         Aqui você encontra meus projetos desenvolvidos com
-                        <br>HTML, CSS e futuramente JavaScript.
+                        <br>
+                        HTML, CSS e JavaScript.
                         Cada projeto
-                        <br>representa um passo na minha jornada como
-                        <br>desenvolvedor.
+                        <br>
+                        representa um passo na minha jornada como
+                        <br>
+                        desenvolvedor.
                     </p>
+
                 </div>
 
                 <div class="banner-buttons">
-            
-                    <a href="config do portofólio/paginas/projetos.html" class="btn-primary">
-                        <i class="bi bi-folder-fill"></i>
-                        Ver projetos
-                    </a>
-                 
 
-                    <a href="config do portofólio/paginas/sobreMim.html" class="btn-secundary">
-                        <i class="fa-regular fa-user"></i>
-                        Sobre mim
+                    <a
+                        href="config do portofólio/paginas/projetos.html"
+                        class="btn-primary">
+
+                        <i
+                            class="bi bi-folder-fill"
+                            aria-hidden="true">
+                        </i>
+
+                        Ver projetos
+
                     </a>
-                   
+
+                    <a
+                        href="config do portofólio/paginas/sobreMim.html"
+                        class="btn-secondary">
+
+                        <i
+                            class="fa-regular fa-user"
+                            aria-hidden="true">
+                        </i>
+
+                        Sobre mim
+
+                    </a>
 
                 </div>
 
             </article>
 
-            <!--============================== Banner Hero==============================-->
+            <!-- ============================== Banner Hero ============================== -->
 
-        <article class="hero">
-          
-            <div class="window">
-               <img src="config do portofólio/icones/janela.png" alt="img da janela">
-                <div class="icon-css">
-                    <img src="config do portofólio/icones/tecnologias/css3-original.svg" alt=""loading="lazy">
+            <article class="hero">
+
+                <div class="window">
+
+                    <img
+                        src="config do portofólio/icones/janela.png"
+                        alt="Ilustração de uma janela de código">
+
+                    <div class="icon-css">
+
+                        <img
+                            src="config do portofólio/icones/tecnologias/css3-original.svg"
+                            alt="CSS3"
+                            loading="lazy">
+
+                    </div>
+
+                    <div class="icon-code">
+
+                        <img
+                            src="config do portofólio/icones/code-img 1024.png"
+                            alt="Ícone de código"
+                            loading="lazy">
+
+                    </div>
+
+                    <div class="icon-photo">
+
+                        <img
+                            src="config do portofólio/icones/profile-3d.png"
+                            alt="Ilustração de perfil"
+                            loading="lazy">
+
+                    </div>
+
                 </div>
-                <div class="icon-code">
-                    <img src="config do portofólio/icones/code-img 1024.png" alt="icone do code"loading="lazy">
-                </div>
-                <div class="icon-photo">
-                    <img src="config do portofólio/icones/profile-3d.png" alt="icone de foto"loading="lazy">
-                </div>
-            </div>              
-        </article>
-            
+
+            </article>
 
         </section>
 
-        <!--============================== Projetos ==============================-->
+        <!-- ============================== Projetos ============================== -->
 
         <section class="projects">
 
             <div class="projects-theme">
-                <h1>Meus Projetos</h1>
+                <h2>Meus Projetos</h2>
             </div>
 
             <article class="projects-grid">
 
+                <!-- ============================== Portfólio ============================== -->
+
                 <div class="card-project portfolio">
 
-                    <img src="config do portofólio/icones/portofolio.png"
-                        alt="Imagem do projeto Portfólio" loading="lazy">
+                    <img
+                        src="config do portofólio/icones/portofolio.png"
+                        alt="Imagem do projeto Portfólio"
+                        loading="lazy">
 
-                    <h2>Portfólio Simples</h2>
+                    <h3>Portfólio Simples</h3>
 
                     <p>
                         Meu primeiro portfólio responsivo
-                        <br>feito com HTML e CSS + JavaScript
+                        <br>
+                        feito com HTML, CSS e JavaScript.
                     </p>
 
                     <div class="badges">
-                        <span class="badge-html">HTML</span>
-                        <span class="badge-css">CSS</span>
+
+                        <span class="badge-html">
+                            HTML
+                        </span>
+
+                        <span class="badge-css">
+                            CSS
+                        </span>
+
+                        <span class="badge-js">
+                            JavaScript
+                        </span>
+
                     </div>
 
-                    <a href="Projetos/Web sites/Portfolios/Portofolio-1/inicio.html"
-                        target="_blank">
+                    <a
+                        href="Projetos/Web sites/Portfolios/Portofolio-1/inicio.html"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
                         Ver projeto
-                        <i class="bi bi-box-arrow-up-right"></i>
+
+                        <i
+                            class="bi bi-box-arrow-up-right"
+                            aria-hidden="true">
+                        </i>
+
                     </a>
 
                 </div>
+
+                <!-- ============================== Calculadora ============================== -->
 
                 <div class="card-project calculadora">
 
-                    <img src="config do portofólio/icones/calculadora.png"
-                        alt="Captura da calculadora" loading="lazy">
+                    <img
+                        src="config do portofólio/icones/calculadora.png"
+                        alt="Imagem da calculadora"
+                        loading="lazy">
 
-                    <h2>Calculadora</h2>
+                    <h3>Calculadora</h3>
 
                     <p>
                         Calculadora básica com operações
-                        <br>matemáticas simples
+                        <br>
+                        matemáticas simples.
                     </p>
 
                     <div class="badges">
-                        <span class="badge-html">HTML</span>
-                        <span class="badge-css">CSS</span>
+
+                        <span class="badge-html">
+                            HTML
+                        </span>
+
+                        <span class="badge-css">
+                            CSS
+                        </span>
+
                     </div>
-                    
-                    <a href="#" target="_blank" aria-disabled="true">
+
+                    <span
+                        class="project-unavailable"
+                        aria-label="Projeto indisponível">
+
                         Indisponível
-                        <i class="bi bi-box-arrow-up-right"></i>
-                    </a>
+
+                        <i
+                            class="bi bi-box-arrow-up-right"
+                            aria-hidden="true">
+                        </i>
+
+                    </span>
 
                 </div>
+
+                <!-- ============================== Landing Page ============================== -->
 
                 <div class="card-project landing">
 
-                    <img src="config do portofólio/icones/landingpage.png"
-                        alt="Landing Page" loading="lazy">
+                    <img
+                        src="config do portofólio/icones/landingpage.png"
+                        alt="Imagem da Landing Page"
+                        loading="lazy">
 
-                    <h2>Landing Page</h2>
+                    <h3>Landing Page</h3>
 
                     <p>
                         Página de apresentação de um
-                        <br>produto fictício
+                        <br>
+                        produto fictício.
                     </p>
 
                     <div class="badges">
-                        <span class="badge-html">HTML</span>
-                        <span class="badge-css">CSS</span>
+
+                        <span class="badge-html">
+                            HTML
+                        </span>
+
+                        <span class="badge-css">
+                            CSS
+                        </span>
+
                     </div>
 
-                    <a href="Projetos/Web sites/Landings pages/Dashbord anality/inicio.html" target="_blank" >
+                    <a
+                        href="Projetos/Web sites/Landings pages/Dashbord anality/inicio.html"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
                         Ver projeto
-                        <i class="bi bi-box-arrow-up-right"></i>
+
+                        <i
+                            class="bi bi-box-arrow-up-right"
+                            aria-hidden="true">
+                        </i>
+
                     </a>
 
                 </div>
 
+                <!-- ============================== Lista de tarefas ============================== -->
+
                 <div class="card-project task-list">
 
-                    <img src="config do portofólio/icones/prancha.png"
-                        alt="Lista de tarefa" loading="lazy">
+                    <img
+                        src="config do portofólio/icones/prancha.png"
+                        alt="Imagem de uma lista de tarefas"
+                        loading="lazy">
 
-                    <h2>Lista de tarefas</h2>
+                    <h3>Lista de tarefas</h3>
 
                     <p>
                         Página de lista de tarefas com design
-                        <br>limpo e responsivo
+                        <br>
+                        limpo e responsivo.
                     </p>
 
                     <div class="badges">
-                        <span class="badge-html">HTML</span>
-                        <span class="badge-css">CSS</span>
+
+                        <span class="badge-html">
+                            HTML
+                        </span>
+
+                        <span class="badge-css">
+                            CSS
+                        </span>
+
                     </div>
 
-                    <a href="#" target="_blank" aria-disabled="true">
+                    <span
+                        class="project-unavailable"
+                        aria-label="Projeto indisponível">
+
                         Indisponível
-                        <i class="bi bi-box-arrow-up-right"></i>
-                    </a>
+
+                        <i
+                            class="bi bi-box-arrow-up-right"
+                            aria-hidden="true">
+                        </i>
+
+                    </span>
 
                 </div>
 
@@ -245,29 +457,57 @@
 
     </main>
 
-    <!--============================== Footer ==============================-->
+    <!-- ============================== Footer ============================== -->
 
     <footer>
 
         <p>
-            <small><i class="fa-regular fa-copyright icon-footer"></i></small>
+
+            <small>
+                <i
+                    class="fa-regular fa-copyright icon-footer"
+                    aria-hidden="true">
+                </i>
+            </small>
+
             2026 Luzolo Mampassi. Todos os direitos reservados.
+
         </p>
 
         <p>
-            <i class="fa-solid fa-heart fa-lg  icon-footer"></i>
+
+            <i
+                class="fa-solid fa-heart fa-lg icon-footer"
+                aria-hidden="true">
+            </i>
+
             Feito com dedicação para aprender e evoluir.
+
         </p>
 
-        <a href="https://github.com/Luzolomampassi"
+        <a
+            href="https://github.com/Luzolomampassi"
             target="_blank"
-            rel="noopener noreferrer">
-            <i class="fa-brands fa-github fa-xl"></i>
-            <i class="bi bi-box-arrow-up-right"></i>
+            rel="noopener noreferrer"
+            aria-label="GitHub">
+
+            <i
+                class="fa-brands fa-github fa-xl"
+                aria-hidden="true">
+            </i>
+
+            <i
+                class="bi bi-box-arrow-up-right"
+                aria-hidden="true">
+            </i>
+
         </a>
 
     </footer>
- <script src="interacoes.js"></script>
+
+    <script src="interacoes.js"></script>
+
 </body>
 
 </html>
+

@@ -1,3 +1,4 @@
+
 /* =================================
    VARIÁVEIS
 ================================= */
@@ -71,9 +72,11 @@ h4 {
 
 .banner-content {
     text-align: left;
+
     font-size: clamp(1.3rem, 1.4vw, 4rem);
     line-height: 1.3;
-    animation: surgir-left .5s ease;
+
+    animation: surgir-left 0.5s ease;
 }
 
 .banner-content h1 {
@@ -82,42 +85,53 @@ h4 {
 
 
 /* =================================
-   CARDS
+   CARDS DE ESTATÍSTICAS
 ================================= */
 
 .cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+
     gap: 10px;
     padding: 10px;
 
-    animation: surgir-right .5s ease;
+    animation: surgir-right 0.5s ease;
 }
 
 .card {
     padding: 12px;
+
     background-color: var(--color-card);
 
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
 
     transition:
-        transform .2s ease,
-        border-color .2s ease,
-        box-shadow .2s ease;
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .card:hover {
     transform: translateY(-3px);
+
     border-color: var(--color-primary);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, .18);
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
 }
 
+
+/* =================================
+   ÍCONES DAS ESTATÍSTICAS
+================================= */
+
 .card .fa-code,
-.fa-layer-group,
-.fa-rocket {
+.card .fa-layer-group,
+.card .fa-rocket {
     padding: 5px;
+
     border-radius: 6px;
+
     font-weight: 700;
 }
 
@@ -126,12 +140,12 @@ h4 {
     background-color: var(--color-primary);
 }
 
-.fa-layer-group {
+.card .fa-layer-group {
     color: #387EF1;
     background-color: #04194F;
 }
 
-.fa-rocket {
+.card .fa-rocket {
     color: #09B97B;
     background-color: #031E2C;
 }
@@ -151,34 +165,42 @@ h4 {
 
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    background-color: rgba(0, 0, 0, .08);
 
-    animation: surgir-right .5s ease;
+    background-color: rgba(0, 0, 0, 0.08);
+
+    animation: surgir-right 0.5s ease;
 }
 
 .filters {
     display: flex;
     justify-content: space-evenly;
+
     width: 100%;
     gap: 8px;
+
+    flex-wrap: wrap;
 }
 
 .filters button {
     padding: 7px 10px;
 
     color: var(--color-text);
+
     font-weight: 600;
 
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
 
     outline: none;
+
     background-color: var(--color-banner);
 
+    cursor: pointer;
+
     transition:
-        background-color .2s ease,
-        border-color .2s ease,
-        color .2s ease;
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
 }
 
 .filters button:hover {
@@ -186,18 +208,20 @@ h4 {
     border-color: var(--color-primary);
 }
 
-.filters button:focus {
+.filters button:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
 }
 
 .search_bar {
     position: relative;
+
     width: 100%;
 }
 
 .search_bar input[type="search"] {
     width: 100%;
+
     padding: 9px 10px 9px 36px;
 
     color: var(--color-text);
@@ -206,9 +230,10 @@ h4 {
     border-radius: var(--radius-sm);
 
     outline: none;
+
     background: transparent;
 
-    transition: border-color .2s ease;
+    transition: border-color 0.2s ease;
 }
 
 .search_bar input[type="search"]:focus {
@@ -225,10 +250,13 @@ h4 {
 
 .lupa {
     position: absolute;
+
     left: 12px;
     top: 50%;
-    transform: translateY(-50%);
+
     z-index: 10;
+
+    transform: translateY(-50%);
 
     font-weight: 700;
 }
@@ -240,9 +268,11 @@ h4 {
 
 .projets {
     display: grid;
+
     grid-template-columns: 1fr;
 
     width: 100%;
+
     padding: 10px;
 
     align-content: center;
@@ -250,15 +280,17 @@ h4 {
 
 .cards_projets {
     display: grid;
+
     justify-content: center;
 
     gap: 20px;
 
-    animation: surgir-bottom .5s ease;
+    animation: surgir-bottom 0.5s ease;
 }
 
 .item {
     display: grid;
+
     grid-template-columns: 1fr;
 
     min-height: 140px;
@@ -271,9 +303,9 @@ h4 {
     overflow: hidden;
 
     transition:
-        transform .25s ease,
-        box-shadow .25s ease,
-        border-color .25s ease;
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .item h3 {
@@ -285,11 +317,7 @@ h4 {
 
     border-color: var(--color-primary);
 
-    box-shadow: 0 8px 20px rgba(85, 30, 174, .22);
-}
-
-.item:hover .imagem {
-    border-bottom-left-radius: var(--radius-md);
+    box-shadow: 0 8px 20px rgba(85, 30, 174, 0.22);
 }
 
 .item:hover .links_container {
@@ -310,10 +338,11 @@ h4 {
     overflow: hidden;
 
     border-top-left-radius: var(--radius-md);
+    border-top-right-radius: var(--radius-md);
 
     transition:
-        height .2s ease,
-        border-radius .2s ease;
+        height 0.2s ease,
+        border-radius 0.2s ease;
 }
 
 .imagem img {
@@ -332,6 +361,7 @@ h4 {
 
 .links_container {
     position: absolute;
+
     left: 0;
     top: 8%;
 
@@ -343,13 +373,14 @@ h4 {
 
     opacity: 0;
 
-    transition: opacity .2s ease;
+    transition: opacity 0.2s ease;
 }
 
 .links_container > p {
     padding: 5px;
 
     color: var(--color-text);
+
     background-color: var(--color-surface);
 
     border-radius: 6px;
@@ -358,23 +389,65 @@ h4 {
 .links_content {
     display: flex;
     flex-direction: column;
+
     gap: 5px;
 }
 
 .links_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 30px;
 
     padding: 4px;
 
     text-align: center;
+
     color: var(--color-text);
 
     background-color: var(--color-card);
+
     border-radius: 6px;
+
+    text-decoration: none;
+}
+
+.links_icon:hover {
+    color: var(--color-secondary);
 }
 
 .description {
     width: 100%;
+
+    padding: 10px;
+}
+
+.description > p {
+    line-height: 1.6;
+}
+
+
+/* =================================
+   DETAILS
+================================= */
+
+.description details {
+    display: inline;
+}
+
+.description summary {
+    display: inline;
+
+    margin-left: 4px;
+
+    color: var(--color-secondary);
+
+    cursor: pointer;
+}
+
+.description summary:hover {
+    color: var(--color-text);
 }
 
 
@@ -385,9 +458,12 @@ h4 {
 .badges {
     display: flex;
     justify-content: space-evenly;
+
     gap: 5px;
 
     margin-top: 6px;
+
+    flex-wrap: wrap;
 }
 
 .badge {
@@ -442,9 +518,10 @@ h4 {
     align-items: center;
 
     width: 100%;
+
     gap: 8px;
 
-    padding: 10px;
+    padding: 10px 0 0;
 }
 
 .btn-primary,
@@ -453,15 +530,16 @@ h4 {
     align-items: center;
     justify-content: center;
 
-    text-decoration: none;
     color: var(--color-text);
+
+    text-decoration: none;
 
     border-radius: 6px;
 
     transition:
-        background-color .2s ease,
-        border-color .2s ease,
-        width .2s ease;
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        width 0.2s ease;
 }
 
 .btn-primary {
@@ -472,13 +550,14 @@ h4 {
     border: 1px solid var(--color-border);
 }
 
-.btn-primary:focus {
+.btn-primary:focus-visible {
     outline: 2px solid var(--color-text);
     outline-offset: 2px;
 }
 
 .item:hover .btn-primary {
     width: 35%;
+
     padding: 7px;
 }
 
@@ -488,19 +567,21 @@ h4 {
     border: 1px solid var(--color-border);
 }
 
-.btn-secundary:focus {
+.btn-secundary:focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
 }
 
 .item:hover .btn-secundary {
     width: 60%;
+
     background-color: var(--color-primary);
 }
 
 .txt_escondido {
     opacity: 0;
-    transition: opacity .25s ease;
+
+    transition: opacity 0.25s ease;
 }
 
 .item:hover .txt_escondido {
@@ -530,7 +611,7 @@ h4 {
     border: 1px solid var(--color-border);
     border-bottom: 2px solid var(--color-border);
 
-    animation: surgir-top .5s ease;
+    animation: surgir-top 0.5s ease;
 }
 
 .menu_container ul {
@@ -549,8 +630,259 @@ h4 {
 }
 
 
+
+
+
+
+
 /* =================================
-   TABLET
+   TELAS ACIMA DE 390PX
+================================= */
+
+@media (min-width: 391px) and (max-width: 599px) {
+
+    /* ---------- BANNER ---------- */
+
+    .banner {
+        width: 100%;
+        padding: 0 8px;
+    }
+
+    .banner-content {
+        width: 100%;
+        padding: 0 4px;
+    }
+
+    .banner-content h1 {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+    }
+
+    .banner-content p {
+        max-width: 100%;
+
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .cards {
+        width: 100%;
+
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        gap: 8px;
+
+        padding: 8px 0;
+    }
+
+    .card {
+        min-width: 0;
+        padding: 10px 7px;
+
+        text-align: center;
+    }
+
+    .card h2,
+    .card h3 {
+        font-size: 1.2rem;
+    }
+
+    .card p {
+        font-size: 0.75rem;
+        line-height: 1.3;
+    }
+
+
+    /* ---------- PESQUISA ---------- */
+
+    .search_container {
+        width: 100%;
+        padding: 8px;
+
+        gap: 10px;
+    }
+
+    .filters {
+        width: 100%;
+
+        justify-content: flex-start;
+
+        gap: 6px;
+
+        overflow-x: auto;
+
+        flex-wrap: nowrap;
+
+        padding-bottom: 4px;
+
+        scrollbar-width: thin;
+    }
+
+    .filters button {
+        flex-shrink: 0;
+
+        white-space: nowrap;
+
+        padding: 7px 10px;
+
+        font-size: 0.82rem;
+    }
+
+    .search_bar {
+        width: 100%;
+    }
+
+
+    /* ---------- PROJETOS ---------- */
+
+    .projets {
+        width: 100%;
+
+        padding: 8px;
+    }
+
+    .cards_projets {
+        width: 100%;
+
+        gap: 14px;
+    }
+
+    .item {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .imagem {
+        width: 100%;
+        max-width: none;
+
+        aspect-ratio: 16 / 10;
+    }
+
+    .description {
+        width: 100%;
+
+        padding: 12px;
+    }
+
+    .description h3 {
+        font-size: 1.1rem;
+    }
+
+    .description p {
+        font-size: 0.9rem;
+
+        line-height: 1.5;
+    }
+
+
+    /* ---------- BADGES ---------- */
+
+    .badges {
+        justify-content: flex-start;
+
+        gap: 5px;
+    }
+
+    .badge {
+        font-size: 0.78rem;
+
+        padding: 5px 7px;
+    }
+
+
+    /* ---------- BOTÕES ---------- */
+
+    .card-buttons {
+        gap: 6px;
+
+        padding-top: 10px;
+    }
+
+    .btn-primary,
+    .btn-secundary {
+        font-size: 0.85rem;
+    }
+
+    .btn-primary {
+        width: auto;
+    }
+
+    .btn-secundary {
+        width: auto;
+    }
+
+    .txt_escondido {
+        opacity: 1;
+    }
+
+}
+
+
+/* =================================
+   600PX
+================================= */
+
+@media (min-width: 600px) {
+
+    .banner-content {
+        padding: 0 12px;
+    }
+
+    .cards {
+        gap: 14px;
+    }
+
+    .card {
+        padding: 14px;
+    }
+
+    .filters {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .filters button {
+        flex: 0 1 auto;
+        padding: 8px 12px;
+    }
+
+    .search_bar {
+        width: 100%;
+    }
+
+    .cards_projets {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 16px;
+    }
+
+    .item {
+        min-width: 0;
+    }
+
+    .imagem {
+        max-width: none;
+        aspect-ratio: 16 / 10;
+    }
+
+    .imagem img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .description {
+        padding: 14px;
+    }
+
+    .badges {
+        justify-content: flex-start;
+        gap: 6px;
+    }
+}
+
+
+/* =================================
+   TABLET — 768PX
 ================================= */
 
 @media (min-width: 768px) {
@@ -561,7 +893,9 @@ h4 {
 
     .cards_projets {
         grid-template-columns: repeat(2, 1fr);
+
         gap: 20px;
+
         width: 100%;
     }
 
@@ -572,7 +906,7 @@ h4 {
 
 
 /* =================================
-   TABLET GRANDE
+   TABLET GRANDE — 991PX
 ================================= */
 
 @media (min-width: 991px) {
@@ -599,6 +933,7 @@ h4 {
 
     .cards_projets {
         grid-template-columns: repeat(2, 1fr);
+
         gap: 16px;
     }
 
@@ -609,13 +944,14 @@ h4 {
 
 
 /* =================================
-   DESKTOP
+   DESKTOP — 1024PX
 ================================= */
 
 @media (min-width: 1024px) {
 
     .banner {
         display: grid;
+
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -625,10 +961,11 @@ h4 {
 
     .cards_projets {
         grid-template-columns: repeat(4, 1fr);
+
         gap: 16px;
+
         width: 100%;
     }
-   
 
     .item {
         min-height: 200px;
@@ -652,5 +989,7 @@ h4 {
 
     .imagem {
         border-top-right-radius: var(--radius-md);
+        aspect-ratio: auto;
     }
 }
+

@@ -1,251 +1,601 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-      content="Portfólio de Luzolo Mampassi.">
+
+    <meta
+        name="description"
+        content="Sobre Luzolo Mampassi, estudante e desenvolvedor em formação."
+    >
     <meta name="author" content="Luzolo Mampassi">
-    
-    <title>Projetos</title>
+
+    <title>Sobre mim | Luzolo Mampassi</title>
+
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="../estilos/header.css">
     <link rel="stylesheet" href="../estilos/sobre.css">
     <link rel="stylesheet" href="../estilos/footer.css">
 
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- ============================== Ícones ============================== -->
 
-    <script src="https://kit.fontawesome.com/f6a9b3f1e7.js" crossorigin="anonymous"></script>
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+    <script
+        src="https://kit.fontawesome.com/f6a9b3f1e7.js"
+        crossorigin="anonymous">
+    </script>
 </head>
 
 <body>
+
+    <!-- ============================== Header ============================== -->
+
     <header>
         <nav>
-             <h1><i class="fa-solid fa-code  icone-nav"></i><a href="../../ index.html">Luzolo Mampassi</a></h1>
-            <button id="menu-btn">☰</button>
+
+            <h1>
+                <i
+                    class="fa-solid fa-code icone-nav"
+                    aria-hidden="true">
+                </i>
+
+                <a href="../../index.html">
+                    Luzolo Mampassi
+                </a>
+            </h1>
+
+            <button
+                id="menu-btn"
+                type="button"
+                aria-label="Abrir menu"
+                aria-controls="menu"
+                aria-expanded="false">
+                ☰
+            </button>
 
             <div id="menu">
-                
+
                 <ul>
-                    <li><a href="../../index.html">Início</a></li>
-                    <li><a href="projetos.html">Projetos</a></li>
-                    <li><a href="sobreMim.html">Sobre mim</a></li>
-                    <li><a href="contato.html">Contato</a></li>
+
+                    <li>
+                        <a href="../../index.html">
+                            Início
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="projetos.html">
+                            Projetos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="sobreMim.html">
+                            Sobre mim
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contato.html">
+                            Contato
+                        </a>
+                    </li>
+
                 </ul>
 
-
                 <div class="icone-bar">
-                    <a href="https://github.com/Luzolomampassi"
+
+                    <a
+                        href="https://github.com/Luzolomampassi"
                         target="_blank"
-                        rel="noopener noreferrer">
-                        <i class="fa-brands fa-github fa-xl"></i>
+                        rel="noopener noreferrer"
+                        aria-label="GitHub">
+
+                        <i
+                            class="fa-brands fa-github fa-xl"
+                            aria-hidden="true">
+                        </i>
+
                     </a>
 
-                    <i class="fa-brands fa-linkedin fa-xl"></i>
+                    <span
+                        class="social-icon-disabled"
+                        aria-label="LinkedIn indisponível">
 
-                    <a href="mailto:Luzolomampassi8@gmail.com"
-                        rel="noopener noreferrer">
-                        <i class="fa-regular fa-envelope fa-xl"></i>
+                        <i
+                            class="fa-brands fa-linkedin fa-xl"
+                            aria-hidden="true">
+                        </i>
+
+                    </span>
+
+                    <a
+                        href="mailto:Luzolomampassi8@gmail.com"
+                        aria-label="Enviar e-mail">
+
+                        <i
+                            class="fa-regular fa-envelope fa-xl"
+                            aria-hidden="true">
+                        </i>
+
                     </a>
-                    <a href="https://www.instagram.com/luzolomampassi8/"target="_blank"
-                        rel="noopener noreferrer"><i class="fa-brands fa-instagram fa-xl"></i></a>
+
+                    <a
+                        href="https://www.instagram.com/luzolomampassi8/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram">
+
+                        <i
+                            class="fa-brands fa-instagram fa-xl"
+                            aria-hidden="true">
+                        </i>
+
+                    </a>
+
                 </div>
-             
+
             </div>
         </nav>
-    </header>  
-<main>
-    <section class="banner-sobre">
-        
-        <!--============================== Banner Content==============================-->
+    </header>
 
-            <article class="banner-container" >
+    <main>
+
+        <!-- ============================== Banner Sobre ============================== -->
+
+        <section class="banner-sobre">
+
+            <!-- ============================== Banner Content ============================== -->
+
+            <article class="banner-container">
 
                 <div class="boas-vinda">
-                    <p>👋 Prazer ,eu sou o Luzolo</p>
+                    <p>👋 Prazer, eu sou o Luzolo</p>
                 </div>
 
                 <div class="banner-content">
-                    <h1>
+
+                    <h2>
                         Desenvolvedor
-                        <br><span class="banner-text-mark">Apaixonado por criar
-                        <br>Soluções digitais.</span>
-                    </h1>
+                        <br>
+                        <span class="banner-text-mark">
+                            Apaixonado por criar
+                            <br>
+                            soluções digitais.
+                        </span>
+                    </h2>
 
                     <p>
-                       Sou desenvolvedor fron-end com foco em criar experiências
-                        <br>modernas, responsivas e acessíveis. Gosto de transformar
-                        <br>ideias em interfaces e funcionais.
+                        Sou desenvolvedor front-end com foco em criar experiências
+                        <br>
+                        modernas, responsivas e acessíveis. Gosto de transformar
+                        <br>
+                        ideias em interfaces funcionais.
                     </p>
+
                 </div>
+
                 <div class="highlights">
+
                     <div class="highlights-container">
-                        <div><i class="fa-solid fa-code fa-2xl highlight" ></i></div>
+
+                        <div>
+                            <i
+                                class="fa-solid fa-code fa-2xl highlight"
+                                aria-hidden="true">
+                            </i>
+                        </div>
+
                         <div class="highlight-txt">
-                            <h2>1</h2>
+                            <h3>1</h3>
                             <p>Anos de experiência</p>
                         </div>
+
                     </div>
 
-                <div class="highlights-container">
-                    <i class="fa-solid fa-rocket fa-2xl highlight " ></i>
-                    <div class="highlight-txt">
-                        <h2>3</h2>
-                        <p>Projetos concluídos</p></div>
+                    <div class="highlights-container">
+
+                        <i
+                            class="fa-solid fa-rocket fa-2xl highlight"
+                            aria-hidden="true">
+                        </i>
+
+                        <div class="highlight-txt">
+                            <h3>3</h3>
+                            <p>Projetos concluídos</p>
+                        </div>
+
                     </div>
 
-                <div class="highlights-container">
-                    <i class="fa-solid fa-mug-hot fa-2xl highlight"></i>
-                    <div class="highlight-txt">
-                        <h2>+60</h2>
-                        <p>Horas de código</p></div>
+                    <div class="highlights-container">
+
+                        <i
+                            class="fa-solid fa-mug-hot fa-2xl highlight"
+                            aria-hidden="true">
+                        </i>
+
+                        <div class="highlight-txt">
+                            <h3>+60</h3>
+                            <p>Horas de código</p>
+                        </div>
+
                     </div>
 
-                
-                </div>
-        </article>  
-
-        <article class="hero-sobre">
-           
-            <div class="perfil">
-                <p>De momento sem foto de perfil</p>
-                 <div class="icone-css">
-                    <img src="../icones/tecnologias/css3-original.svg" alt="logo do css3" ></div>
-                <div class="icone-code">
-                    <img src="../icones/code-img 300x300.png" alt="icone de code"></div> 
-            </div>
-             <div class="modal">
-                <h3>Sobre mim</h3>
-                <p>Sempre fui curioso por tecnologia e como as coisas funcionam.Hoje, transformo essa curiosidade em código e soluções que fazem diferença</p>
-                <div class="modal-highlights">
-                    <p><i class="fa-solid fa-location-dot fa-xl  icone"></i>Icolo e Bengo,Angola</p>
-                    <p><i class="fa-regular fa-envelope fa-xl icone "></i>Luzolomampassi8@gmail.com</p>
-                    <p><i class="fa-solid fa-calendar fa-xl  icone"></i>Disponível para novos projetos</p>
-                </div>
-            </div>
-        </article> 
-    </section>
-    <section class="experiencias">
-        <article class="skills">
-            <h2>Habilidades</h2>
-            <div class="categorias">
-            <div class="tecnologias">
-                <h3>Tecnologias</h3>
-                <div class="highlight-tec html" >
-                    <img src="../icones/tecnologias/html5-original.svg" alt="Logo HTML5 " loading="lazy">
-                    <h4><abbr title="HyperText Markup Language">HTML</abbr></h4>
-                </div>
-                <div class="highlight-tec css">
-                    <img src="../icones/tecnologias/css3-original.svg" alt="Logo CSS3" loading="lazy">
-                    <h4><abbr title="Cascading Style Sheets">CSS</abbr></h4>
-                </div>
-                <div class="highlight-tec js">
-                    <img src="../icones/tecnologias/javascript-original.svg" alt="Logo Javascript" loading="lazy">
-                    <h4>JavaScript</h4>
-                </div>
-                <div class="highlight-tec php">
-                    <img src="../icones/tecnologias/php-original.svg" alt="Logo Javascript" loading="lazy">
-                    <h4>PHP</h4>
-                </div>
-                <div class="highlight-tec mysql">
-                    <img src="../icones/tecnologias/mysql-original.svg" alt="Logo do MySQL" loading="lazy">
-                    <h4>MySQL</h4>
                 </div>
 
-            </div>
-                <div class="ferramentas">
-                    <h3>Ferramentas</h3>
-                    <div class="highlight-tec git">
-                        <img src="../icones/tecnologias/git-original.svg" alt="Logo do Git" loading="lazy">
-                        <h4>Git</h4>
+            </article>
+
+            <!-- ============================== Hero Sobre ============================== -->
+
+            <article class="hero-sobre">
+
+                <div class="perfil">
+
+                    <p>De momento sem foto de perfil</p>
+
+                    <div class="icone-css">
+
+                        <img
+                            src="../icones/tecnologias/css3-original.svg"
+                            alt="Logo do CSS3"
+                            loading="lazy">
+
                     </div>
-                <div class="highlight-tec vscode">
-                    <img src="../icones/tecnologias/vscode-original.svg" alt="Logo do Vs code" loading="lazy">
-                    <h4><abbr title="Visual Studio Code">Vs Code</abbr></h4>
-                </div>
-                <div class="highlight-tec github">
-                    <img src="../icones/tecnologias/github-original.svg" alt="Logo de github">
-                     <h4>Github</h4>
-                </div>
-                <div class="highlight-tec figma">
-                    <img src="../icones/tecnologias/figma-original.svg" alt="Logo de figma">
-                     <h4>Figma</h4>
-                </div>
-                
 
-            </div>
-            </div>
-         
-            <div class="bar">
-                
-                <p><i class="fa-solid fa-star  icone"></i>Sempre aprendendo algo novo</p>
-                <div class="barra-conteiner">
-                    <progress value="80" max="100" class="progress-bar"></progress>
-                    <p>80%</p>
-                </div>
-            </div>
-        </article>
-        <article class="jornada">
-            <h2>Minha Jornada</h2>
+                    <div class="icone-code">
 
-            <div class="timeline">
+                        <img
+                            src="../icones/code-img 300x300.png"
+                            alt="Ícone de código"
+                            loading="lazy">
 
-                <div class="item">
-                    <div class="circle"></div>
-
-                    <div class="content">
-                        <h4>2026 - Presente</h4>
-                        <h3>Estudante de Desenvolvimento Front-end</h3>
-                        <p>Desenvolvendo interfaces modernas e responsivas, com foco em performance, acessibilidade e experiência do usuário.</p>
                     </div>
+
                 </div>
 
-                <div class="item">
-                    <div class="circle"></div>
+                <div class="modal">
 
-                    <div class="content">
-                        <h4>2025 - 2026</h4>
-                        <h3>Estudante de Desenvolvimento Web</h3>
-                        <p>Aprofundando conhecimentos em HTML, CSS, JavaScript, Git e boas práticas de desenvolvimento web.</p>
+                    <h3>Sobre mim</h3>
+
+                    <p>
+                        Sempre fui curioso por tecnologia e por como as coisas
+                        funcionam. Hoje, transformo essa curiosidade em código
+                        e soluções digitais.
+                    </p>
+
+                    <div class="modal-highlights">
+
+                        <p>
+                            <i
+                                class="fa-solid fa-location-dot fa-xl icone"
+                                aria-hidden="true">
+                            </i>
+                            Icolo e Bengo, Angola
+                        </p>
+
+                        <p>
+                            <i
+                                class="fa-regular fa-envelope fa-xl icone"
+                                aria-hidden="true">
+                            </i>
+                            Luzolomampassi8@gmail.com
+                        </p>
+
+                        <p>
+                            <i
+                                class="fa-solid fa-calendar fa-xl icone"
+                                aria-hidden="true">
+                            </i>
+                            Disponível para novos projetos
+                        </p>
+
                     </div>
+
                 </div>
 
-                <div class="item">
-                    <div class="circle"></div>
+            </article>
 
-                    <div class="content">
-                        <h4>2025</h4>
-                        <h3>Início da Jornada</h3>
-                        <p>Descobri a programação e me apaixonei por criar soluções que ganham vida na web.</p>
+        </section>
+
+        <!-- ============================== Experiências ============================== -->
+
+        <section class="experiencias">
+
+            <!-- ============================== Habilidades ============================== -->
+
+            <article class="skills">
+
+                <h2>Habilidades</h2>
+
+                <div class="categorias">
+
+                    <div class="tecnologias">
+
+                        <h3>Tecnologias</h3>
+
+                        <div class="highlight-tec html">
+
+                            <img
+                                src="../icones/tecnologias/html5-original.svg"
+                                alt="Logo HTML5"
+                                loading="lazy">
+
+                            <h4>
+                                <abbr
+                                    title="HyperText Markup Language">
+                                    HTML
+                                </abbr>
+                            </h4>
+
+                        </div>
+
+                        <div class="highlight-tec css">
+
+                            <img
+                                src="../icones/tecnologias/css3-original.svg"
+                                alt="Logo CSS3"
+                                loading="lazy">
+
+                            <h4>
+                                <abbr
+                                    title="Cascading Style Sheets">
+                                    CSS
+                                </abbr>
+                            </h4>
+
+                        </div>
+
+                        <div class="highlight-tec js">
+
+                            <img
+                                src="../icones/tecnologias/javascript-original.svg"
+                                alt="Logo JavaScript"
+                                loading="lazy">
+
+                            <h4>JavaScript</h4>
+
+                        </div>
+
+                        <div class="highlight-tec php">
+
+                            <img
+                                src="../icones/tecnologias/php-original.svg"
+                                alt="Logo PHP"
+                                loading="lazy">
+
+                            <h4>PHP</h4>
+
+                        </div>
+
+                        <div class="highlight-tec mysql">
+
+                            <img
+                                src="../icones/tecnologias/mysql-original.svg"
+                                alt="Logo MySQL"
+                                loading="lazy">
+
+                            <h4>MySQL</h4>
+
+                        </div>
+
                     </div>
+
+                    <div class="ferramentas">
+
+                        <h3>Ferramentas</h3>
+
+                        <div class="highlight-tec git">
+
+                            <img
+                                src="../icones/tecnologias/git-original.svg"
+                                alt="Logo Git"
+                                loading="lazy">
+
+                            <h4>Git</h4>
+
+                        </div>
+
+                        <div class="highlight-tec vscode">
+
+                            <img
+                                src="../icones/tecnologias/vscode-original.svg"
+                                alt="Logo do Visual Studio Code"
+                                loading="lazy">
+
+                            <h4>
+                                <abbr title="Visual Studio Code">
+                                    VS Code
+                                </abbr>
+                            </h4>
+
+                        </div>
+
+                        <div class="highlight-tec github">
+
+                            <img
+                                src="../icones/tecnologias/github-original.svg"
+                                alt="Logo GitHub"
+                                loading="lazy">
+
+                            <h4>GitHub</h4>
+
+                        </div>
+
+                        <div class="highlight-tec figma">
+
+                            <img
+                                src="../icones/tecnologias/figma-original.svg"
+                                alt="Logo Figma"
+                                loading="lazy">
+
+                            <h4>Figma</h4>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
-            </div>
-        </article>
-    </section>  
-    <script src="../interacoes.js"></script>
-</main>
- <footer>
+                <div class="bar">
+
+                    <p>
+                        <i
+                            class="fa-solid fa-star icone"
+                            aria-hidden="true">
+                        </i>
+                        Sempre aprendendo algo novo
+                    </p>
+
+                    <div class="barra-conteiner">
+
+                        <progress
+                            value="80"
+                            max="100"
+                            class="progress-bar">
+                        </progress>
+
+                        <p>80%</p>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- ============================== Minha Jornada ============================== -->
+
+            <article class="jornada">
+
+                <h2>Minha Jornada</h2>
+
+                <div class="timeline">
+
+                    <div class="item">
+
+                        <div class="circle"></div>
+
+                        <div class="content">
+
+                            <h4>2026 - Presente</h4>
+
+                            <h3>
+                                Estudante de Desenvolvimento Front-end
+                            </h3>
+
+                            <p>
+                                Desenvolvendo interfaces modernas e
+                                responsivas, com foco em performance,
+                                acessibilidade e experiência do usuário.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="item">
+
+                        <div class="circle"></div>
+
+                        <div class="content">
+
+                            <h4>2025 - 2026</h4>
+
+                            <h3>
+                                Estudante de Desenvolvimento Web
+                            </h3>
+
+                            <p>
+                                Aprofundando conhecimentos em HTML, CSS,
+                                JavaScript, Git e boas práticas de
+                                desenvolvimento web.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="item">
+
+                        <div class="circle"></div>
+
+                        <div class="content">
+
+                            <h4>2025</h4>
+
+                            <h3>Início da Jornada</h3>
+
+                            <p>
+                                Descobri a programação e me interessei
+                                por criar soluções que ganham vida na web.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- ============================== Footer ============================== -->
+
+    <footer>
 
         <p>
-            <i class="fa-regular fa-copyright" style="color: rgb(255, 255, 255);"></i>
+
+            <i
+                class="fa-regular fa-copyright icon-footer"
+                aria-hidden="true">
+            </i>
+
             2026 Luzolo Mampassi. Todos os direitos reservados.
+
         </p>
 
         <p>
-            <i class="fa-solid fa-heart fa-lg" style="color: rgb(255, 0, 0);"></i>
+
+            <i
+                class="fa-solid fa-heart fa-lg icon-footer"
+                aria-hidden="true">
+            </i>
+
             Feito com dedicação para aprender e evoluir.
+
         </p>
 
-        <a href="https://github.com/Luzolomampassi"
+        <a
+            href="https://github.com/Luzolomampassi"
             target="_blank"
-            rel="noopener noreferrer">
-            <i class="fa-brands fa-github fa-xl"></i>
-            <i class="bi bi-box-arrow-up-right"></i>
+            rel="noopener noreferrer"
+            aria-label="GitHub">
+
+            <i
+                class="fa-brands fa-github fa-xl"
+                aria-hidden="true">
+            </i>
+
+            <i
+                class="bi bi-box-arrow-up-right"
+                aria-hidden="true">
+            </i>
+
         </a>
 
     </footer>
-    <script src="../../interacoes.js"></script>
+
+    <script src="../interacoes.js"></script>
+
 </body>
+
+</html>
+
