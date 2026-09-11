@@ -1,154 +1,516 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Cosmos</title>
+
     <link rel="stylesheet" href="assets/estilos/style.css">
-    <script src="https://kit.fontawesome.com/f6a9b3f1e7.js" crossorigin="anonymous"></script>
+
+    <script
+        src="https://kit.fontawesome.com/f6a9b3f1e7.js"
+        crossorigin="anonymous">
+    </script>
 </head>
+
 <body>
-    <section class="page">
-        <header>
-            <div class="logo">
+
+    <div class="page">
+
+        <!-- ================= HEADER ================= -->
+
+        <header class="header">
+
+            <a href="#" class="logo" aria-label="Cosmos - Início">
+                <span>✦</span>
                 <h2>Cosmos</h2>
-            </div>
-            <nav>
+            </a>
+
+            <nav class="desktop-nav" aria-label="Navegação principal">
+
                 <ul class="menu">
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Explorar</a></li>
-                    <li><a href="#">Ciência</a></li>
-                    <li><a href="#">Galeria</a></li>
-                    <li><a href="#">Sobre</a></li>
+
+                    <li>
+                        <a href="#">Início</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Explorar</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Ciência</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Galeria</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Sobre</a>
+                    </li>
+
                 </ul>
+
             </nav>
-            <button><i class="fa-solid fa-bars"></i></button>
-            <div class="buttons">
-                <button class="search"><i class="fa-solid fa-magnifying-glass fa-lg"></i></button>
-                <button class="login"><i class="fa-regular fa-user fa-lg"></i> Entrar</button>
+
+            <div class="header-actions">
+
+                <button
+                    type="button"
+                    class="search"
+                    aria-label="Pesquisar">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </button>
+
+                <button
+                    type="button"
+                    class="login">
+
+                    <i class="fa-regular fa-user"></i>
+                    <span>Entrar</span>
+
+                </button>
+
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    aria-label="Abrir menu"
+                    aria-expanded="false">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
             </div>
-            
+
         </header>
-        <!--========= Corpo ==========-->
-      
-            <section class="banner">
-                <div class="banner-content">
-                    <div class="txt-welcome">
-                        <p>Explorando os mistérios do universo</p>
-                        <div class="circle"></div>
+
+
+        <!-- ================= MENU MOBILE ================= -->
+
+        <nav class="mobile-nav" aria-label="Navegação mobile">
+
+            <ul>
+
+                <li>
+                    <a href="#">Início</a>
+                </li>
+
+                <li>
+                    <a href="#">Explorar</a>
+                </li>
+
+                <li>
+                    <a href="#">Ciência</a>
+                </li>
+
+                <li>
+                    <a href="#">Galeria</a>
+                </li>
+
+                <li>
+                    <a href="#">Sobre</a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+
+        <!-- ================= HERO ================= -->
+
+        <main>
+
+            <section class="hero">
+
+                <div class="banner">
+
+                    <div class="banner-content">
+
+                        <div class="txt-welcome">
+
+                            <span class="circle"></span>
+
+                            <p>
+                                Explorando os mistérios do universo
+                            </p>
+
+                        </div>
+
+                        <h1>
+                            Buracos Negros
+                            <br>
+                            Supermassivos
+                        </h1>
+
+                        <p class="hero-description">
+                            Portais cósmicos que desafiam nossa compreensão
+                            do espaço, tempo e da própria realidade.
+                        </p>
+
                     </div>
-                    <h1>Buracos Negros <br>Supermassivos</h1>
-                    <p>Portais cósmicos que desafiam nossa compreensão <br> do espaço , tempo e da propria realidade.</p>
-                </div>
-                <div class="banner-buttons">
-                    <a href="#">Explorar agora </a>
-                    <a href="#"><i class="fa-solid fa-play fa-canvas-roomy"></i> Ver vídeo</a>
-                </div>
-            </section>
-            <section class="sub-banner">
-                <article class="cards">
-                <div class="card">
-                    <img src="assets/icones/orbita.svg" alt="">
-                    <h2>1000+</h2>
-                    <p>Descorbetas registradas</p>
-                </div>
-                <div class="card">
-                    <img src="assets/icones/planeta.svg" alt="">
-                    <h2>88</h2>
-                    <p>Buracos negros estudados </p>
-                </div>
-                <div class="card">
-                    <img src="assets/icones/alvo_estrela.svg" alt="">
-                    <h2>24/7</h2>
-                    <p>Observações em tempo real</p>
-                </div>
-                <div class="card">
-                    <img src="assets/icones/respingo_laranja.svg" alt="">
-                    <h2>100M+</h2>
-                    <p>Anos-luz de exploração</p>
-                </div>
-            </article>
-            <article class="formulario">
-                    <div class="form_txt">
-                        <h3>Fique por dentro do cosmos</h3>
-                        <p>Assine nossa newletter e recebar novidades do univrso</p>
+
+
+                    <div class="banner-buttons">
+
+                        <a href="#" class="primary-button">
+                            Explorar agora
+                        </a>
+
+                        <a href="#" class="video-button">
+
+                            <span>
+                                <i class="fa-solid fa-play"></i>
+                            </span>
+
+                            Ver vídeo
+
+                        </a>
+
                     </div>
-                    <div class="caixa">
-                        <input type="email" name="email" id="email" required autocomplete="email" placeholder="Seu e-mail">
-                        <input type="submit" value="Assinar"id="btn-assinar">
-                    </div>
-            </article>
-            </section>
-            
-            <section class="saiba">
-                <div class="min-card">
-                    <img src="assets/icones/alvo_estrela.svg" alt="">
-                    <h3>Sagittarius A*</h3>
-                    <p>Buraco negro no centro da Via Láctea</p>
-                 
-                     <div>
-                        <a href="#">Saiba mais</a>
-                        <i class="fa-solid fa-arrow-right-long"></i>
-                    </div>
+
                 </div>
-            </section>
-            <section class="explorar">
-                <div class="top">
-                    <h3>Explorar</h3>
-                    <a href="#">Ver tudo</a>
-                </div>
-                <div class="item">
-                    <div class="imagem">
-                        <img src="assets/imagem/buraco negro.jfif" alt="">
-                    </div>
-                    <div class="item-content">
-                        <h3>O que são buracos negros</h3>
-                        <p>Entenda como esses gigantes <br> se formam no universo. </p>
-                        
-                    </div>
-                    <div><i class="fa-solid fa-arrow-right-long"></i></div>
-                </div>
-                <div class="item">
-                    <div class="imagem">
-                        <img src="assets/imagem/jatos.jpeg" alt="">
-                    </div>
-                    <div class="item-content">
-                        <h3>Jatos relativisticos</h3>
-                        <p>Os jatos de particulas viajam <br> próximos à velocidade da luz.</p>
-                    </div>
-                    <div><i class="fa-solid fa-arrow-right-long"></i></div>
-                </div>
-                <div class="item">
-                    <div class="imagem">
-                        <img src="assets/imagem/ondas-gravitacionais.webp" alt="">
-                    </div>
-                    <div class="item-content">
-                        <h3>Ondas gravitacionais</h3>
-                        <p>As ondulações do espaço-tempo <br> detectadas pela ciência.</p>
-                    </div>
-                    <div><i class="fa-solid fa-arrow-right-long"></i></div>
-                </div>
-            
+
+
+                <!-- ================= SAIBA MAIS ================= -->
+
+                <aside class="saiba">
+
+                    <article class="min-card">
+
+                        <img
+                            src="assets/icones/alvo_estrela.svg"
+                            alt="">
+
+                        <h3>
+                            Sagittarius A*
+                        </h3>
+
+                        <p>
+                            Buraco negro no centro da Via Láctea
+                        </p>
+
+                        <a href="#" class="learn-more">
+                            Saiba mais
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </a>
+
+                    </article>
+
+                </aside>
+
             </section>
 
-     
+
+            <!-- ================= CONTEÚDO INFERIOR ================= -->
+
+            <section class="content-grid">
+
+                <!-- ================= ESTATÍSTICAS ================= -->
+
+                <div class="stats-area">
+
+                    <div class="cards">
+
+                        <article class="card">
+
+                            <img
+                                src="assets/icones/orbita.svg"
+                                alt="">
+
+                            <h2>1000+</h2>
+
+                            <p>
+                                Descobertas registradas
+                            </p>
+
+                        </article>
+
+
+                        <article class="card">
+
+                            <img
+                                src="assets/icones/planeta.svg"
+                                alt="">
+
+                            <h2>88</h2>
+
+                            <p>
+                                Buracos negros estudados
+                            </p>
+
+                        </article>
+
+
+                        <article class="card">
+
+                            <img
+                                src="assets/icones/alvo_estrela.svg"
+                                alt="">
+
+                            <h2>24/7</h2>
+
+                            <p>
+                                Observações em tempo real
+                            </p>
+
+                        </article>
+
+
+                        <article class="card">
+
+                            <img
+                                src="assets/icones/respingo_laranja.svg"
+                                alt="">
+
+                            <h2>100M+</h2>
+
+                            <p>
+                                Anos-luz de exploração
+                            </p>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- ================= NEWSLETTER ================= -->
+
+                    <article class="formulario">
+
+                        <div class="form_txt">
+
+                            <h3>
+                                Fique por dentro do cosmos
+                            </h3>
+
+                            <p>
+                                Assine nossa newsletter e receba
+                                novidades do universo.
+                            </p>
+
+                        </div>
+
+                        <form class="caixa">
+
+                            <label
+                                for="email"
+                                class="sr-only">
+
+                                Seu e-mail
+
+                            </label>
+
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                required
+                                autocomplete="email"
+                                placeholder="Seu e-mail">
+
+                            <button
+                                type="submit"
+                                id="btn-assinar">
+
+                                Assinar
+
+                            </button>
+
+                        </form>
+
+                    </article>
+
+                </div>
+
+
+                <!-- ================= EXPLORAR ================= -->
+
+                <section
+                    class="explorar"
+                    aria-labelledby="explorar-title">
+
+                    <div class="top">
+
+                        <h2 id="explorar-title">
+                            Explorar
+                        </h2>
+
+                        <a href="#">
+                            Ver tudo
+                        </a>
+
+                    </div>
+
+
+                    <article class="item">
+
+                        <a href="#" class="imagem">
+
+                            <img
+                                src="assets/imagem/buraco negro.jfif"
+                                alt="Representação de um buraco negro">
+
+                        </a>
+
+                        <div class="item-content">
+
+                            <h3>
+                                O que são buracos negros
+                            </h3>
+
+                            <p>
+                                Entenda como esses gigantes
+                                se formam no universo.
+                            </p>
+
+                        </div>
+
+                        <a
+                            href="#"
+                            class="item-arrow"
+                            aria-label="Ler mais">
+
+                            <i class="fa-solid fa-arrow-right-long"></i>
+
+                        </a>
+
+                    </article>
+
+
+                    <article class="item">
+
+                        <a href="#" class="imagem">
+
+                            <img
+                                src="assets/imagem/jatos.jpeg"
+                                alt="Jatos relativísticos">
+
+                        </a>
+
+                        <div class="item-content">
+
+                            <h3>
+                                Jatos relativísticos
+                            </h3>
+
+                            <p>
+                                Os jatos de partículas viajam
+                                próximos à velocidade da luz.
+                            </p>
+
+                        </div>
+
+                        <a
+                            href="#"
+                            class="item-arrow"
+                            aria-label="Ler mais">
+
+                            <i class="fa-solid fa-arrow-right-long"></i>
+
+                        </a>
+
+                    </article>
+
+
+                    <article class="item">
+
+                        <a href="#" class="imagem">
+
+                            <img
+                                src="assets/imagem/ondas-gravitacionais.webp"
+                                alt="Ondas gravitacionais">
+
+                        </a>
+
+                        <div class="item-content">
+
+                            <h3>
+                                Ondas gravitacionais
+                            </h3>
+
+                            <p>
+                                As ondulações do espaço-tempo
+                                detectadas pela ciência.
+                            </p>
+
+                        </div>
+
+                        <a
+                            href="#"
+                            class="item-arrow"
+                            aria-label="Ler mais">
+
+                            <i class="fa-solid fa-arrow-right-long"></i>
+
+                        </a>
+
+                    </article>
+
+                </section>
+
+            </section>
+
+        </main>
+
+
+        <!-- ================= FOOTER ================= -->
+
         <footer>
+
             <div class="social">
-                <p><i class="fa-brands fa-twitter fa-canvas-roomy icone"></i></p>
-                <p><i class="fa-brands fa-instagram fa-canvas-roomy icone"></i></p>
-                <p><i class="fa-brands fa-youtube fa-canvas-roomy icone"></i></p>
-                <p><i class="fa-brands fa-discord fa-canvas-roomy icone"></i></p>
+
+                <a href="#" aria-label="Twitter">
+                    <i class="fa-brands fa-twitter fa-xl"></i>
+                </a>
+
+                <a href="#" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram fa-xl"></i>
+                </a>
+
+                <a href="#" aria-label="YouTube">
+                    <i class="fa-brands fa-youtube fa-xl"></i>
+                </a>
+
+                <a href="#" aria-label="Discord">
+                    <i class="fa-brands fa-discord fa-xl"></i>
+                </a>
+
             </div>
-            <div>
-                <p>&copy;2026 Cosmos. Todos os direitos reservados.</p>
-            </div>
+
+
+            <p>
+                &copy; 2026 Cosmos. Todos os direitos reservados.
+            </p>
+
+
             <div class="termos">
-                <p>Privacidade</p>
-                <p>Termos</p>
-                <p>Contato</p>
+
+                <a href="#">
+                    Privacidade
+                </a>
+
+                <a href="#">
+                    Termos
+                </a>
+
+                <a href="#">
+                    Contato
+                </a>
+
             </div>
+
         </footer>
-    </section>
-    
+
+    </div>
+
 </body>
+
 </html>
+
