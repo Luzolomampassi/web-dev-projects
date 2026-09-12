@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskPulse</title>
+
+    <link rel="stylesheet" href="css/login.css">
+
+    <script
+        src="https://kit.fontawesome.com/f6a9b3f1e7.js"
+        crossorigin="anonymous"
+    ></script>
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <!-- LOGIN -->
+        <section class="auth-card login-card ativo" id="loginPanel">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    TP
+                </div>
+
+                <div class="brand-text">
+                    <h1>TaskPulse</h1>
+                    <span>Organize. Execute. Evolua.</span>
+                </div>
+
+            </div>
+
+
+            <div class="auth-content">
+
+                <header class="auth-header">
+                    <h2>Bem-vindo de volta</h2>
+                    <p>Entre na sua conta para continuar.</p>
+                </header>
+
+
+                <form id="loginForm" novalidate>
+
+                    <div class="form-group">
+
+                        <label for="loginEmail">
+                            E-mail
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                <i class="fa-regular fa-envelope"></i>
+                            </span>
+
+                            <input
+                                type="email"
+                                id="loginEmail"
+                                name="email"
+                                placeholder="seuemail@exemplo.com"
+                                autocomplete="email"
+                            >
+
+                        </div>
+
+                        <small
+                            class="error-message"
+                            id="loginEmailError"
+                        ></small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <div class="password-header">
+
+                            <label for="loginPassword">
+                                Senha
+                            </label>
+
+                            <a href="#">
+                                Esqueceu a senha?
+                            </a>
+
+                        </div>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                <i class="fa-solid fa-key"></i>
+                            </span>
+
+                            <input
+                                type="password"
+                                id="loginPassword"
+                                name="password"
+                                placeholder="Digite sua senha"
+                                autocomplete="current-password"
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                aria-label="Mostrar senha"
+                            >
+                                Mostrar
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="error-message"
+                            id="loginPasswordError"
+                        ></small>
+
+                    </div>
+
+
+                    <div class="login-options">
+
+                        <label class="remember">
+
+                            <input
+                                type="checkbox"
+                                id="rememberLogin"
+                            >
+
+                            <span class="custom-checkbox"></span>
+
+                            <span>
+                                Lembrar de mim
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Entrar
+                    </button>
+
+                </form>
+
+
+                <p class="register-text">
+
+                    Ainda não possui uma conta?
+
+                    <button
+                        type="button"
+                        id="openSignup"
+                        aria-label="Abrir formulário de criação de conta"
+                    >
+                        Criar conta
+                    </button>
+
+                </p>
+
+            </div>
+
+
+            <footer class="auth-footer">
+
+                <span>
+                    © 2026 TaskPulse
+                </span>
+
+                <div>
+                    <a href="#">Privacidade</a>
+                    <a href="#">Termos</a>
+                </div>
+
+            </footer>
+
+        </section>
+
+
+        <!-- SIGN UP -->
+        <section class="auth-card signup-card" id="signupPanel">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    TP
+                </div>
+
+                <div class="brand-text">
+                    <h1>TaskPulse</h1>
+                    <span>Organize. Execute. Evolua.</span>
+                </div>
+
+            </div>
+
+
+            <div class="auth-content">
+
+                <header class="auth-header">
+                    <h2>Seja bem-vindo</h2>
+                    <p>Crie a sua conta para continuar.</p>
+                </header>
+
+
+                <form id="signupForm" novalidate>
+
+                    <div class="form-group">
+
+                        <label for="signupName">
+                            Nome
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                <i class="fa-regular fa-user"></i>
+                            </span>
+
+                            <input
+                                type="text"
+                                id="signupName"
+                                name="nome"
+                                placeholder="Seu nome"
+                                autocomplete="name"
+                            >
+
+                        </div>
+
+                        <small
+                            class="error-message"
+                            id="signupNameError"
+                        ></small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="signupEmail">
+                            E-mail
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                <i class="fa-regular fa-envelope"></i>
+                            </span>
+
+                            <input
+                                type="email"
+                                id="signupEmail"
+                                name="email"
+                                placeholder="seuemail@exemplo.com"
+                                autocomplete="email"
+                            >
+
+                        </div>
+
+                        <small
+                            class="error-message"
+                            id="signupEmailError"
+                        ></small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <div class="password-header">
+
+                            <label for="signupPassword">
+                                Crie a sua senha
+                            </label>
+
+                        </div>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                <i class="fa-solid fa-key"></i>
+                            </span>
+
+                            <input
+                                type="password"
+                                id="signupPassword"
+                                name="password"
+                                placeholder="Digite sua senha"
+                                autocomplete="new-password"
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                aria-label="Mostrar senha"
+                            >
+                                Mostrar
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="error-message"
+                            id="signupPasswordError"
+                        ></small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <div class="password-header">
+
+                            <label for="signupPasswordConfirm">
+                                Confirme a sua senha
+                            </label>
+
+                        </div>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                <i class="fa-solid fa-key"></i>
+                            </span>
+
+                            <input
+                                type="password"
+                                id="signupPasswordConfirm"
+                                name="passwordConfirm"
+                                placeholder="Digite sua senha novamente"
+                                autocomplete="new-password"
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                aria-label="Mostrar senha"
+                            >
+                                Mostrar
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="error-message"
+                            id="signupPasswordConfirmError"
+                        ></small>
+
+                    </div>
+
+
+                    <div class="login-options">
+
+                        <label class="remember">
+
+                            <input
+                                type="checkbox"
+                                id="rememberSignup"
+                            >
+
+                            <span class="custom-checkbox"></span>
+
+                            <span>
+                                Lembrar de mim
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Criar
+                    </button>
+
+                </form>
+
+
+                <p class="register-text">
+
+                    Já possui uma conta?
+
+                    <button
+                        type="button"
+                        id="openLogin"
+                        aria-label="Voltar para o login"
+                    >
+                        Entrar
+                    </button>
+
+                </p>
+
+            </div>
+
+
+            <footer class="auth-footer">
+
+                <span>
+                    © 2026 TaskPulse
+                </span>
+
+                <div>
+                    <a href="#">Privacidade</a>
+                    <a href="#">Termos</a>
+                </div>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+    <script src="js/login.js"></script>
+
+</body>
+</html>
