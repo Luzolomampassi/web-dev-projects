@@ -182,281 +182,18 @@ h1{
 .beneficios{
   display: grid;
   width: 90%;
-  grid-template-columns: repeat(2,1fr);
+  gap: 1em;
+  grid-template-columns: 1fr;
   font-family: var(--font-manrope);
   margin:  auto;
 }
 .beneficio{
-  padding: 10px;
-}
-.poker-dimond{
-  height: 30px;
-  color: var(--color-brand-gold-cta);
-}
-.beneficio:nth-of-type(2){
-  border-right: .5px solid var(--color-border-warm);
-  border-left: 1px solid var(--color-border-warm);
-}
-.beneficio:nth-of-type(3){
-  border-right: 1px solid var(--color-border-warm);
-}
-.ri-poker-diamonds-fill,
-.ri-home-line,
-.ri-motorbike-line{
-  color: var(--color-brand-gold-cta);
-}
-
-/*================================
-                Menu
-==================================*/
-.menu{
-  font-family: var(--font-manrope);
-}
-.sections-intro{
- height: 10vh;
-  
-}
-.sections-intro > p{
-  color: var(--color-brand-gold);
-  line-height: 5;
-
-}
-.sections-intro h2{
-  color: var(--color-brand-green);
-  font-size: clamp(42px, 4.5vw, 64px);
-  font-family: var(--font-bodoni);
-  font-weight: 500;
-  letter-spacing: -.065em;
-  line-height: .94;
-
-}
-.categorias{
-  display: flex;
-  border-bottom: 1px solid var(--color-border-warm);
-  margin: 71px 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-.categorias-intro{
-  margin-bottom: 20px;
-}
-.section-txt{
-  color: var(--color-brand-gold-cta);
-}
-.categorias-intro h2{
-  color: var(--color-brand-green);
-  font-size: clamp(42px, 4.5vw, 64px);
-  font-family: var(--font-bodoni);
-  font-weight: 500;
-  letter-spacing: -.065em;
-  line-height: .94;
-
-}
-/*Button*/
-.categorias button{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 10px 20px;
-  background: transparent;
-  border: none;
-  transition: background-color .3s;
-  position: relative;
-  cursor: pointer;
-}
-.categorias button:hover{
-  background-color: var(--color-surface-category-hover);
-}
-.categorias button::before{
-  content: '';
-  position: absolute;
-  height: 3px;
-  width: 0;
-  background-color: var(--color-brand-gold);
-  bottom: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: width .3s ease-in;
-}
-.categorias button:hover::before{
-  width: 60%;
-}
-/*Icones*/
-.menu-icon{
-  font-size: 34px;
-  color: var(--color-brand-gold);
-  width: 24px;
-}
-/*Slides dos pratos*/
-.text-link{
-  display: none;
-  color: var(--color-brand-green);
-  font-size: 1.2em;
-  font-family: var(--font-manrope);
-}
-.dishes-heading p{
-  color: var(--color-text-primary);
-  font-weight: 100;
-}
-b{
-  color: var(--color-brand-gold-cta);
-}
-/*Cards*/
-
-/*================================
-                Cardapio
-==================================*/
-
-.dish-grid {
-  display: flex;
-  overflow-x: auto;
-  padding-right: 18px;
-  gap: 10px;
-  scroll-snap-type: x mandatory;
-  
-}
-.dish-card{
-  flex: 0 0 76%;
-  scroll-snap-align: start;
+  padding: 15px 10px;
   background-color: var(--color-white);
-}
-.dish-card:hover{
-  transform: translateY(-10px);
-  box-shadow: 0px 5px 3px rgba(0, 0, 0, 0.116);
-}
-.dish-info div:nth-of-type(1){
-  margin-bottom: 10px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--color-border-subtle);
-
-}
-/*Dish imagens*/
-.dish-img {
-  display: flex;
-  flex-direction: column;
-  height: 275px;
-  width: 100%;
-}
-.dish-img img{
-  position: relative;
-  width: 100%;
-}
-.btn-favorito {
-  position: absolute;
-  top: 11px;
-  right: 11px;
-  width: 31px;
-  height: 31px;
-  padding: 8px;
-  background: rgba(255, 253, 248, .9);
-  border: 0;
-  color: var(--color-text-primary);
-  cursor: pointer;
-
+  border:1px solid var(--color-brand-gold-light);
+  border-radius: 4px;
 }
 
-.dish-info {
-  padding: 17px 16px 15px;
-}
-.dish-info h3 {
-  font-family: "Bodoni Moda", serif;
-  font-size: 18px;
-  letter-spacing: -.04em;
-  margin: 0 0 7px;
-  font-weight: 600;
-}
-.icone-favorito {
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-}
-.icone-favorito:hover{
-  fill: rgba(255, 0, 0, 0.276);
-  stroke:  rgba(255, 0, 0, 0.276);
-
-}
-
-.icone-favorito.favoritado {
-  fill: red;
-  stroke: red;
-}
-.dish-bottom{
-  display: flex;
-  justify-content: space-between;
-}
-/*btn-adicionar*/
-.add-button{
-  background-color: var(--color-brand-green);
-  color: var(--color-white);
-  font-weight: 500;
-  border: 0;
-  width: 27px;
-  height: 27px;
-  font-size: 18px;
-  font-weight: 300;
-  transition: background .2s;
-  cursor: pointer;
-
-}
-
-
-/*================================
-                Historia
-==================================*/
-.story {
-  background-color: var(--color-border-subtle);
-  padding: 40px 20px;
-  line-height: 1.8;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.story-imagem {
-  width: 100%;
-  height: 320px;
-  overflow: hidden;
-}
-
-.story-imagem img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.story-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-}
-
-.sections-intro {
-  margin-bottom: 30px;
-}
-
-.sections-intro h2 {
-  font-size: clamp(2.5rem, 4vw, 4rem);
-  line-height: 1.1;
-  margin: 10px 0 0;
-}
-
-.main-story h3 {
-  margin-top: 8px;
-}
-
-.main-story {
-  position: static;
-}
-
-.main-story p {
-  margin: 0 0 25px;
-  line-height: 1.8;
-}
 
 /*================================
                 Review
@@ -550,52 +287,8 @@ b{
   vertical-align: middle;
   margin: 0 8px;
 }
-/*================================
-                Promo
-==================================*/
-.promo{
-  background-color: var(--color-brand-green);
-  padding: 10px 0px 0px;
-  height: auto;
-  display: grid;
-  gap: 30px;
 
-}
-.promo-copy{
-  line-height: 2;
-  padding-left: 20px;
-}
-.promo-copy h2{
-  color: var(--color-brand-gold-light);
-  font-size: clamp(67px, 6vw, 80px);
-  font-family: var(--font-bodoni);
-  font-weight: 500;
-  letter-spacing: -.065em;
-}
-.promo-txt{
-  color: var(--color-brand-gold);
-}
-.txt-off{
-  color: var(--color-white);
-}
-.promo-copy a{
-  display: inline-block;
-  background-color: var(--color-brand-gold-cta);
-  padding: 10px;
-  transition: .3s;
-}
-.promo-copy a:hover{
-  background-color: var(--color-brand-green-hover);
-  transform: scale(.999) translateY(-1px) translateX(1px);
-}
-.promo-imagem{
-  width: 100%;
-}
-.promo-imagem img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
 
 /*================================
                 MediaQueries
@@ -603,35 +296,8 @@ b{
 
    
 @media (min-width: 768px) {
-.menu {
-    padding: 85px 0;
-}
 
-.story {
-    min-height: 650px;
-    padding: 80px 7%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 70px;
-    align-items: center;
-}
 
-.story-imagem {
-    width: 100%;
-    height: 520px;
-    overflow: hidden;
-}
-
-.story-imagem img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.story-copy {
-  max-width: 600px;
-}
 
 .sections-intro {
   margin-bottom: 40px;
@@ -648,11 +314,8 @@ b{
   line-height: 1.9;
   max-width: 550px;
 }
+}
 
-.main-story .eyebrow {
-  margin-top: 35px;
-}
-}
 
 @media (min-width:1023px){
 
@@ -665,14 +328,6 @@ b{
   display: flex;
 }
 
-.dish-card{
-  flex: 1 1 300px;
-}
-.dishes-heading{
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 15px;
-}
 .banner-content{
   width: 50%;
   line-height: 1.2;

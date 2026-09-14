@@ -1,27 +1,30 @@
+/* ================================
+   RESET
+================================ */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-@font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-display: swap;
-    src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
-}
+
+/* ================================
+   VARIÁVEIS
+================================ */
 
 :root {
     --color-primary: #2563EB;
     --color-primary-dark: #1D4ED8;
     --color-primary-light: #DBEAFE;
 
-    --color-background: #F8FAFC;
+    --color-background: #F1F5F9;
     --color-surface: #FFFFFF;
     --color-white: #FFFFFF;
 
     --color-text: #0F172A;
     --color-text-secondary: #64748B;
+
     --color-border: #E2E8F0;
 
     --color-success: #16A34A;
@@ -32,91 +35,153 @@
 
     --color-danger: #DC2626;
     --color-danger-light: #FEE2E2;
-
-    --font-inter: 'Inter', sans-serif;
 }
 
-body {
-    font-family: var(--font-inter);
-    color: var(--color-text);
-}
 
-main {
+/* ================================
+   BASE
+================================ */
+
+html {
     background-color: var(--color-background);
 }
 
-/* =========================
-   CARDS SUPERIORES
-========================= */
+body {
+    width: 100%;
+    min-height: 100vh;
 
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    background-color: var(--color-background);
+    color: var(--color-text);
+
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button,
+select {
+    cursor: pointer;
+}
+
+main {
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    padding: 94px 16px 40px;
+}
+
+
+/* ================================
+   TOPO
+================================ */
+
+.inicio {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
     margin-bottom: 20px;
 }
-
-.card-item {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 10px;
-    padding: 10px 12px;
-    min-height: 58px;
-}
-
-/* =========================
-   BOTÃO ADICIONAR
-========================= */
 
 .btn-add {
     display: flex;
     align-items: center;
+    justify-content: center;
+
     gap: 8px;
+
     width: 100%;
-    padding: 9px 12px;
+
+    padding: 10px 12px;
+
+    border: 0;
+    border-radius: 8px;
 
     background-color: var(--color-primary);
     color: var(--color-white);
 
-    border: none;
-    border-radius: 8px;
-
     font-weight: 600;
-    font-size: 0.9rem;
 
     box-shadow: 0 2px 5px rgba(37, 99, 235, 0.18);
 
-    cursor: pointer;
     transition:
         background-color 0.2s ease,
-        box-shadow 0.2s ease;
+        transform 0.2s ease;
 }
 
 .btn-add:hover {
     background-color: var(--color-primary-dark);
 }
 
-/* =========================
-   PESQUISA E FILTROS
-========================= */
-
-.search-bar {
-    position: relative;
-    margin-bottom: 16px;
-    color: var(--color-text-secondary);
+.btn-add:active {
+    transform: scale(0.98);
 }
 
-select,
-.search {
-    width: 100%;
-    padding: 10px 11px;
 
-    background-color: var(--color-surface);
+/* ================================
+   CARDS SUPERIORES
+================================ */
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.card-item {
+    min-height: 58px;
+
+    padding: 10px 12px;
 
     border: 1px solid var(--color-border);
     border-radius: 10px;
 
-    font-family: inherit;
+    background-color: var(--color-surface);
+}
+
+
+/* ================================
+   PESQUISA
+================================ */
+
+.search-container {
+    display: grid;
+    gap: 10px;
+
+    margin-bottom: 16px;
+}
+
+.search-bar {
+    position: relative;
+
+    width: 100%;
+}
+
+.search,
+select,
+textarea,
+.nome {
+    width: 100%;
+
+    padding: 10px 11px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+
+    background-color: var(--color-surface);
+    color: var(--color-text);
+
     font-size: 0.9rem;
 
     transition:
@@ -124,62 +189,118 @@ select,
         box-shadow 0.2s ease;
 }
 
+.search:hover,
 select:hover,
-.search:hover {
+textarea:hover,
+.nome:hover {
     border-color: #B8C4D4;
 }
 
+.search:focus,
 select:focus,
-.search:focus {
+textarea:focus,
+.nome:focus {
     outline: none;
+
     border-color: var(--color-primary);
+
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
 }
 
 .search::placeholder {
-    font-weight: 400;
     color: var(--color-text-secondary);
 }
 
 .lupa {
     position: absolute;
+
     left: 12px;
     top: 50%;
+
     transform: translateY(-50%);
+
+    color: var(--color-text-secondary);
+
+    pointer-events: none;
 }
 
-/* =========================
+
+/* ================================
    FILTROS
-========================= */
+================================ */
 
 .filtros {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
     gap: 8px;
+
     margin-bottom: 20px;
 }
 
-/* =========================
+.btn-filters {
+    min-height: 40px;
+
+    padding: 8px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+
+    background-color: var(--color-surface);
+    color: var(--color-text-secondary);
+
+    font-weight: 600;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.btn-filters:hover,
+.btn-filters.active {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+    border-color: var(--color-primary-light);
+}
+
+.btn-filters:focus-visible {
+    outline: 3px solid var(--color-primary-light);
+    outline-offset: 2px;
+}
+
+
+/* ================================
    CATEGORIAS
-========================= */
+================================ */
 
 .categorias-grid {
     display: grid;
     grid-template-columns: 1fr;
+
     gap: 12px;
 }
+
+.item,
+#item-add {
+    min-height: 180px;
+
+    padding: 12px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+}
+
+
+/* ================================
+   ITEM
+================================ */
 
 .item {
     display: flex;
     flex-direction: column;
 
     background-color: var(--color-surface);
-
-    min-height: 180px;
-    padding: 12px;
-
-    border: 1px solid var(--color-border);
-    border-radius: 10px;
 
     transition:
         box-shadow 0.2s ease,
@@ -191,19 +312,38 @@ select:focus,
     align-items: center;
     justify-content: space-between;
 
+    gap: 10px;
+
     margin-bottom: 16px;
 }
 
 .item-top-info {
     display: flex;
     align-items: center;
+
     gap: 9px;
+
+    min-width: 0;
 }
+
+.item-top-info h3 {
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* ================================
+   ÍCONE DA CATEGORIA
+================================ */
 
 .icon {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    flex-shrink: 0;
 
     width: 38px;
     height: 38px;
@@ -216,16 +356,30 @@ select:focus,
     font-size: 1.1rem;
 }
 
+
+/* ================================
+   EDITAR
+================================ */
+
 .btn-edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 32px;
+    height: 32px;
+
     padding: 6px;
 
     background-color: transparent;
-    border: none;
+
+    border: 0;
     border-radius: 50%;
 
     font-size: 0.95rem;
 
-    cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
@@ -233,14 +387,18 @@ select:focus,
     background-color: var(--color-border);
 }
 
-/* =========================
-   BADGES
-========================= */
+
+/* ================================
+   BADGE
+================================ */
 
 .badge {
     display: inline-flex;
     align-items: center;
+
     gap: 4px;
+
+    width: fit-content;
 
     padding: 3px 7px;
 
@@ -255,17 +413,20 @@ select:focus,
 
 .badge::before {
     content: "•";
+
     font-size: 0.95rem;
 }
 
-/* =========================
-   ESTADO DAS TAREFAS
-========================= */
+
+/* ================================
+   ESTADO
+================================ */
 
 .task-concluidas,
 .task-pendentes {
     display: inline-flex;
     align-items: center;
+
     gap: 5px;
 
     color: var(--color-text-secondary);
@@ -276,6 +437,7 @@ select:focus,
 .task-concluidas::before,
 .task-pendentes::before {
     content: "•";
+
     font-size: 1rem;
     font-weight: 700;
 }
@@ -288,14 +450,19 @@ select:focus,
     color: var(--color-warning);
 }
 
-/* =========================
+
+/* ================================
    PROGRESSO
-========================= */
+================================ */
 
 .bar-info {
     display: flex;
     justify-content: space-between;
+
     width: 100%;
+
+    margin-bottom: 5px;
+
     font-size: 0.8rem;
 }
 
@@ -303,9 +470,10 @@ select:focus,
     width: 100%;
 }
 
-/* =========================
+
+/* ================================
    ADICIONAR CATEGORIA
-========================= */
+================================ */
 
 #item-add {
     display: flex;
@@ -313,13 +481,11 @@ select:focus,
     align-items: center;
     justify-content: center;
 
-    min-height: 180px;
     padding: 20px 10px;
 
     background-color: transparent;
 
     border: 2px dashed var(--color-border);
-    border-radius: 10px;
 
     color: var(--color-text-secondary);
 
@@ -333,7 +499,9 @@ select:focus,
 
 #item-add:hover {
     border-color: var(--color-primary);
+
     background-color: rgba(37, 99, 235, 0.04);
+
     color: var(--color-primary);
 }
 
@@ -348,11 +516,8 @@ select:focus,
     margin-bottom: 12px;
 
     background-color: var(--color-border);
-    border-radius: 50%;
 
-    transition:
-        background-color 0.2s ease,
-        color 0.2s ease;
+    border-radius: 50%;
 }
 
 #item-add:hover > .fa-plus {
@@ -360,17 +525,113 @@ select:focus,
     color: var(--color-primary);
 }
 
-/* =========================
+
+/* ================================
+   MODAL
+================================ */
+
+.modal {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    z-index: 30;
+
+    display: none;
+    flex-direction: column;
+
+    width: min(90%, 520px);
+    max-height: 90vh;
+
+    padding: 20px;
+
+    overflow-y: auto;
+
+    background-color: var(--color-surface);
+
+    border-radius: 16px;
+
+    transform: translate(-50%, -50%);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    color: var(--color-text-secondary);
+
+    font-size: 0.9rem;
+}
+
+textarea {
+    min-height: 100px;
+
+    resize: vertical;
+}
+
+
+/* ================================
+   ÍCONES DO MODAL
+================================ */
+
+.category-icons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 8px;
+
+    padding: 10px 0;
+}
+
+.category-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 5px;
+
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+
+    background-color: var(--color-surface);
+
+    font-size: 1.3rem;
+
+    transition:
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.category-icon:hover,
+.category-icon.active {
+    background-color: var(--color-primary-light);
+    border-color: var(--color-primary);
+}
+
+
+/* ================================
    TABLET
-========================= */
+================================ */
 
 @media (min-width: 768px) {
 
+    main {
+        padding: 94px 24px 50px;
+    }
+
     .inicio {
-        display: flex;
-        justify-content: space-between;
+        flex-direction: row;
         align-items: center;
-        margin-bottom: 20px;
+        justify-content: space-between;
     }
 
     .btn-add {
@@ -379,8 +640,7 @@ select:focus,
 
     .search-container {
         display: flex;
-        width: 100%;
-        gap: 10px;
+        align-items: center;
     }
 
     .search-bar {
@@ -388,7 +648,13 @@ select:focus,
     }
 
     .filtros {
-        flex-direction: row;
+        display: flex;
+        width: fit-content;
+        margin-bottom: 20px;
+    }
+
+    .btn-filters {
+        min-width: 100px;
     }
 
     .cards-grid {
@@ -400,11 +666,22 @@ select:focus,
     }
 }
 
-/* =========================
+
+/* ================================
    DESKTOP
-========================= */
+================================ */
 
 @media (min-width: 1024px) {
+
+    main {
+        width: calc(100% - 250px);
+        max-width: none;
+
+        margin-left: 250px;
+        margin-right: 0;
+
+        padding: 40px;
+    }
 
     .categorias-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -412,6 +689,11 @@ select:focus,
 
     .item:hover {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+
         transform: translateY(-1px);
+    }
+
+    .category-icons-grid {
+        grid-template-columns: repeat(6, 1fr);
     }
 }

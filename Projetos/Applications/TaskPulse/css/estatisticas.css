@@ -14,26 +14,26 @@
 ================================ */
 
 :root {
-    --background-color: #F8F8FB;
+    --color-primary: #2563EB;
+    --color-primary-dark: #1D4ED8;
+    --color-primary-light: #DBEAFE;
 
-    --color-primary: #6366F1;
-    --color-primary-hover: #EEF2FF;
-
-    --color-secondary: #818CF8;
-    --color-secondary-hover: #7671F5;
-
-    --color-border: #E6E8EF;
-    --color-border-warm: #DDDFE6;
-
-    --text-color: #1F2937;
-    --text-secondary: #6B7280;
-
-    --text-surface: #F6F6F8;
-
+    --color-background: #F1F5F9;
+    --color-surface: #FFFFFF;
     --color-white: #FFFFFF;
-    --color-red: #EF4444;
-    --color-green: #22C55E;
-    --color-orange: #F59E0B;
+
+    --color-text: #0F172A;
+    --color-text-secondary: #64748B;
+
+    --color-border: #E2E8F0;
+
+    --color-success: #16A34A;
+    --color-warning: #D97706;
+    --color-danger: #DC2626;
+
+    --color-success-light: #DCFCE7;
+    --color-warning-light: #FEF3C7;
+    --color-danger-light: #FEE2E2;
 }
 
 
@@ -41,17 +41,32 @@
    BASE
 ================================ */
 
+html {
+    background-color: var(--color-background);
+}
+
 body {
     width: 100%;
     min-height: 100vh;
+
     font-family: Arial, Helvetica, sans-serif;
-    color: var(--text-color);
-    background-color: var(--background-color);
+
+    color: var(--color-text);
+    background-color: var(--color-background);
 }
 
 button,
 a {
     cursor: pointer;
+}
+
+main {
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    padding: 94px 16px 40px;
 }
 
 .section-title {
@@ -65,68 +80,87 @@ a {
 
 .data-bar {
     display: flex;
+
     width: fit-content;
+
+    margin-bottom: 20px;
+    padding: 3px;
+
+    gap: 3px;
+
     background-color: var(--color-white);
+
     border: 1px solid var(--color-border);
     border-radius: 9px;
-    padding: 3px;
-    gap: 3px;
-    margin-bottom: 20px;
 }
 
 .btn-filtro {
     padding: 7px 14px;
-    border: none;
-    border-radius: 6px;
-    background-color: transparent;
-    color: var(--text-secondary);
 
+    border: 0;
+    border-radius: 6px;
+
+    background-color: transparent;
+    color: var(--color-text-secondary);
+
+    font: inherit;
     font-size: 13px;
     font-weight: 600;
-    font-family: inherit;
 
     transition:
-        background-color .2s ease,
-        color .2s ease;
+        background-color 0.2s ease,
+        color 0.2s ease;
 }
 
-.btn-filtro:hover {
-    background-color: var(--color-primary-hover);
+.btn-filtro:hover,
+.btn-filtro.active {
+    background-color: var(--color-primary-light);
     color: var(--color-primary);
+}
+
+.btn-filtro:focus-visible {
+    outline: 3px solid var(--color-primary-light);
+    outline-offset: 2px;
 }
 
 
 /* ================================
-   CARDS DE RESUMO
+   CARDS
 ================================ */
 
 .cards-grid {
     display: grid;
-    grid-template-columns: 1fr;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
     gap: 14px;
+
+    margin-bottom: 18px;
 }
 
 .card {
     padding: 16px;
+
     background-color: var(--color-white);
 
     border: 1px solid var(--color-border);
     border-radius: 11px;
 
     transition:
-        transform .2s ease,
-        box-shadow .2s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 14px rgba(0, 0, 0, .06);
+
+    box-shadow: 0 5px 14px rgba(15, 23, 42, 0.06);
 }
 
 .card-title {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 
     margin-bottom: 16px;
 }
@@ -142,12 +176,12 @@ a {
 ================================ */
 
 .num-total {
-    color: var(--text-color);
+    color: var(--color-text);
 }
 
 .num-concluidas,
 .taxa-conclusao {
-    color: var(--color-green);
+    color: var(--color-success);
 }
 
 .num-pendentes {
@@ -155,12 +189,12 @@ a {
 }
 
 .num-atrasadas {
-    color: var(--color-red);
+    color: var(--color-danger);
 }
 
 
 /* ================================
-   ÍCONES DOS CARDS
+   ÍCONES
 ================================ */
 
 .fa-clock,
@@ -172,23 +206,23 @@ a {
 }
 
 .fa-square-check {
-    color: var(--color-green);
-    background-color: #ECFAF0;
+    color: var(--color-success);
+    background-color: var(--color-success-light);
 }
 
 .fa-clock {
     color: var(--color-primary);
-    background-color: #EEEDFD;
+    background-color: var(--color-primary-light);
 }
 
 .fa-triangle-exclamation {
-    color: var(--color-red);
-    background-color: #FDEDED;
+    color: var(--color-danger);
+    background-color: var(--color-danger-light);
 }
 
 .fa-percent {
     color: var(--color-primary);
-    background-color: #EAEFFF;
+    background-color: var(--color-primary-light);
 }
 
 
@@ -197,12 +231,13 @@ a {
 ================================ */
 
 .card-comparison {
-    color: var(--color-green);
-    font-size: .85rem;
+    color: var(--color-success);
+
+    font-size: 0.85rem;
 }
 
 .card:nth-child(4) .card-comparison {
-    color: var(--color-red);
+    color: var(--color-danger);
 }
 
 
@@ -212,16 +247,53 @@ a {
 
 .charts-grid {
     display: grid;
+
     gap: 16px;
-    padding: 8px 0;
+
+    margin-bottom: 18px;
 }
 
-.produtividade {
-    padding: 16px;
+.produtividade,
+.chart-card,
+.distribuicao,
+.estatisticas-adicionais,
+.atividades {
+    width: 100%;
+
     background-color: var(--color-white);
 
     border: 1px solid var(--color-border);
     border-radius: 11px;
+}
+
+.produtividade {
+    padding: 16px;
+}
+
+.chart-card {
+    padding: 20px;
+}
+
+.chart-header h3 {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.chart-header p {
+    margin: 5px 0 20px;
+
+    color: var(--color-text-secondary);
+
+    font-size: 14px;
+}
+
+.chart-container {
+    position: relative;
+
+    width: 100%;
+    height: 300px;
 }
 
 .square-concluidas {
@@ -232,45 +304,22 @@ a {
     color: #9CA3AF;
 }
 
-.chart-card {
-    width: 100%;
-    padding: 20px;
-
-    background-color: var(--color-white);
-    border-radius: 12px;
-}
-
-.chart-header h3 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.chart-header p {
-    margin: 5px 0 20px;
-    font-size: 14px;
-    color: #8B8D98;
-}
-
-.chart-container {
-    position: relative;
-    width: 100%;
-    height: 300px;
-}
-
 
 /* ================================
    DISTRIBUIÇÃO
 ================================ */
 
 .distribuicao {
-    width: 100%;
     padding: 16px;
+}
 
-    background-color: var(--color-white);
+.distribuicao-content {
+    display: flex;
+    flex-direction: column;
 
-    border: 1px solid var(--color-border);
-    border-radius: 11px;
+    align-items: center;
+
+    gap: 25px;
 }
 
 .status-tarefa {
@@ -279,31 +328,36 @@ a {
     justify-content: space-between;
 
     gap: 10px;
+
     padding: 7px;
 
     border-radius: 6px;
 }
 
 .status-tarefa:hover {
-    background-color: var(--text-surface);
+    background-color: var(--color-background);
 }
 
 .status-tarefa div {
     display: flex;
     align-items: center;
+
     gap: 9px;
 }
 
 .status-tarefa div > p:nth-child(2) {
-    color: var(--text-secondary);
-    font-size: .88rem;
+    color: var(--color-text-secondary);
+
+    font-size: 0.88rem;
 }
 
 
-/* Indicadores */
+/* ================================
+   INDICADORES
+================================ */
 
 #indicador-concluidas {
-    color: var(--color-green);
+    color: var(--color-success);
 }
 
 #indicador-pendentes {
@@ -311,11 +365,11 @@ a {
 }
 
 #indicador-atrasadas {
-    color: var(--color-red);
+    color: var(--color-danger);
 }
 
 #indicador-andamento {
-    color: var(--color-orange);
+    color: var(--color-warning);
 }
 
 .percentagem {
@@ -325,7 +379,7 @@ a {
 
 
 /* ================================
-   GRÁFICO DE DISTRIBUIÇÃO
+   GRÁFICO CIRCULAR
 ================================ */
 
 .grafico-distribuicao {
@@ -334,19 +388,21 @@ a {
     width: 140px;
     height: 140px;
 
-    margin: 20px 0;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
+    flex-shrink: 0;
+
+    margin: 0;
+
     border-radius: 50%;
 
     background: conic-gradient(
-        var(--color-green) 0% 47%,
+        var(--color-success) 0% 47%,
         var(--color-primary) 47% 75%,
-        var(--color-red) 75% 86%,
-        var(--color-orange) 86% 100%
+        var(--color-danger) 75% 86%,
+        var(--color-warning) 86% 100%
     );
 }
 
@@ -359,6 +415,7 @@ a {
     height: 112px;
 
     background-color: var(--color-white);
+
     border-radius: 50%;
 }
 
@@ -368,6 +425,7 @@ a {
 
     display: flex;
     flex-direction: column;
+
     align-items: center;
 }
 
@@ -376,7 +434,8 @@ a {
 }
 
 .grafico-centro span {
-    color: #999;
+    color: var(--color-text-secondary);
+
     font-size: 13px;
 }
 
@@ -387,6 +446,7 @@ a {
 
 .grid-bottom {
     display: grid;
+
     gap: 16px;
 }
 
@@ -396,37 +456,33 @@ a {
 ================================ */
 
 .estatisticas-adicionais {
-    width: 100%;
     padding: 16px;
-
-    background-color: var(--color-white);
-
-    border: 1px solid var(--color-border);
-    border-radius: 11px;
 }
 
 .estatisticas-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
     gap: 12px;
 }
 
 .estatistica-box {
     padding: 12px;
 
-    background-color: var(--text-surface);
+    background-color: var(--color-background);
 
     border: 1px solid var(--color-border);
     border-radius: 10px;
 
     transition:
-        border-color .2s ease,
-        background-color .2s ease;
+        border-color 0.2s ease,
+        background-color 0.2s ease;
 }
 
 .estatistica-box:hover {
     border-color: var(--color-primary);
-    background-color: #FAFAFF;
+    background-color: var(--color-primary-light);
 }
 
 
@@ -435,14 +491,9 @@ a {
 ================================ */
 
 .atividades {
-    width: 100%;
     margin-bottom: 20px;
+
     padding: 16px;
-
-    background-color: var(--color-white);
-
-    border: 1px solid var(--color-border);
-    border-radius: 11px;
 }
 
 .atividade-item {
@@ -451,6 +502,7 @@ a {
     justify-content: space-between;
 
     gap: 20px;
+
     margin-bottom: 18px;
 }
 
@@ -461,26 +513,23 @@ a {
 
 @media (min-width: 400px) {
 
-    .cards-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
     .distribuicao-content {
-        display: flex;
+        flex-direction: row;
+
         justify-content: center;
-        align-items: center;
+
         gap: 30px;
     }
 
     .lista-estatisticas {
         display: grid;
+
         gap: 16px;
     }
 
     .grafico-distribuicao {
         width: 155px;
         height: 155px;
-        margin: 0;
     }
 
     .grafico-distribuicao::before {
@@ -497,12 +546,7 @@ a {
 @media (min-width: 768px) {
 
     main {
-        padding: 10px;
-    }
-
-    .charts-grid,
-    .grid-bottom {
-        grid-template-columns: 1fr;
+        padding: 94px 24px 50px;
     }
 
     .cards-grid {
@@ -510,11 +554,7 @@ a {
     }
 
     .estatisticas-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .distribuicao {
-        display: block;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -526,30 +566,37 @@ a {
 @media (min-width: 1024px) {
 
     main {
-        padding: 0 20px;
+        width: calc(100% - 250px);
+        max-width: none;
+
+        margin-left: 250px;
+        margin-right: 0;
+
+        padding: 40px;
     }
 
     .cards-grid {
         grid-template-columns: repeat(5, 1fr);
-        gap: 16px;
+    }
+
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-bottom {
+        grid-template-columns: 1.2fr 0.8fr;
     }
 
     .distribuicao {
         display: grid;
+
         grid-template-rows: auto 1fr;
+
         padding: 16px 20px;
     }
 
     .distribuicao-content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         gap: 40px;
-    }
-
-    .lista-estatisticas {
-        display: grid;
-        gap: 16px;
     }
 
     .grafico-distribuicao {

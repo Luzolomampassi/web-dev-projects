@@ -1,210 +1,645 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Levaki</title>
+
+    <title>Levaki | Comida que chega até você</title>
+
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+
     <link rel="stylesheet" href="assets/estilos/style.css">
     <link rel="stylesheet" href="assets/estilos/header.css">
     <link rel="stylesheet" href="assets/estilos/footer.css">
+
     <script src="https://kit.fontawesome.com/f6a9b3f1e7.js" crossorigin="anonymous"></script>
-    <link
-  href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
-  rel="stylesheet"
-/>
-    
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet">
 </head>
+
 <body>
+
     <div class="overlay" id="overlay"></div>
-     <div class="topline"><p>Ingredientes frescos. Receitas honestas. Momentos inesquecíveis</p>
-        </div>
+
+    <div class="topline">
+        <p>Ingredientes frescos. Sabor autêntico. Entregas que chegam até você.</p>
+    </div>
+
     <header>
-     <div class="header-actions">
-     <button id="btn-menu" type="button" aria-label="Abrir menu"><i class="fa fa-bars" aria-hidden="true"></i></button>
-    </div>
-    <div class="logo">
-        <img src="assets/img/sabor_e_artes_logo.svg" alt="Logo do restaurante">
-    </div>
-    
-    <nav id="menu">
-        <ul>
-            <li><a href="index.php"> <i class="fa-solid fa-house fa-xl menu-icone"></i>INÍCIO</a></li>
-            <li><a href="paginas/menu.html"><i class="fa-solid fa-plate-wheat   fa-xl menu-icone"></i>MENU</a></li>      
-            <li><a href="paginas/sobre.html"><i class="fa-solid fa-info   fa-xl menu-icone"></i>SOBRE NÓS</a>  </li>
-            <li><a href="paginas/contato.php"><i class="fa-solid fa-envelope   fa-xl menu-icone"></i>CONTATO</a> </li>
-        </ul>
-       
-    </nav>
-    <div>
-        <i class="fa-solid fa-bag-shopping fa-2xl"></i>
-    </div>
+
+        <div class="header-actions">
+            <button id="btn-menu" type="button" aria-label="Abrir menu">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div class="logo">
+            <img src="assets/img/sabor_e_artes_logo.svg" alt="Logo da Levaki">
+        </div>
+
+        <nav id="menu">
+            <ul>
+                <li>
+                    <a href="index.php">
+                        <i class="fa-solid fa-house fa-xl menu-icone"></i>
+                        INÍCIO
+                    </a>
+                </li>
+
+                <li>
+                    <a href="paginas/menu.html">
+                        <i class="fa-solid fa-plate-wheat fa-xl menu-icone"></i>
+                        MENU
+                    </a>
+                </li>
+
+                <li>
+                    <a href="paginas/sobre.html">
+                        <i class="fa-solid fa-info fa-xl menu-icone"></i>
+                        SOBRE NÓS
+                    </a>
+                </li>
+
+                <li>
+                    <a href="paginas/contato.php">
+                        <i class="fa-solid fa-envelope fa-xl menu-icone"></i>
+                        CONTATO
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="cart-icon">
+            <i class="fa-solid fa-bag-shopping fa-2xl"></i>
+        </div>
+
     </header>
-<!--==========================================================
-    =   Main
-============================================================-->
-<main>
-    <!--====== Banner & Hero ======-->
-    <section class="banner">
-        <article class="hero">
-            <div class="hero-stamp">desde<br><b>2017</b></div>
-                <img src="assets/img/hero800x600 .png" alt="">
-                <div class="image-note"> <i class="ri-leaf-line"></i>
-                    <p>Da terra à mesa,<br>com respeito pelo tempo.</p>
+
+
+    <main>
+
+        <!--====== HERO ======-->
+
+        <section class="banner">
+
+            <article class="hero">
+
+                <div class="hero-stamp">
+                    sabor<br>
+                    <b>em cada pedido</b>
                 </div>
-        </article>
-        <article class="banner-content">
-            <p>BEM-ViNDO AO</p>
-            <h1>Sabor que <br> <em>conta histórias</em>.</h1>
-            <p>Pratos autorias preparados com ingredientes frescos e selecionados para transformar cada refeição em uma experiência única</p>
 
-            <div class="banner-buttons">
-                <a href="#">Ver menu</a>
-            </div>
-            <div class="slide-indicator"><b>01</b><span></span><i>03</i></div>
-        </article>  
-    </section>
-        <!--====== Beneficios ======-->
-    <section class="beneficios">
-        <div class="beneficio">
-            <i class="ri-leaf-line"></i>
+                <img src="assets/img/hero800x600 .png" alt="Prato de comida preparado pela Levaki">
+
+                <div class="image-note">
+                    <i class="ri-leaf-line"></i>
+
+                    <p>
+                        Preparado com cuidado,<br>
+                        entregue com sabor.
+                    </p>
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!--====== INTRODUÇÃO ======-->
+
+        <section class="grid-middle">
+
+            <article class="banner-content">
+
+                <p>Por que pedir na Levaki</p>
+
+                <h1>
+                    Sabor que<br>
+                    <em>chega até você</em>
+                </h1>
+
+                <p>
+                    Na Levaki, acreditamos que uma boa refeição deve ser mais do que apenas comida.
+                    Deve ser saborosa, preparada com cuidado e fácil de pedir.
+                </p>
+
+            </article>
+
+
+            <article class="beneficios">
+
+                <div class="beneficio">
+
+                    <div>
+                        <h4>Ingredientes selecionados</h4>
+
+                        <p>
+                            Escolhemos ingredientes de qualidade para garantir sabor e frescura em cada prato.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="beneficio">
+
+                    <div>
+                        <h4>Preparado com cuidado</h4>
+
+                        <p>
+                            Cada pedido é preparado para oferecer uma refeição saborosa e bem servida.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="beneficio">
+
+                    <div>
+                        <h4>Entrega sem complicações</h4>
+
+                        <p>
+                            Faça o seu pedido de forma simples e receba a sua refeição onde estiver.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="beneficio">
+
+                    <div>
+                        <h4>Para todos os momentos</h4>
+
+                        <p>
+                            Almoço, jantar ou aquele pedido especial: temos opções para diferentes vontades.
+                        </p>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!--====== MENU / CATEGORIAS ======-->
+
+        <section class="services">
+
+            <article class="brand">
+
+                <p class="eyebrow">Nosso menu</p>
+
+                <h2>
+                    Escolha o que<br>
+                    vai para a sua mesa
+                </h2>
+
+            </article>
+
+
+            <article class="services-item">
+
+                <div>
+
+                    <p class="eyebrow">Pratos principais</p>
+
+                    <h2>Refeições completas e saborosas</h2>
+
+                    <p>
+                        Encontre pratos preparados para tornar o seu almoço ou jantar ainda mais especial.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="services-item">
+
+                <div>
+
+                    <p class="eyebrow">Entradas e acompanhamentos</p>
+
+                    <h2>Pequenos sabores para completar</h2>
+
+                    <p>
+                        Combine os seus pratos favoritos com acompanhamentos preparados para todos os gostos.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="services-item">
+
+                <div>
+
+                    <p class="eyebrow">Bebidas e sobremesas</p>
+
+                    <h2>Finalize a sua experiência</h2>
+
+                    <p>
+                        Escolha a bebida ideal e termine a sua refeição com algo doce.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!--====== COMO FUNCIONA ======-->
+
+        <section class="process">
+
+            <article>
+
+                <p class="eyebrow">Como funciona</p>
+
+                <h2>
+                    Pedir é simples.
+                </h2>
+
+            </article>
+
+
+            <article class="precoss-grid">
+
+                <div class="process-card">
+
+                    <h2>01</h2>
+
+                    <h3>Escolha</h3>
+
+                    <p>
+                        Explore o nosso menu e encontre os pratos que deseja experimentar.
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <h2>02</h2>
+
+                    <h3>Monte o pedido</h3>
+
+                    <p>
+                        Adicione os seus favoritos ao carrinho e confira todos os detalhes.
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <h2>03</h2>
+
+                    <h3>Confirme</h3>
+
+                    <p>
+                        Informe os dados necessários e confirme o seu pedido de forma rápida e segura.
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <h2>04</h2>
+
+                    <h3>Receba</h3>
+
+                    <p>
+                        Preparamos a sua refeição e entregamos onde você estiver.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="process-imagem"></article>
+
+        </section>
+
+
+        <!--====== DESTAQUES ======-->
+
+        <aside class="data-grid">
+
             <div>
-                <h4>Ingredientes Frescos</h4>
-                <p>Selecinamos o melhor da estação.</p>
+
+                <h2>Fresco</h2>
+
+                <p>Ingredientes selecionados</p>
+
             </div>
-        </div>
-        <div class="beneficio">
-              <svg viewBox="0 0 24 24" aria-hidden="true"  class="poker-dimond">
-                    <path
-                        d="M12 3.5
-                        C12.8 8.5 15.5 11.2 20.5 12
-                        C15.5 12.8 12.8 15.5 12 20.5
-                        C11.2 15.5 8.5 12.8 3.5 12
-                        C8.5 11.2 11.2 8.5 12 3.5Z"
-                        fill="currentColor"
-                    />
-                </svg>
+
+
             <div>
-                <h4>Receitas Exclusivas</h4>
-                <p>Criações autorais feitas com paixão.</p>
+
+                <h2>Local</h2>
+
+                <p>Sabor preparado em Luanda</p>
+
             </div>
-        </div >
-        <div class="beneficio">
-            <i class="ri-home-line"></i>
+
+
             <div>
-                <h4>Ambiente Acolhedor</h4>
-                <p>Conforto e bom gosto em cada deltahe.</p>
+
+                <h2>Simples</h2>
+
+                <p>Pedidos fáceis e rápidos</p>
+
             </div>
-        </div>
-        <div class="beneficio">
-            <i class="ri-motorbike-line"></i>
+
+
             <div>
-               <h4>Entrega Rápida</h4>
-                <p>Receba seu pedido com rapidez e segurança.</p>
+
+                <h2>Especial</h2>
+
+                <p>Comida para todos os momentos</p>
+
             </div>
-        </div>
-    </section >
-        <!--====== Menu ======-->
- 
-    <!--====== Sobre nós ======-->
 
-    <section class="review">
-    <div class="review-tittle">
-        <div class="sections-intro">
-            <p class="eyebrow">PALAVRAS À MESA</p>
-            <h2>O que dizem<br><em>nossos cientes.</em></h2>
-        </div>
-        <div class="review-nav">
-            <button aria-label="Avaliação anterior" id="btn-prev">←</button>
-            <button aria-label="Próxima avaliação" id="btn-next" >→</button>
-        </div>
-    </div>
-    <article class="review-card card1 active">
-        <div class="stars">★★★★★</div>
-        <blockquote>“É raro encontrar um lugar que cuida dos sabores e do ritmo da noite com a mesma delicadeza.”</blockquote>
+        </aside>
 
-        <div class="reviewer">
-            <span>MQ</span>
-            <p><b>Marta Quina</b>
-            <small>12 Jul 2026</small>
-            </p>
-        </div>
-        <div class="review-count"><b>01</b> <span></span> 03</div>
-    </article>
-    <!--CARD2-->
-    <article class="review-card card2">
-        <div class="stars">★★★★★</div>
-        <blockquote>“Uma experiência de Luanda que se prolonga na conversa—pratos precisos, ambiente calmo e serviço gentil.”</blockquote>
 
-        <div class="reviewer">
-            <span>PF</span>
-            <p><b>Paulo Faria</b>
-            <small>28 Jun 2026</small>
-            </p>
-        </div>
-        <div class="review-count"><b>02</b> <span></span> 03</div>
-    </article>
-    <!--CARD3-->
-    <article class="review-card card3">
-        <div class="stars">★★★★★</div>
-        <blockquote>“O almoço executivo virou o meu ritual de sexta. Simplesmente delicioso.”</blockquote>
+        <!--====== AVALIAÇÕES ======-->
 
-        <div class="reviewer">
-            <span>TM</span>
-            <p><b>Teresa Miguel</b>
-            <small>12 Jul 2026</small>
-            </p>
-        </div>
-        <div class="review-count"><b>03</b> <span></span> 03</div>
-    </article>
-    </section>
-  
+        <section class="review">
 
-</main>
-<footer>
-    <div class="footer-grid">
-        <div class="footer-brand">
+            <div class="review-tittle">
+
+                <div class="sections-intro">
+
+                    <p class="eyebrow">PALAVRAS À MESA</p>
+
+                    <h2>
+                        O que dizem<br>
+                        <em>nossos clientes.</em>
+                    </h2>
+
+                </div>
+
+
+                <div class="review-nav">
+
+                    <button aria-label="Avaliação anterior" id="btn-prev">
+                        ←
+                    </button>
+
+                    <button aria-label="Próxima avaliação" id="btn-next">
+                        →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 1 -->
+
+            <article class="review-card card1 active">
+
+                <div class="stars">★★★★★</div>
+
+                <blockquote>
+                    “Comida muito saborosa, bem preparada e chegou tudo direitinho.”
+                </blockquote>
+
+
+                <div class="reviewer">
+
+                    <span>MQ</span>
+
+                    <p>
+                        <b>Marta Quina</b>
+                        <small>Cliente Levaki</small>
+                    </p>
+
+                </div>
+
+
+                <div class="review-count">
+                    <b>01</b>
+                    <span></span>
+                    03
+                </div>
+
+            </article>
+
+
+            <!-- CARD 2 -->
+
+            <article class="review-card card2">
+
+                <div class="stars">★★★★★</div>
+
+                <blockquote>
+                    “Uma das minhas opções favoritas quando quero pedir comida sem complicação.”
+                </blockquote>
+
+
+                <div class="reviewer">
+
+                    <span>PF</span>
+
+                    <p>
+                        <b>Paulo Faria</b>
+                        <small>Cliente Levaki</small>
+                    </p>
+
+                </div>
+
+
+                <div class="review-count">
+                    <b>02</b>
+                    <span></span>
+                    03
+                </div>
+
+            </article>
+
+
+            <!-- CARD 3 -->
+
+            <article class="review-card card3">
+
+                <div class="stars">★★★★★</div>
+
+                <blockquote>
+                    “Boa comida, ótimo atendimento e uma experiência muito agradável.”
+                </blockquote>
+
+
+                <div class="reviewer">
+
+                    <span>TM</span>
+
+                    <p>
+                        <b>Teresa Miguel</b>
+                        <small>Cliente Levaki</small>
+                    </p>
+
+                </div>
+
+
+                <div class="review-count">
+                    <b>03</b>
+                    <span></span>
+                    03
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!--====== CTA FINAL ======-->
+
+        <section class="final-cta">
+
             <div>
-                
+
+                <p class="eyebrow">A sua próxima refeição começa aqui</p>
+
+                <h2>
+                    Escolha os seus pratos<br>
+                    <em>e deixe o resto connosco.</em>
+                </h2>
+
+                <a href="paginas/menu.html" class="cta-button">
+                    Pedir agora
+                </a>
+
             </div>
-            <p>Um convite para abrandar, <br> partilhar e saborear bons momentos</p>
-            <div class="social">
-                <div><i class="fa-brands fa-whatsapp icone"></i></div>
-                <div><i class="fa-brands fa-instagram icone"></i></div>
-                <div><i class="fa-brands fa-facebook icone"></i></div>
+
+        </section>
+
+    </main>
+
+
+    <!--====== FOOTER ======-->
+
+    <footer>
+
+        <div class="footer-grid">
+
+
+            <div class="footer-brand">
+
+                <div>
+                    <!-- Logo, se necessário -->
+                </div>
+
+                <p>
+                    Boa comida, preparada com cuidado
+                    e entregue onde você estiver.
+                </p>
+
+
+                <div class="social">
+
+                    <div>
+                        <i class="fa-brands fa-whatsapp icone"></i>
+                    </div>
+
+                    <div>
+                        <i class="fa-brands fa-instagram icone"></i>
+                    </div>
+
+                    <div>
+                        <i class="fa-brands fa-facebook icone"></i>
+                    </div>
+
+                </div>
+
             </div>
+
+
+            <div>
+
+                <h4>NAVEGAÇÃO</h4>
+
+                <a href="index.php">Início</a>
+
+                <a href="paginas/menu.html">Menu</a>
+
+                <a href="paginas/sobre.html">Sobre nós</a>
+
+                <a href="paginas/contato.php">Contato</a>
+
+            </div>
+
+
+            <div>
+
+                <h4>INFORMAÇÕES</h4>
+
+                <a href="paginas/politica.html">Política de Privacidade</a>
+
+                <a href="paginas/termosUso.html">Termos de Uso</a>
+
+                <a href="#">Perguntas Frequentes</a>
+
+            </div>
+
+
+            <div>
+
+                <h4>CONTATO</h4>
+
+                <p>+244 923 000 000</p>
+
+                <p>ola@levaki.com</p>
+
+                <p>Luanda, Angola</p>
+
+            </div>
+
+
+            <div>
+
+                <h4>HORÁRIO</h4>
+
+                <p>
+                    Seg-Sex <span>12h-23h</span>
+                </p>
+
+                <p>
+                    Sábado <span>12h-00h</span>
+                </p>
+
+                <p>
+                    Domingo <span>12h-18h</span>
+                </p>
+
+            </div>
+
         </div>
-        <div>
-            <h4>NAVEGAÇÃO</h4>
-            <a href="index.php">Início</a>
-            <a href="paginas/sobre.html">Menu</a>
-            <a href="paginas/sobre.html">Sobre nós</a>
-            <a href="paginas/contato.php">Contato</a>
+
+
+        <div class="footer-bottom">
+
+            <p>&copy; 2026 Levaki</p>
+
+            <p>Feito em Luanda, com muito sabor</p>
+
         </div>
-        <div>
-            <h4>INFORMAÇÕES</h4>
-            <a href="paginas/politica.html">Política de Privacidade</a>
-            <a href="paginas/termosUso.html">Termos de Uso</a>
-            <a href="#">Perguntas Frequentes</a>
-        </div>
-        <div>
-            <h4>CONTATO</h4>
-            <p>+244 923 000 000</p>
-            <p>ola@sabores.com</p>
-            <p>Rua da missão, 48 Luanda Angola</p>
-        </div>
-        <div>
-            <h4>HORÁRIO</h4>
-            <p>Seg-Sex <span>12h-23h</span></p>
-            <p>Sabádo <span>12h-00h</span></p>
-            <p>Domingo <span>12h-18h</span></p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy;2026 Levaki</p>
-        <p>Feito em Luanda, com muito sabor</p>
-    </div>
-</footer>
-<script src="assets/scripts/main.js"></script>
+
+    </footer>
+
+
+    <script src="assets/scripts/main.js"></script>
+
 </body>
+
 </html>

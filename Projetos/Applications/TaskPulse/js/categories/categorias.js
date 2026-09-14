@@ -10,3 +10,11 @@ btnMenu.addEventListener("click", () => {
 
     overlay.classList.toggle("ativo", menu.classList.contains("ativo"));
 });
+
+const modal = document.querySelector("#modal")
+const btnAddCategoria = document.querySelector("#btn-add-categoria")
+
+btnAddCategoria.addEventListener('click', () =>{
+    modal.showModal()
+  
+})
