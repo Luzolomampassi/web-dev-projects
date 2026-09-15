@@ -1,514 +1,415 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskPulse</title>
+
+    <title>TaskPulse - Categorias</title>
+
     <script src="https://kit.fontawesome.com/f6a9b3f1e7.js"></script>
+
     <link rel="stylesheet" href="css/categorias.css">
     <link rel="stylesheet" href="css/header.css">
 </head>
+
 <body>
-        <div class="overlay"></div> 
-<header>
-    <div class="header-content">
-        <button id="btn-menu" aria-label="Abrir menu">
-            <i class="fa-solid fa-bars fa-xl"></i>
-        </button>
 
-        <h2>Estatísticas</h2>
-    </div>
 
-    <div class="menu-container">
-        <div class="logo">
-            <h2>TaskFlow</h2>
+    <!-- HEADER -->
+    <header>
+
+        <div class="header-content">
+
+            <button id="btn-menu" aria-label="Abrir menu">
+                <i class="fa-solid fa-bars fa-xl"></i>
+            </button>
+
+            <h2>Categorias</h2>
+
         </div>
 
-        <nav id="menu" class="menu">
-            <ul>
-                <li>
-                    <a href="index.html">
-                        <i class="fa-regular fa-house fa-xl"></i>
-                        <span>Visão geral</span>
-                    </a>
-                </li>
+        <div class="menu-container">
 
-                <li>
-                    <a href="task.html">
-                        <i class="fa-solid fa-clipboard-check fa-xl"></i>
-                        <span>Tarefas</span>
-                    </a>
-                </li>
+            <div class="logo">
+                <h2>TaskPulse</h2>
+            </div>
 
-                <li>
-                    <a href="calendario.html">
-                        <i class="fa-regular fa-calendar fa-xl"></i>
-                        <span>Calendário</span>
-                    </a>
-                </li>
+            <nav id="menu" class="menu">
 
-                <li>
-                    <a href="categorias.html">
-                        <i class="fa-solid fa-bars fa-xl"></i>
-                        <span>Categorias</span>
-                    </a>
-                </li>
+                <ul>
 
-                <li>
-                    <a href="estatistica.html">
-                        <i class="fa-solid fa-chart-simple fa-xl"></i>
-                        <span>Estatísticas</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="index.html">
+                            <i class="fa-regular fa-house fa-xl"></i>
+                            <span>Visão geral</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="config.html">
-                        <i class="fa-solid fa-gear fa-xl"></i>
-                        <span>Configurações</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</header>
-<main>
-    <section class="inicio">
-        <div>
-            <h1>Categorias</h1>
-            <p>Organize suas tarefas por categorias</p>
-        </div>
-        <button type="submit" aria-label="Adiciona tarefa" id="btn-add-categoria"  class="btn-add"><i class="fa-solid fa-plus fa-xl"></i>Nova Categoria</button>
-    </section>
-    <!-- Cards -->
-    <section class="cards-grid">
-        <article class="card-item">
-            <p>Total de categorias</p>
-            <h3>6</h3>
-        </article>
-        <article class="card-item">
-            <p>Total de tarefas</p>
-            <h3>63</h3>
-        </article>
-        <article class="card-item">
-            <p>Concluídas</p>
-            <h3>39</h3>
-        </article>
-        <article class="card-item">
-            <p>Pendentes</p>
-            <h3>24</h3>
-        </article>
-    </section>
-    <!-- Barra de pesquisa e filtro -->
-     <section class="search-container">
-        <article class="search-bar">
-            <input type="search" name="search" id="search" class="search" placeholder="     Pesquisar categoria">
-            <span class="lupa"><i class="fa-solid fa-magnifying-glass fa-sm"></i></span>
-        </article>
-        <article class="filtros">
-            <select name="task" id="task" aria-label="Filtrar por quantidade de tarefas">
-                <option value="todas">Todas as tarefas</option>
-                <option value="muitas">Muitas tarefas (>10)</option>
-                <option value="pouca">Poucas tarefas (<10) </option>
-            </select>
+                    <li>
+                        <a href="task.html">
+                            <i class="fa-solid fa-clipboard-check fa-xl"></i>
+                            <span>Tarefas</span>
+                        </a>
+                    </li>
 
-            <select name="order" id="order" aria-label="Ordenar categorias">
-                <option value="alfabeticamente">Ordernar:A-Z</option>
-                <option value="muitas">Ordernar: mais tarefas</option>
-                <option value="pouca">Ordernar: progresso </option>
-            </select>
-        </article>
-     </section>
-     <!-- Cards categorias -->
-    <dialog class="modal" id="modal">
-    <form action="#">
+                    <li>
+                        <a href="calendario.html">
+                            <i class="fa-regular fa-calendar fa-xl"></i>
+                            <span>Calendário</span>
+                        </a>
+                    </li>
 
-        <div class="form-group">
-            <label for="nome">Nome</label>
-            <input 
-                type="text" 
-                name="nome" 
-                id="nome" 
-                class="nome" 
-                placeholder="Ex.: Marketing, Saúde"
-            >
+                    <li>
+                        <a href="categorias.html">
+                            <i class="fa-solid fa-bars fa-xl"></i>
+                            <span>Categorias</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="estatistica.html">
+                            <i class="fa-solid fa-chart-simple fa-xl"></i>
+                            <span>Estatísticas</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="config.html">
+                            <i class="fa-solid fa-gear fa-xl"></i>
+                            <span>Configurações</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
         </div>
 
-        <div class="form-group">
-            <label for="descricao">Descrição (opcional)</label>
-            <textarea 
-                name="descricao" 
-                id="descricao" 
-                class="descricao" 
-                placeholder="Descreva o propósito desta categoria"
-            ></textarea>
-        </div>
+    </header>
 
-        <article class="category-icons-grid">
-                    <button
-                        type="button"
-                        class="category-icon"
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+
+        <!-- INTRODUÇÃO -->
+        <section class="inicio">
+
+            <div>
+                <h1>Categorias</h1>
+                <p>Organize suas tarefas por categorias</p>
+            </div>
+
+            <button
+                type="button"
+                aria-label="Adicionar categoria"
+                id="btn-add-categoria"
+                class="btn-add">
+                <i class="fa-solid fa-plus fa-xl"></i>
+                Nova Categoria
+
+            </button>
+
+        </section>
+
+
+        <!-- CARDS DE ESTATÍSTICAS -->
+        <section class="cards-grid" >
+
+            <article class="card-item">
+                <p>Total de categorias</p>
+                <h3>0</h3>
+            </article>
+
+            <article class="card-item">
+                <p>Total de tarefas</p>
+                <h3>0</h3>
+            </article>
+
+            <article class="card-item">
+                <p>Concluídas</p>
+                <h3>0</h3>
+            </article>
+
+            <article class="card-item">
+                <p>Pendentes</p>
+                <h3>0</h3>
+            </article>
+
+        </section>
+
+
+        <!-- PESQUISA E FILTROS -->
+        <section class="search-container">
+
+            <article class="search-bar">
+
+                <input
+                    type="search"
+                    name="search"
+                    id="search"
+                    class="search"
+                    placeholder="Pesquisar categoria">
+
+                <span class="lupa">
+                    <i class="fa-solid fa-magnifying-glass fa-sm"></i>
+                </span>
+
+            </article>
+
+
+            <article class="filtros">
+
+                <select
+                    name="task"
+                    id="task"
+                    aria-label="Filtrar por quantidade de tarefas">
+
+                    <option value="todas">Todas as tarefas</option>
+                    <option value="muitas">Muitas tarefas (&gt;10)</option>
+                    <option value="pouca">Poucas tarefas (&lt;10)</option>
+
+                </select>
+
+
+                <select
+                    name="order"
+                    id="order"
+                    aria-label="Ordenar categorias">
+
+                    <option value="alfabeticamente">Ordenar: A-Z</option>
+                    <option value="muitas">Ordenar: mais tarefas</option>
+                    <option value="pouca">Ordenar: progresso</option>
+
+                </select>
+
+            </article>
+
+        </section>
+
+
+        <!-- MODAL DE ADICIONAR CATEGORIA -->
+        <dialog class="modal" id="modal">
+
+            <form action="#" id="form">
+                <div class="form-group">
+
+                    <label for="nome">Nome</label>
+
+                    <input
+                        type="text"
+                        name="nome"
+                        id="nome"
+                        class="nome"
+                        placeholder="Ex.: Marketing, Saúde">
+
+                </div>
+                <p id="alert" class="alert">Insira o nome da categoria</p>
+
+
+                <div class="form-group">
+
+                    <label for="descricao">Descrição (opcional)</label>
+
+                    <textarea
+                        name="descricao"
+                        id="descricao"
+                        class="descricao"
+                        placeholder="Descreva o propósito desta categoria"></textarea>
+
+                </div>
+
+
+                <!-- ÍCONES -->
+                <article class="category-icons-grid">
+
+                    <button type="button" class="category-icon"
                         aria-label="Selecionar ícone de estudos"
-                        data-icon="📚"
-                    >📚</button>
+                        data-icon="📚">📚</button>
 
-                    <button
-                        type="button"
-                        class="category-icon"
+                    <button type="button" class="category-icon"
                         aria-label="Selecionar ícone de trabalho"
-                        data-icon="💼"
-                    >💼</button>
+                        data-icon="💼">💼</button>
 
-                    <button
-                        type="button"
-                        class="category-icon"
+                    <button type="button" class="category-icon"
                         aria-label="Selecionar ícone de saúde"
-                        data-icon="🏃"
-                    >🏃</button>
+                        data-icon="🏃">🏃</button>
 
-                    <button
-                        type="button"
-                        class="category-icon"
+                    <button type="button" class="category-icon"
                         aria-label="Selecionar ícone de compras"
-                        data-icon="🛒"
-                    >🛒</button>
+                        data-icon="🛒">🛒</button>
 
-                    <button
-                        type="button"
-                        class="category-icon"
+                    <button type="button" class="category-icon"
                         aria-label="Selecionar ícone de metas"
-                        data-icon="🎯"
-                    >🎯</button>
+                        data-icon="🎯">🎯</button>
 
-                    <button
-                        type="button"
-                        class="category-icon"
+                    <button type="button" class="category-icon"
                         aria-label="Selecionar ícone de natureza"
-                        data-icon="🌿"
-                    >🌿</button>
+                        data-icon="🌿">🌿</button>
 
-                    <button
-                        type="button"
-                        class="category-icon"
+                    <button type="button" class="category-icon"
                         aria-label="Selecionar ícone de ideias"
-                        data-icon="💡"
-                    >💡</button>
+                        data-icon="💡">💡</button>
 
-                    <button
-                        type="button"
-                        class="category-icon"
+                    <button type="button" class="category-icon"
                         aria-label="Selecionar ícone de criatividade"
-                        data-icon="🎨"
-                    >🎨</button>
+                        data-icon="🎨">🎨</button>
 
-                    <button
-                        type="button"
-                        class="category-icon"
+                    <button type="button" class="category-icon"
                         aria-label="Selecionar ícone de ciência"
-                        data-icon="🔬"
-                    >🔬</button>
+                        data-icon="🔬">🔬</button>
 
-                    <button
-                        type="button"
-                        class="category-icon"
+                    <button type="button" class="category-icon"
                         aria-label="Selecionar ícone de viagens"
-                        data-icon="✈️"
-                    >✈️</button>
+                        data-icon="✈️">✈️</button>
 
-                    <button
-                        type="button"
-                        class="category-icon"
+                    <button type="button" class="category-icon"
                         aria-label="Selecionar ícone de casa"
-                        data-icon="🏠"
-                    >🏠</button>
+                        data-icon="🏠">🏠</button>
+
+                    <button type="button" class="category-icon"
+                        aria-label="Selecionar ícone de música"
+                        data-icon="🎵">🎵</button>
+
+                </article>
+
+
+                <!-- CORES -->
+                <article class="color-line">
+
+                    <h2>Cor</h2>
+
+                    <div class="colors-container">
+
+                        <button type="button"
+                            class="icon-color cor-azul"
+                            aria-label="Selecionar cor azul"
+                            data-color="azul"></button>
+
+                        <button type="button"
+                        class="icon-color cor-roxa"
+                        aria-label="Selecionar cor roxa"
+                        data-color="roxa"></button>
+
+                        <button type="button"
+                            class="icon-color cor-verde"
+                            aria-label="Selecionar cor verde"
+                            data-color="verde"></button>
+
+                        <button type="button"
+                            class="icon-color cor-azul-marinho"
+                            aria-label="Selecionar cor azul-marinho"
+                            data-color="azul-marinho"></button>
+
+                        <button type="button"
+                            class="icon-color cor-vermelha"
+                            aria-label="Selecionar cor vermelha"
+                            data-color="vermelha"></button>
+
+                      
+
+                        <button type="button"
+                            class="icon-color cor-laranja"
+                            aria-label="Selecionar cor laranja"
+                            data-color="laranja"></button>
+
+                        <button type="button"
+                            class="icon-color cor-rosa"
+                            aria-label="Selecionar cor rosa"
+                            data-color="rosa"></button>
+
+                        
+
+                        <label for="color"></label>
+
+                        <input
+                            type="color"
+                            name="color"
+                            id="color"
+                            aria-label="Escolher uma cor personalizada">
+
+                    </div>
+
+                </article>
+
+
+                <!-- PRÉ-VISUALIZAÇÃO -->
+                <article class="pre-visualizacao">
+
+                    <h2>Pré-visualização</h2>
+
+                    <div id="pre-view" class="pre-view">
+
+                        <div class="icon-view">
+                            📚
+                        </div>
+
+                        <div>
+                            <h3 id="titulo-prev">Nome da categoria</h3>
+                            <p id="descricao-prev">Descrição da categoria</p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOTÕES -->
+                <div class="modal-actions">
 
                     <button
                         type="button"
-                        class="category-icon"
-                        aria-label="Selecionar ícone de música"
-                        data-icon="🎵"
-                    >🎵</button>
-        </article>
+                        class="btn-cancelar">
 
-        <article class="color-line">
-                <h2>Cor</h2>
+                        Cancelar
 
-                <button 
-                    type="button" 
-                    class="icon-color cor-azul" 
-                    aria-label="Selecionar cor azul"
-                    data-color="azul">
-                </button>
+                    </button>
 
-                <button 
-                    type="button" 
-                    class="icon-color cor-verde" 
-                    aria-label="Selecionar cor verde"
-                    data-color="verde">
-                </button>
+                    <button
+                        type="submit"
+                        class="btn-criar">
+                        Criar categoria
 
-                <button 
-                    type="button" 
-                    class="icon-color cor-amarela" 
-                    aria-label="Selecionar cor amarela"
-                    data-color="amarela">
-                </button>
+                    </button>
 
-                <button 
-                    type="button" 
-                    class="icon-color cor-vermelha" 
-                    aria-label="Selecionar cor vermelha"
-                    data-color="vermelha">
-                </button>
+                </div>
 
-                <button 
-                    type="button" 
-                    class="icon-color cor-roxa" 
-                    aria-label="Selecionar cor roxa"
-                    data-color="roxa">
-                </button>
+            </form>
 
-                <button 
-                    type="button" 
-                    class="icon-color cor-laranja" 
-                    aria-label="Selecionar cor laranja"
-                    data-color="laranja">
-                </button>
+        </dialog>
 
-                <button 
-                    type="button" 
-                    class="icon-color cor-rosa" 
-                    aria-label="Selecionar cor rosa"
-                    data-color="rosa">
-                </button>
 
-                <button 
-                    type="button" 
-                    class="icon-color cor-cinza" 
-                    aria-label="Selecionar cor cinza"
-                    data-color="cinza">
-                </button>
+        <!-- CATEGORIAS -->
+        <section class="categorias-grid" id="categorias-grid">
 
-                <label for="color">Cor personalizada</label>
+            <!-- ADICIONAR CATEGORIA -->
+            <button
+                class="item-add"
+                id="item-add"
+                type="button"
+                aria-label="Adicionar uma nova categoria">
 
-                <input 
-                    type="color" 
-                    name="color" 
-                    id="color" 
-                    aria-label="Escolher uma cor personalizada"
-                >
-        </article>
-
-        <article class="pre-visualizacao">
-            <h2>Pré-visualização</h2>
-            <div></div>
-        </article>
-
-        <div class="modal-actions">
-            <button type="button" class="btn-cancelar">Cancelar</button>
-            <button type="submit" class="btn-criar">Criar categoria</button>
-        </div>
-
-    </form>
-    </dialog>
-    <section class="categorias-grid">
-        <article class="item">
-            <div class="item-top">
-                <div class="item-top-info">
-                    <span class="icon">🛒</span>
-                    <div>
-                        <h3>Compras</h3>
-                        <p>Listas e aquisição planejadas</p>
-                    </div>
-                </div>
-                <button class="btn-edit" type="button" aria-label="Opções da categoria Compras">
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </button>
-            </div>
-            <div>
-                <span >1 concluída</span>
-                <span class="task-pendentes">4 pendentes</span>
-            </div>
-            <div class="progress-container">
-                <div class="bar-info">
-                    <span>5 Tarefas</span>
-                    <span>20%</span>
-                </div>
-                <div class="bar">
-                    <progress value="20" max="100"></progress>
-                </div>
-                <div class="item-bottom">
-                    <span class="badge">compras</span>
-                </div>
-            </div>
-        </article>
-
-        <article class="item">
-            <div class="item-top">
-                <div class="item-top-info">
-                    <span class="icon">📚</span>
-                    <div>
-                        <h3>Estudos</h3>
-                        <p>Leituras, cursos e aprendizado</p>
-                    </div>
-                </div>
-                <button class="btn-edit" type="button" aria-label="Opções da categoria Compras">
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </button>
-            </div>
-            <div>
-                <span class="task-concluidas">8 concluídas</span>
-                <span class="task-pendentes">4 pendentes</span>
-            </div>
-            <div class="progress-container">
-                <div class="bar-info">
-                    <span>12 Tarefas</span>
-                    <span>67%</span>
-                </div>
-                <div class="bar">
-                    <progress value="67" max="100"></progress>
-                </div>
-                <div class="item-bottom">
-                    <span class="badge">Estudos</span>
-                </div>
-            </div>
-        </article>
-
-        <article class="item">
-            <div class="item-top">
-                <div class="item-top-info">
-                    <span class="icon">🌿</span>
-                    <div>
-                        <h3>Pessoal</h3>
-                        <p>Metas e hábitos do dia a dia</p>
-                    </div>
-                </div>
-                <button class="btn-edit" type="button" aria-label="Opções da categoria Compras">
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </button>
-            </div>
-            <div>
-                <span class="task-concluidas">5 concluídas</span>
-                <span class="task-pendentes">4 pendentes</span>
-            </div>
-            <div class="progress-container">
-                <div class="bar-info">
-                    <span>9 Tarefas</span>
-                    <span>56%</span>
-                </div>
-                <div class="bar">
-                    <progress value="56" max="100"></progress>
-                </div>
-                <div class="item-bottom">
-                    <span class="badge">Pessoal</span>
-                </div>
-            </div>
-        </article>
-
-        <article class="item">
-            <div class="item-top">
-                <div class="item-top-info">
-                    <span class="icon">🎯</span>
-                    <div>
-                        <h3>Projetos</h3>
-                        <p>Iniciativas e side projects</p>
-                    </div>
-                </div>
-                <button class="btn-edit" type="button" aria-label="Opções da categoria Compras">
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </button>
-            </div>
-            <div>
-                <span class="task-concluidas">2 concluídas</span>
-                <span class="task-pendentes">5 pendentes</span>
-            </div>
-            <div class="progress-container">
-                <div class="bar-info">
-                    <span>7 Tarefas</span>
-                    <span>29%</span>
-                </div>
-                <div class="bar">
-                    <progress value="29" max="100"></progress>
-                </div>
-                <div class="item-bottom">
-                    <span class="badge">Projetos</span>
-                </div>
-            </div>
-        </article>
-
-        <article class="item">
-            <div class="item-top">
-                <div class="item-top-info">
-                    <span class="icon">🏃</span>
-                    <div>
-                        <h3>Saúde</h3>
-                        <p>Exercícios e bem-estar</p>
-                    </div>
-                </div>
-                <button class="btn-edit" type="button" aria-label="Opções da categoria Compras">
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </button>
-            </div>
-            <div>
-                <span class="task-concluidas">6 concluídas</span>
-                <span class="task-pendentes">0 pendentes</span>
-            </div>
-            <div class="progress-container">
-                <div class="bar-info">
-                    <span>6 Tarefas</span>
-                    <span>100%</span>
-                </div>
-                <div class="bar">
-                    <progress value="100" max="100"></progress>
-                </div>
-                <div class="item-bottom">
-                    <span class="badge">Saúde</span>
-                    <span>Completo</span>
-                </div>
-            </div>
-        </article>
-
-        <article class="item">
-            <div class="item-top">
-                <div class="item-top-info">
-                    <span class="icon">💼</span>
-                    <div>
-                        <h3>Trabalho</h3>
-                        <p>Projetos e entregas</p>
-                    </div>
-                </div>
-                <button class="btn-edit" type="button" aria-label="Opções da categoria Compras">
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </button>
-            </div>
-            <div>
-                <span class="task-concluidas">17 concluídas</span>
-                <span class="task-pendentes">6 pendentes</span>
-            </div>
-            <div class="progress-container">
-                <div class="bar-info">
-                    <span>24 Tarefas</span>
-                    <span>71%</span>
-                </div>
-                <div class="bar">
-                    <progress value="71" max="100"></progress>
-                </div>
-                <div class="item-bottom">
-                    <span class="badge">Trabalho</span>
-                   
-                </div>
-            </div>
-        </article>
-
-        <button class="item-add" id="item-add" aria-label="Adiciona uma nova categoria">
-         
                 <i class="fa-solid fa-plus"></i>
-                <h4>Criar uma nova categoria</h4>
-                <p>Clique para adicionar</p>
-           
-        </button>
-    </section>
-</main>
 
+                <h4>Criar uma nova categoria</h4>
+
+                <p>Clique para adicionar</p>
+
+            </button>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
     <script src="js/categories/categorias.js"></script>
+    <script src="js/categories/categoriesAdd.js"></script>
+
 </body>
+
 </html>
+
