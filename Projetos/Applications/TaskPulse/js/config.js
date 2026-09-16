@@ -80,3 +80,24 @@ btnSave.addEventListener("click", () =>{
     const day = String(today.getDate()).padStart(2, "0")
     lastUpdate.innerHTML = `Última atualização:${day} de ${month} de ${year}, ${hours}`
 })
+
+// ============ ultima atualização===========
+const btnEditProfile = document.querySelector("#btn-editar-perfil")
+const caixas = document.querySelectorAll(".form-group > input")
+
+
+btnEditProfile.addEventListener("click", () =>{
+
+    caixas.forEach(caixa =>{
+        caixa.classList.remove("editavel")})
+    btnEditProfile.classList.toggle('active')
+    if(btnEditProfile.classList.contains('active')){
+        caixas.forEach(caixa =>{
+        caixa.classList.add("editavel")
+    })
+    }
+   
+    
+})
+
+const fotoPerfil = document.querySelector("#input-foto")

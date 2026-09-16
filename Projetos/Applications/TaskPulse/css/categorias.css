@@ -548,8 +548,7 @@ textarea:focus,
     display: block;    
 }
 .modal.ativo::backdrop{
-    background-color: rgba(8, 8, 8, 0.709);
-    
+    background-color: rgba(8, 8, 8, 0.709);   
 }
 .form-group {
     display: flex;

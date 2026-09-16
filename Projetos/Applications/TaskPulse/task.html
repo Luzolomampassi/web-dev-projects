@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/header.css">
 </head>
 <body>
-    <div class="overlay"></div>
+    
     <header>
     <div class="header-content">
         <button id="btn-menu" aria-label="Abrir menu">
@@ -83,7 +83,7 @@
         <section class="resumo-top resumo">
             <div class="cards">
                 <div class="card">
-                    <h3></h3>
+                    <h3>0</h3>
                     <p>Total</p>
                 </div>
                 <div class="card">
@@ -101,8 +101,8 @@
             </div>
         </section>
         <!-- Modal -->
-        <section class="preenchimento">
-            <article class="modal">
+        
+            <dialog class="modal" id="modal">
                 <div class="modal-top">
                     <div>
                         <h2>Nova Tarefa</h2>
@@ -111,7 +111,7 @@
                     <button type="button" aria-label="Cancelar a criação da tarefa" class="btn-cancel"> <i class="fa-solid fa-x"></i></button>
                    
                 </div>
-                <form action="#" id="modal">
+                <form id="form-task" action="#">
                     <label for="tarefa">Título</label>
                     <input type="text" name="tarefa" id="tarefa" placeholder="Ex.:Revisar documentanção da API">
 
@@ -155,8 +155,8 @@
                    
                 </form>
                  
-            </article>
-        </section>
+            </dialog>
+       
         <div class="custom-alert" id="alert">
      <div class="alert-content">
         <div class="alert-icon">
@@ -187,7 +187,7 @@
         </section>
         <!-- ========== Tarefas =========== -->
 
-        <section class="tarefas">
+        <section class="tarefas" id="tarefas-list">
             <div class="campos">
                 <p>Tarefa</p>
                 <p>Descrição</p>

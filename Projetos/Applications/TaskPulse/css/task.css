@@ -95,11 +95,8 @@ main {
 
 .custom-alert {
     position: fixed;
-
     inset: 0;
-
-    z-index: 1000;
-
+    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -202,60 +199,79 @@ main {
 
 .modal {
     position: fixed;
-
     top: 50%;
     left: 50%;
+    transform: translate(-50%,-50%);
+    width: min(92%, 520px);
+    max-height: calc(100dvh - 24px);
 
-    z-index: 30;
-
-    display: none;
-    flex-direction: column;
-
-    width: min(90%, 600px);
-    max-height: 90vh;
-
-    padding: 16px 20px;
-
+    padding: 0;
     overflow-y: auto;
 
-    background-color: var(--color-white);
-
+    background-color: var(--color-surface);
+    border: 0;
     border-radius: 16px;
+}
+.modal[open] {
+    display: flex;
+    flex-direction: column;
+}
 
-    gap: 10px;
-
-    transform: translate(-50%, -50%);
+.modal::backdrop {
+    background-color: rgba(8, 8, 8, 0.709);
 }
 
 .modal-top {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
-
-    padding: 10px;
-
+    gap: 10px;
+    padding: 16px 20px;
     border-bottom: 1px solid var(--color-border);
+}
+
+.modal-top > div {
+    min-width: 0;
+}
+
+.modal-top h2 {
+    font-size: clamp(1.1rem, 4vw, 1.5rem);
+}
+
+.modal-top p {
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 20px;
 }
 
 .modal label {
     color: var(--color-text-secondary);
+    font-size: 0.9rem;
 }
 
 .modal input,
 .modal textarea,
 .modal select {
     width: 100%;
-
+    min-width: 0;
     margin-bottom: 10px;
-
     padding: 10px;
-
     border: 1px solid var(--color-border);
-    border-radius: 12px;
-
+    border-radius: 10px;
     background-color: var(--color-surface);
     color: var(--color-text);
+}
+
+.modal textarea {
+    min-height: 90px;
+    resize: vertical;
 }
 
 .modal input:focus,
@@ -263,82 +279,60 @@ main {
 .modal select:focus,
 #bar-search:focus {
     outline: 2px solid var(--color-primary-light);
-
     border-color: var(--color-primary);
 }
 
-.data-horario {
+.data-horario,
+.selects {
     display: flex;
+    gap: 12px;
+}
 
-    justify-content: space-between;
-
-    gap: 10px;
+.data-horario > div,
+.selects > div {
+    flex: 1;
+    min-width: 0;
 }
 
 #time {
     min-width: 0;
 }
 
-.selects {
-    display: flex;
-
-    justify-content: space-between;
-
-    gap: 12px;
-}
-
-.selects div {
-    width: 50%;
-}
-
 .form-button {
     display: flex;
-
     align-items: center;
-    justify-content: space-between;
-
     gap: 10px;
+    margin-top: 8px;
 }
 
 .form-button button {
-    width: 50%;
-
-    margin-top: 20px;
-    padding: 10px;
-
-    border-radius: 12px;
+    flex: 1;
+    margin-top: 10px;
+    padding: 11px 10px;
+    border-radius: 10px;
 }
 
 .modal-top .btn-cancel {
+    flex-shrink: 0;
+    padding: 8px;
     color: var(--color-text-secondary);
-
     border: 0;
-
     background-color: transparent;
-
     font-weight: bold;
 }
 
 .btn-cancel {
     color: var(--color-text-secondary);
-
     border: 1px solid var(--color-border);
-
     background-color: transparent;
-
     font-weight: bold;
 }
 
 #btn-new-task {
     background-color: var(--color-primary);
-
     border: 0;
-    border-radius: 8px;
-
     box-shadow: 2px 2px 3px #D8E0FD;
-
     font-weight: bold;
-
     color: var(--color-white);
 }
 
@@ -346,6 +340,49 @@ main {
     background-color: var(--color-primary-dark);
 }
 
+@media (max-width: 480px) {
+    #modal {
+        width: calc(100% - 24px);
+        max-height: calc(100dvh - 24px);
+        border-radius: 14px;
+    }
+
+    .modal-top {
+        padding: 14px 16px;
+    }
+
+    .modal form {
+        padding: 16px;
+    }
+
+    .modal-top h2 {
+        font-size: 1.1rem;
+    }
+
+    .modal-top p {
+        font-size: 0.78rem;
+    }
+
+    .selects,
+    .data-horario {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .selects > div,
+    .data-horario > div {
+        width: 100%;
+    }
+
+    .form-button {
+        gap: 8px;
+    }
+
+    .form-button button {
+        padding: 10px 8px;
+        font-size: 0.9rem;
+    }
+}
 
 /* ================================
    OVERLAY
@@ -576,32 +613,23 @@ main {
 .task-actions button {
     width: 34px;
     height: 34px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background-color: transparent;
-
     border: 0;
-
     border-radius: 50%;
 
     transition:
-        color 0.3s,
-        background-color 0.3s;
+        color 0.3s;
 }
 
 .btn-edit:hover {
     color: var(--color-primary);
-
-    background-color: var(--color-primary-light);
 }
-
 .btn-delet:hover {
     color: var(--color-danger);
 
-    background-color: var(--color-danger-light);
 }
 
 
@@ -904,12 +932,10 @@ main {
         opacity: 1;
     }
 
-    .modal {
-        width: 60%;
-
-        min-height: 70%;
-
-        padding: 20px;
+    #modal {
+        width: min(60%, 600px);
+        min-height: auto;
+        padding: 0;
     }
 
     .selects div {

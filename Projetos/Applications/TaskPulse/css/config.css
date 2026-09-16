@@ -185,6 +185,7 @@ section {
 
 .perfil-body {
     padding: 24px 12px;
+    margin-bottom: 15px;
 }
 
 .foto {
@@ -233,8 +234,10 @@ section {
     color: var(--color-primary);
 }
 
-#input-foto {
-    display: none;
+.input-foto {
+    display: inline;
+
+
 }
 
 
@@ -245,37 +248,34 @@ section {
 .form-group {
     display: flex;
     flex-direction: column;
-
     gap: 7px;
-
     width: 100%;
-
     margin-bottom: 14px;
 }
 
 .form-group label {
     color: var(--color-text-secondary);
-
     font-size: 14px;
 }
 
 .form-group input {
     width: 100%;
     min-height: 44px;
-
     padding: 0 14px;
-
     border: 1px solid var(--color-border);
     border-radius: 14px;
-
     background-color: var(--color-background);
     color: var(--color-text);
-
     outline: none;
+    pointer-events: none;
 }
 
 .form-group input:focus {
     border-color: var(--color-primary);
+}
+
+.form-group input.editavel{
+    pointer-events: fill;
 }
 
 .form-group input:disabled,
@@ -291,23 +291,16 @@ section {
 .btn-editar-perfil {
     width: 100%;
     min-height: 40px;
-
     margin-top: 5px;
-
     padding: 0 16px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     gap: 7px;
-
     border: 1px solid var(--color-border);
     border-radius: 13px;
-
     background-color: var(--color-surface);
     color: var(--color-text-secondary);
-
     transition:
         color var(--transition-fast),
         background-color var(--transition-fast),
@@ -317,7 +310,6 @@ section {
 .btn-editar-perfil:hover {
     background-color: var(--color-primary-light);
     color: var(--color-primary);
-
     border-color: var(--color-primary);
 }
 

@@ -1,29 +1,29 @@
 
-// ===============================
+
 // ELEMENTOS DO FORMULÁRIO
-// ===============================
+
 const nome = document.querySelector("#nome");
 const descricaoTxt = document.querySelector("#descricao");
 const form = document.querySelector("#form");
 const alerta = document.querySelector("#alert");
 
-// ===============================
+
 // ELEMENTOS DA PRÉ-VISUALIZAÇÃO
-// ===============================
+
 const tituloPrev = document.querySelector("#titulo-prev");
 const descricaoPrev = document.querySelector("#descricao-prev");
 const iconView = document.querySelector("#icon-view");
 
-// ===============================
+
 // ELEMENTOS DAS CATEGORIAS
-// ===============================
+
 const categoryItem = document.querySelectorAll(".item");
 const categoryGrid = document.querySelector("#categorias-grid");
 const btnCria = document.querySelector(".btn-criar");
 
-// ===============================
+
 // ÍCONES
-// ===============================
+
 const iconeCategory = document.querySelectorAll(".category-icon");
 
 const icones = {
@@ -43,9 +43,9 @@ const icones = {
 
 let iconeSelecionado = "📚";
 
-// ===============================
+
 // CORES
-// ===============================
+
 const iconesCor = document.querySelectorAll(".icon-color");
 
 let corSelecionada = "#2563EB";
@@ -60,23 +60,23 @@ const cores = {
     rosa: "#DB2777",
 };
 
-// ===============================
+
 // ATUALIZAÇÃO DO TÍTULO
-// ===============================
+
 nome.addEventListener("input", () => {
     tituloPrev.textContent = nome.value;
 });
 
-// ===============================
+
 // ATUALIZAÇÃO DA DESCRIÇÃO
-// ===============================
+
 descricaoTxt.addEventListener("input", () => {
     descricaoPrev.textContent = descricaoTxt.value;
 });
 
-// ===============================
+
 // SELEÇÃO DE CORES
-// ===============================
+
 iconesCor.forEach((cor) => {
 
     cor.addEventListener("click", () => {
@@ -90,9 +90,9 @@ iconesCor.forEach((cor) => {
 
 });
 
-// ===============================
+
 // SELEÇÃO DE ÍCONES
-// ===============================
+
 iconeCategory.forEach((icone) => {
 
     icone.addEventListener("click", () => {
@@ -104,9 +104,9 @@ iconeCategory.forEach((icone) => {
 
 });
 
-// ===============================
+
 // VALIDAÇÃO
-// ===============================
+
 function notNull() {
 
     if (nome.value.trim() === "") {
@@ -116,9 +116,9 @@ function notNull() {
     return true;
 }
 
-// ===============================
+
 // SUBMISSÃO DO FORMULÁRIO
-// ===============================
+
 form.addEventListener("submit", (event) => {
 
     event.preventDefault();
@@ -143,9 +143,9 @@ form.addEventListener("submit", (event) => {
 
 });
 
-// ===============================
+
 // CRIAR CATEGORIA
-// ===============================
+
 function addCategory(dados) {
 
     const lista = document.querySelector(".categorias-grid");
@@ -302,7 +302,7 @@ function addCategory(dados) {
 
     const tarefasConcluidas = document.createElement("span");
 
-    tarefasConcluidas.textContent = "";
+    tarefasConcluidas.textContent = "0";
 
 
     const tarefasPendentes = document.createElement("span");
@@ -311,7 +311,7 @@ function addCategory(dados) {
         "task-pendentes"
     );
 
-    tarefasPendentes.textContent = "";
+    tarefasPendentes.textContent = "0";
 
 
     // -------------------------------
@@ -332,7 +332,7 @@ function addCategory(dados) {
 
     const totalTarefas = document.createElement("span");
 
-    totalTarefas.textContent = "";
+    totalTarefas.textContent = "0";
 
 
     const porcentagem = document.createElement("span");
@@ -370,9 +370,9 @@ function addCategory(dados) {
     badge.textContent = dados.titulo;
 
 
-    // ===============================
+    
     // MONTAGEM DO ELEMENTO
-    // ===============================
+    
 
     item.appendChild(itemBrand);
 
@@ -463,9 +463,9 @@ function addCategory(dados) {
     lista.appendChild(item);
 
 
-    // ===============================
+    
     // EVENTOS DO MENU
-    // ===============================
+    
 
     btnEdit.addEventListener("click", () => {
         option.classList.toggle("editar");
@@ -473,9 +473,9 @@ function addCategory(dados) {
     });
 
 
-    // ===============================
+    
     // ELIMINAR CATEGORIA
-    // ===============================
+    
 
     btnEliminar.addEventListener("click", () => {
         item.remove();
