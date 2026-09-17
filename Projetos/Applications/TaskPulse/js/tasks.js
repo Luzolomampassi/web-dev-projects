@@ -20,7 +20,7 @@ const campoPrioridade = document.querySelector("#prioridade");
 
 // Modal
 const modalTarefa = document.querySelector("#modal");
-const botaoAbrirModal = document.querySelector(".btn-add");
+const botaoAbrirModal = document.querySelectorAll(".btn-add");
 const botoesCancelar = document.querySelectorAll(".btn-cancel");
 
 // Lista de tarefas
@@ -44,7 +44,7 @@ const botaoAlerta = document.querySelector("#btn-alert");
 formularioTarefa.addEventListener("submit", (event) => {
 
     event.preventDefault();
-
+   
     if (!validarFormulario()) {
         dispararAlerta();
         return;
@@ -53,10 +53,11 @@ formularioTarefa.addEventListener("submit", (event) => {
     const dadosTarefa = converterDados();
 
     tarefas.push(dadosTarefa);
-
+    
     criarTarefa(dadosTarefa);
-
+     resumos()
     modalTarefa.close();
+    
 });
 
 
@@ -65,12 +66,16 @@ formularioTarefa.addEventListener("submit", (event) => {
 // ============================================================
 
 // Abrir modal
-botaoAbrirModal.addEventListener("click", () => {
+botaoAbrirModal.forEach(botao => {
+    botao.addEventListener("click", () => {
 
     formularioTarefa.reset();
 
     modalTarefa.showModal();
 });
+
+})
+
 
 
 // Fechar modal ao clicar fora
@@ -150,6 +155,7 @@ function validarFormulario() {
 
 function converterDados() {
     const objetoTarefa = {
+
         id: crypto.randomUUID(),
 
         titulo: campoTitulo.value.trim(),
@@ -164,7 +170,7 @@ function converterDados() {
 
         prioridade: campoPrioridade.value,
 
-        concluida: false
+        status: false
 
     };
 
@@ -185,8 +191,8 @@ function criarTarefa(dadosTarefa) {
     const elementoTarefa = document.createElement("div");
 
     elementoTarefa.classList.add("task");
-
     elementoTarefa.dataset.categoria = "pendentes";
+    elementoTarefa.dataset.status = false;
     elementoTarefa.dataset.id = dadosTarefa.id;
 
 
@@ -394,6 +400,7 @@ function criarTarefa(dadosTarefa) {
         if (indice !== -1) {
             tarefas.splice(indice, 1);
         }
+        resumos();
 
 });
 
@@ -415,19 +422,29 @@ listaTarefas.addEventListener("change", (event) => {
     const elementoTarefa = checkboxSelecionado.closest(".task");
 
     const tituloTarefa = elementoTarefa.querySelector("h3");
+    
+    const idTarefa = elementoTarefa.dataset.id;
+
+    const objetoTarefaEncontrado = tarefas.find(
+        item => item.id === idTarefa
+    );
 
 
     if (checkboxSelecionado.checked) {
 
         elementoTarefa.dataset.categoria = "concluidas";
-
+        elementoTarefa.dataset.status = true;
+        objetoTarefaEncontrado.status = true
         tituloTarefa.style.textDecoration = "line-through";
+        resumos()
 
     } else {
 
         elementoTarefa.dataset.categoria = "pendentes";
-
+        elementoTarefa.dataset.status = false;
+        objetoTarefaEncontrado.status = false
         tituloTarefa.style.textDecoration = "none";
+        resumos()
 
     }
 
@@ -440,21 +457,12 @@ listaTarefas.addEventListener("change", (event) => {
 
 barraPesquisa.addEventListener("input", () => {
 
-    const textoPesquisa = barraPesquisa.value
-        .trim()
-        .toLowerCase();
-
+    const textoPesquisa = barraPesquisa.value.trim().toLowerCase();
     const elementosTarefas = document.querySelectorAll(".task");
-
 
     elementosTarefas.forEach((elementoTarefa) => {
 
-        const nomeTarefa = elementoTarefa
-            .querySelector("h3")
-            .textContent
-            .trim()
-            .toLowerCase();
-
+        const nomeTarefa = elementoTarefa.querySelector("h3").textContent.trim().toLowerCase();
 
         if (nomeTarefa.includes(textoPesquisa)) {
 
@@ -473,16 +481,12 @@ barraPesquisa.addEventListener("input", () => {
 
 // ============================================================
 // FILTROS
-// ============================================================
-
 botoesFiltros.forEach((botaoFiltro) => {
 
     botaoFiltro.addEventListener("click", () => {
 
         const categoriaFiltro = botaoFiltro.dataset.categoria;
-
         const elementosTarefas = document.querySelectorAll(".task");
-
 
         elementosTarefas.forEach((elementoTarefa) => {
 
@@ -511,6 +515,31 @@ botoesFiltros.forEach((botaoFiltro) => {
     });
 
 });
+
+const cardsResumos = document.querySelectorAll(".card")
+// 
+function resumos(){
+    cardsResumos.forEach(card =>{
+    const totais = tarefas.length
+    const concluidas = tarefas.filter(item => item.status === true).length
+    const pendentes = tarefas.filter(item => item.status === false).length
+    
+
+    let numCard = card.querySelector("h3")
+
+    if(numCard.dataset.resumo === "totais"){
+        numCard.innerHTML = totais
+    }
+    else if(numCard.dataset.resumo === "concluidas"){
+        numCard.innerHTML = concluidas
+    }
+    else if(numCard.dataset.resumo === "pendentes"){
+        numCard.innerHTML = pendentes
+    }
+
+})
+
+}
 
 
 
