@@ -7,7 +7,7 @@ const descricaoTxt = document.querySelector("#descricao");
 const form = document.querySelector("#form");
 const alerta = document.querySelector("#alert");
 
-
+const bloco = []
 // ELEMENTOS DA PRÉ-VISUALIZAÇÃO
 
 const tituloPrev = document.querySelector("#titulo-prev");
@@ -131,7 +131,7 @@ form.addEventListener("submit", (event) => {
     }
 
     const categoria = {
-
+        id:crypto.randomUUID(),
         titulo: nome.value,
         descricao: descricaoTxt.value,
         icone: iconeSelecionado,
@@ -139,8 +139,8 @@ form.addEventListener("submit", (event) => {
 
     };
 
+    bloco.push(categoria)
     addCategory(categoria);
-
 });
 
 
@@ -148,10 +148,11 @@ form.addEventListener("submit", (event) => {
 
 function addCategory(dados) {
 
-    const lista = document.querySelector(".categorias-grid");
-
+    const listaCategoria = document.querySelector(".categorias-grid");
+    
     const item = document.createElement("article");
     item.classList.add("item");
+    item.dataset.id = dados.id
 
 
     // -------------------------------
@@ -460,7 +461,7 @@ function addCategory(dados) {
     // ADICIONAR AO GRID
     // -------------------------------
 
-    lista.appendChild(item);
+    listaCategoria.appendChild(item);
 
 
     
@@ -479,6 +480,11 @@ function addCategory(dados) {
 
     btnEliminar.addEventListener("click", () => {
         item.remove();
+        const id = dados.id;
+        const index = findIndex(item => item.id === id)
+        if(index !== 1){
+            tarefas.splice(indice, 1);
+        }
     });
 
 }

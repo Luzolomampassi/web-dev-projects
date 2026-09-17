@@ -1,53 +1,62 @@
 // ============================================================
+// ESTADO DA APLICAÇÃO
+// ============================================================
+
+const tarefas = [];
+
+
+// ============================================================
 // ELEMENTOS DO DOM
 // ============================================================
 
 // Formulário
-const form = document.querySelector("#form-task");
-const inputText = document.querySelector("#tarefa");
-const textarea = document.querySelector("#descricao");
-const select = document.querySelector("#categoria");
-const data = document.querySelector("#data");
-const time = document.querySelector("#time");
-const selectPrioridade = document.querySelector("#prioridade");
+const formularioTarefa = document.querySelector("#form-task");
+const campoTitulo = document.querySelector("#tarefa");
+const campoDescricao = document.querySelector("#descricao");
+const campoCategoria = document.querySelector("#categoria");
+const campoVencimento = document.querySelector("#data");
+const campoHorario = document.querySelector("#time");
+const campoPrioridade = document.querySelector("#prioridade");
 
 // Modal
-const modal = document.querySelector("#modal");
-const btnAbrirModal = document.querySelector(".btn-add");
-const btnCancelar = document.querySelectorAll(".btn-cancel");
+const modalTarefa = document.querySelector("#modal");
+const botaoAbrirModal = document.querySelector(".btn-add");
+const botoesCancelar = document.querySelectorAll(".btn-cancel");
 
 // Lista de tarefas
 const listaTarefas = document.querySelector(".list-tasks");
 
 // Pesquisa
-const barSearch = document.querySelector("#bar-search");
+const barraPesquisa = document.querySelector("#bar-search");
 
 // Filtros
-const filtros = document.querySelectorAll(".btn-filters");
+const botoesFiltros = document.querySelectorAll(".btn-filters");
 
 // Alerta personalizado
-const alertPersonalizado = document.querySelector("#alert");
-const btnAlert = document.querySelector("#btn-alert");
+const alertaPersonalizado = document.querySelector("#alert");
+const botaoAlerta = document.querySelector("#btn-alert");
 
 
 // ============================================================
 // EVENTOS DO FORMULÁRIO
 // ============================================================
 
-form.addEventListener("submit", (event) => {
+formularioTarefa.addEventListener("submit", (event) => {
 
     event.preventDefault();
 
     if (!validarFormulario()) {
-        dispararAlert();
+        dispararAlerta();
         return;
     }
 
-    const dados = converterDados();
+    const dadosTarefa = converterDados();
 
-    criarTarefa(dados);
+    tarefas.push(dadosTarefa);
 
-    modal.close();
+    criarTarefa(dadosTarefa);
+
+    modalTarefa.close();
 });
 
 
@@ -56,28 +65,28 @@ form.addEventListener("submit", (event) => {
 // ============================================================
 
 // Abrir modal
-btnAbrirModal.addEventListener("click", () => {
+botaoAbrirModal.addEventListener("click", () => {
 
-    form.reset();
+    formularioTarefa.reset();
 
-    modal.showModal();
+    modalTarefa.showModal();
 });
 
 
 // Fechar modal ao clicar fora
-modal.addEventListener("click", (event) => {
+modalTarefa.addEventListener("click", (event) => {
 
-    if (event.target === modal) {
-        modal.close();
+    if (event.target === modalTarefa) {
+        modalTarefa.close();
     }
 });
 
 
 // Botões de cancelar
-btnCancelar.forEach((btn) => {
+botoesCancelar.forEach((botao) => {
 
-    btn.addEventListener("click", () => {
-        modal.close();
+    botao.addEventListener("click", () => {
+        modalTarefa.close();
     });
 
 });
@@ -88,17 +97,17 @@ btnCancelar.forEach((btn) => {
 // ============================================================
 
 // Fechar alerta
-btnAlert.addEventListener("click", () => {
+botaoAlerta.addEventListener("click", () => {
 
-    alertPersonalizado.classList.remove("ativo");
+    alertaPersonalizado.classList.remove("ativo");
 
 });
 
 
 // Exibir alerta
-function dispararAlert() {
+function dispararAlerta() {
 
-    alertPersonalizado.classList.add("ativo");
+    alertaPersonalizado.classList.add("ativo");
 
 }
 
@@ -110,17 +119,17 @@ function dispararAlert() {
 function validarFormulario() {
 
     // Verifica título
-    if (inputText.value.trim() === "") {
+    if (campoTitulo.value.trim() === "") {
         return false;
     }
 
     // Verifica categoria
-    if (select.value === "") {
+    if (campoCategoria.value === "") {
         return false;
     }
 
     // Define a data atual caso o usuário não informe uma
-    if (data.value === "") {
+    if (campoVencimento.value === "") {
 
         const hoje = new Date();
 
@@ -128,7 +137,7 @@ function validarFormulario() {
         const mes = String(hoje.getMonth() + 1).padStart(2, "0");
         const dia = String(hoje.getDate()).padStart(2, "0");
 
-        data.value = `${ano}-${mes}-${dia}`;
+        campoVencimento.value = `${ano}-${mes}-${dia}`;
     }
 
     return true;
@@ -140,24 +149,26 @@ function validarFormulario() {
 // ============================================================
 
 function converterDados() {
+    const objetoTarefa = {
+        id: crypto.randomUUID(),
 
-    const tarefa = {
+        titulo: campoTitulo.value.trim(),
 
-        titulo: inputText.value.trim(),
+        descricao: campoDescricao.value.trim(),
 
-        descricao: textarea.value.trim(),
+        categoria: campoCategoria.value,
 
-        categoria: select.value,
+        vencimento: campoVencimento.value,
 
-        vencimento: data.value,
+        horario: campoHorario.value,
 
-        horario: time.value,
+        prioridade: campoPrioridade.value,
 
-        prioridade: selectPrioridade.value
+        concluida: false
 
     };
 
-    return tarefa;
+    return objetoTarefa;
 }
 
 
@@ -165,90 +176,91 @@ function converterDados() {
 // CRIAÇÃO DA TAREFA
 // ============================================================
 
-function criarTarefa(dados) {
+function criarTarefa(dadosTarefa) {
 
     // --------------------------------------------------------
     // Elemento principal
     // --------------------------------------------------------
 
-    const tarefa = document.createElement("div");
+    const elementoTarefa = document.createElement("div");
 
-    tarefa.classList.add("task");
+    elementoTarefa.classList.add("task");
 
-    tarefa.dataset.categoria = "pendentes";
+    elementoTarefa.dataset.categoria = "pendentes";
+    elementoTarefa.dataset.id = dadosTarefa.id;
 
 
     // --------------------------------------------------------
     // Checkbox
     // --------------------------------------------------------
 
-    const label = document.createElement("label");
+    const rotuloCheckbox = document.createElement("label");
 
-    const checkbox = document.createElement("input");
+    const checkboxConclusao = document.createElement("input");
 
-    checkbox.type = "checkbox";
-    checkbox.classList.add("check");
+    checkboxConclusao.type = "checkbox";
+    checkboxConclusao.classList.add("check");
 
-    label.appendChild(checkbox);
+    rotuloCheckbox.appendChild(checkboxConclusao);
 
 
     // --------------------------------------------------------
     // Conteúdo
     // --------------------------------------------------------
 
-    const texto = document.createElement("div");
+    const conteudoTarefa = document.createElement("div");
 
-    const titulo = document.createElement("h3");
+    const tituloTarefa = document.createElement("h3");
 
-    titulo.textContent = dados.titulo;
+    tituloTarefa.textContent = dadosTarefa.titulo;
 
 
-    const descricao = document.createElement("p");
+    const descricaoTarefa = document.createElement("p");
 
-    descricao.textContent = dados.descricao;
+    descricaoTarefa.textContent = dadosTarefa.descricao;
 
 
     // --------------------------------------------------------
     // Badges
     // --------------------------------------------------------
 
-    const badges = document.createElement("div");
+    const containerBadges = document.createElement("div");
 
-    badges.classList.add("badges");
+    containerBadges.classList.add("badges");
 
 
     const badgeCategoria = document.createElement("div");
 
     badgeCategoria.classList.add("badge");
 
-    badgeCategoria.textContent = dados.categoria;
+    badgeCategoria.textContent = dadosTarefa.categoria;
 
 
-    const badgeData = document.createElement("div");
+    const badgeVencimento = document.createElement("div");
 
-    badgeData.classList.add("badge");
+    badgeVencimento.classList.add("badge");
 
-    badgeData.textContent = dados.vencimento;
+    badgeVencimento.textContent = dadosTarefa.vencimento;
 
 
     const badgePrioridade = document.createElement("div");
 
     badgePrioridade.classList.add("badge");
 
-    badgePrioridade.textContent = dados.prioridade;
+    badgePrioridade.textContent = dadosTarefa.prioridade;
 
 
     // --------------------------------------------------------
     // Classe da prioridade
     // --------------------------------------------------------
 
-    const prioridade = dados.prioridade.toLowerCase();
+    const prioridadeTarefa = dadosTarefa.prioridade.toLowerCase();
 
-    if (prioridade === "alta") {
+    if (prioridadeTarefa === "alta") {
 
         badgePrioridade.classList.add("alta");
 
-    } else if (prioridade === "media") {
+    } else if (prioridadeTarefa === "media") {
 
         badgePrioridade.classList.add("media");
 
@@ -263,101 +275,128 @@ function criarTarefa(dados) {
     // Montagem dos badges
     // --------------------------------------------------------
 
-    badges.appendChild(badgeCategoria);
-    badges.appendChild(badgeData);
-    badges.appendChild(badgePrioridade);
+    containerBadges.appendChild(badgeCategoria);
+    containerBadges.appendChild(badgeVencimento);
+    containerBadges.appendChild(badgePrioridade);
 
 
     // --------------------------------------------------------
     // Montagem do conteúdo
     // --------------------------------------------------------
 
-    texto.appendChild(titulo);
-    texto.appendChild(descricao);
-    texto.appendChild(badges);
+    conteudoTarefa.appendChild(tituloTarefa);
+    conteudoTarefa.appendChild(descricaoTarefa);
+    conteudoTarefa.appendChild(containerBadges);
 
 
     // --------------------------------------------------------
     // Botões de ação
     // --------------------------------------------------------
 
-    const buttons = document.createElement("div");
+    const containerAcoes = document.createElement("div");
 
-    buttons.classList.add("task-actions");
+    containerAcoes.classList.add("task-actions");
 
 
     // Botão editar
-    const buttonEdit = document.createElement("button");
+    const botaoEditar = document.createElement("button");
 
-    buttonEdit.classList.add("btn-edit");
+    botaoEditar.classList.add("btn-edit");
 
-    buttonEdit.setAttribute(
+    botaoEditar.setAttribute(
         "aria-label",
         "Editar a tarefa"
     );
 
 
-    const iconeEdit = document.createElement("i");
+    const iconeEditar = document.createElement("i");
 
-    iconeEdit.classList.add(
+    iconeEditar.classList.add(
         "fa-regular",
         "fa-pen-to-square"
     );
 
-    buttonEdit.appendChild(iconeEdit);
+    botaoEditar.appendChild(iconeEditar);
 
 
     // Botão deletar
-    const buttonDelet = document.createElement("button");
+    const botaoDeletar = document.createElement("button");
 
-    buttonDelet.classList.add("btn-delet");
+    botaoDeletar.classList.add("btn-delet");
 
-    buttonDelet.setAttribute(
+    botaoDeletar.setAttribute(
         "aria-label",
         "Deletar a tarefa"
     );
 
 
-    const iconeDelet = document.createElement("i");
+    const iconeDeletar = document.createElement("i");
 
-    iconeDelet.classList.add(
+    iconeDeletar.classList.add(
         "fa-regular",
         "fa-trash-can"
     );
 
-    buttonDelet.appendChild(iconeDelet);
+    botaoDeletar.appendChild(iconeDeletar);
 
 
     // --------------------------------------------------------
     // Montagem dos botões
     // --------------------------------------------------------
 
-    buttons.appendChild(buttonEdit);
-    buttons.appendChild(buttonDelet);
+    containerAcoes.appendChild(botaoEditar);
+    containerAcoes.appendChild(botaoDeletar);
 
 
     // --------------------------------------------------------
     // Montagem final da tarefa
     // --------------------------------------------------------
 
-    tarefa.appendChild(label);
+    elementoTarefa.appendChild(rotuloCheckbox);
 
-    tarefa.appendChild(texto);
+    elementoTarefa.appendChild(conteudoTarefa);
 
-    tarefa.appendChild(buttons);
+    elementoTarefa.appendChild(containerAcoes);
 
-    listaTarefas.appendChild(tarefa);
+    listaTarefas.appendChild(elementoTarefa);
+
+
+    // --------------------------------------------------------
+    // Evento de edição
+    // --------------------------------------------------------
+
+    botaoEditar.addEventListener("click", () => {
+
+        modalTarefa.showModal();
+
+        const idTarefa = elementoTarefa.dataset.id;
+
+        const objetoTarefaEncontrado = tarefas.find(
+            item => item.id === idTarefa
+        );
+
+        
+    });
 
 
     // --------------------------------------------------------
     // Evento de exclusão
     // --------------------------------------------------------
 
-    buttonDelet.addEventListener("click", () => {
+    botaoDeletar.addEventListener("click", () => {
 
-        tarefa.remove();
+        elementoTarefa.remove();
 
-    });
+        const id = dadosTarefa.id;
+
+        const indice = tarefas.findIndex(item => item.id === id);
+
+        if (indice !== -1) {
+            tarefas.splice(indice, 1);
+        }
+
+});
+
 }
 
 
@@ -371,24 +410,24 @@ listaTarefas.addEventListener("change", (event) => {
         return;
     }
 
-    const checkbox = event.target;
+    const checkboxSelecionado = event.target;
 
-    const tarefa = checkbox.closest(".task");
+    const elementoTarefa = checkboxSelecionado.closest(".task");
 
-    const titulo = tarefa.querySelector("h3");
+    const tituloTarefa = elementoTarefa.querySelector("h3");
 
 
-    if (checkbox.checked) {
+    if (checkboxSelecionado.checked) {
 
-        tarefa.dataset.categoria = "concluidas";
+        elementoTarefa.dataset.categoria = "concluidas";
 
-        titulo.style.textDecoration = "line-through";
+        tituloTarefa.style.textDecoration = "line-through";
 
     } else {
 
-        tarefa.dataset.categoria = "pendentes";
+        elementoTarefa.dataset.categoria = "pendentes";
 
-        titulo.style.textDecoration = "none";
+        tituloTarefa.style.textDecoration = "none";
 
     }
 
@@ -399,18 +438,18 @@ listaTarefas.addEventListener("change", (event) => {
 // PESQUISA DE TAREFAS
 // ============================================================
 
-barSearch.addEventListener("input", () => {
+barraPesquisa.addEventListener("input", () => {
 
-    const textoPesquisa = barSearch.value
+    const textoPesquisa = barraPesquisa.value
         .trim()
         .toLowerCase();
 
-    const tarefas = document.querySelectorAll(".task");
+    const elementosTarefas = document.querySelectorAll(".task");
 
 
-    tarefas.forEach((tarefa) => {
+    elementosTarefas.forEach((elementoTarefa) => {
 
-        const nomeTarefa = tarefa
+        const nomeTarefa = elementoTarefa
             .querySelector("h3")
             .textContent
             .trim()
@@ -419,11 +458,11 @@ barSearch.addEventListener("input", () => {
 
         if (nomeTarefa.includes(textoPesquisa)) {
 
-            tarefa.style.display = "grid";
+            elementoTarefa.style.display = "grid";
 
         } else {
 
-            tarefa.style.display = "none";
+            elementoTarefa.style.display = "none";
 
         }
 
@@ -436,34 +475,34 @@ barSearch.addEventListener("input", () => {
 // FILTROS
 // ============================================================
 
-filtros.forEach((filtro) => {
+botoesFiltros.forEach((botaoFiltro) => {
 
-    filtro.addEventListener("click", () => {
+    botaoFiltro.addEventListener("click", () => {
 
-        const categoriaFiltro = filtro.dataset.categoria;
+        const categoriaFiltro = botaoFiltro.dataset.categoria;
 
-        const tarefas = document.querySelectorAll(".task");
+        const elementosTarefas = document.querySelectorAll(".task");
 
 
-        tarefas.forEach((tarefa) => {
+        elementosTarefas.forEach((elementoTarefa) => {
 
             // Mostrar todas
             if (categoriaFiltro === "todos") {
 
-                tarefa.style.display = "grid";
+                elementoTarefa.style.display = "grid";
 
                 return;
             }
 
 
             // Mostrar apenas a categoria selecionada
-            if (categoriaFiltro === tarefa.dataset.categoria) {
+            if (categoriaFiltro === elementoTarefa.dataset.categoria) {
 
-                tarefa.style.display = "grid";
+                elementoTarefa.style.display = "grid";
 
             } else {
 
-                tarefa.style.display = "none";
+                elementoTarefa.style.display = "none";
 
             }
 
@@ -472,3 +511,7 @@ filtros.forEach((filtro) => {
     });
 
 });
+
+
+
+
