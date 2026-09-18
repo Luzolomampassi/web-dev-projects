@@ -2,8 +2,7 @@
 // ESTADO DA APLICAÇÃO
 // ============================================================
 
-const tarefas = [];
-
+import tarefas from "./data.js";
 
 // ============================================================
 // ELEMENTOS DO DOM
@@ -42,12 +41,11 @@ const botaoAlerta = document.querySelector("#btn-alert");
 // ============================================================
 
 formularioTarefa.addEventListener("submit", (event) => {
-
     event.preventDefault();
    
     if (!validarFormulario()) {
         dispararAlerta();
-        return;
+        return  ;
     }
 
     const dadosTarefa = converterDados();
@@ -55,7 +53,7 @@ formularioTarefa.addEventListener("submit", (event) => {
     tarefas.push(dadosTarefa);
     
     criarTarefa(dadosTarefa);
-     resumos()
+    resumos()
     modalTarefa.close();
     
 });
@@ -261,17 +259,16 @@ function criarTarefa(dadosTarefa) {
     // --------------------------------------------------------
 
     const prioridadeTarefa = dadosTarefa.prioridade.toLowerCase();
+    elementoTarefa.dataset.prioridade = prioridadeTarefa;
+    
 
     if (prioridadeTarefa === "alta") {
-
         badgePrioridade.classList.add("alta");
 
     } else if (prioridadeTarefa === "media") {
-
         badgePrioridade.classList.add("media");
 
     } else {
-
         badgePrioridade.classList.add("baixa");
 
     }
@@ -491,23 +488,19 @@ botoesFiltros.forEach((botaoFiltro) => {
         elementosTarefas.forEach((elementoTarefa) => {
 
             // Mostrar todas
+
             if (categoriaFiltro === "todos") {
-
-                elementoTarefa.style.display = "grid";
-
-                return;
+            elementoTarefa.style.display = "grid";
+        }
+            else if (categoriaFiltro === "importantes") {
+                elementoTarefa.style.display =
+                    elementoTarefa.dataset.prioridade === "alta" ? "grid" : "none";
             }
-
-
-            // Mostrar apenas a categoria selecionada
-            if (categoriaFiltro === elementoTarefa.dataset.categoria) {
-
+            else if (categoriaFiltro === elementoTarefa.dataset.categoria) {
                 elementoTarefa.style.display = "grid";
-
-            } else {
-
+            }
+            else {
                 elementoTarefa.style.display = "none";
-
             }
 
         });
@@ -516,13 +509,15 @@ botoesFiltros.forEach((botaoFiltro) => {
 
 });
 
-const cardsResumos = document.querySelectorAll(".card")
+
 // 
 function resumos(){
+    const cardsResumos = document.querySelectorAll(".card")
     cardsResumos.forEach(card =>{
     const totais = tarefas.length
     const concluidas = tarefas.filter(item => item.status === true).length
     const pendentes = tarefas.filter(item => item.status === false).length
+    const importantes = tarefas.filter(item => item.prioridade === 'alta').length
     
 
     let numCard = card.querySelector("h3")
@@ -536,10 +531,16 @@ function resumos(){
     else if(numCard.dataset.resumo === "pendentes"){
         numCard.innerHTML = pendentes
     }
+    else if(numCard.dataset.resumo === "importantes"){
+        numCard.innerHTML = importantes
+    }
 
 })
 
 }
+
+
+
 
 
 

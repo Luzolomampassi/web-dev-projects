@@ -747,6 +747,34 @@ transition: transform 0.2s ease;
 transform: scale(1.15);
 }
 
+/* ==========================================
+   TAREFA CONCLUÍDA
+========================================== */
+
+.task:has(.check:checked) {
+    background-color: #F0FDF4;
+    border-color: #BBF7D0;
+}
+
+
+.task:has(.check:checked) h3 {
+    color: var(--color-success);
+    text-decoration-line: line-through;
+    text-decoration-color: var(--color-success);
+    text-decoration-thickness: 2px;
+}
+
+.task:has(.check:checked) p {
+    color: #94A3B8;
+}
+
+.task:has(.check:checked) .badge {
+    opacity: .6;
+}
+
+.task:has(.check:checked) .check {
+    accent-color: var(--color-success);
+}
 .campos {
 display: none;
 

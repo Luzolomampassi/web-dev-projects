@@ -532,9 +532,6 @@ textarea:focus,
     position: fixed;
     top: 50%;
     left: 50%;
-    z-index: 30;
-    display: none;
-    flex-direction: column;
     width: min(90%, 520px);
     max-height: 90vh;
     padding: 20px;
@@ -544,9 +541,7 @@ textarea:focus,
     transform: translate(-50%, -50%);
     border: 0;
 }
-.modal.ativo{
-    display: block;    
-}
+
 .modal.ativo::backdrop{
     background-color: rgba(8, 8, 8, 0.709);   
 }

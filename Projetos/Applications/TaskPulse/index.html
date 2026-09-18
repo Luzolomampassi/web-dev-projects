@@ -13,9 +13,6 @@
 </head>
 
 <body>
-
-    <div class="overlay"></div>
-
     <!-- ================= HEADER ================= -->
 
     <header>
@@ -94,17 +91,11 @@
     <!-- ================= HOME ================= -->
 
     <main class="home">
-
-        <!-- Cabeçalho da Home -->
-
         <section class="home-heading">
-
             <div>
-
                 <span class="eyebrow">
                     Visão geral
                 </span>
-
                 <h1>
                     Olá, seja bem-vindo ao TaskPulse
                 </h1>
@@ -125,7 +116,6 @@
 
         </section>
 
-
         <!-- ================= RESUMO ================= -->
 
         <section class="overview-cards" aria-label="Resumo das tarefas">
@@ -137,12 +127,8 @@
                 </div>
 
                 <div>
-
                     <span>Total de tarefas</span>
-
-                    <strong data-stat="total">
-                        0
-                    </strong>
+                    <strong data-stat="total" id="total-tarefas">0</strong>
 
                 </div>
 
@@ -159,9 +145,7 @@
 
                     <span>Concluídas</span>
 
-                    <strong data-stat="completed">
-                        0
-                    </strong>
+                    <strong data-stat="completed" class="completed-tasks">0</strong>
 
                 </div>
 
@@ -178,7 +162,7 @@
 
                     <span>Pendentes</span>
 
-                    <strong data-stat="pending">
+                    <strong data-stat="pending" class="tasks-pending">
                         0
                     </strong>
 
@@ -188,18 +172,13 @@
 
 
             <article class="overview-card">
-
                 <div class="card-icon">
                     <i class="fa-regular fa-star"></i>
                 </div>
 
                 <div>
-
                     <span>Importantes</span>
-
-                    <strong data-stat="important">
-                        0
-                    </strong>
+                    <strong data-stat="important" id="important-tasks"> 0</strong>
 
                 </div>
 
@@ -293,7 +272,7 @@
 
                         <div class="progress-circle-inner">
 
-                            <strong data-stat="progress">
+                            <strong data-stat="progress" id="completed-tasks">
                                 0%
                             </strong>
 
@@ -314,7 +293,7 @@
                                 Concluídas
                             </span>
 
-                            <strong data-stat="completed-detail">
+                            <strong data-stat="completed-detail" class="completed-task">
                                 0
                             </strong>
 
@@ -327,7 +306,7 @@
                                 Pendentes
                             </span>
 
-                            <strong data-stat="pending-detail">
+                            <strong data-stat="pending-detail" class="tasks-pending">
                                 0
                             </strong>
 
@@ -409,7 +388,7 @@
     <!-- ================= JAVASCRIPT ================= -->
 
     <script src="js/main.js"></script>
-    <script src="js/home.js"></script>
+    <script type="module" src="js/home.js"></script>
 
 </body>
 
