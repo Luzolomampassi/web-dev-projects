@@ -8,6 +8,7 @@ search.addEventListener('input', () =>{
         if(nomeProjeto.includes(search.value.toLocaleLowerCase())){
             projeto.style.display = 'grid'
         }else{
+            document.body.querySelector(".noitem").textContent = 'Nenhum projeto encontrado'
             projeto.style.display = 'none'
         }
     })
@@ -16,10 +17,10 @@ btnFiltros.forEach(btnSelecionado => {
     btnSelecionado.addEventListener('click', () =>{
 
         projetos.forEach(projetoSelecionado =>{
-            if(btnSelecionado.dataset.categoria == 'todos'){
+            if(btnSelecionado.dataset.categoria.includes('todos') ){
                 projetoSelecionado.style.display = 'grid'
             }
-            else if(btnSelecionado.dataset.categoria === projetoSelecionado.dataset.categoria){
+            else if(btnSelecionado.dataset.categoria.includes(projetoSelecionado.dataset.categoria)){
                 projetoSelecionado.style.display = 'grid'
             }else{
                 projetoSelecionado.style.display = 'none'
@@ -27,3 +28,6 @@ btnFiltros.forEach(btnSelecionado => {
         })
     })
 })
+
+const projetoCompleto = document.querySelector(".projetos-completos")
+projetoCompleto.textContent = projetos.length
