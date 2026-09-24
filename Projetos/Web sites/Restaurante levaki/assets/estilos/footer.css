@@ -32,69 +32,106 @@
 }
 
 
-footer{
+footer {
     background-color: var(--color-brand-green-deep);
-    padding: 77px 20px 0px 20px;
+    padding: 70px 20px 0;
     color: var(--color-text-on-dark-muted);
-    font-size: 13px;
+    font-size: 0.8125rem;
 }
-footer  a , p{
+
+footer a,
+footer p {
     text-decoration: none;
     color: var(--color-text-on-dark-muted);
-    font-size: 13px;
+    font-size: 0.8125rem;
 }
-footer h4{
-    color: var(--color-brand-gold);
-    font-weight: 100;
-}
-.footer-brand{
-    grid-column: span 2;
-    padding-bottom: 20px;
-}
-.footer-grid{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    padding-bottom: 50px;
-    border-bottom: 1px solid var(--color-border-dark);
-    gap: 40px;
 
+footer a {
+    transition: color 0.3s ease;
 }
-.footer-grid > div{
+
+footer a:hover {
+    color: var(--color-white);
+}
+
+footer h2 {
+    margin: 0;
+    color: var(--color-text-on-dark);
+    font-family: var(--font-bodoni);
+    font-size: 2rem;
+}
+
+footer h4 {
+    margin: 0 0 4px;
+    color: var(--color-brand-gold);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px 25px;
+    padding-bottom: 45px;
+    border-bottom: 1px solid var(--color-border-dark);
+}
+
+.footer-grid > div {
     display: flex;
     flex-direction: column;
-    gap: 11px;
-}
-.social{
-    display: flex;
     gap: 10px;
+    min-width: 0;
 }
 
-.icone{
-    color: var(--color-white);
-    padding: 10px;
-    font-size: 1.5em;
+.footer-brand {
+    grid-column: 1 / -1;
+    gap: 16px !important;
+    padding-bottom: 5px;
+}
+
+.footer-brand > p {
+    max-width: 360px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--color-border-dark);
     border-radius: 50%;
-    cursor: pointer;
-    border: 1px solid var(--color-border-subtle);
-    transition: background-color .3s,transform .3s ease;
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
 }
-.fa-whatsapp:hover{
+
+.icone {
+    color: var(--color-white);
+    font-size: 1.1rem;
+}
+
+.social a:hover {
+    transform: translateY(-3px);
+}
+
+.social a:first-child:hover {
     background-color: #23CC62;
-    border: 0;
-    transform: scale(1.1);
-}
-.fa-facebook:hover{
-    background-color: #0761F7;
-    border: 0;
-    transform: scale(1.1);
+    border-color: #23CC62;
 }
 
-.fa-instagram {
-    background: transparent;
-    transition: background .3s ease, transform .3s ease;
-}
-
-.fa-instagram:hover {
+.social a:nth-child(2):hover {
     background: linear-gradient(
         45deg,
         #feda75,
@@ -103,33 +140,92 @@ footer h4{
         #962fbf,
         #4f5bd5
     );
-    border: 0;
-    transform: scale(1.1);
+    border-color: transparent;
 }
-.footer-bottom{
+
+.social a:nth-child(3):hover {
+    background-color: #0761F7;
+    border-color: #0761F7;
+}
+
+.footer-column p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.footer-column a {
+    width: fit-content;
+    line-height: 1.5;
+}
+
+.footer-column:last-child p {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.footer-column:last-child span {
+    color: var(--color-text-on-dark);
+}
+
+.footer-bottom {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    height: 100%;
+    gap: 8px;
+    padding: 20px 0;
 }
-@media (min-width:767px) and (max-width:991px){
 
-}
-@media (min-width:1023px){
-    .footer-grid{
-    grid-template-columns: 1.2fr repeat(4,1fr);
-}
-    .footer-brand{
-    grid-column: span 1;
-    
+.footer-bottom p {
+    margin: 0;
 }
 
 
-    .footer-bottom{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px;
+/* =========================
+   TABLET
+========================= */
+
+@media (min-width: 600px) {
+
+    footer {
+        padding: 75px 40px 0;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 45px 30px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
 }
 
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media (min-width: 1023px) {
+
+    footer {
+        padding: 85px 6% 0;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1.3fr repeat(4, minmax(0, 1fr));
+        gap: 45px;
+        padding-bottom: 55px;
+    }
+
+    .footer-brand {
+        grid-column: auto;
+    }
+
+    .footer-bottom {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+    }
 }
+
