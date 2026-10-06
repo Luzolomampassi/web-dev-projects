@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/header.css">
 </head>
 <body>
-    
+   
     <header>
     <div class="header-content">
         <button id="btn-menu" aria-label="Abrir menu">
@@ -73,8 +73,6 @@
 </header>
     <main>
         <section class="inicio card">
-           
-          
             <div>
                 <h3 data-resumo="pendentes">0</h3>
                 <p>Tarefas pendentes</p>
@@ -105,60 +103,60 @@
         </section>
         <!-- Modal -->
         
-            <dialog class="modal" id="modal">
-                <div class="modal-top">
-                    <div>
-                        <h2>Nova Tarefa</h2>
-                        <p>Preencha os dados da tarefa abaixo</p>
-                    </div>
-                    <button type="button" aria-label="Cancelar a criação da tarefa" class="btn-cancel"> <i class="fa-solid fa-x"></i></button>
-                   
+        <dialog class="modal" id="modal">
+            <div class="modal-top">
+                <div>
+                    <h2>Nova Tarefa</h2>
+                    <p>Preencha os dados da tarefa abaixo</p>
                 </div>
-                <form id="form-task" action="#">
-                    <label for="tarefa">Título</label>
-                    <input type="text" name="tarefa" id="tarefa" placeholder="Ex.:Revisar documentanção da API">
+                <button type="button" aria-label="Cancelar a criação da tarefa" class="btn-cancel"> <i class="fa-solid fa-x"></i></button>
+                
+            </div>
+            <form id="form-task" action="#">
+                <label for="tarefa">Título</label>
+                <input type="text" name="tarefa" id="tarefa" placeholder="Ex.:Revisar documentanção da API">
 
-                    <label for="descricao">Descrição</label>
-                    <textarea name="descricao" id="descricao" placeholder="Descreva brevemente a tarefa "></textarea>
-                    <div class="selects">
-                        <div>
-                            <label for="categoria">Categoria</label>
-                            <select name="categoria" id="categoria">
-                                <option value="estudo">Estudo</option>
-                                <option value="projeto">Projeto</option>
-                                <option value="saude">Saúde</option>
-                                <option value="carreira">Carreira</option>
-                            </select>
-                        </div>  
-                        <!--  -->
-                        <div>
-                            <label for="prioridade">Prioridade</label>
-                            <select name="prioridade" id="prioridade">
-                                <option value="alta">Alta</option>
-                                <option value="media">Média</option>
-                                <option value="baixa">Baixa</option>
-                            </select>
-                        </div>
+                <label for="descricao">Descrição</label>
+                <textarea name="descricao" id="descricao" placeholder="Descreva brevemente a tarefa "></textarea>
+                <div class="selects">
+                    <div>
+                        <label for="categoria">Categoria</label>
+                        <select name="categoria" id="categoria">
+                            <option value="estudo">Estudo</option>
+                            <option value="projeto">Projeto</option>
+                            <option value="saude">Saúde</option>
+                            <option value="carreira">Carreira</option>
+                        </select>
+                    </div>  
+                    <!--  -->
+                    <div>
+                        <label for="prioridade">Prioridade</label>
+                        <select name="prioridade" id="prioridade">
+                            <option value="alta">Alta</option>
+                            <option value="media">Média</option>
+                            <option value="baixa">Baixa</option>
+                        </select>
                     </div>
-                    <div class="data-horario">
-                        <div>
-                            <label for="data">Data de Vencimento</label>
-                            <input type="date" name="data" id="data">
-                        </div>
-                    
-                        <div>
-                            <label for="time">Horário(opcional)</label>
-                            <input type="time" name="time" id="time">
-                        </div>
+                </div>
+                <div class="data-horario">
+                    <div>
+                        <label for="data">Data de Vencimento</label>
+                        <input type="date" name="data" id="data">
                     </div>
-                    <div class="form-button">
-                        <button type="button"  aria-label="Cancelar a criação da tarefa" class="btn-cancel">Cancelar</button>
-                        <button  type="submit" aria-label="Cria um nova tarefa" id="btn-new-task">Adicionar Tarefa</button>
+                
+                    <div>
+                        <label for="time">Horário(opcional)</label>
+                        <input type="time" name="time" id="time">
                     </div>
-                   
-                </form>
-                 
-            </dialog>
+                </div>
+                <div class="form-button">
+                    <button type="button"  aria-label="Cancelar a criação da tarefa" class="btn-cancel">Cancelar</button>
+                    <button  type="submit" aria-label="Cria um nova tarefa" id="btn-new-task">Adicionar Tarefa</button>
+                </div>
+                
+            </form>
+                
+        </dialog>
        
         <div class="custom-alert" id="alert">
         <div class="alert-content">
@@ -204,6 +202,13 @@
                
             </article>
         </section>
+         <section class="void-section" id="void-section">
+        <article class="vazio">
+            <img src="icones/Ilustração de lista de tarefas vazia.png" alt="Icone de uma tabela">
+            <h1>Tudo limpo por enquanto</h1>
+            <h2>Crie uma tarefa e mantenha seus objetivos em dia.</h2>
+        </article>
+    </section>
 
         <section class="resumo-bottom resumo">
             <h2>Resumo:</h2>

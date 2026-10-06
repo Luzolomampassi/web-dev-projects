@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Painel Administrativo | Levaki</title>
+
+    <!-- CSS -->
+  
+    <link
+        rel="stylesheet"
+        href="assets/css/global.css"
+    >
+      <link
+        rel="stylesheet"
+        href="assets/css/produtos.css"
+    >
+
+    <!-- Font Awesome -->
+    <span>
+        <script
+            src="https://kit.fontawesome.com/f6a9b3f1e7.js"
+            crossorigin="anonymous">
+        </script>
+    </span>
+
+    <!-- Remix Icon -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside>
+
+        <div class="sidebar-brand">
+
+            <button
+                type="button"
+                class="brand"
+                aria-label="Levaki, ir para dashboard"
+                href="index.html"
+            >
+
+                <span>
+                    <svg
+                        class="brand-mark"
+                        width="25"
+                        height="25"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="m12 2 2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2L12 2Z"></path>
+                    </svg>
+                </span>
+
+                <span>
+                    levaki<span class="brand-period">.</span>
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="sidebar-close"
+                aria-label="Fechar menu"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <div class="brand-caption">
+                ADMINISTRAÇÃO <span>·</span> PAINEL
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             NAVEGAÇÃO
+        ================================================== -->
+
+        <nav class="sidebar-nav">
+
+            <div class="nav-group">
+
+                <label>Visão geral</label>
+
+                <a class="nav-item" href="index.html">
+                <i class="ri-dashboard-line icone"></i>
+                <span>Dashboard</span>
+    
+                </a>
+
+                <a class="nav-item" href="pedidos.html">
+                    <i class="ri-group-line icone"></i>
+                    <span>Pedidos</span>
+                    
+                </a>
+
+            </div>
+
+
+            <div class="nav-group">
+
+                <label>Gestão</label>
+
+                <a
+                    
+                    class="nav-item"
+                    href="produtos.html"
+                >
+
+                    <i class="ri-box-3-line icone"></i>
+
+                    <span>Produtos</span>
+
+                </a>
+
+
+                <a
+                    
+                    class="nav-item"
+                    href="categorias.html"
+                >
+
+                    <i class="ri-stack-line icone"></i>
+
+                    <span>Categorias</span>
+
+                </a>
+
+
+                <a
+                    
+                    class="nav-item"
+                    href="restaurantes.html"
+                >
+
+                    <i class="fa-regular fa-house icone"></i>
+
+                    <span>Restaurantes</span>
+
+                </a>
+
+
+                <a
+                    
+                    class="nav-item"
+                    href="clientes.html"
+                >
+
+                    <i class="ri-group-line icone"></i>
+
+                    <span>Clientes</span>
+
+                </a>
+
+            </div>
+
+
+            <div class="nav-group">
+
+                <label>Sistema</label>
+
+                <a
+                    class="nav-item"
+                      href="relatorios.html"
+                >
+
+                    <i class="fa-solid fa-chart-line icone"></i>
+
+                    <span>Relatórios</span>
+
+                </a>
+
+
+                <a
+                    class="nav-item"
+                      href="config.html"
+                >
+
+                    <i class="ri-settings-5-line icone"></i>
+
+                    <span>Configurações</span>
+
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <!-- =================================================
+             PERFIL
+        ================================================== -->
+
+        <article class="sidebar-bottom">
+
+            <div>
+
+                <img
+                    src=""
+                    alt="Foto de perfil de Luzolo Mampassi"
+                    class="photo-profile"
+                    id="sidebar-profile"
+                >
+
+                <div>
+
+                    <h4>Luzolo Mampassi</h4>
+
+                    <p>Administrador</p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="logout-button"
+                aria-label="Terminar sessão"
+            >
+
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+            </button>
+
+        </article>
+
+    </aside>
+
+    <header class="topbar">
+
+        <div class="topbar-left">
+
+            <button
+                type="button"
+                id="btn-menu"
+                class="btn-menu"
+                aria-label="Abrir menu"
+            >
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+            <h2>Levaki.</h2>
+
+            <h3>Administração / Dashboard</h3>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <div class="painel-search">
+
+                <input
+                    type="search"
+                    name="search"
+                    id="search"
+                    placeholder="Pesquisar no painel..."
+                >
+
+                <i class="fa-solid fa-magnifying-glass lupa"></i>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="btn-notifications"
+                id="btn-notifications"
+                aria-label="Notificações"
+            >
+
+                <i class="fa-regular fa-bell fa-xl"></i>
+
+            </button>
+
+
+            <div class="profile-header">
+
+                <img
+                    src=""
+                    alt="Foto de perfil de Luzolo Mampassi"
+                    class="photo-profile"
+                    id="topbar-profile"
+                >
+
+                <h3 class="name">
+                    Luzolo Mampassi
+                </h3>
+
+                <i class="fa-solid fa-angle-down"></i>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+
+    <main>
+         <!-- =================================================
+             INTRODUÇÃO
+        ================================================== -->
+
+        <article class="page-intro">
+
+            <div>
+
+                <p class="eyebrow">
+                    LEVAKI ADMIN / PEDIDOS
+                </p>
+
+                <h1>
+                    Produtos.
+                </h1>
+                <div class="intro-div">
+                    <p>
+                    Gerencie os produtos disponíveis no Levaki..
+                    </p>
+                    <button type="button" class="btn-intro">
+                        + Adicionar produtos
+                    </button>
+                </div>
+                
+
+            </div>
+
+        </article>
+
+      
+        <!-- =================================================
+             PEDIDOS RECENTES
+        ================================================== -->
+
+        <section class="dashboard-orders">
+
+
+            <article class="dashboard-orders-head">
+
+                <div>
+
+                    <h2>
+                        Catalogo de produtos
+                    </h2>
+
+                    <p>
+                        7 produtos encontrados
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <p >
+                        <button type="button">
+                            <i class="ri-download-2-line"></i>
+                            Exportar
+                        </button>
+                    </p>
+
+                </div>
+
+                
+
+            </article>
+            <article class="filters">
+
+                    <div class="filter-search">
+                        <i class="fa-solid fa-magnifying-glass lupa" aria-hidden="true"></i>
+
+                        <input
+                            type="search"
+                            name="search"
+                            id="search"
+                            placeholder="Buscar por produto,categoria ou restaurante..."
+                            autocomplete="off"
+                        >
+                    </div>
+                    <div class="select-wrap">
+                        <select name="categorias" id="categorias">
+                        <option value="">Todas as categorias</option>
+                        <option value="entradas">Entradas</option>
+                        <option value="pratos-principais">Pratos principais</option>
+                        <option value="sobremesas">Sobremesas</option>
+                        <option value="bebidas">Bebidas</option>
+                    </select>
+
+                    </div>
+                    <div class="select-wrap">
+                        <select name="restaurantes" id="restaurantes">
+                        <option value="">Todos os restaurantes</option>
+                        <option value="today">Casa Oliva</option>
+                        <option value="yesterday">Nori & Co</option>
+                        <option value="7-days">Trattoria Vero</option>
+                        <option value="30-days">Bottega Verde</option>
+                    </select>
+                        
+                    </div>
+                    
+                    <div class="select-wrap">
+                        <select name="disponibilidade" id="disponibilidade">
+                            <option value="recent">Disponibilidade</option>
+                            <option value="highest-value">Disponível</option>
+                            <option value="lowest-value">Indisponível</option>
+                        </select>
+                    </div>
+
+            </article>
+            <article class="filters-extra">
+                <div class="select-wrap">
+                        <select name="filtro" id="filtro">
+                            <option value="recent">Qualquer preço</option>
+                            <option value="recent">Até 9000kz</option>
+                            <option value="highest-value">9000kz a 18000kz</option>
+                            <option value="lowest-value">Acima de 18000kz</option>
+                        </select>
+                    </div>
+                    <div class="select-wrap">
+                        <select name="ordem" id="ordem">
+                            <option value="recent">Mais recentes</option>
+                            <option value="recent">Nome A-Z</option>
+                            <option value="highest-value">Menor preço</option>
+                            <option value="lowest-value">Maior preço</option>
+                        </select>
+                    </div>
+
+            </article>
+            <!-- TABELA -->
+
+            <article class="table-container">
+
+                        
+            <table class="orders-table">
+
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Categoria</th>
+                        <th>Restaurante</th>
+                        <th>Preço</th>
+                        <th>Criado em </th>
+                        <th>Disponibilidade</th>
+                        <th class="action-col">AÇÕES</th>
+                    </tr>
+                </thead>
+
+                <tbody class="orders-list">
+
+                    <!-- PEDIDO 2849 -->
+                    <tr
+                        class="order-row"
+                        data-dish-id="2849"
+                        data-prato="Spritz da casa"
+                    >
+
+                        <td>
+                            <img src="" alt="">
+                            <span>
+                                Spritz da casa
+                                <small>#0006</small>
+                            </span>
+                            
+                        </td>
+
+                        <td data-categoria="bebidas">
+                            Bebidas
+                        </td>
+
+                        <td class="restaurant-name" data-restaurant-name="Casa Oliva">
+                            Casa Oliva
+                        </td>
+
+                        <td class=" order-value">
+                            189,90kz
+                        </td>
+
+                        <td>
+                            <span class="date-cell">
+                                05 out. de 2026
+                                <small>14:32</small>
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge unavailable order-status" data-order-status="unavailable">
+                                <span class="badge-dot"></span>
+                                indisponível
+                            </span>
+                        </td>
+
+                        <td>
+                            
+                            <button title="Visualizar"><i class="fa-regular fa-eye"></i></button>
+                            <button title="Editar"><i class="fa-regular fa-pen-to-square"></i></button>
+                            <button title="Ativar"><i class="fa-solid fa-check"></i></button>
+                            <button title="Excluir"><i class="fa-regular fa-trash-can"></i></button>
+                        </td>
+                        
+
+                    </tr>
+
+
+                    <!-- PEDIDO 2848 -->
+                    <tr
+                        class="order-row"
+                        data-dish-id="0005"
+                        data-prato="Torta de chocolate"
+                    >
+
+                        <td>
+                            <img src="" alt="">
+                            <span>
+                                Torta de chocolate
+                                <small>#0005</small>
+                            </span>
+                            
+                        </td>
+
+                        <td data-categoria="sobremesas">
+                            sobremesas
+                        </td>
+
+                        <td class="restaurant-name" data-restaurant-name="Casa Oliva">
+                            Casa Oliva
+                        </td>
+
+                        <td class=" order-value">
+                            189,90kz
+                        </td>
+
+                        <td>
+                            <span class="date-cell">
+                                05 out. de 2026
+                                <small>14:32</small>
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge available order-status" data-order-status="available">
+                                <span class="badge-dot"></span>
+                                Disponível
+                            </span>
+                        </td>
+
+                        <td>
+                            <button title="Visualizar"><i class="fa-regular fa-eye"></i></button>
+                            <button title="Editar"><i class="fa-regular fa-pen-to-square"></i></button>
+                            <button title="Desativar"><i class="fa-solid fa-x"></i></button>
+                            <button title="Excluir"><i class="fa-regular fa-trash-can"></i></button>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- PEDIDO 2847 -->
+                    <tr
+                        class="order-row"
+                        data-dish-id="0004"
+                        data-prato="Bowl da horta"
+                    >
+
+                        <td>
+                            <img src="" alt="">
+                            <span>
+                                Bowl da horta
+                                <small>#0004</small>
+                            </span>
+                            
+                        </td>
+
+                        <td data-categoria="bebidas">
+                            Bebidas
+                        </td>
+
+                        <td class="restaurant-name" data-restaurant-name="Casa Oliva">
+                            Casa Oliva
+                        </td>
+
+                        <td class=" order-value">
+                            189,90kz
+                        </td>
+
+                        <td>
+                            <span class="date-cell">
+                                05 out. de 2026
+                                <small>14:32</small>
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge available order-status" data-order-status="available">
+                                <span class="badge-dot"></span>
+                                Disponível
+                            </span>
+                        </td>
+
+                        <td>
+                            <button title="Visualizar"><i class="fa-regular fa-eye"></i></button>
+                            <button title="Editar"><i class="fa-regular fa-pen-to-square"></i></button>
+                            <button title="Desativar"><i class="fa-solid fa-x"></i></button>
+                            <button title="Excluir"><i class="fa-regular fa-trash-can"></i></button>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- PEDIDO 2846 -->
+                    <tr
+                        class="order-row"
+                        data-dish-id="0003"
+                        data-prato="Tataki de atum"
+                    >
+
+                        <td>
+                            <img src="" alt="">
+                            <span>
+                                Tataki de atum
+                                <small>#0003</small>
+                            </span>
+                            
+                        </td>
+
+                        <td data-categoria="bebidas">
+                            Bebidas
+                        </td>
+
+                        <td class="restaurant-name" data-restaurant-name="Casa Oliva">
+                            Casa Oliva
+                        </td>
+
+                        <td class=" order-value">
+                            189,90kz
+                        </td>
+
+                        <td>
+                            <span class="date-cell">
+                                05 out. de 2026
+                                <small>14:32</small>
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge available order-status" data-order-status="available">
+                                <span class="badge-dot"></span>
+                                Disponível
+                            </span>
+                        </td>
+
+                        <td>
+                            <button title="Visualizar"><i class="fa-regular fa-eye"></i></button>
+                            <button title="Editar"><i class="fa-regular fa-pen-to-square"></i></button>
+                            <button title="Desativar"><i class="fa-solid fa-x"></i></button>
+                            <button title="Excluir"><i class="fa-regular fa-trash-can"></i></button>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- PEDIDO 2845 -->
+                    <tr
+                        class="order-row"
+                        data-dish-id="0002"
+                        data-prato="Risoto de cogumelos"
+                    >
+
+                        <td>
+                            <img src="" alt="">
+                            <span>
+                                Risoto de cogumelos
+                                <small>#0002</small>
+                            </span>
+                            
+                        </td>
+
+                        <td data-categoria="bebidas">
+                            Bebidas
+                        </td>
+
+                        <td class="restaurant-name" data-restaurant-name="Casa Oliva">
+                            Casa Oliva
+                        </td>
+
+                        <td class=" order-value">
+                            189,90kz
+                        </td>
+
+                        <td>
+                            <span class="date-cell">
+                                05 out. de 2026
+                                <small>14:32</small>
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge available order-status" data-order-status="available">
+                                <span class="badge-dot"></span>
+                                Disponível
+                            </span>
+                        </td>
+
+                        <td>
+                            <button title="Visualizar"><i class="fa-regular fa-eye"></i></button>
+                            <button title="Editar"><i class="fa-regular fa-pen-to-square"></i></button>
+                            <button title="Desativar"><i class="fa-solid fa-x"></i></button>
+                            <button title="Excluir"><i class="fa-regular fa-trash-can"></i></button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+
+                <div class="table-bottom">
+                    <p>Mostrando <span>1</span>–<span>2</span> de <span>7</span> registros</p>
+                    <div class="btn-section-container">
+                        <button type="button" class="btn-section">1</button>
+                        <button type="button" class="btn-section">2</button>
+                        <button type="button" class="btn-section"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </article>
+
+
+        </section>
+          <!-- =================================================
+                 MODAL
+            ================================================== -->
+
+            <dialog class="modal" id="view-modal">
+
+                <div class="modal-head">
+
+                    <div>
+
+                        <h2>
+                            Spritz da casa
+                        </h2>
+
+                        <p>
+                           Detalhes do produto no catálogo.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="modal-close"
+                        aria-label="Fechar pedido"
+                    >
+
+                        <i class="fa-solid fa-xmark"></i>
+
+                    </button>
+
+                </div>
+                <div class="modal-image">
+                    <img src="" alt="Imagem do prato">
+                </div>
+
+
+                <div class="modal-body">
+
+                    <div>
+
+                        <label>
+                            Categoria
+                        </label>
+
+                        <p>
+                            Bebidas
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Restaurante
+                        </label>
+
+                        <p>
+                            Casa Oliva
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Preço
+                        </label>
+
+                        <p>
+                            189,90kz
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            disponibilidade
+                        </label>
+
+                        <p>
+                             <span class="badge unavailable order-status" data-order-status="unavailable">
+                                <span class="badge-dot"></span>
+                                indisponível
+                            </span>
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-bottom">
+                    <button type="button" id="btn-close-modal">
+                        Fechar
+                   </button>
+
+                   <button type="button" id="btn-edit-modal">
+                        <button><i class="fa-regular fa-pen-to-square"></i></button>
+                        Editar produto
+                   </button>
+
+                </div>
+
+            </dialog>
+              <!-- =================================================
+                 MODAL
+            ================================================== -->
+
+            <dialog class="modal" id="edit-modal">
+
+                <!-- CABEÇALHO DO MODAL -->
+                <div class="product-modal-head">
+
+                    <div class="product-modal-title">
+                        <h2>Editar produto</h2>
+
+                        <p>
+                            Preencha os detalhes para manter o cardápio atualizado.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="product-modal-close"
+                        id="modal-close-top"
+                        aria-label="Fechar modal"
+                    >
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+
+                </div>
+
+
+                <!-- INFORMAÇÕES DO PRODUTO -->
+                <div class="product-modal-section product-modal-info">
+
+                    <p class="product-modal-eyebrow">
+                        INFORMAÇÕES DO PRODUTO
+                    </p>
+
+
+                    <div class="product-modal-fields">
+
+                        <!-- NOME -->
+                        <div class="product-modal-field">
+
+                            <label for="nomeProduto">
+                                Nome do produto*
+                            </label>
+
+                            <input
+                                type="text"
+                                name="nomeProduto"
+                                id="nomeProduto"
+                                value="Spritz da casa"
+                            >
+
+                        </div>
+
+
+                        <!-- PREÇO -->
+                        <div class="product-modal-field">
+
+                            <label for="preco">
+                                Preço (R$)*
+                            </label>
+
+                            <input
+                                type="text"
+                                name="preco"
+                                id="preco"
+                                value="32"
+                            >
+
+                        </div>
+
+
+                        <!-- CATEGORIA -->
+                        <div class="product-modal-field">
+
+                            <label for="categorias">
+                                Categoria*
+                            </label>
+
+                            <select
+                                name="categorias"
+                                id="categorias"
+                            >
+                                <option value="">
+                                    Selecione uma categoria
+                                </option>
+
+                                <option value="entradas">
+                                    Entradas
+                                </option>
+
+                                <option value="pratos-principais">
+                                    Pratos principais
+                                </option>
+
+                                <option value="sobremesas">
+                                    Sobremesas
+                                </option>
+
+                                <option value="bebidas">
+                                    Bebidas
+                                </option>
+                            </select>
+
+                        </div>
+
+
+                        <!-- RESTAURANTE -->
+                        <div class="product-modal-field">
+
+                            <label for="Restaurante">
+                                Restaurante*
+                            </label>
+
+                            <select
+                                name="Restaurante"
+                                id="Restaurante"
+                            >
+                                <option value="">
+                                    Selecione um restaurante
+                                </option>
+
+                                <option value="casaOliva" selected>
+                                    Casa Oliva
+                                </option>
+
+                                <option value="nori&co">
+                                    Nori & Co
+                                </option>
+
+                                <option value="trattoriaVero">
+                                    Trattoria Vero
+                                </option>
+
+                                <option value="bottegaVerde">
+                                    Bottega Verde
+                                </option>
+                            </select>
+
+                        </div>
+
+
+                        <!-- DESCRIÇÃO -->
+                        <div class="product-modal-field product-modal-field-full">
+
+                            <label for="descricao">
+                                Descrição
+                            </label>
+
+                            <textarea
+                                name="descricao"
+                                id="descricao"
+                                placeholder="Descreva os ingredientes e o que torna esse prato especial..."
+                            >Uma combinação refrescante e aromática.</textarea>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- APRESENTAÇÃO E DISPONIBILIDADE -->
+                <div class="product-modal-section product-modal-presentation">
+
+                    <p class="product-modal-eyebrow">
+                        APRESENTAÇÃO E DISPONIBILIDADE
+                    </p>
+
+
+                    <!-- UPLOAD -->
+                    <div class="product-upload">
+
+                        <div class="product-upload-info">
+
+                            <svg
+                                width="32"
+                                height="32"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                                <circle cx="8" cy="8" r="1.5"></circle>
+                                <path d="m3 17 5-5 4 4 3-3 6 6"></path>
+                            </svg>
+
+                            <strong>
+                                Escolha uma imagem para o produto
+                            </strong>
+
+                            <span>
+                                JPG ou PNG, até 5 MB
+                            </span>
+
+                        </div>
+
+
+                        <label class="product-upload-button">
+
+                            <svg
+                                width="17"
+                                height="17"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="M12 16V3"></path>
+                                <path d="m8 7 4-4 4 4"></path>
+                                <path d="M4 16v4h16v-4"></path>
+                            </svg>
+
+                            <span>
+                                Selecionar imagem
+                            </span>
+
+                            <input
+                                type="file"
+                                accept="image/png,image/jpeg,image/webp"
+                            >
+
+                        </label>
+
+                    </div>
+
+
+                    <p class="product-upload-help">
+                        Use uma imagem de alta qualidade para destacar o produto.
+                    </p>
+
+
+                    <!-- DISPONIBILIDADE -->
+                    <div class="product-availability">
+
+                        <div class="product-availability-info">
+
+                            <p>
+                                Produto disponível
+                            </p>
+
+                            <span>
+                                O produto poderá ser pedido pelos clientes.
+                            </span>
+
+                        </div>
+
+
+                        <label class="product-switch">
+
+                            <input
+                                type="checkbox"
+                                class="product-switch-input"
+                                checked
+                                aria-label="Produto disponível"
+                            >
+
+                            <span class="product-switch-slider"></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BOTÕES -->
+                <div class="product-modal-actions">
+
+                    <button
+                        type="button"
+                        id="btn-close-modal"
+                        class="product-modal-cancel"
+                    >
+                        Cancelar
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="btn-edit-modal"
+                        class="product-modal-save"
+                    >
+                        <i class="fa-solid fa-check"></i>
+
+                        <span>
+                            Salvar produto
+                        </span>
+                    </button>
+
+                </div>
+
+            </dialog>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="assets/scripts/main.js"></script>
+
+</body>
+
+</html>

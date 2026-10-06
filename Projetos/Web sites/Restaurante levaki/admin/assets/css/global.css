@@ -1,0 +1,1189 @@
+.nav-item.selected {
+    color: var(--color-text-white);
+
+    background-color: var(--color-primary-hover);
+}
+
+.selected .icone {
+    color: var(--color-accent-light);
+}
+
+.nav-selected-mark {
+    position: absolute;
+
+    top: 11px;
+    right: 0;
+
+    width: 3px;
+    height: 22px;
+
+    border-radius: 2px 0 0 2px;
+
+    background-color: var(--color-accent);
+}/* ============================================================
+   RESET
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ============================================================
+   FONTES
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Sriracha&display=swap');
+
+/* ============================================================
+   VARIÁVEIS
+   ============================================================ */
+
+:root {
+
+    /* Cores principais */
+    --color-primary: #0C2922;
+    --color-primary-hover: #214438;
+    --color-primary-dark: #0A231E;
+
+    /* Dourado */
+    --color-accent: #B59563;
+    --color-accent-light: #C6AA7C;
+
+    /* Fundos */
+    --color-background: #F6F2E9;
+    --color-surface: #FFFFFF;
+
+    /* Texto */
+    --color-text: #0C2922;
+    --color-text-white: #FFFFFF;
+    --color-text-light: #9BA89D;
+
+    /* Fontes */
+    --font-bodoni: "Bodoni Moda", serif;
+    --font-manrope: "Manrope", sans-serif;
+
+    /* Bordas */
+    --color-border: #DDD7C9;
+
+    /* Estados */
+    --color-success: #2E7D32;
+    --color-warning: #C58A00;
+    --color-danger: #B3261E;
+
+    /* Extras */
+    --color-overlay: rgba(12, 41, 34, 0.6);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    background-color: var(--color-background);
+
+    color: var(--color-text);
+
+    font-family: var(--font-manrope);
+}
+
+button,
+a,
+input,
+select {
+    font: inherit;
+}
+
+button,
+a {
+    cursor: pointer;
+}
+
+button {
+    color: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img,
+svg {
+    display: block;
+}
+
+/* ============================================================
+   TOPBAR
+   ============================================================ */
+
+.topbar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 72px;
+
+    padding: 0 10px;
+
+    background-color: var(--color-surface);
+
+    border-bottom: 1px solid var(--color-border);
+}
+
+.topbar-left,
+.topbar-right {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.topbar-left {
+    width: 100%;
+}
+
+.topbar-right {
+    justify-content: flex-end;
+
+    width: 100%;
+
+    gap: 21px;
+}
+
+.topbar-left h2 {
+    color: var(--color-primary);
+
+    font-family: var(--font-bodoni);
+    font-size: 25px;
+}
+
+.topbar-left h3 {
+    display: none;
+
+    color: var(--color-text-light);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* ============================================================
+   BOTÕES DA TOPBAR
+   ============================================================ */
+
+.btn-menu,
+.btn-notifications {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 7px;
+
+    border: 0;
+
+    background-color: transparent;
+
+    transition:
+        background-color .2s,
+        color .2s;
+}
+
+.btn-menu {
+    font-size: 1.2rem;
+}
+
+.btn-notifications {
+    font-size: .9rem;
+}
+
+.btn-notifications:hover,
+.btn-menu:hover {
+    border-radius: 5px;
+
+    background-color: #eaeae99f;
+}
+
+/* ============================================================
+   PERFIL
+   ============================================================ */
+
+.profile-header {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.profile-header .name {
+    display: none;
+
+    font-size: 12px;
+}
+
+.profile-header > i {
+    display: none;
+}
+
+/* ============================================================
+   PESQUISA
+   ============================================================ */
+
+.painel-search {
+    position: relative;
+
+    display: none;
+
+    width: min(280px, 30vw);
+
+    padding-right: 15px;
+
+    border-right: 2px solid var(--color-border);
+}
+
+#search {
+    width: 100%;
+
+    padding: 10px 10px 10px 32px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+
+    background-color: var(--color-surface);
+
+    color: var(--color-text);
+
+    font-size: 12px;
+}
+
+#search::placeholder {
+    color: var(--color-text-light);
+}
+select:focus,
+#search:focus {
+    outline: 3px solid #c6aa7c52;
+    border-color: var(--color-accent);
+}
+
+.lupa {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: var(--color-text-light);
+    font-size: .8rem;
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+aside {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 200;
+
+    display: none;
+    flex-direction: column;
+
+    width: clamp(240px, 20vw, 320px);
+    min-height: 100vh;
+
+    padding: 30px;
+
+    overflow-y: auto;
+
+    background-color: var(--color-primary);
+
+    font-family: var(--font-manrope);
+}
+
+/* ============================================================
+   MARCA
+   ============================================================ */
+
+.sidebar-brand {
+    position: relative;
+
+    padding: 0 19px 42px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 0;
+
+    border: 0;
+
+    background-color: transparent;
+
+    color: var(--color-text-white);
+
+    font-family: var(--font-bodoni);
+    font-size: 34px;
+    font-weight: 600;
+
+    line-height: 1;
+}
+
+.brand-mark {
+    color: var(--color-accent-light);
+}
+
+.brand-period {
+    color: var(--color-accent-light);
+}
+
+.brand-caption {
+    margin: 14px 0 0 36px;
+
+    color: #A8B8AD;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 2.05px;
+}
+
+/* ============================================================
+   BOTÃO FECHAR SIDEBAR
+   ============================================================ */
+
+.sidebar-close {
+    position: absolute;
+
+    top: 2px;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px;
+
+    border: 0;
+
+    background-color: transparent;
+
+    color: #D7E4D8;
+
+    cursor: pointer;
+}
+
+.sidebar-close:hover {
+    color: var(--color-accent-light);
+}
+
+/* ============================================================
+   NAVEGAÇÃO
+   ============================================================ */
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+
+    gap: 30px;
+
+    color: var(--color-text-light);
+}
+
+.nav-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.nav-group > label {
+    margin: 0 17px 8px;
+
+    color: #A8B8AD;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+.nav-item {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 44px;
+
+    padding: 0 17px;
+
+    gap: 13px;
+
+    border: 0;
+    border-radius: 5px;
+
+    background-color: transparent;
+
+    color: var(--color-text-light);
+
+    font-size: 1em;
+    font-weight: 600;
+
+    text-align: left;
+
+    transition:
+        background-color .18s,
+        color .18s;
+}
+
+.nav-item:hover {
+    color: var(--color-text-white);
+
+    background-color: var(--color-primary-hover);
+}
+
+.icone {
+    width: 20px;
+
+    color: currentColor;
+
+    font-size: 1.2em;
+}
+
+/* ============================================================
+   ITEM SELECIONADO
+   ============================================================ */
+
+.nav-item .selected {
+    color: var(--color-text-white);
+    background-color: var(--color-primary-hover);
+}
+
+.selected .icone {
+    color: var(--color-accent-light);
+}
+
+.nav-selected-mark {
+    position: absolute;
+
+    top: 11px;
+    right: 0;
+
+    width: 3px;
+    height: 22px;
+
+    border-radius: 2px 0 0 2px;
+
+    background-color: var(--color-accent);
+}
+
+/* ============================================================
+   PERFIL SIDEBAR
+   ============================================================ */
+
+.sidebar-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-top: auto;
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(255, 255, 255, .12);
+}
+
+.sidebar-bottom > div {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.sidebar-bottom > div > div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.photo-profile {
+    width: 42px;
+    height: 42px;
+
+    padding: 4px;
+
+    border-radius: 50%;
+
+    background-color: var(--color-accent);
+
+    object-fit: cover;
+}
+
+.sidebar-bottom h4 {
+    color: var(--color-text-white);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.sidebar-bottom p {
+    color: var(--color-text-light);
+
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.logout-button {
+    display: flex;
+
+    padding: 6px;
+
+    border: 0;
+
+    background-color: transparent;
+
+    color: var(--color-text-light);
+
+    transition:
+        color .18s,
+        transform .18s;
+}
+
+.logout-button:hover {
+    color: var(--color-accent-light);
+
+    transform: translateX(2px);
+}
+
+/* ============================================================
+   CONTEÚDO PRINCIPAL
+   ============================================================ */
+
+main {
+    padding: 92px 2% 40px;
+}
+
+/* ============================================================
+   INTRO
+   ============================================================ */
+
+.page-intro {
+    padding: 20px 0;
+}
+
+.eyebrow {
+    margin-bottom: 6px;
+
+    color: var(--color-accent);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+.page-intro h1 {
+    font-family: var(--font-bodoni);
+
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 500;
+}
+
+.page-intro > div > p:last-child {
+    margin-top: 5px;
+
+    color: var(--color-text-light);
+
+    font-size: 13px;
+}
+
+/* ============================================================
+   PEDIDOS
+   ============================================================ */
+
+.dashboard-orders {
+    padding: 20px 10px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+
+    background-color: var(--color-surface);
+}
+
+.dashboard-orders-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 5px 10px 20px;
+}
+
+.dashboard-orders-head h2 {
+    font-family: var(--font-bodoni);
+
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.dashboard-orders-head p {
+    margin-top: 4px;
+
+    color: var(--color-text-light);
+
+    font-size: 12px;
+}
+
+/* ============================================================
+   TABELA
+   ============================================================ */
+
+.table-container {
+    width: 100%;
+    
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 850px;
+
+    border-collapse: collapse;
+
+    text-align: left;
+}
+.table-bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0px 4px;
+    font-size: 12px;
+}
+.btn-section-container{
+    display: flex;
+    justify-content: right;
+    flex: 1;
+    gap: 2px;
+}
+.btn-section{
+    min-width: 20px;
+    min-height: 20px;
+    border: 1px solid var(--color-border);
+    background-color: transparent;
+    transition: .3s;
+}
+.btn-section:hover{
+    background-color: #c0c2c08f;
+}
+.btn-section:focus{
+    background-color: var(--color-primary);
+    color: var(--color-text-white);
+}
+th {
+    padding: 10px;
+
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+
+    background-color: #FAFAF7;
+
+    color: #9BAA9C;
+
+    font-size: 10px;
+    font-weight: 800;
+    
+    letter-spacing: .5px;
+}
+
+
+td {
+    padding: 12px 5px;
+    
+    border-bottom: 1px solid var(--color-border);
+
+    color: var(--color-text-light);
+
+    font-size: 12px;
+}
+
+.link-strong {
+    padding: 0;
+
+    border: 0;
+
+    background-color: transparent;
+
+    color: var(--color-text);
+
+    font-weight: 700;
+}
+
+.link-strong:hover {
+    color: var(--color-accent);
+
+    text-decoration: underline;
+}
+
+.cell-strong {
+    color: var(--color-text);
+
+    font-weight: 700;
+}
+
+.date-cell {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.date-cell small {
+    color: var(--color-text-light);
+
+    font-size: 10px;
+}
+
+.btn-action-table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px;
+
+    border: 0;
+    border-radius: 5px;
+
+    background-color: transparent;
+
+    color: var(--color-text-light);
+
+    transition:
+        background-color .2s,
+        color .2s;
+}
+
+.btn-action-table:hover {
+    background-color: #eaeae99f;
+
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   BADGES
+   ============================================================ */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+
+    width: fit-content;
+
+    padding: 4px 8px;
+
+    border-radius: 4px;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.badge-dot {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background-color: currentColor;
+}
+
+.pending {
+    background-color: #FBF3E6;
+    color: #AA7A37;
+}
+.unavailable{
+    background-color: #F5EFED;
+    color: #9B736E;
+
+}
+
+.confirmed {
+    background-color: #EDF2E8;
+    color: #667F59;
+}
+
+.preparing {
+    background-color: #F6EEE4;
+    color: #9B7652;
+}
+.available,
+.delivery,
+.completed {
+    background-color: #EAF3EB;
+    color: #427A51;
+}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+
+.modal {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    width: min(90%, 700px);
+    max-height: 90vh;
+
+    transform: translate(-50%, -50%);
+
+    padding: 0;
+
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+
+    background-color: var(--color-surface);
+
+    color: var(--color-text);
+
+    overflow: hidden;
+}
+
+.modal::backdrop {
+    background-color: var(--color-overlay);
+}
+
+/* ============================================================
+   CABEÇALHO DO MODAL
+   ============================================================ */
+
+.modal-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 25px 28px 22px;
+
+    border-bottom: 1px solid var(--color-border);
+}
+
+.modal-head h2 {
+    margin-bottom: 5px;
+
+    color: var(--color-text);
+
+    font-family: var(--font-bodoni);
+
+    font-size: 27px;
+    font-weight: 500;
+
+    line-height: 1.2;
+}
+
+.modal-head p {
+    color: var(--color-text-light);
+
+    font-size: 12px;
+}
+
+.modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 34px;
+    height: 34px;
+
+    border: 0;
+    border-radius: 5px;
+
+    background-color: transparent;
+
+    color: var(--color-text-light);
+
+    transition:
+        background-color .2s,
+        color .2s;
+}
+
+.modal-close:hover {
+    background-color: #F3F0E8;
+
+    color: var(--color-primary);
+}
+
+/* ============================================================
+   CORPO DO MODAL
+   ============================================================ */
+
+.modal-body {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+    padding: 25px 28px 22px;
+
+    border-bottom: 1px solid var(--color-border);
+}
+
+.modal-body > div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.modal-body label {
+    color: var(--color-text-light);
+
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.modal-body p {
+    color: var(--color-text);
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ============================================================
+   RODAPÉ DO MODAL
+   ============================================================ */
+
+.modal-bottom {
+    padding: 20px 28px 25px;
+}
+
+.modal-bottom form {
+    display: flex;
+    align-items: flex-end;
+
+    gap: 15px;
+}
+
+.modal-bottom form > div {
+    flex: 1;
+}
+
+.modal-bottom label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--color-text-light);
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* ============================================================
+   SELECT
+   ============================================================ */
+
+.select-status {
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+
+    outline: none;
+
+    background-color: var(--color-surface);
+
+    color: var(--color-text);
+
+    font-size: 12px;
+}
+
+.select-status:focus {
+    border-color: var(--color-accent);
+
+    outline: 2px solid #b5966389;
+    outline-offset: 1px;
+}
+
+/* ============================================================
+   BOTÃO DO MODAL
+   ============================================================ */
+
+.btn-modal {
+    flex-shrink: 0;
+
+    padding: 11px 24px;
+
+    border: 0;
+    border-radius: 6px;
+
+    background-color: var(--color-primary);
+
+    color: var(--color-text-white);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    transition: background-color .2s;
+}
+
+.btn-modal:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* ============================================================
+   DESKTOP
+   ============================================================ */
+.filters{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.filter-search{
+    position: relative;
+    flex-basis: 100%;
+    min-width: 0;
+}
+.lupa{
+    position: absolute;
+}
+#search{
+    width: 100%;
+}
+.select-wrap{
+    flex: 1;
+    min-width: 130px;
+}
+.filters select{
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    
+
+}
+
+
+@media (min-width: 1024px) {
+
+    aside {
+        display: flex;
+    }
+
+    main {
+        padding-left: 22%;
+        padding-right: 2%;
+    }
+
+    .btn-menu {
+        display: none;
+    }
+
+    .topbar {
+        padding-left: calc(clamp(240px, 20vw, 320px) + 20px);
+    }
+
+    .topbar-left h2 {
+        display: none;
+    }
+
+    .topbar-left h3 {
+        display: block;
+    }
+
+    .painel-search {
+        display: block;
+    }
+
+    .profile-header .name,
+    .profile-header > i {
+        display: block;
+    }
+
+    .modal {
+        width: min(40%, 700px);
+
+        max-height: 80vh;
+    }
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+    main {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .dashboard-orders-head {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .modal {
+        width: calc(100% - 24px);
+
+        max-height: 90vh;
+    }
+
+    .modal-head,
+    .modal-body,
+    .modal-bottom {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .modal-head h2 {
+        font-size: 23px;
+    }
+
+    .modal-body {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-bottom form {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .btn-modal {
+        width: 100%;
+    }
+}

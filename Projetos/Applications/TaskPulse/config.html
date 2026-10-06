@@ -83,16 +83,46 @@
     </div>
 
     <div class="perfil-body">
-        <div class="foto">
-            <img src="#" alt="Foto de perfil do usuário" id="foto-perfil" >
+    <div class="foto">
 
-            <button type="button" class="btn-foto" id="btn-foto" aria-label="Alterar foto de perfil" >
-                <i class="fa-regular fa-camera"></i>
-                
+        <img
+            src="#"
+            alt="Foto de perfil do usuário"
+            id="foto-perfil"
+        >
+
+        <input
+            type="file"
+            id="input-foto"
+            class="input-foto"
+            accept="image/*"
+        >
+
+        <div class="profile-actions">
+
+            <button
+                type="button"
+                class="upload-photo"
+                id="upload-photo"
+                aria-label="Carregar foto de perfil"
+            >
+                Carregar uma foto
             </button>
-            <input type="file" id="input-foto" class="input-foto" accept="image/*" >
-            
+
+            <button
+                type="button"
+                class="remove-photo"
+                id="remove-photo"
+                aria-label="Remover foto de perfil"
+            >
+                Remover
+            </button>
+
         </div>
+
+    </div>
+
+
 
         <form action="#" id="form-perfil" class="form-perfil">
 
@@ -105,6 +135,10 @@
                 <label for="email">E-mail</label>
                 <input type="email" name="email" id="email">
             </div>
+
+            <button type="button" class="btn-save-perfil" id="btn-save-perfil" >
+                Salvar alterações
+            </button>
 
             <button type="button" class="btn-editar-perfil" id="btn-editar-perfil" >
                 <i class="fa-regular fa-pen-to-square"></i>

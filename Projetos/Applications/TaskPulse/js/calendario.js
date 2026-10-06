@@ -1,4 +1,5 @@
-
+// calendario.js
+import { tarefas } from "./data.js";
 const filter = document.querySelectorAll(".btn-filter")
 
 filter.forEach( filtroSelecionado =>{
@@ -9,6 +10,3 @@ filter.forEach( filtroSelecionado =>{
         filtroSelecionado.classList.add("is-active")
     })
 })
- //<button type="button" id="btn-mes" class="btn-filter is-active" >Mês</button>
-// <button type="button" id="btn-semana" class="btn-filter" >Semana</button>
-// <button type="button" id="btn-dia" class="btn-filter" >Dia</button>

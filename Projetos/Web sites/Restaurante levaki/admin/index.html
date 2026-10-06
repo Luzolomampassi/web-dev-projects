@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Painel Administrativo | Levaki</title>
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="assets/css/dashboard.css"
+    >
+    <link
+        rel="stylesheet"
+        href="assets/css/global.css"
+    >
+
+    <!-- Font Awesome -->
+    <script
+        src="https://kit.fontawesome.com/f6a9b3f1e7.js"
+        crossorigin="anonymous">
+    </script>
+
+    <!-- Remix Icon -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside>
+
+        <div class="sidebar-brand">
+
+            <button
+                type="button"
+                class="brand"
+                aria-label="Levaki, ir para dashboard"
+                href="index.html"
+            >
+
+                <svg
+                    class="brand-mark"
+                    width="25"
+                    height="25"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <path d="m12 2 2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2L12 2Z"></path>
+                </svg>
+
+                <span>
+                    levaki<span class="brand-period">.</span>
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="sidebar-close"
+                aria-label="Fechar menu"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <div class="brand-caption">
+                ADMINISTRAÇÃO <span>·</span> PAINEL
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             NAVEGAÇÃO
+        ================================================== -->
+
+        <nav class="sidebar-nav">
+
+            <div class="nav-group">
+
+                <label>Visão geral</label>
+
+                <a class="nav-item" href="index.html">
+             <i class="ri-dashboard-line icone"></i>
+              <span>Dashboard</span>
+         
+                </a>
+
+                <a class="nav-item" href="pedidos.html">
+                    <i class="ri-group-line icone"></i>
+                    <span>Pedidos</span>
+                    
+                </a>
+
+            </div>
+
+
+            <div class="nav-group">
+
+                <label>Gestão</label>
+
+                <a
+                    
+                    class="nav-item"
+                    href="produtos.html"
+                >
+
+                    <i class="ri-box-3-line icone"></i>
+
+                    <span>Produtos</span>
+
+                </a>
+
+
+                <a
+                    
+                    class="nav-item"
+                    href="categorias.html"
+                >
+
+                    <i class="ri-stack-line icone"></i>
+
+                    <span>Categorias</span>
+
+                </a>
+
+
+                <a
+                    
+                    class="nav-item"
+                    href="restaurantes.html"
+                >
+
+                    <i class="fa-regular fa-house icone"></i>
+
+                    <span>Restaurantes</span>
+
+                </a>
+
+
+                <a
+                    
+                    class="nav-item"
+                    href="clientes.html"
+                >
+
+                    <i class="ri-group-line icone"></i>
+
+                    <span>Clientes</span>
+
+                </a>
+
+            </div>
+
+
+            <div class="nav-group">
+
+                <label>Sistema</label>
+
+                <a
+                    class="nav-item"
+                      href="relatorios.html"
+                >
+
+                    <i class="fa-solid fa-chart-line icone"></i>
+
+                    <span>Relatórios</span>
+
+                </a>
+
+
+                <a
+                    class="nav-item"
+                      href="config.html"
+                >
+
+                    <i class="ri-settings-5-line icone"></i>
+
+                    <span>Configurações</span>
+
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <!-- =================================================
+             PERFIL
+        ================================================== -->
+
+        <article class="sidebar-bottom">
+
+            <div>
+
+                <img
+                    src=""
+                    alt="Foto de perfil de Luzolo Mampassi"
+                    class="photo-profile"
+                    id="sidebar-profile"
+                >
+
+                <div>
+
+                    <h4>Luzolo Mampassi</h4>
+
+                    <p>Administrador</p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="logout-button"
+                aria-label="Terminar sessão"
+            >
+
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+            </button>
+
+        </article>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         TOPBAR
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <div class="topbar-left">
+
+            <button
+                type="button"
+                id="btn-menu"
+                class="btn-menu"
+                aria-label="Abrir menu"
+            >
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+            <h2>Levaki.</h2>
+
+            <h3>Administração / Dashboard</h3>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <div class="painel-search">
+
+                <input
+                    type="search"
+                    name="search"
+                    id="search"
+                    placeholder="Pesquisar no painel..."
+                >
+
+                <i class="fa-solid fa-magnifying-glass lupa"></i>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="btn-notifications"
+                id="btn-notifications"
+                aria-label="Notificações"
+            >
+
+                <i class="fa-regular fa-bell fa-xl"></i>
+
+            </button>
+
+
+            <div class="profile-header">
+
+                <img
+                    src=""
+                    alt="Foto de perfil de Luzolo Mampassi"
+                    class="photo-profile"
+                    id="topbar-profile"
+                >
+
+                <h3 class="name">
+                    Luzolo Mampassi
+                </h3>
+
+                <i class="fa-solid fa-angle-down"></i>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             INTRODUÇÃO
+        ================================================== -->
+
+        <article class="page-intro">
+
+            <div>
+
+                <p class="eyebrow">
+                    Visão geral
+                </p>
+
+                <h1>
+                    Visão geral.
+                </h1>
+
+                <p>
+                    Acompanhe o que acontece na sua operação hoje.
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="hero">
+
+            <article class="hero-content">
+
+                <div class="hero-kicker">
+
+                    <span class="live-dot"></span>
+
+                    SUA OPERAÇÃO EM TEMPO REAL
+
+                </div>
+
+
+                <h2>
+                    Bom dia,
+                    <span class="name-user">Luzolo</span>.
+                </h2>
+
+
+                <p>
+                    Uma experiência excepcional começa nos detalhes.
+                    Veja como a sua operação está hoje.
+                </p>
+
+
+                <button
+                    type="button"
+                    id="btn-orders"
+                >
+
+                    Acompanhar pedidos
+
+                </button>
+
+            </article>
+
+
+            <article class="hero-photo"></article>
+
+
+            <article class="hero-corner">
+                Levaki / 2026
+            </article>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DASHBOARD
+        ================================================== -->
+
+        <section class="dashboard">
+
+            <article class="dashboard-title">
+
+                <p class="eyebrow">
+                    Seu negócio em números
+                </p>
+
+                <h2>
+                    Panorama de hoje
+                </h2>
+
+            </article>
+
+
+            <!-- MÉTRICAS -->
+
+            <article class="metric-grid">
+
+
+                <!-- PEDIDOS -->
+
+                <div class="metric-card">
+
+                    <div class="metric-top">
+
+                        <span class="metric-icon-fisrt metric-icon">
+
+                            <svg
+                                width="19"
+                                height="19"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="M5 3h14v18l-3-2-4 2-4-2-3 2V3Z"></path>
+                                <path d="M9 8h6M9 12h6"></path>
+                            </svg>
+
+                        </span>
+
+                        <i class="ri-arrow-right-up-line"></i>
+
+                    </div>
+
+
+                    <div class="metric-title">
+                        Pedidos de hoje
+                    </div>
+
+                    <div class="metric-value">
+                        148
+                    </div>
+
+                    <div class="metric-detail">
+
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+
+                        +12,8% vs. ontem
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PEDIDOS PENDENTES -->
+
+                <div class="metric-card">
+
+                    <div class="metric-top">
+
+                        <span class="metric-icon">
+
+                            <svg
+                                width="19"
+                                height="19"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <circle cx="12" cy="12" r="9"></circle>
+                                <path d="M12 7v5l3 2"></path>
+                            </svg>
+
+                        </span>
+
+                        <i class="ri-arrow-right-up-line"></i>
+
+                    </div>
+
+
+                    <div class="metric-title">
+                        Pedidos pendentes
+                    </div>
+
+                    <div class="metric-value">
+                        12
+                    </div>
+
+                    <div class="metric-detail">
+                        Aguardando confirmação
+                    </div>
+
+                </div>
+
+
+
+                <!-- RECEITA -->
+
+                <div class="metric-card">
+
+                    <div class="metric-top">
+
+                        <span class="metric-icon">
+
+                            <svg
+                                width="19"
+                                height="19"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <rect
+                                    x="3"
+                                    y="5"
+                                    width="18"
+                                    height="15"
+                                    rx="2">
+                                </rect>
+
+                                <path d="M3 9h18M16 15h2"></path>
+
+                            </svg>
+
+                        </span>
+
+                        <i class="ri-arrow-right-up-line"></i>
+
+                    </div>
+
+
+                    <div class="metric-title">
+                        Receita do dia
+                    </div>
+
+                    <div class="metric-value">
+                        AOA 8.492
+                    </div>
+
+                    <div class="metric-detail">
+
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+
+                        +8,2% vs. ontem
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PRODUTOS -->
+
+                <div class="metric-card">
+
+                    <div class="metric-top">
+
+                        <span class="metric-icon">
+
+                            <svg
+                                width="19"
+                                height="19"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="m12 2 9 5-9 5-9-5 9-5ZM3 7v10l9 5 9-5V7M12 12v10"></path>
+                            </svg>
+
+                        </span>
+
+                        <i class="ri-arrow-right-up-line"></i>
+
+                    </div>
+
+
+                    <div class="metric-title">
+                        Produtos cadastrados
+                    </div>
+
+                    <div class="metric-value">
+                        248
+                    </div>
+
+                    <div class="metric-detail">
+                        No catálogo atualmente
+                    </div>
+
+                </div>
+
+
+
+                <!-- RESTAURANTES -->
+
+                <div class="metric-card">
+
+                    <div class="metric-top">
+
+                        <span class="metric-icon">
+
+                            <svg
+                                width="19"
+                                height="19"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="M3 10h18l-2-6H5l-2 6ZM4 10v10h16V10M9 20v-7h6v7"></path>
+                                <path d="M3 10c0 2 3 3 4.5 1 1.5 2 4 2 4.5 0 1.5 2 4 2 4.5 0 1.5 2 4.5 1 4.5-1"></path>
+                            </svg>
+
+                        </span>
+
+                        <i class="ri-arrow-right-up-line"></i>
+
+                    </div>
+
+
+                    <div class="metric-title">
+                        Restaurantes ativos
+                    </div>
+
+                    <div class="metric-value">
+                        32
+                    </div>
+
+                    <div class="metric-detail">
+                        Parceiros na plataforma
+                    </div>
+
+                </div>
+
+
+
+                <!-- CLIENTES -->
+
+                <div class="metric-card">
+
+                    <div class="metric-top">
+
+                        <span class="metric-icon">
+
+                            <svg
+                                width="19"
+                                height="19"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <circle cx="9" cy="8" r="3"></circle>
+                                <path d="M3 20v-2a6 6 0 0 1 12 0v2H3ZM16 5a3 3 0 0 1 0 6M17 14a5 5 0 0 1 4 5v1h-3"></path>
+                            </svg>
+
+                        </span>
+
+                        <i class="ri-arrow-right-up-line"></i>
+
+                    </div>
+
+
+                    <div class="metric-title">
+                        Clientes cadastrados
+                    </div>
+
+                    <div class="metric-value">
+                        1.284
+                    </div>
+
+                    <div class="metric-detail">
+
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+
+                        +34 este mês
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PEDIDOS RECENTES
+        ================================================== -->
+
+        <section class="dashboard-orders">
+
+
+            <article class="dashboard-orders-head">
+
+                <div>
+
+                    <h2>
+                        Pedidos recentes
+                    </h2>
+
+                    <p>
+                        Os últimos pedidos realizados na plataforma.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <a href="pedidos.php">
+
+                        Ver todos os pedidos
+
+                        <i class="fa-solid fa-arrow-right-long"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- TABELA -->
+
+            <article class="table-container">
+
+                    <table class="orders-table">
+
+                <thead>
+                    <tr>
+                        <th>Pedido</th>
+                        <th>Cliente</th>
+                        <th>Restaurante</th>
+                        <th>Valor</th>
+                        <th>Data / Hora</th>
+                        <th>Status</th>
+                        <th class="action-col">AÇÕES</th>
+                    </tr>
+                </thead>
+
+                <tbody class="orders-list">
+
+                    <!-- PEDIDO 2849 -->
+                    <tr
+                        class="order-row"
+                        data-order-id="2849"
+                        data-client="Mariana Costa"
+                    >
+
+                        <td>
+                            <button
+                                type="button"
+                                class="order-id link-strong"
+                                data-order-id="2849"
+                            >
+                                #LV-2849
+                            </button>
+                        </td>
+
+                        <td class="cell-strong client-name">
+                            Mariana Costa
+                        </td>
+
+                        <td class="restaurant-name">
+                            Casa Oliva
+                        </td>
+
+                        <td class="cell-strong order-value">
+                            AOA 189,90
+                        </td>
+
+                        <td>
+                            <span class="date-cell">
+                                05 out. de 2026
+                                <small>14:32</small>
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge pending order-status" data-order-status="pending">
+                                <span class="badge-dot"></span>
+                                Pendente
+                            </span>
+                        </td>
+
+                        <td>
+                            <button
+                                type="button"
+                                class="btn-action-table"
+                                data-order-id="2849"
+                                aria-label="Ver pedido LV-2849"
+                            >
+                                <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- PEDIDO 2848 -->
+                    <tr
+                        class="order-row"
+                        data-order-id="2848"
+                        data-client="Rafael Almeida"
+                    >
+
+                        <td>
+                            <button
+                                type="button"
+                                class="order-id link-strong"
+                                data-order-id="2848"
+                            >
+                                #LV-2848
+                            </button>
+                        </td>
+
+                        <td class="cell-strong client-name">
+                            Rafael Almeida
+                        </td>
+
+                        <td class="restaurant-name">
+                            Nori & Co.
+                        </td>
+
+                        <td class="cell-strong order-value">
+                            AOA 124,50
+                        </td>
+
+                        <td>
+                            <span class="date-cell">
+                                05 out. de 2026
+                                <small>14:32</small>
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge preparing order-status" data-order-status="preparing">
+                                <span class="badge-dot"></span>
+                                Em preparação
+                            </span>
+                        </td>
+
+                        <td>
+                            <button
+                                type="button"
+                                class="btn-action-table"
+                                data-order-id="2848"
+                                aria-label="Ver pedido LV-2848"
+                            >
+                                <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- PEDIDO 2847 -->
+                    <tr
+                        class="order-row"
+                        data-order-id="2847"
+                        data-client="Camila Ferreira"
+                    >
+
+                        <td>
+                            <button
+                                type="button"
+                                class="order-id link-strong"
+                                data-order-id="2847"
+                            >
+                                #LV-2847
+                            </button>
+                        </td>
+
+                        <td class="cell-strong client-name">
+                            Camila Ferreira
+                        </td>
+
+                        <td class="restaurant-name">
+                            Trattoria Vero
+                        </td>
+
+                        <td class="cell-strong order-value">
+                            AOA 236,00
+                        </td>
+
+                        <td>
+                            <span class="date-cell">
+                                05 out. de 2026
+                                <small>13:59</small>
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge delivery order-status" data-order-status="delivery">
+                                <span class="badge-dot"></span>
+                                Em entrega
+                            </span>
+                        </td>
+
+                        <td>
+                            <button
+                                type="button"
+                                class="btn-action-table"
+                                data-order-id="2847"
+                                aria-label="Ver pedido LV-2847"
+                            >
+                                <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- PEDIDO 2846 -->
+                    <tr
+                        class="order-row"
+                        data-order-id="2846"
+                        data-client="Lucas Martins"
+                    >
+
+                        <td>
+                            <button
+                                type="button"
+                                class="order-id link-strong"
+                                data-order-id="2846"
+                            >
+                                #LV-2846
+                            </button>
+                        </td>
+
+                        <td class="cell-strong client-name">
+                            Lucas Martins
+                        </td>
+
+                        <td class="restaurant-name">
+                            Casa Oliva
+                        </td>
+
+                        <td class="cell-strong order-value">
+                            AOA 87,00
+                        </td>
+
+                        <td>
+                            <span class="date-cell">
+                                05 out. de 2026
+                                <small>13:29</small>
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge confirmed order-status" data-order-status="confirmed">
+                                <span class="badge-dot"></span>
+                                Confirmado
+                            </span>
+                        </td>
+
+                        <td>
+                            <button
+                                type="button"
+                                class="btn-action-table"
+                                data-order-id="2846"
+                                aria-label="Ver pedido LV-2846"
+                            >
+                                <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- PEDIDO 2845 -->
+                    <tr
+                        class="order-row"
+                        data-order-id="2845"
+                        data-client="Beatriz Santos"
+                    >
+
+                        <td>
+                            <button
+                                type="button"
+                                class="order-id link-strong"
+                                data-order-id="2845"
+                            >
+                                #LV-2845
+                            </button>
+                        </td>
+
+                        <td class="cell-strong client-name">
+                            Beatriz Santos
+                        </td>
+
+                        <td class="restaurant-name">
+                            Bottega Verde
+                        </td>
+
+                        <td class="cell-strong order-value">
+                            AOA 158,90
+                        </td>
+
+                        <td>
+                            <span class="date-cell">
+                                05 out. de 2026
+                                <small>12:46</small>
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge completed order-status" data-order-status="completed">
+                                <span class="badge-dot"></span>
+                                Concluída
+                            </span>
+                        </td>
+
+                        <td>
+                            <button
+                                type="button"
+                                class="btn-action-table"
+                                data-order-id="2845"
+                                aria-label="Ver pedido LV-2845"
+                            >
+                                <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 MODAL
+            ================================================== -->
+
+            <dialog class="modal" id="order-modal">
+
+                <div class="modal-head">
+
+                    <div>
+
+                        <h2>
+                            Pedido #LV-2849
+                        </h2>
+
+                        <p>
+                            Detalhes e acompanhamento do pedido.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="modal-close"
+                        aria-label="Fechar pedido"
+                    >
+
+                        <i class="fa-solid fa-xmark"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="modal-body">
+
+                    <div>
+
+                        <label>
+                            Cliente
+                        </label>
+
+                        <p>
+                            Mariana Costa
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Restaurante
+                        </label>
+
+                        <p>
+                            Casa Oliva
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Data e horário
+                        </label>
+
+                        <p>
+                            05 out. de 2026 · 14:32
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Valor total
+                        </label>
+
+                        <p>
+                            AOA 189,90
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-bottom">
+
+                    <form id="formulario">
+
+                        <div>
+
+                            <label for="select-status">
+                                Status do pedido
+                            </label>
+
+                            <select
+                                name="status"
+                                id="select-status"
+                                class="select-status"
+                            >
+
+                                <option value="pending">
+                                    Pendente
+                                </option>
+
+                                <option value="confirmed">
+                                    Confirmado
+                                </option>
+
+                                <option value="preparing">
+                                    Em preparação
+                                </option>
+
+                                <option value="delivery">
+                                    Em entrega
+                                </option>
+
+                                <option value="completed">
+                                    Concluído
+                                </option>
+
+                                <option value="canceled">
+                                    Cancelado
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="btn-modal"
+                        >
+
+                            Concluir
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </dialog>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+   
+    <script src="assets/scripts/main.js"></script>
+
+</body>
+
+</html>

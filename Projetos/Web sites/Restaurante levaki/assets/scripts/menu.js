@@ -11,6 +11,7 @@ search.addEventListener("input", () => {
 
     if(nomePrato.includes(search.value.toLowerCase().trim())){
         prato.style.display = "block"
+        console.log("falhou")
     }else{
         prato.style.display = 'none'
     }

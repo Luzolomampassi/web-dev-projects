@@ -82,22 +82,27 @@ btnSave.addEventListener("click", () =>{
 })
 
 // ============ ultima atualização===========
-const btnEditProfile = document.querySelector("#btn-editar-perfil")
-const caixas = document.querySelectorAll(".form-group > input")
+const btnEditProfile = document.querySelector("#btn-editar-perfil");
+const btnSaveProfile = document.querySelector("#btn-save-perfil");
+const caixas = document.querySelectorAll(".form-group > input");
+
+btnEditProfile.addEventListener("click", () => {
+    btnSaveProfile.style.display = "flex";
+    btnEditProfile.classList.add("active");
+    caixas.forEach(caixa => {
+        caixa.classList.add("editavel");
+    });
+});
+
+btnSaveProfile.addEventListener("click", () => {
+    btnSaveProfile.style.display = "none";
+    btnEditProfile.classList.remove("active");
+    caixas.forEach(caixa => {
+        caixa.classList.remove("editavel");
+    });
+});
 
 
-btnEditProfile.addEventListener("click", () =>{
 
-    caixas.forEach(caixa =>{
-        caixa.classList.remove("editavel")})
-    btnEditProfile.classList.toggle('active')
-    if(btnEditProfile.classList.contains('active')){
-        caixas.forEach(caixa =>{
-        caixa.classList.add("editavel")
-    })
-    }
-   
-    
-})
 
 const fotoPerfil = document.querySelector("#input-foto")

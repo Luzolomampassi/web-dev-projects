@@ -1,0 +1,1029 @@
+/* ============================================================
+   TOPBAR
+   ============================================================ */
+:root {
+
+    /* Cores principais */
+    --color-primary: #0C2922;
+    --color-primary-hover: #214438;
+    --color-primary-dark: #0A231E;
+
+    /* Dourado */
+    --color-accent: #B59563;
+    --color-accent-light: #C6AA7C;
+
+    /* Fundos */
+    --color-background: #F6F2E9;
+    --color-surface: #FFFFFF;
+
+    /* Texto */
+    --color-text: #0C2922;
+    --color-text-white: #FFFFFF;
+    --color-text-light: #9BA89D;
+
+    /* Fontes */
+    --font-bodoni: "Bodoni Moda", serif;
+    --font-manrope: "Manrope", sans-serif;
+
+    /* Bordas */
+    --color-border: #DDD7C9;
+
+    /* Estados */
+    --color-success: #2E7D32;
+    --color-warning: #C58A00;
+    --color-danger: #B3261E;
+
+    /* Extras */
+    --color-overlay: rgba(12, 41, 34, 0.6);
+}
+
+.topbar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 72px;
+
+    padding: 0 10px;
+
+    background-color: var(--color-surface);
+
+    border-bottom: 1px solid var(--color-border);
+}
+
+.topbar-left,
+.topbar-right {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.topbar-left {
+    width: 100%;
+}
+
+.topbar-right {
+    justify-content: flex-end;
+
+    width: 100%;
+
+    gap: 21px;
+}
+
+.topbar-left h2 {
+    color: var(--color-primary);
+
+    font-family: var(--font-bodoni);
+    font-size: 25px;
+}
+
+.topbar-left h3 {
+    display: none;
+
+    color: var(--color-text-light);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* ============================================================
+   BOTÕES DA TOPBAR
+   ============================================================ */
+
+.btn-menu,
+.btn-notifications {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 7px;
+
+    border: 0;
+
+    background-color: transparent;
+
+    transition:
+        background-color .2s,
+        color .2s;
+}
+
+.btn-menu {
+    font-size: 1.2rem;
+}
+
+.btn-notifications {
+    font-size: .9rem;
+}
+
+.btn-notifications:hover,
+.btn-menu:hover {
+    border-radius: 5px;
+
+    background-color: #eaeae99f;
+}
+
+
+/* ============================================================
+   PERFIL DO HEADER
+   ============================================================ */
+
+.profile-header {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.profile-header .name {
+    display: none;
+
+    font-size: 12px;
+}
+
+.profile-header > i {
+    display: none;
+}
+
+
+/* ============================================================
+   PESQUISA DO HEADER
+   ============================================================ */
+
+.painel-search {
+    position: relative;
+
+    display: none;
+
+    width: min(280px, 30vw);
+
+    padding-right: 15px;
+
+    border-right: 2px solid var(--color-border);
+}
+
+#search {
+    width: 100%;
+
+    padding: 10px 10px 10px 32px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+
+    background-color: var(--color-surface);
+
+    color: var(--color-text);
+
+    font-size: 12px;
+}
+
+#search::placeholder {
+    color: var(--color-text-light);
+}
+
+#search:focus {
+    outline: 3px solid #c6aa7c52;
+
+    border-color: var(--color-accent);
+}
+
+.lupa {
+    position: absolute;
+
+    top: 50%;
+    left: 12px;
+
+    transform: translateY(-50%);
+
+    color: var(--color-text-light);
+
+    font-size: .8rem;
+}
+
+
+.orders-table tbody tr td:last-child button{
+    background-color: transparent;    
+    border: 0;
+    font-size: 1.2em;
+    padding: 4px;
+    border-radius: 4px;
+}
+.orders-table tbody tr td:last-child button:hover{
+    background-color: rgba(199, 199, 199, 0.43);    
+    color: var(--color-text);
+}
+.orders-table tbody tr td:last-child button:last-child:hover{
+    background-color: rgba(246, 28, 28, 0.43);    
+   
+    color: var(--color-danger);
+}
+#btn-close-modal{
+    background-color: transparent;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    
+}
+#btn-edit-modal{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border-radius: 6px;
+    background-color: var(--color-primary);
+    color: var(--color-text-white);
+    font-weight: bold;
+   
+
+
+}/* ============================================================
+   MODAL EDITAR PRODUTO
+   MOBILE FIRST
+   ============================================================ */
+
+#edit-modal {
+    box-sizing: border-box;
+
+    width: calc(100% - 20px);
+    max-width: 1000px;
+     z-index: 100;
+    max-height: calc(100vh - 20px);
+
+    margin: 10px auto;
+
+    background-color: var(--color-surface);
+    color: var(--color-text);
+
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+
+    box-shadow: 0 20px 50px rgba(12, 41, 34, 0.15);
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+/* ============================================================
+   CABEÇALHO
+   ============================================================ */
+
+#edit-modal .product-modal-head {
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 24px 18px 22px;
+
+    border-bottom: 1px solid var(--color-border);
+}
+
+
+#edit-modal .product-modal-title {
+    min-width: 0;
+}
+
+
+#edit-modal .product-modal-title h2 {
+    margin: 0;
+
+    color: var(--color-primary);
+
+    font-family: var(--font-bodoni);
+    font-size: 32px;
+    font-weight: 500;
+
+    line-height: 1.05;
+
+    letter-spacing: -0.7px;
+}
+
+
+#edit-modal .product-modal-title p {
+    max-width: 500px;
+
+    margin: 9px 0 0;
+
+    color: var(--color-text-light);
+
+    font-family: var(--font-manrope);
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   BOTÃO FECHAR
+   ============================================================ */
+
+#edit-modal .product-modal-close {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 5px;
+
+    background: transparent;
+    color: var(--color-primary);
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition: background-color .2s ease;
+}
+
+
+#edit-modal .product-modal-close:hover {
+    background-color: #f1f1ed;
+}
+
+
+/* ============================================================
+   SEÇÕES
+   ============================================================ */
+
+#edit-modal .product-modal-section {
+    box-sizing: border-box;
+
+    padding: 27px 18px;
+}
+
+
+/* ============================================================
+   EYEBROW
+   ============================================================ */
+
+#edit-modal .product-modal-eyebrow {
+    margin: 0 0 22px;
+
+    color: var(--color-accent);
+
+    font-family: var(--font-manrope);
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 2.5px;
+
+    line-height: 1.4;
+}
+
+
+/* ============================================================
+   CAMPOS
+   MOBILE = 1 COLUNA
+   ============================================================ */
+
+#edit-modal .product-modal-fields {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 19px;
+}
+
+
+#edit-modal .product-modal-field {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+#edit-modal .product-modal-field-full {
+    grid-column: auto;
+}
+
+
+/* ============================================================
+   LABEL
+   ============================================================ */
+
+#edit-modal .product-modal-field label {
+    color: #315247;
+
+    font-family: var(--font-manrope);
+    font-size: 12px;
+    font-weight: 700;
+
+    line-height: 1.3;
+}
+
+
+/* ============================================================
+   INPUT / SELECT
+   ============================================================ */
+
+#edit-modal .product-modal-field input,
+#edit-modal .product-modal-field select {
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 51px;
+
+    padding: 0 14px;
+
+    border: 1px solid #d8ded8;
+    border-radius: 6px;
+
+    background-color: #ffffff;
+
+    color: var(--color-text);
+
+    font-family: var(--font-manrope);
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+
+#edit-modal .product-modal-field select {
+    cursor: pointer;
+}
+
+
+/* ============================================================
+   TEXTAREA
+   ============================================================ */
+
+#edit-modal .product-modal-field textarea {
+    box-sizing: border-box;
+
+    width: 100%;
+    min-height: 100px;
+
+    padding: 14px;
+
+    border: 1px solid #d8ded8;
+    border-radius: 6px;
+
+    background-color: #ffffff;
+
+    color: var(--color-text);
+
+    font-family: var(--font-manrope);
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    resize: vertical;
+
+    outline: none;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+
+/* ============================================================
+   FOCUS
+   ============================================================ */
+
+#edit-modal .product-modal-field input:focus,
+#edit-modal .product-modal-field select:focus,
+#edit-modal .product-modal-field textarea:focus {
+    border-color: var(--color-accent);
+
+    box-shadow:
+        0 0 0 3px rgba(181, 149, 99, 0.12);
+}
+
+
+/* ============================================================
+   APRESENTAÇÃO
+   ============================================================ */
+
+#edit-modal .product-modal-presentation {
+    border-top: 1px solid var(--color-border);
+}
+
+
+/* ============================================================
+   ÁREA DE UPLOAD
+   MOBILE = VERTICAL
+   ============================================================ */
+
+#edit-modal .product-upload {
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 22px;
+
+    min-height: 0;
+
+    padding: 22px 18px;
+
+    border: 1px dashed #ced6ce;
+    border-radius: 6px;
+
+    background-color: #fcfcfa;
+}
+
+
+/* Informações */
+
+#edit-modal .product-upload-info {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 7px;
+}
+
+
+#edit-modal .product-upload-info svg {
+    margin-bottom: 3px;
+
+    color: #a4afa4;
+}
+
+
+#edit-modal .product-upload-info strong {
+    color: #38594e;
+
+    font-family: var(--font-manrope);
+    font-size: 13px;
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+#edit-modal .product-upload-info span {
+    color: var(--color-text-light);
+
+    font-family: var(--font-manrope);
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   BOTÃO UPLOAD
+   ============================================================ */
+
+#edit-modal .product-upload-button {
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 47px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 0 14px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+
+    background-color: #ffffff;
+
+    color: #38594e;
+
+    font-family: var(--font-manrope);
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color .2s ease,
+        border-color .2s ease;
+}
+
+
+#edit-modal .product-upload-button:hover {
+    background-color: #f7f7f4;
+
+    border-color: #c8c2b5;
+}
+
+
+#edit-modal .product-upload-button input {
+    display: none;
+}
+
+
+/* ============================================================
+   TEXTO DO UPLOAD
+   ============================================================ */
+
+#edit-modal .product-upload-help {
+    margin: 10px 0 22px;
+
+    color: #a1aaa2;
+
+    font-family: var(--font-manrope);
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   DISPONIBILIDADE
+   ============================================================ */
+
+#edit-modal .product-availability {
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding-bottom: 22px;
+
+    border-bottom: 1px solid var(--color-border);
+}
+
+
+#edit-modal .product-availability-info {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+#edit-modal .product-availability-info p {
+    margin: 0;
+
+    color: #315247;
+
+    font-family: var(--font-manrope);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+#edit-modal .product-availability-info span {
+    color: var(--color-text-light);
+
+    font-family: var(--font-manrope);
+    font-size: 11px;
+
+    line-height: 1.4;
+}
+
+
+/* ============================================================
+   SWITCH
+   ============================================================ */
+
+#edit-modal .product-switch {
+    position: relative;
+
+    width: 47px;
+    height: 27px;
+
+    display: block;
+
+    flex-shrink: 0;
+
+    border-radius: 999px;
+
+    background-color: #b4bbb4;
+
+    cursor: pointer;
+
+    transition: background-color .2s ease;
+}
+
+
+#edit-modal .product-switch-input {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+}
+
+
+#edit-modal .product-switch-slider {
+    position: absolute;
+
+    top: 4px;
+    left: 4px;
+
+    width: 19px;
+    height: 19px;
+
+    border-radius: 50%;
+
+    background-color: #ffffff;
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+
+    transition: transform .2s ease;
+}
+
+
+#edit-modal .product-switch:has(
+    .product-switch-input:checked
+) {
+    background-color: var(--color-primary);
+}
+
+
+#edit-modal .product-switch-input:checked
++ .product-switch-slider {
+    transform: translateX(20px);
+}
+
+
+/* ============================================================
+   AÇÕES
+   MOBILE = BOTÕES EMPILHADOS
+   ============================================================ */
+
+#edit-modal .product-modal-actions {
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column-reverse;
+
+    align-items: stretch;
+
+    gap: 10px;
+
+    padding: 24px 18px;
+}
+
+
+/* ============================================================
+   BOTÃO CANCELAR
+   ============================================================ */
+
+#edit-modal .product-modal-cancel {
+    width: 100%;
+    height: 50px;
+
+    padding: 0 18px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+
+    background-color: #ffffff;
+
+    color: var(--color-text);
+
+    font-family: var(--font-manrope);
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: background-color .2s ease;
+}
+
+
+#edit-modal .product-modal-cancel:hover {
+    background-color: #f7f7f4;
+}
+
+
+/* ============================================================
+   BOTÃO SALVAR
+   ============================================================ */
+
+#edit-modal .product-modal-save {
+    width: 100%;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 0 18px;
+
+    border: 0;
+    border-radius: 6px;
+
+    background-color: var(--color-primary);
+
+    color: #ffffff;
+
+    font-family: var(--font-manrope);
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: background-color .2s ease;
+}
+
+
+#edit-modal .product-modal-save:hover {
+    background-color: var(--color-primary-hover);
+}
+
+
+#edit-modal .product-modal-save i {
+    font-size: 12px;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (min-width: 601px) {
+
+    #edit-modal {
+        width: min(760px, calc(100% - 30px));
+
+        max-height: calc(100vh - 30px);
+
+        margin: 15px auto;
+    }
+
+
+    #edit-modal .product-modal-head {
+        padding: 28px 30px 25px;
+    }
+
+
+    #edit-modal .product-modal-section {
+        padding: 30px;
+    }
+
+
+    #edit-modal .product-modal-title h2 {
+        font-size: 37px;
+    }
+
+
+    #edit-modal .product-modal-fields {
+        grid-template-columns: 1fr 1fr;
+
+        column-gap: 20px;
+        row-gap: 22px;
+    }
+
+
+    #edit-modal .product-modal-field-full {
+        grid-column: 1 / -1;
+    }
+
+
+    #edit-modal .product-upload {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        min-height: 150px;
+    }
+
+
+    #edit-modal .product-upload-button {
+        width: auto;
+        min-width: 190px;
+    }
+
+
+    #edit-modal .product-modal-actions {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+
+        padding: 30px;
+    }
+
+
+    #edit-modal .product-modal-cancel {
+        width: auto;
+    }
+
+
+    #edit-modal .product-modal-save {
+        width: auto;
+        min-width: 195px;
+    }
+
+}
+
+
+/* ============================================================
+   DESKTOP
+   ============================================================ */
+
+@media (min-width: 900px) {
+
+    #edit-modal {
+        transform: translate(-50%,-50%);
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        max-height: calc(100vh - 80px);
+        margin: 20px auto;
+       
+    }
+
+
+    #edit-modal .product-modal-head {
+        padding: 32px 42px 28px;
+    }
+
+
+    #edit-modal .product-modal-title h2 {
+        font-size: 42px;
+    }
+
+
+    #edit-modal .product-modal-title p {
+        font-size: 13px;
+    }
+
+
+    #edit-modal .product-modal-section {
+        padding: 34px 42px;
+    }
+
+
+    #edit-modal .product-modal-fields {
+        column-gap: 24px;
+        row-gap: 25px;
+    }
+
+
+    #edit-modal .product-modal-field input,
+    #edit-modal .product-modal-field select {
+        height: 57px;
+
+        padding: 0 16px;
+
+        font-size: 14px;
+    }
+
+
+    #edit-modal .product-modal-field textarea {
+        min-height: 103px;
+
+        font-size: 14px;
+    }
+
+
+    #edit-modal .product-upload {
+        min-height: 171px;
+
+        padding: 28px 23px;
+    }
+
+
+    #edit-modal .product-upload-button {
+        min-width: 205px;
+        height: 50px;
+    }
+
+
+    #edit-modal .product-modal-actions {
+        padding: 37px 42px;
+    }
+
+
+    #edit-modal .product-modal-cancel,
+    #edit-modal .product-modal-save {
+        height: 57px;
+    }
+
+}

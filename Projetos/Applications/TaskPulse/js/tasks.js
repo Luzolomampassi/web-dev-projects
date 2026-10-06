@@ -35,14 +35,15 @@ const botoesFiltros = document.querySelectorAll(".btn-filters");
 const alertaPersonalizado = document.querySelector("#alert");
 const botaoAlerta = document.querySelector("#btn-alert");
 
-
+const estadoVazio = document.querySelector("#void-section")
 // ============================================================
 // EVENTOS DO FORMULÁRIO
 // ============================================================
+atualizarEstadoVazio()
 
 formularioTarefa.addEventListener("submit", (event) => {
     event.preventDefault();
-   
+
     if (!validarFormulario()) {
         dispararAlerta();
         return  ;
@@ -53,6 +54,7 @@ formularioTarefa.addEventListener("submit", (event) => {
     tarefas.push(dadosTarefa);
     
     criarTarefa(dadosTarefa);
+    atualizarEstadoVazio()
     resumos()
     modalTarefa.close();
     
@@ -106,7 +108,6 @@ botaoAlerta.addEventListener("click", () => {
 
 });
 
-
 // Exibir alerta
 function dispararAlerta() {
 
@@ -114,7 +115,14 @@ function dispararAlerta() {
 
 }
 
+function atualizarEstadoVazio(){
+    if(tarefas.length === 0){
+    estadoVazio.classList.add("is-active")
+    }else{
+        estadoVazio.classList.remove("is-active")
+    }
 
+}
 // ============================================================
 // VALIDAÇÃO DO FORMULÁRIO
 // ============================================================
@@ -538,6 +546,9 @@ function resumos(){
 })
 
 }
+
+
+
 
 
 

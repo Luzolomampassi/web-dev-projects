@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Painel Administrativo | Levaki</title>
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="assets/css/pedidos.css"
+    >
+    <link
+        rel="stylesheet"
+        href="assets/css/global.css"
+    >
+
+    <!-- Font Awesome -->
+    <span>
+        <script
+            src="https://kit.fontawesome.com/f6a9b3f1e7.js"
+            crossorigin="anonymous">
+        </script>
+    </span>
+
+    <!-- Remix Icon -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside>
+
+        <div class="sidebar-brand">
+
+            <button
+                type="button"
+                class="brand"
+                aria-label="Levaki, ir para dashboard"
+                href="index.html"
+            >
+
+                <svg
+                    class="brand-mark"
+                    width="25"
+                    height="25"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <path d="m12 2 2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2L12 2Z"></path>
+                </svg>
+
+                <span>
+                    levaki<span class="brand-period">.</span>
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="sidebar-close"
+                aria-label="Fechar menu"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <div class="brand-caption">
+                ADMINISTRAÇÃO <span>·</span> PAINEL
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             NAVEGAÇÃO
+        ================================================== -->
+
+        <nav class="sidebar-nav">
+
+            <div class="nav-group">
+
+                <label>Visão geral</label>
+
+                <a class="nav-item" href="index.html">
+             <i class="ri-dashboard-line icone"></i>
+              <span>Dashboard</span>
+         
+                </a>
+
+                <a class="nav-item" href="pedidos.html">
+                    <i class="ri-group-line icone"></i>
+                    <span>Pedidos</span>
+                    
+                </a>
+
+            </div>
+
+
+            <div class="nav-group">
+
+                <label>Gestão</label>
+
+                <a
+                    
+                    class="nav-item"
+                    href="produtos.html"
+                >
+
+                    <i class="ri-box-3-line icone"></i>
+
+                    <span>Produtos</span>
+
+                </a>
+
+
+                <a
+                    
+                    class="nav-item"
+                    href="categorias.html"
+                >
+
+                    <i class="ri-stack-line icone"></i>
+
+                    <span>Categorias</span>
+
+                </a>
+
+
+                <a
+                    
+                    class="nav-item"
+                    href="restaurantes.html"
+                >
+
+                    <i class="fa-regular fa-house icone"></i>
+
+                    <span>Restaurantes</span>
+
+                </a>
+
+
+                <a
+                    
+                    class="nav-item"
+                    href="clientes.html"
+                >
+
+                    <i class="ri-group-line icone"></i>
+
+                    <span>Clientes</span>
+
+                </a>
+
+            </div>
+
+
+            <div class="nav-group">
+
+                <label>Sistema</label>
+
+                <a
+                    class="nav-item"
+                      href="relatorios.html"
+                >
+
+                    <i class="fa-solid fa-chart-line icone"></i>
+
+                    <span>Relatórios</span>
+
+                </a>
+
+
+                <a
+                    class="nav-item"
+                      href="config.html"
+                >
+
+                    <i class="ri-settings-5-line icone"></i>
+
+                    <span>Configurações</span>
+
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <!-- =================================================
+             PERFIL
+        ================================================== -->
+
+        <article class="sidebar-bottom">
+
+            <div>
+
+                <img
+                    src=""
+                    alt="Foto de perfil de Luzolo Mampassi"
+                    class="photo-profile"
+                    id="sidebar-profile"
+                >
+
+                <div>
+
+                    <h4>Luzolo Mampassi</h4>
+
+                    <p>Administrador</p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="logout-button"
+                aria-label="Terminar sessão"
+            >
+
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+            </button>
+
+        </article>
+
+    </aside>
+
+    <header class="topbar">
+
+        <div class="topbar-left">
+
+            <button
+                type="button"
+                id="btn-menu"
+                class="btn-menu"
+                aria-label="Abrir menu"
+            >
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+            <h2>Levaki.</h2>
+
+            <h3>Administração / Dashboard</h3>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <div class="painel-search">
+
+                <input
+                    type="search"
+                    name="search"
+                    id="search"
+                    placeholder="Pesquisar no painel..."
+                >
+
+                <i class="fa-solid fa-magnifying-glass lupa"></i>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="btn-notifications"
+                id="btn-notifications"
+                aria-label="Notificações"
+            >
+
+                <i class="fa-regular fa-bell fa-xl"></i>
+
+            </button>
+
+
+            <div class="profile-header">
+
+                <img
+                    src=""
+                    alt="Foto de perfil de Luzolo Mampassi"
+                    class="photo-profile"
+                    id="topbar-profile"
+                >
+
+                <h3 class="name">
+                    Luzolo Mampassi
+                </h3>
+
+                <i class="fa-solid fa-angle-down"></i>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+
+   
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="assets/scripts/main.js"></script>
+
+</body>
+
+</html>
