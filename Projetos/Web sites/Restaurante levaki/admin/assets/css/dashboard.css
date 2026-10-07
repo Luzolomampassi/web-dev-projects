@@ -67,6 +67,8 @@ html {
 }
 
 body {
+    display: grid;
+    grid-template-columns: 1fr;
     min-height: 100vh;
 
     background-color: var(--color-background);
@@ -1287,11 +1289,12 @@ td {
     aside {
         display: flex;
     }
-
-    main {
-        padding-left: 22%;
-        padding-right: 2%;
+     body {
+        display: grid;
+        grid-template-columns:240px  1fr;
+        gap: 20px;
     }
+
 
     .btn-menu {
         display: none;
@@ -1340,10 +1343,7 @@ td {
 
 @media (max-width: 600px) {
 
-    main {
-        padding-left: 12px;
-        padding-right: 12px;
-    }
+    
 
     .hero {
         min-height: 300px;

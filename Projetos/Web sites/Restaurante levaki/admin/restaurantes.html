@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-AO">
 
@@ -12,25 +13,36 @@
 
     <title>Painel Administrativo | Levaki</title>
 
-    <!-- CSS -->
-    <link
-        rel="stylesheet"
-        href="assets/css/pedidos.css"
-    >
+
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
+
     <link
         rel="stylesheet"
         href="assets/css/global.css"
     >
 
-    <!-- Font Awesome -->
-    <span>
-        <script
-            src="https://kit.fontawesome.com/f6a9b3f1e7.js"
-            crossorigin="anonymous">
-        </script>
-    </span>
+    <link
+        rel="stylesheet"
+        href="assets/css/restaurante.css"
+    >
 
-    <!-- Remix Icon -->
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <script
+        src="https://kit.fontawesome.com/f6a9b3f1e7.js"
+        crossorigin="anonymous">
+    </script>
+
+
+    <!-- =====================================================
+         REMIX ICON
+    ====================================================== -->
+
     <link
         href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
         rel="stylesheet"
@@ -50,33 +62,34 @@
 
         <div class="sidebar-brand">
 
-            <button
-                type="button"
+            <a
                 class="brand"
-                aria-label="Levaki, ir para dashboard"
                 href="index.html"
+                aria-label="Levaki, ir para dashboard"
             >
 
-                <svg
-                    class="brand-mark"
-                    width="25"
-                    height="25"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.7"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                >
-                    <path d="m12 2 2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2L12 2Z"></path>
-                </svg>
+                <span>
+                    <svg
+                        class="brand-mark"
+                        width="25"
+                        height="25"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="m12 2 2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2L12 2Z"></path>
+                    </svg>
+                </span>
 
                 <span>
                     levaki<span class="brand-period">.</span>
                 </span>
 
-            </button>
+            </a>
 
 
             <button
@@ -107,16 +120,21 @@
 
                 <label>Visão geral</label>
 
-                <a class="nav-item" href="index.html">
-             <i class="ri-dashboard-line icone"></i>
-              <span>Dashboard</span>
-         
+                <a
+                    class="nav-item"
+                    href="index.html"
+                >
+                    <i class="ri-dashboard-line icone"></i>
+                    <span>Dashboard</span>
                 </a>
 
-                <a class="nav-item" href="pedidos.html">
+
+                <a
+                    class="nav-item"
+                    href="pedidos.html"
+                >
                     <i class="ri-group-line icone"></i>
                     <span>Pedidos</span>
-                    
                 </a>
 
             </div>
@@ -127,54 +145,39 @@
                 <label>Gestão</label>
 
                 <a
-                    
-                    class="nav-item"
+                    class="nav-item active"
                     href="produtos.html"
+                    aria-current="page"
                 >
-
                     <i class="ri-box-3-line icone"></i>
-
                     <span>Produtos</span>
-
                 </a>
 
 
                 <a
-                    
                     class="nav-item"
                     href="categorias.html"
                 >
-
                     <i class="ri-stack-line icone"></i>
-
                     <span>Categorias</span>
-
                 </a>
 
 
                 <a
-                    
                     class="nav-item"
                     href="restaurantes.html"
                 >
-
                     <i class="fa-regular fa-house icone"></i>
-
                     <span>Restaurantes</span>
-
                 </a>
 
 
                 <a
-                    
                     class="nav-item"
                     href="clientes.html"
                 >
-
                     <i class="ri-group-line icone"></i>
-
                     <span>Clientes</span>
-
                 </a>
 
             </div>
@@ -186,25 +189,19 @@
 
                 <a
                     class="nav-item"
-                      href="relatorios.html"
+                    href="relatorios.html"
                 >
-
                     <i class="fa-solid fa-chart-line icone"></i>
-
                     <span>Relatórios</span>
-
                 </a>
 
 
                 <a
                     class="nav-item"
-                      href="config.html"
+                    href="config.html"
                 >
-
                     <i class="ri-settings-5-line icone"></i>
-
                     <span>Configurações</span>
-
                 </a>
 
             </div>
@@ -230,7 +227,6 @@
                 <div>
 
                     <h4>Luzolo Mampassi</h4>
-
                     <p>Administrador</p>
 
                 </div>
@@ -243,14 +239,17 @@
                 class="logout-button"
                 aria-label="Terminar sessão"
             >
-
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
-
             </button>
 
         </article>
 
     </aside>
+
+
+    <!-- =====================================================
+         TOPBAR
+    ====================================================== -->
 
     <header class="topbar">
 
@@ -262,15 +261,13 @@
                 class="btn-menu"
                 aria-label="Abrir menu"
             >
-
                 <i class="fa-solid fa-bars"></i>
-
             </button>
 
 
             <h2>Levaki.</h2>
 
-            <h3>Administração / Dashboard</h3>
+            <h3>Administração / Produtos</h3>
 
         </div>
 
@@ -281,12 +278,17 @@
 
                 <input
                     type="search"
-                    name="search"
-                    id="search"
+                    name="topbar-search"
+                    id="topbar-search"
+                    class="topbar-search"
                     placeholder="Pesquisar no painel..."
+                    autocomplete="off"
                 >
 
-                <i class="fa-solid fa-magnifying-glass lupa"></i>
+                <i
+                    class="fa-solid fa-magnifying-glass lupa"
+                    aria-hidden="true"
+                ></i>
 
             </div>
 
@@ -297,9 +299,7 @@
                 id="btn-notifications"
                 aria-label="Notificações"
             >
-
                 <i class="fa-regular fa-bell fa-xl"></i>
-
             </button>
 
 
@@ -325,10 +325,684 @@
     </header>
 
 
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
+
+    <main>
 
 
-   
+        <!-- =================================================
+             INTRODUÇÃO
+        ================================================== -->
 
+        <article class="page-intro">
+
+            <div>
+
+                <p class="eyebrow">
+                    LEVAKI ADMIN/RESTAURANTES
+                </p>
+
+                <h1>
+                   Restaurantes.
+                </h1>
+
+
+                <div class="intro-div">
+
+                    <p>
+                        Gerencie os parceiros que fazem parte do Levaki.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="btn-intro"
+                        id="btn-add-product"
+                    >
+                        + Adicionar restaurante
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             CATÁLOGO
+        ================================================== -->
+
+        <section class="dashboard-orders">
+
+
+            <article class="dashboard-orders-head">
+
+                <div>
+
+                    <h2>
+                        Restaurantes parceiros
+                    </h2>
+
+                    <p>
+                        4 restaurantes encontrados
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 FILTROS
+            ================================================== -->
+
+            <article class="filters">
+                <div class="filter-search">
+                    <i
+                        class="fa-solid fa-magnifying-glass lupa"
+                        aria-hidden="true"
+                    ></i>
+
+                    <input
+                        type="search"
+                        name="product-search"
+                        id="product-search"
+                        placeholder="Buscar por produto, categoria ou restaurante..."
+                        autocomplete="off"
+                    >
+                </div>
+            </article>
+
+            <!-- =================================================
+                 TABELA
+            ================================================== -->
+
+            <article class="table-container">
+
+                <table class="orders-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Restaurante</th>
+                            <th>Contato</th>
+                            <th>Endereço</th>
+                            <th>Produtos</th>
+                            <th>Estado</th>
+                            <th class="action-col">AÇÕES</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody class="orders-list">
+
+
+
+                        <tr
+                            class="order-row"
+                            data-restaurante="Casa Oliva"
+                        >
+
+                            <td class="nome-restaurante">
+
+                                <span class="restaurant-name">Co</span>
+
+                                <span class="text-flex">
+                                    Casa Oliva
+                                    <small>Cozinha mediterrânea contemporânea</small>
+                                </span>
+
+                            </td>
+
+
+                            <td data-contanto="(11) 3456-7890">
+                                (11) 3456-7890
+                            </td>
+
+
+                            <td
+                                data-endereco="	Rua dos Pinheiros, 870 · São Paulo"
+                            >
+                                	Rua dos Pinheiros, 870 · São Paulo
+                            </td>
+
+
+                            <td class="order-value">
+                                2 produtos
+                            </td>
+
+
+                           
+
+
+                            <td>
+
+                                <span
+                                    class="badge active order-status"
+                                    data-order-status="active"
+                                >
+                                    <span class="badge-dot"></span>
+                                    Ativo
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                
+
+                                <button
+                                    type="button"
+                                    class="btn-edit-product"
+                                    title="Editar"
+                                    aria-label="Editar Spritz da casa"
+                                >
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn-delete-product"
+                                    title="Excluir"
+                                    aria-label="Excluir Spritz da casa"
+                                >
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button>
+
+                            </td>
+
+                        </tr>
+                        <tr
+                            class="order-row"
+                            data-restaurante="Nori&Co"
+                        >
+
+                            <td class="nome-restaurante">
+
+                                <span class="restaurant-name">N&</span>
+
+                                <span class="text-flex">
+                                    Nori & Co.
+                                    <small>Sabores japoneses com uma nova perspectiva</small>
+                                </span>
+
+                            </td>
+
+
+                            <td data-contato="(11)3456-7890">
+                                	(11) 3456-7890
+                            </td>
+
+
+                            <td
+                                data-enderec0="Rua Harmonia, 442 · São Paulo"
+                            >
+                                Rua Harmonia, 442 · São Paulo
+                            </td>
+
+
+                            <td class="produtos">
+                                2 produtos
+                            </td>
+                           
+
+                            <td>
+
+                                <span
+                                    class="badge active order-status"
+                                    data-order-status="active"
+                                >
+                                    <span class="badge-dot"></span>
+                                    Ativo
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                
+
+                                <button
+                                    type="button"
+                                    class="btn-edit-product"
+                                    title="Editar"
+                                    aria-label="Editar Spritz da casa"
+                                >
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn-delete-product"
+                                    title="Excluir"
+                                    aria-label="Excluir Spritz da casa"
+                                >
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button>
+
+                            </td>
+
+                        </tr>
+                        <tr
+                            class="order-row"
+                            data-restaurante="Trattoria Vero"
+                        >
+
+                            <td class="nome-restaurante">
+
+                                <span class="restaurant-name">TV</span>
+
+                                <span class="text-flex">
+                                    Trattoria Vero
+                                    <small>A tradição italiana em cada detalhe</small>
+                                </span>
+
+                            </td>
+
+
+                            <td data-contato="(11) 3456-3871">
+                                (11) 3456-3871
+                            </td>
+
+
+                            <td
+                                data-endereco="Al. Lorena, 1510 · São Paulo"
+                            >
+                                Al. Lorena, 1510 · São Paulo
+                            </td>
+
+
+                            <td class="order-value">
+                                2produtos
+                            </td>
+
+
+                           
+
+
+                            <td>
+
+                                <span
+                                    class="badge active order-status"
+                                    data-order-status="active"
+                                >
+                                    <span class="badge-dot"></span>
+                                    Ativo
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                
+
+                                <button
+                                    type="button"
+                                    class="btn-edit-product"
+                                    title="Editar"
+                                    aria-label="Editar Spritz da casa"
+                                >
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn-delete-product"
+                                    title="Excluir"
+                                    aria-label="Excluir Spritz da casa"
+                                >
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button>
+
+                            </td>
+
+                        </tr>
+                        <tr
+                            class="order-row"
+                            data-restaurante="Bottega Verde"
+                        >
+
+                            <td class="nome-restaurante">
+
+                                <span class="restaurant-name">BV</span>
+
+                                <span class="text-flex">
+                                    Bottega Verde
+                                    <small>Ingredientes frescos, cozinha autoral</small>
+                                </span>
+
+                            </td>
+
+
+                            <td data-contato="(11) 3456-4982">
+                                (11) 3456-4982
+                            </td>
+
+
+                            <td
+                                data-endereco="Rua Bela Cintra, 603 · São Paulo"
+                            >
+                                Rua Bela Cintra, 603 · São Paulo
+                            </td>
+
+
+                            <td class="order-value">
+                                1 produtos
+                            </td>
+
+                            <td>
+
+                                <span
+                                    class="badge inactive order-status"
+                                    data-order-status="inactive"
+                                >
+                                    <span class="badge-dot"></span>
+                                    Inativo
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                
+
+                                <button
+                                    type="button"
+                                    class="btn-edit-product"
+                                    title="Editar"
+                                    aria-label="Editar Spritz da casa"
+                                >
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn-delete-product"
+                                    title="Excluir"
+                                    aria-label="Excluir Spritz da casa"
+                                >
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+
+
+                    </tbody>
+
+                </table>
+
+
+                <div class="table-bottom">
+
+                    <p>
+                        Mostrando
+                        <span>1</span>–<span>5</span>
+                        de
+                        <span>5</span>
+                        registros
+                    </p>
+
+
+                    <div class="btn-section-container">
+
+                        <button
+                            type="button"
+                            class="btn-section"
+                        >
+                            1
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn-section"
+                            aria-label="Próxima página"
+                        >
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- =================================================
+             MODAL — VISUALIZAR PRODUTO
+        ================================================== -->
+
+        <dialog class="modal" id="restaurant-modal">
+
+            <!-- Cabeçalho -->
+            <div class="modal-head">
+
+                <div>
+                    <h2>Adicionar restaurante</h2>
+
+                    <p>
+                        Cadastre as informações do parceiro.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="btn-close-restaurant-modal"
+                    aria-label="Fechar modal"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+
+            <!-- Corpo -->
+            <div class="modal-middle">
+
+                <!-- Nome e telefone -->
+                
+
+                    <div class="form-group ">
+
+                        <label for="restaurant-name">
+                            Nome do restaurante <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="restaurant-name"
+                            name="restaurant_name"
+                            placeholder="Ex.: Casa Oliva"
+                        >
+
+                    </div>
+                
+                    <div class="form-group">
+
+                        <label for="restaurant-phone">
+                            Telefone <span>*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="restaurant-phone"
+                            name="restaurant_phone"
+                            placeholder="(11) 0000-0000"
+                        >
+
+                    </div>
+
+                <!-- Endereço -->
+                <div class="form-group form-group-endereco">
+
+                    <label for="restaurant-address">
+                        Endereço <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="restaurant-address"
+                        name="restaurant_address"
+                        placeholder="Rua, número, bairro e cidade"
+                    >
+
+                </div>
+
+
+                <!-- Descrição -->
+                <div class="form-group form-group-descricao">
+
+                    <label for="restaurant-description">
+                        Descrição
+                    </label>
+
+                    <textarea
+                        id="restaurant-description"
+                        name="restaurant_description"
+                        placeholder="Conte um pouco sobre o restaurante"
+                    ></textarea>
+
+                </div>
+
+
+                <!-- Identidade visual -->
+                <div class="form-section">
+
+                    <div class="section-title">
+                        IDENTIDADE VISUAL
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="restaurant-image">
+                            Imagem ou logo
+                        </label>
+
+
+                        <div class="image-upload">
+
+                            <div class="upload-info">
+
+                                <i class="fa-regular fa-image"></i>
+
+                                <span>
+                                    JPG ou PNG, até 5 MB
+                                </span>
+
+                            </div>
+
+
+                            <label
+                                for="restaurant-image"
+                                class="upload-button"
+                            >
+
+                                <i class="fa-solid fa-arrow-up-from-bracket"></i>
+
+                                <span>
+                                    Selecionar imagem
+                                </span>
+
+                            </label>
+
+
+                            <input
+                                type="file"
+                                id="restaurant-image"
+                                name="restaurant_image"
+                                accept=".jpg,.jpeg,.png"
+                                hidden
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Status -->
+                <div class="modal-middle-botom">
+
+                    <div class="status-info">
+
+                        <label for="restaurant-active">
+                            Restaurante ativo
+                        </label>
+
+                        <p>
+                            O restaurante estará visível na plataforma.
+                        </p>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="restaurant-active"
+                            name="restaurant_active"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+        <!-- Rodapé -->
+        <div class="modal-bottom">
+
+            <button
+                type="button"
+                class="modal-cancel"
+                id="btn-cancel-restaurant"
+            >
+                Cancelar
+            </button>
+
+
+            <button
+                type="button"
+                class="modal-save"
+                id="btn-save-restaurant"
+            >
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>
+                    Salvar restaurante
+                </span>
+
+            </button>
+
+        </div>
+
+        </dialog>
+
+
+    </main>
 
 
     <!-- =====================================================
@@ -340,3 +1014,4 @@
 </body>
 
 </html>
+

@@ -1,0 +1,502 @@
+:root {
+
+    /* Cores principais */
+    --color-primary: #0C2922;
+    --color-primary-hover: #214438;
+    --color-primary-dark: #0A231E;
+
+    /* Dourado */
+    --color-accent: #B59563;
+    --color-accent-light: #C6AA7C;
+
+    /* Fundos */
+    --color-background: #F6F2E9;
+    --color-surface: #FFFFFF;
+
+    /* Texto */
+    --color-text: #0C2922;
+    --color-text-white: #FFFFFF;
+    --color-text-light: #9BA89D;
+
+    /* Fontes */
+    --font-bodoni: "Bodoni Moda", serif;
+    --font-manrope: "Manrope", sans-serif;
+
+    /* Bordas */
+    --color-border: #DDD7C9;
+
+    /* Estados */
+    --color-success: #2E7D32;
+    --color-warning: #C58A00;
+    --color-danger: #B3261E;
+
+    /* Extras */
+    --color-overlay: rgba(12, 41, 34, 0.6);
+}
+
+.restaurant-name{
+    background-color: #E8EEE8;
+    color: var(--color-text);
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 4px;
+}
+.text-flex{
+    display: flex;
+    flex-direction: column;
+}
+.nome-restaurante{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.text-flex{
+    font-weight: bold;
+    color: var(--color-text);
+}
+.text-flex >small{
+    color: var(--color-text-light);
+}
+
+/* =========================
+   MODAL
+========================= */
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 80%;
+    margin: auto;
+    padding: 0;
+    z-index: 1000;
+    border: none;
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #23483d;
+
+    overflow-y: auto;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.modal::backdrop {
+    background: rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+.modal-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    padding: 38px 42px;
+
+    border-bottom: 1px solid #e8ece8;
+}
+
+.modal-head h2 {
+    margin: 0;
+
+    font-family: Georgia, serif;
+
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.1;
+
+    color: #173d32;
+}
+
+.modal-head p {
+    margin: 10px 0 0;
+
+    font-size: 14px;
+
+    color: #9ba8a0;
+}
+
+.modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #23483d;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   CORPO
+========================================================= */
+
+.modal-middle {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 38px 42px 0;
+    display: grid;
+    gap: 12px;
+}
+.modal-middle-botom{
+    display: flex;
+    justify-content: space-between;
+    grid-column: span 2;
+    align-items: center;
+}
+
+
+/* =========================================================
+   NOME + TELEFONE
+========================================================= */
+
+.form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 24px;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   CAMPOS
+========================================================= */
+
+.form-group {
+    width: 100%;
+
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #23483d;
+}
+
+.form-group label span {
+    color: #a9793d;
+}
+
+.form-group-endereco{
+    grid-column: span 2;
+}
+.form-group-descricao{
+    grid-column: span 2;
+}
+.form-section{
+    grid-column: span 2;
+}
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group textarea {
+    display: block;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border: 1px solid #d9e0da;
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    color: #23483d;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"] {
+    height: 58px;
+
+    padding: 0 16px;
+}
+
+.form-group textarea {
+    height: 103px;
+
+    padding: 15px 16px;
+
+    resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #adb9b1;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #c49350;
+
+    box-shadow: 0 0 0 4px rgba(196, 147, 80, 0.10);
+}
+
+
+/* =========================================================
+   IDENTIDADE VISUAL
+========================================================= */
+
+.form-section {
+    width: 100%;
+
+    padding-top: 28px;
+
+    border-top: 1px solid #e8ece8;
+}
+
+.section-title {
+    margin-bottom: 28px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    color: #a27b47;
+}
+
+
+/* =========================================================
+   UPLOAD
+========================================================= */
+
+.image-upload {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    min-height: 170px;
+
+    box-sizing: border-box;
+
+    padding: 25px;
+
+    border: 1px dashed #cbd8cf;
+    border-radius: 7px;
+
+    background: #fcfdfb;
+}
+
+.upload-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+
+    color: #9cab9f;
+}
+
+.upload-info i {
+    font-size: 28px;
+}
+
+.upload-info span {
+    font-size: 13px;
+}
+
+.upload-button {
+    display: flex !important;
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 0 !important;
+    padding: 14px 20px;
+
+    border: 1px solid #d5ddd7;
+    border-radius: 6px;
+
+    background: #ffffff;
+
+    color: #31584b !important;
+
+    font-size: 14px !important;
+    font-weight: 600 !important;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+}
+
+
+
+/* =========================================================
+   SWITCH
+========================================================= */
+.modal-bottom{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    grid-column: span 2;
+}
+
+.switch {
+    position: relative;
+
+    display: block;
+
+    width: 48px;
+    height: 28px;
+
+    flex-shrink: 0;
+
+    cursor: pointer;
+}
+
+.switch input {
+    position: absolute;
+
+    width: 0;
+    height: 0;
+
+    opacity: 0;
+}
+
+.slider {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 20px;
+
+    background: #d8dfda;
+
+    transition: 0.2s;
+}
+
+.slider::before {
+    content: "";
+
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    top: 4px;
+    left: 4px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    transition: 0.2s;
+}
+
+.switch input:checked + .slider {
+    background: #19533f;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(20px);
+}
+
+
+/* =========================================================
+   RODAPÉ
+========================================================= */
+
+.modal-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 14px;
+
+    padding: 38px 42px;
+}
+
+.modal-cancel,
+.modal-save {
+    height: 57px;
+
+    box-sizing: border-box;
+
+    padding: 0 25px;
+
+    border-radius: 6px;
+
+    font-family: inherit;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.modal-cancel {
+    border: 1px solid #d7dfd9;
+
+    background: #ffffff;
+
+    color: #23483d;
+}
+
+.modal-save {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 11px;
+
+    padding: 0 28px;
+
+    border: none;
+
+    background: #092f26;
+
+    color: #ffffff;
+}
+
+.modal-save i {
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */

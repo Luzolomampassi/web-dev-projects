@@ -2,7 +2,6 @@
 <html lang="pt-AO">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -10,37 +9,43 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Painel Administrativo | Levaki</title>
+    <title>Configurações | Levaki</title>
 
-    <!-- CSS -->
-    <link
-        rel="stylesheet"
-        href="assets/css/pedidos.css"
-    >
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
+
     <link
         rel="stylesheet"
         href="assets/css/global.css"
     >
 
-    <!-- Font Awesome -->
-    <span>
-        <script
-            src="https://kit.fontawesome.com/f6a9b3f1e7.js"
-            crossorigin="anonymous">
-        </script>
-    </span>
+    <link
+        rel="stylesheet"
+        href="assets/css/configuracao.css"
+    >
 
-    <!-- Remix Icon -->
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <script
+        src="https://kit.fontawesome.com/f6a9b3f1e7.js"
+        crossorigin="anonymous"
+    ></script>
+
+    <!-- =====================================================
+         REMIX ICON
+    ====================================================== -->
+
     <link
         href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
         rel="stylesheet"
     >
-
 </head>
 
 
 <body>
-
 
     <!-- =====================================================
          SIDEBAR
@@ -48,35 +53,37 @@
 
     <aside>
 
+        <!-- BRAND -->
         <div class="sidebar-brand">
 
-            <button
-                type="button"
+            <a
                 class="brand"
-                aria-label="Levaki, ir para dashboard"
                 href="index.html"
+                aria-label="Levaki, ir para dashboard"
             >
 
-                <svg
-                    class="brand-mark"
-                    width="25"
-                    height="25"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.7"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                >
-                    <path d="m12 2 2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2L12 2Z"></path>
-                </svg>
+                <span>
+                    <svg
+                        class="brand-mark"
+                        width="25"
+                        height="25"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="m12 2 2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2L12 2Z"></path>
+                    </svg>
+                </span>
 
                 <span>
                     levaki<span class="brand-period">.</span>
                 </span>
 
-            </button>
+            </a>
 
 
             <button
@@ -84,9 +91,7 @@
                 class="sidebar-close"
                 aria-label="Fechar menu"
             >
-
                 <i class="fa-solid fa-xmark"></i>
-
             </button>
 
 
@@ -103,108 +108,95 @@
 
         <nav class="sidebar-nav">
 
+            <!-- VISÃO GERAL -->
             <div class="nav-group">
 
                 <label>Visão geral</label>
 
-                <a class="nav-item" href="index.html">
-             <i class="ri-dashboard-line icone"></i>
-              <span>Dashboard</span>
-         
+                <a
+                    class="nav-item"
+                    href="index.html"
+                >
+                    <i class="ri-dashboard-line icone"></i>
+                    <span>Dashboard</span>
                 </a>
 
-                <a class="nav-item" href="pedidos.html">
-                    <i class="ri-group-line icone"></i>
+
+                <a
+                    class="nav-item"
+                    href="pedidos.html"
+                >
+                    <i class="ri-shopping-bag-line icone"></i>
                     <span>Pedidos</span>
-                    
                 </a>
 
             </div>
 
 
+            <!-- GESTÃO -->
             <div class="nav-group">
 
                 <label>Gestão</label>
 
                 <a
-                    
                     class="nav-item"
                     href="produtos.html"
                 >
-
                     <i class="ri-box-3-line icone"></i>
-
                     <span>Produtos</span>
-
                 </a>
 
 
                 <a
-                    
                     class="nav-item"
                     href="categorias.html"
                 >
-
                     <i class="ri-stack-line icone"></i>
-
                     <span>Categorias</span>
-
                 </a>
 
 
                 <a
-                    
                     class="nav-item"
                     href="restaurantes.html"
                 >
-
                     <i class="fa-regular fa-house icone"></i>
-
                     <span>Restaurantes</span>
-
                 </a>
 
 
                 <a
-                    
                     class="nav-item"
                     href="clientes.html"
                 >
-
                     <i class="ri-group-line icone"></i>
-
                     <span>Clientes</span>
-
                 </a>
 
             </div>
 
 
+            <!-- SISTEMA -->
             <div class="nav-group">
 
                 <label>Sistema</label>
 
                 <a
                     class="nav-item"
-                      href="relatorios.html"
+                    href="relatorios.html"
                 >
-
                     <i class="fa-solid fa-chart-line icone"></i>
-
                     <span>Relatórios</span>
-
                 </a>
 
 
                 <a
-                    class="nav-item"
-                      href="config.html"
+                    class="nav-item active"
+                    href="config.html"
+                    aria-current="page"
                 >
-
                     <i class="ri-settings-5-line icone"></i>
-
                     <span>Configurações</span>
-
                 </a>
 
             </div>
@@ -222,17 +214,14 @@
 
                 <img
                     src=""
-                    alt="Foto de perfil de Luzolo Mampassi"
+                    alt="Foto de perfil do administrador"
                     class="photo-profile"
                     id="sidebar-profile"
                 >
 
                 <div>
-
                     <h4>Luzolo Mampassi</h4>
-
                     <p>Administrador</p>
-
                 </div>
 
             </div>
@@ -243,14 +232,17 @@
                 class="logout-button"
                 aria-label="Terminar sessão"
             >
-
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
-
             </button>
 
         </article>
 
     </aside>
+
+
+    <!-- =====================================================
+         TOPBAR
+    ====================================================== -->
 
     <header class="topbar">
 
@@ -262,52 +254,56 @@
                 class="btn-menu"
                 aria-label="Abrir menu"
             >
-
                 <i class="fa-solid fa-bars"></i>
-
             </button>
 
 
             <h2>Levaki.</h2>
 
-            <h3>Administração / Dashboard</h3>
+            <h3>Administração / Configurações</h3>
 
         </div>
 
 
         <div class="topbar-right">
 
+            <!-- PESQUISA -->
             <div class="painel-search">
 
                 <input
                     type="search"
-                    name="search"
-                    id="search"
+                    name="topbar-search"
+                    id="topbar-search"
+                    class="topbar-search"
                     placeholder="Pesquisar no painel..."
+                    autocomplete="off"
                 >
 
-                <i class="fa-solid fa-magnifying-glass lupa"></i>
+                <i
+                    class="fa-solid fa-magnifying-glass lupa"
+                    aria-hidden="true"
+                ></i>
 
             </div>
 
 
+            <!-- NOTIFICAÇÕES -->
             <button
                 type="button"
                 class="btn-notifications"
                 id="btn-notifications"
                 aria-label="Notificações"
             >
-
                 <i class="fa-regular fa-bell fa-xl"></i>
-
             </button>
 
 
+            <!-- PERFIL -->
             <div class="profile-header">
 
                 <img
                     src=""
-                    alt="Foto de perfil de Luzolo Mampassi"
+                    alt="Foto de perfil do administrador"
                     class="photo-profile"
                     id="topbar-profile"
                 >
@@ -325,10 +321,631 @@
     </header>
 
 
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
+
+    <main>
+
+        <!-- =================================================
+             INTRODUÇÃO
+        ================================================== -->
+
+        <article class="page-intro">
+
+            <div>
+
+                <p class="eyebrow">
+                    LEVAKI ADMIN / CONFIGURAÇÕES
+                </p>
 
 
-   
+                <h1>
+                    Configurações.
+                </h1>
 
+
+                <div class="intro-div">
+
+                    <p>
+                        Ajuste sua conta e as preferências da plataforma.
+                    </p>
+
+
+                    <button
+                        type="button"
+                        class="btn-intro"
+                        id="btn-add-restaurant"
+                    >
+                        + Adicionar restaurante
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             LAYOUT DAS CONFIGURAÇÕES
+        ================================================== -->
+
+        <section class="settings-layout">
+
+            <!-- MENU LATERAL DAS CONFIGURAÇÕES -->
+            <article class="settings-menu panel">
+
+                <span class="small-overline">
+                    PREFERÊNCIAS
+                </span>
+
+
+                <a href="#conta">
+
+                    <svg
+                        width="17"
+                        height="17"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <circle cx="9" cy="8" r="3"></circle>
+                        <path d="M3 20v-2a6 6 0 0 1 12 0v2H3ZM16 5a3 3 0 0 1 0 6M17 14a5 5 0 0 1 4 5v1h-3"></path>
+                    </svg>
+
+                    Conta
+
+                </a>
+
+
+                <a href="#plataforma">
+
+                    <svg
+                        width="17"
+                        height="17"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="M3 10h18l-2-6H5l-2 6ZM4 10v10h16V10M9 20v-7h6v7"></path>
+                        <path d="M3 10c0 2 3 3 4.5 1 1.5 2 4 2 4.5 0 1.5 2 4 2 4.5 0 1.5 2 4.5 1 4.5-1"></path>
+                    </svg>
+
+                    Plataforma
+
+                </a>
+
+
+                <a href="#preferencias">
+
+                    <svg
+                        width="17"
+                        height="17"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"></path>
+                    </svg>
+
+                    Preferências
+
+                </a>
+
+
+                <a href="#seguranca">
+
+                    <svg
+                        width="17"
+                        height="17"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="m12 2 8 4v6c0 5-3 8-8 10-5-2-8-5-8-10V6l8-4Z"></path>
+                        <path d="m9 12 2 2 4-4"></path>
+                    </svg>
+
+                    Segurança
+
+                </a>
+
+            </article>
+
+
+        
+
+            <article class="settings-content">
+
+                <form class="settings-form">
+
+                    <!-- =================================================
+                         CONTA
+                    ================================================== -->
+
+                    <section
+                        class="panel settings-card"
+                        id="conta"
+                    >
+
+                        <div class="section-head">
+
+                            <div>
+
+                                <h2>
+                                    Sua conta
+                                </h2>
+
+                                <p>
+                                    Informações do seu perfil administrativo.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FOTO -->
+                        <div class="account-avatar-row">
+
+                            <span class="avatar big-avatar">
+                                LM
+                            </span>
+
+
+                            <div >
+
+                                <strong>
+                                    Foto de perfil
+                                </strong>
+
+                                <small>
+                                    Sua imagem será exibida no painel administrativo.
+                                </small>
+
+
+                                <button
+                                    type="button"
+                                    class="btn btn-outline"
+                                    id="btn-change-photo"
+                                >
+                                    Alterar foto
+
+                                    <svg
+                                        width="14"
+                                        height="14"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.7"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M4 12h16m-7-7 7 7-7 7"></path>
+                                    </svg>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- DADOS DA CONTA -->
+                        <div class="form-grid form-grid-fist">
+
+                            <label class="field">
+
+                                <span class="field-label">
+                                    Nome completo
+                                </span>
+
+                                <input
+                                    type="text"
+                                    name="nome"
+                                    value="Luzolo Mampassi"
+                                    autocomplete="name"
+                                >
+
+                            </label>
+
+
+                            <label class="field">
+
+                                <span class="field-label">
+                                    Email
+                                </span>
+
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="seu@email.com"
+                                    autocomplete="email"
+                                >
+
+                            </label>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =================================================
+                         PLATAFORMA
+                    ================================================== -->
+
+                    <section
+                        class="panel settings-card"
+                        id="plataforma"
+                    >
+
+                        <div class="section-head">
+
+                            <div>
+
+                                <h2>
+                                    Plataforma
+                                </h2>
+
+                                <p>
+                                    Dados gerais exibidos nos canais de contato.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <label class="field">
+
+                                <span class="field-label">
+                                    Nome da plataforma
+                                </span>
+
+                                <input
+                                    type="text"
+                                    name="plataforma"
+                                    value="Levaki"
+                                >
+
+                            </label>
+
+
+                            <label class="field">
+
+                                <span class="field-label">
+                                    Telefone
+                                </span>
+
+                                <input
+                                    type="tel"
+                                    name="telefone"
+                                    placeholder="Número de telefone"
+                                    autocomplete="tel"
+                                >
+
+                            </label>
+
+
+                            <label class="field">
+
+                                <span class="field-label">
+                                    Email de contato
+                                </span>
+
+                                <input
+                                    type="email"
+                                    name="email-contato"
+                                    placeholder="contato@levaki.com"
+                                    autocomplete="email"
+                                >
+
+                            </label>
+
+
+                            <label class="field">
+
+                                <span class="field-label">
+                                    Endereço
+                                </span>
+
+                                <input
+                                    type="text"
+                                    name="endereco"
+                                    placeholder="Endereço da plataforma"
+                                    autocomplete="street-address"
+                                >
+
+                            </label>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =================================================
+                         PREFERÊNCIAS
+                    ================================================== -->
+
+                    <section
+                        class="panel settings-card"
+                        id="preferencias"
+                    >
+
+                        <div class="section-head">
+
+                            <div>
+
+                                <h2>
+                                    Preferências
+                                </h2>
+
+                                <p>
+                                    Escolha como deseja acompanhar a operação.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- NOTIFICAÇÕES -->
+                        <div class="toggle-row">
+
+                            <div>
+
+                                <strong>
+                                    Notificações de pedidos
+                                </strong>
+
+                                <small>
+                                    Receba alertas sobre novos pedidos e atualizações.
+                                </small>
+
+                            </div>
+
+
+                            <label>
+
+                                <div class="toggle">
+                                     
+                                     <input
+                                    type="checkbox"
+                                    name="notificacoes-pedido"
+                                    role="switch"
+                                    class="check"
+                                    checked
+                                    
+                                    >
+                                    <span class="slider"></span>
+                                </div>
+
+                            </label>
+                            
+
+                        </div>
+
+
+                        <!-- RESUMO DIÁRIO -->
+                        <div class="toggle-row">
+
+                            <div>
+
+                                <strong>
+                                    Resumo diário
+                                </strong>
+
+                                <small>
+                                    Receba um resumo dos resultados da plataforma.
+                                </small>
+
+                            </div>
+
+
+                            <label>
+                                <div class="toggle">
+                                     
+                                     <input
+                                    type="checkbox"
+                                    name="resumo-diario"
+                                    role="switch"
+                                    class="check"
+                                    
+                                >
+                                <span class="slider"></span>
+                                </div>
+                               
+                            </label>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =================================================
+                         SEGURANÇA
+                    ================================================== -->
+
+                    <section
+                        class="panel settings-card"
+                        id="seguranca"
+                    >
+
+                        <div class="section-head">
+
+                            <div>
+
+                                <h2>
+                                    Segurança
+                                </h2>
+
+                                <p>
+                                    Proteja seu acesso ao painel.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ALTERAR SENHA -->
+                        <div class="security-row">
+
+                            <div>
+
+                                <strong>
+                                    Senha de acesso
+                                </strong>
+
+                                <small>
+                                    Altere sua senha periodicamente para manter sua conta segura.
+                                </small>
+
+                            </div>
+
+
+                            <button
+                                class="btn btn-outline"
+                                type="button"
+                                id="btn-change-password"
+                            >
+                                Alterar senha
+                            </button>
+
+                        </div>
+
+
+                        <!-- SESSÃO -->
+                        <div class="security-row">
+
+                            <div>
+
+                                <strong>
+                                    Sessão atual
+                                </strong>
+
+                                <small>
+                                    Este dispositivo · Sessão ativa
+                                </small>
+
+                            </div>
+
+
+                            <span class="badge completed">
+
+                                <span class="badge-dot"></span>
+
+                                Ativo
+
+                            </span>
+
+                        </div>
+
+
+                        <!-- SAIR -->
+                        <div class="security-row">
+
+                            <div>
+
+                                <strong>
+                                    Sair da conta
+                                </strong>
+
+                                <small>
+                                    Encerre sua sessão neste dispositivo.
+                                </small>
+
+                            </div>
+
+
+                            <button
+                                class="btn btn-danger"
+                                type="button"
+                                id="btn-logout"
+                            >
+
+                                <svg
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                >
+                                    <path d="M9 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4M14 8l4 4-4 4M8 12h10"></path>
+                                </svg>
+
+                                Sair
+
+                            </button>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =================================================
+                         SALVAR
+                    ================================================== -->
+
+                    <div class="settings-save">
+
+                        <button
+                            class="btn btn-primary"
+                            type="submit"
+                            id="btn-save-settings"
+                        >
+
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="m4 12 5 5L20 6"></path>
+                            </svg>
+
+                            Salvar alterações
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </article>
+
+        </section>
+
+    </main>
 
 
     <!-- =====================================================

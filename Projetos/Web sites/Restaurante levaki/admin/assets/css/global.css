@@ -86,12 +86,11 @@ html {
 }
 
 body {
+    display: grid;
+    grid-template-columns:  1fr;
     min-height: 100vh;
-
     background-color: var(--color-background);
-
     color: var(--color-text);
-
     font-family: var(--font-manrope);
 }
 
@@ -294,7 +293,6 @@ select:focus,
    ============================================================ */
 
 aside {
-    position: fixed;
 
     top: 0;
     left: 0;
@@ -304,7 +302,7 @@ aside {
     display: none;
     flex-direction: column;
 
-    width: clamp(240px, 20vw, 320px);
+    width: clamp(200px, 18vw, 320px);
     min-height: 100vh;
 
     padding: 30px;
@@ -583,9 +581,12 @@ aside {
    CONTEÚDO PRINCIPAL
    ============================================================ */
 
-main {
-    padding: 92px 2% 40px;
+main{
+    grid-column:2/3 ;
 }
+/* main {
+    padding: 92px 2% 40px;
+} */
 
 /* ============================================================
    INTRO
@@ -828,12 +829,14 @@ td {
     background-color: #FBF3E6;
     color: #AA7A37;
 }
+.inactive,
 .unavailable{
     background-color: #F5EFED;
     color: #9B736E;
 
 }
 
+.active,
 .confirmed {
     background-color: #EDF2E8;
     color: #667F59;
@@ -1099,15 +1102,20 @@ td {
 
 
 @media (min-width: 1024px) {
+    body {
+        display: grid;
+        grid-template-columns:240px  1fr;
+        gap: 20px;
+    }
 
     aside {
         display: flex;
     }
 
-    main {
+    /* main {
         padding-left: 22%;
         padding-right: 2%;
-    }
+    } */
 
     .btn-menu {
         display: none;
@@ -1147,10 +1155,10 @@ td {
 
 @media (max-width: 600px) {
 
-    main {
+    /* main {
         padding-left: 12px;
         padding-right: 12px;
-    }
+    } */
 
     .dashboard-orders-head {
         align-items: flex-start;
