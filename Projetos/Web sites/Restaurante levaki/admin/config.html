@@ -51,6 +51,94 @@
          SIDEBAR
     ====================================================== -->
 
+    
+
+
+    <!-- =====================================================
+         TOPBAR
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <div class="topbar-left">
+
+            <button
+                type="button"
+                id="btn-menu"
+                class="btn-menu"
+                aria-label="Abrir menu"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+
+            <h2>Levaki.</h2>
+
+            <h3>Administração / Configurações</h3>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <!-- PESQUISA -->
+            <div class="painel-search">
+
+                <input
+                    type="search"
+                    name="topbar-search"
+                    id="topbar-search"
+                    class="topbar-search"
+                    placeholder="Pesquisar no painel..."
+                    autocomplete="off"
+                >
+
+                <i
+                    class="fa-solid fa-magnifying-glass lupa"
+                    aria-hidden="true"
+                ></i>
+
+            </div>
+
+
+            <!-- NOTIFICAÇÕES -->
+            <button
+                type="button"
+                class="btn-notifications"
+                id="btn-notifications"
+                aria-label="Notificações"
+            >
+                <i class="fa-regular fa-bell fa-xl"></i>
+            </button>
+
+
+            <!-- PERFIL -->
+            <div class="profile-header">
+
+                <img
+                    src=""
+                    alt="Foto de perfil do administrador"
+                    class="photo-profile"
+                    id="topbar-profile"
+                >
+
+                <h3 class="name">
+                    Luzolo Mampassi
+                </h3>
+
+                <i class="fa-solid fa-angle-down"></i>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
+<div class="app-shell">
     <aside>
 
         <!-- BRAND -->
@@ -238,94 +326,8 @@
         </article>
 
     </aside>
-
-
-    <!-- =====================================================
-         TOPBAR
-    ====================================================== -->
-
-    <header class="topbar">
-
-        <div class="topbar-left">
-
-            <button
-                type="button"
-                id="btn-menu"
-                class="btn-menu"
-                aria-label="Abrir menu"
-            >
-                <i class="fa-solid fa-bars"></i>
-            </button>
-
-
-            <h2>Levaki.</h2>
-
-            <h3>Administração / Configurações</h3>
-
-        </div>
-
-
-        <div class="topbar-right">
-
-            <!-- PESQUISA -->
-            <div class="painel-search">
-
-                <input
-                    type="search"
-                    name="topbar-search"
-                    id="topbar-search"
-                    class="topbar-search"
-                    placeholder="Pesquisar no painel..."
-                    autocomplete="off"
-                >
-
-                <i
-                    class="fa-solid fa-magnifying-glass lupa"
-                    aria-hidden="true"
-                ></i>
-
-            </div>
-
-
-            <!-- NOTIFICAÇÕES -->
-            <button
-                type="button"
-                class="btn-notifications"
-                id="btn-notifications"
-                aria-label="Notificações"
-            >
-                <i class="fa-regular fa-bell fa-xl"></i>
-            </button>
-
-
-            <!-- PERFIL -->
-            <div class="profile-header">
-
-                <img
-                    src=""
-                    alt="Foto de perfil do administrador"
-                    class="photo-profile"
-                    id="topbar-profile"
-                >
-
-                <h3 class="name">
-                    Luzolo Mampassi
-                </h3>
-
-                <i class="fa-solid fa-angle-down"></i>
-
-            </div>
-
-        </div>
-
-    </header>
-
-
-    <!-- =====================================================
-         CONTEÚDO PRINCIPAL
-    ====================================================== -->
-
     <main>
+    
 
         <!-- =================================================
              INTRODUÇÃO
@@ -352,13 +354,7 @@
                     </p>
 
 
-                    <button
-                        type="button"
-                        class="btn-intro"
-                        id="btn-add-restaurant"
-                    >
-                        + Adicionar restaurante
-                    </button>
+                    
 
                 </div>
 
@@ -945,7 +941,15 @@
 
         </section>
 
+        <div class="msg-save-completed">
+            <span class="toast-check"><svg class="" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5 5L20 6"></path></svg></span>
+            <p>Configurações salvas com sucesso.</p>
+            <button aria-label="Fechar aviso"><svg class="" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5 19 19M19 5 5 19"></path></svg></button>
+        </div>
+
     </main>
+</div>
+    
 
 
     <!-- =====================================================

@@ -40,10 +40,83 @@
 <body>
 
 
-    <!-- =====================================================
-         SIDEBAR
-    ====================================================== -->
+   
 
+
+
+    <header class="topbar">
+
+        <div class="topbar-left">
+
+            <button
+                type="button"
+                id="btn-menu"
+                class="btn-menu"
+                aria-label="Abrir menu"
+            >
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+            <h2>Levaki.</h2>
+
+            <h3>Administração / Dashboard</h3>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <div class="painel-search">
+
+                <input
+                    type="search"
+                    name="search"
+                    id="search"
+                    placeholder="Pesquisar no painel..."
+                >
+
+                <i class="fa-solid fa-magnifying-glass lupa"></i>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="btn-notifications"
+                id="btn-notifications"
+                aria-label="Notificações"
+            >
+
+                <i class="fa-regular fa-bell fa-xl"></i>
+
+            </button>
+
+
+            <div class="profile-header">
+
+                <img
+                    src=""
+                    alt="Foto de perfil de Luzolo Mampassi"
+                    class="photo-profile"
+                    id="topbar-profile"
+                >
+
+                <h3 class="name">
+                    Luzolo Mampassi
+                </h3>
+
+                <i class="fa-solid fa-angle-down"></i>
+
+            </div>
+
+        </div>
+
+    </header>
+
+<div class="app-shell">
     <aside>
 
         <div class="sidebar-brand">
@@ -251,90 +324,11 @@
     </aside>
 
 
-
-    <!-- =====================================================
-         TOPBAR
-    ====================================================== -->
-
-    <header class="topbar">
-
-        <div class="topbar-left">
-
-            <button
-                type="button"
-                id="btn-menu"
-                class="btn-menu"
-                aria-label="Abrir menu"
-            >
-
-                <i class="fa-solid fa-bars"></i>
-
-            </button>
-
-
-            <h2>Levaki.</h2>
-
-            <h3>Administração / Dashboard</h3>
-
-        </div>
-
-
-        <div class="topbar-right">
-
-            <div class="painel-search">
-
-                <input
-                    type="search"
-                    name="search"
-                    id="search"
-                    placeholder="Pesquisar no painel..."
-                >
-
-                <i class="fa-solid fa-magnifying-glass lupa"></i>
-
-            </div>
-
-
-            <button
-                type="button"
-                class="btn-notifications"
-                id="btn-notifications"
-                aria-label="Notificações"
-            >
-
-                <i class="fa-regular fa-bell fa-xl"></i>
-
-            </button>
-
-
-            <div class="profile-header">
-
-                <img
-                    src=""
-                    alt="Foto de perfil de Luzolo Mampassi"
-                    class="photo-profile"
-                    id="topbar-profile"
-                >
-
-                <h3 class="name">
-                    Luzolo Mampassi
-                </h3>
-
-                <i class="fa-solid fa-angle-down"></i>
-
-            </div>
-
-        </div>
-
-    </header>
-
-
-
-    <!-- =====================================================
+      <!-- =====================================================
          CONTEÚDO PRINCIPAL
     ====================================================== -->
-
     <main>
+    
 
 
         <!-- =================================================
@@ -372,44 +366,38 @@
             <article class="hero-content">
 
                 <div class="hero-kicker">
-
                     <span class="live-dot"></span>
-
                     SUA OPERAÇÃO EM TEMPO REAL
-
                 </div>
-
 
                 <h2>
                     Bom dia,
                     <span class="name-user">Luzolo</span>.
                 </h2>
 
-
                 <p>
                     Uma experiência excepcional começa nos detalhes.
                     Veja como a sua operação está hoje.
                 </p>
 
-
-                <button
-                    type="button"
-                    id="btn-orders"
-                >
-
+                <button type="button" id="btn-orders">
                     Acompanhar pedidos
-
                 </button>
 
             </article>
 
+            <div class="hero-photo" role="img" aria-label="Prato gastronômico servido em restaurante">
+                <img
+                    src="https://images.unsplash.com/photo-1663530761401-15eefb544889?w=1100&q=85"
+                    alt=""
+                >
 
-            <article class="hero-photo"></article>
+                <div class="hero-photo-shade"></div>
+            </div>
 
-
-            <article class="hero-corner">
-                Levaki / 2026
-            </article>
+            <span class="hero-corner">
+                LEVAKI / 2026
+            </span>
 
         </section>
 
@@ -1242,7 +1230,7 @@
 
     </main>
 
-
+</div>
 
     <!-- =====================================================
          JAVASCRIPT

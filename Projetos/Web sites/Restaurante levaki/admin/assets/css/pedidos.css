@@ -267,32 +267,8 @@ select:focus,
     font-size: .8rem;
 }
 
-/* ============================================================
-   SIDEBAR
-   ============================================================ */
 
-aside {
-    position: fixed;
 
-    top: 0;
-    left: 0;
-
-    z-index: 200;
-
-    display: none;
-    flex-direction: column;
-
-    width: clamp(240px, 20vw, 320px);
-    min-height: 100vh;
-
-    padding: 30px;
-
-    overflow-y: auto;
-
-    background-color: var(--color-primary);
-
-    font-family: var(--font-manrope);
-}
 
 /* ============================================================
    MARCA
@@ -1070,17 +1046,7 @@ td {
 
 
 @media (min-width: 1024px) {
-     body {
-        display: grid;
-        grid-template-columns:240px  1fr;
-        gap: 20px;
-    }
-
-    aside {
-        display: flex;
-    }
-
-   
+        
 
     .btn-menu {
         display: none;

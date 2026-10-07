@@ -34,8 +34,49 @@
     --color-overlay: rgba(12, 41, 34, 0.6);
 }
 
+body p{
+    color: var(--color-text-light);
+    font-family: var(--font-manrope);
+}
+.page-intro h1{
+    font-family: var(--font-bodoni);
+    font-size: clamp(3em,3vw,5rem);
+}
 h2{
     font-family: var(--font-bodoni);
+}
+
+.account-avatar-row{
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.account-avatar-row div{
+    display: flex;
+    flex-direction: column;
+}
+.account-avatar-row div small{
+   color: var(--color-text-light);
+}
+#btn-change-photo{
+    color: var(--color-accent);
+    background-color: transparent;
+    border: 0;
+    display: flex;
+    font-weight: bold;
+    gap: 5px;
+    align-items: center;
+}
+.big-avatar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    height: 60px;
+    width: 60px;
+    font-weight: bold;
 }
 /* ==============================
    LAYOUT
@@ -334,6 +375,94 @@ main {
 
 #btn-save-settings:hover {
     background-color: var(--color-primary-hover);
+}
+
+
+.msg-save-completed {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    margin-left: 50%;
+    margin-top: 10px;
+    width: 50%;
+    padding: 10px 12px;
+
+    background-color: #12382B;
+    color: var(--color-text-white);
+
+    border: 1px solid #174736;
+    border-radius: 6px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.msg-save-completed:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.18);
+}
+
+.msg-save-completed:active {
+    transform: translateY(1px);
+}
+
+.msg-save-completed .toast-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+
+    flex-shrink: 0;
+
+    background-color: #315C44;
+    color: var(--color-text-white);
+
+    border-radius: 50%;
+}
+
+.msg-save-completed .toast-check svg {
+    width: 15px;
+    height: 15px;
+}
+
+.msg-save-completed p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.msg-save-completed button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 4px;
+    padding: 3px;
+
+    background-color: transparent;
+    color: var(--color-text-white);
+
+    border: 0;
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.msg-save-completed button:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.msg-save-completed button:active {
+    transform: translateY(2px);
+}
+
+.msg-save-completed button svg {
+    width: 15px;
+    height: 15px;
 }
 
 
