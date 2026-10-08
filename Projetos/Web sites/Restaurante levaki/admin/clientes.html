@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-AO">
 
@@ -12,25 +13,36 @@
 
     <title>Painel Administrativo | Levaki</title>
 
-    <!-- CSS -->
-    <link
-        rel="stylesheet"
-        href="assets/css/pedidos.css"
-    >
+
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
+
     <link
         rel="stylesheet"
         href="assets/css/global.css"
     >
 
-    <!-- Font Awesome -->
-    <span>
-        <script
-            src="https://kit.fontawesome.com/f6a9b3f1e7.js"
-            crossorigin="anonymous">
-        </script>
-    </span>
+    <link
+        rel="stylesheet"
+        href="assets/css/clientes.css"
+    >
 
-    <!-- Remix Icon -->
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <script
+        src="https://kit.fontawesome.com/f6a9b3f1e7.js"
+        crossorigin="anonymous">
+    </script>
+
+
+    <!-- =====================================================
+         REMIX ICON
+    ====================================================== -->
+
     <link
         href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
         rel="stylesheet"
@@ -46,211 +58,10 @@
          SIDEBAR
     ====================================================== -->
 
-    <aside>
 
-        <div class="sidebar-brand">
-
-            <button
-                type="button"
-                class="brand"
-                aria-label="Levaki, ir para dashboard"
-                href="index.html"
-            >
-
-                <svg
-                    class="brand-mark"
-                    width="25"
-                    height="25"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.7"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                >
-                    <path d="m12 2 2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2L12 2Z"></path>
-                </svg>
-
-                <span>
-                    levaki<span class="brand-period">.</span>
-                </span>
-
-            </button>
-
-
-            <button
-                type="button"
-                class="sidebar-close"
-                aria-label="Fechar menu"
-            >
-
-                <i class="fa-solid fa-xmark"></i>
-
-            </button>
-
-
-            <div class="brand-caption">
-                ADMINISTRAÇÃO <span>·</span> PAINEL
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             NAVEGAÇÃO
-        ================================================== -->
-
-        <nav class="sidebar-nav">
-
-            <div class="nav-group">
-
-                <label>Visão geral</label>
-
-                <a class="nav-item" href="index.html">
-             <i class="ri-dashboard-line icone"></i>
-              <span>Dashboard</span>
-         
-                </a>
-
-                <a class="nav-item" href="pedidos.html">
-                    <i class="ri-group-line icone"></i>
-                    <span>Pedidos</span>
-                    
-                </a>
-
-            </div>
-
-
-            <div class="nav-group">
-
-                <label>Gestão</label>
-
-                <a
-                    
-                    class="nav-item"
-                    href="produtos.html"
-                >
-
-                    <i class="ri-box-3-line icone"></i>
-
-                    <span>Produtos</span>
-
-                </a>
-
-
-                <a
-                    
-                    class="nav-item"
-                    href="categorias.html"
-                >
-
-                    <i class="ri-stack-line icone"></i>
-
-                    <span>Categorias</span>
-
-                </a>
-
-
-                <a
-                    
-                    class="nav-item"
-                    href="restaurantes.html"
-                >
-
-                    <i class="fa-regular fa-house icone"></i>
-
-                    <span>Restaurantes</span>
-
-                </a>
-
-
-                <a
-                    
-                    class="nav-item"
-                    href="clientes.html"
-                >
-
-                    <i class="ri-group-line icone"></i>
-
-                    <span>Clientes</span>
-
-                </a>
-
-            </div>
-
-
-            <div class="nav-group">
-
-                <label>Sistema</label>
-
-                <a
-                    class="nav-item"
-                      href="relatorios.html"
-                >
-
-                    <i class="fa-solid fa-chart-line icone"></i>
-
-                    <span>Relatórios</span>
-
-                </a>
-
-
-                <a
-                    class="nav-item"
-                      href="config.html"
-                >
-
-                    <i class="ri-settings-5-line icone"></i>
-
-                    <span>Configurações</span>
-
-                </a>
-
-            </div>
-
-        </nav>
-
-
-        <!-- =================================================
-             PERFIL
-        ================================================== -->
-
-        <article class="sidebar-bottom">
-
-            <div>
-
-                <img
-                    src=""
-                    alt="Foto de perfil de Luzolo Mampassi"
-                    class="photo-profile"
-                    id="sidebar-profile"
-                >
-
-                <div>
-
-                    <h4>Luzolo Mampassi</h4>
-
-                    <p>Administrador</p>
-
-                </div>
-
-            </div>
-
-
-            <button
-                type="button"
-                class="logout-button"
-                aria-label="Terminar sessão"
-            >
-
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-
-            </button>
-
-        </article>
-
-    </aside>
+    <!-- =====================================================
+         TOPBAR
+    ====================================================== -->
 
     <header class="topbar">
 
@@ -262,15 +73,13 @@
                 class="btn-menu"
                 aria-label="Abrir menu"
             >
-
                 <i class="fa-solid fa-bars"></i>
-
             </button>
 
 
             <h2>Levaki.</h2>
 
-            <h3>Administração / Dashboard</h3>
+            <h3>Administração / Produtos</h3>
 
         </div>
 
@@ -281,12 +90,17 @@
 
                 <input
                     type="search"
-                    name="search"
-                    id="search"
+                    name="topbar-search"
+                    id="topbar-search"
+                    class="topbar-search"
                     placeholder="Pesquisar no painel..."
+                    autocomplete="off"
                 >
 
-                <i class="fa-solid fa-magnifying-glass lupa"></i>
+                <i
+                    class="fa-solid fa-magnifying-glass lupa"
+                    aria-hidden="true"
+                ></i>
 
             </div>
 
@@ -297,9 +111,7 @@
                 id="btn-notifications"
                 aria-label="Notificações"
             >
-
                 <i class="fa-regular fa-bell fa-xl"></i>
-
             </button>
 
 
@@ -325,10 +137,1216 @@
     </header>
 
 
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
+
+    <div class="app-shell">
+
+        <aside>
+
+            <div class="sidebar-brand">
+
+                <a
+                    class="brand"
+                    href="index.html"
+                    aria-label="Levaki, ir para dashboard"
+                >
+
+                    <span>
+                        <svg
+                            class="brand-mark"
+                            width="25"
+                            height="25"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                        >
+                            <path d="m12 2 2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2L12 2Z"></path>
+                        </svg>
+                    </span>
+
+                    <span>
+                        levaki<span class="brand-period">.</span>
+                    </span>
+
+                </a>
 
 
-   
+                <button
+                    type="button"
+                    class="sidebar-close"
+                    aria-label="Fechar menu"
+                >
 
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+
+                <div class="brand-caption">
+                    ADMINISTRAÇÃO <span>·</span> PAINEL
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 NAVEGAÇÃO
+            ================================================== -->
+
+            <nav class="sidebar-nav">
+
+                <div class="nav-group">
+
+                    <label>Visão geral</label>
+
+                    <a
+                        class="nav-item"
+                        href="index.html"
+                    >
+                        <i class="ri-dashboard-line icone"></i>
+                        <span>Dashboard</span>
+                    </a>
+
+
+                    <a
+                        class="nav-item"
+                        href="pedidos.html"
+                    >
+                        <i class="ri-group-line icone"></i>
+                        <span>Pedidos</span>
+                    </a>
+
+                </div>
+
+
+                <div class="nav-group">
+
+                    <label>Gestão</label>
+
+                    <a
+                        class="nav-item"
+                        href="produtos.html"
+                        aria-current="page"
+                    >
+                        <i class="ri-box-3-line icone"></i>
+                        <span>Produtos</span>
+                    </a>
+
+
+                    <a
+                        class="nav-item"
+                        href="categorias.html"
+                    >
+                        <i class="ri-stack-line icone"></i>
+                        <span>Categorias</span>
+                    </a>
+
+
+                    <a
+                        class="nav-item"
+                        href="restaurantes.html"
+                    >
+                        <i class="fa-regular fa-house icone"></i>
+                        <span>Restaurantes</span>
+                    </a>
+
+
+                    <a
+                        class="nav-item"
+                        href="clientes.html"
+                    >
+                        <i class="ri-group-line icone"></i>
+                        <span>Clientes</span>
+                    </a>
+
+                </div>
+
+
+                <div class="nav-group">
+
+                    <label>Sistema</label>
+
+                    <a
+                        class="nav-item"
+                        href="relatorios.html"
+                    >
+                        <i class="fa-solid fa-chart-line icone"></i>
+                        <span>Relatórios</span>
+                    </a>
+
+
+                    <a
+                        class="nav-item"
+                        href="config.html"
+                    >
+                        <i class="ri-settings-5-line icone"></i>
+                        <span>Configurações</span>
+                    </a>
+
+                </div>
+
+            </nav>
+
+
+            <!-- =================================================
+                 PERFIL
+            ================================================== -->
+
+            <article class="sidebar-bottom">
+
+                <div>
+
+                    <img
+                        src=""
+                        alt="Foto de perfil de Luzolo Mampassi"
+                        class="photo-profile"
+                        id="sidebar-profile"
+                    >
+
+                    <div>
+
+                        <h4>Luzolo Mampassi</h4>
+                        <p>Administrador</p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="logout-button"
+                    aria-label="Terminar sessão"
+                >
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </button>
+
+            </article>
+
+        </aside>
+
+
+        <main>
+
+
+            <!-- =================================================
+                 INTRODUÇÃO
+            ================================================== -->
+
+            <article class="page-intro">
+
+                <div>
+
+                    <p class="eyebrow">
+                        LEVAKI ADMIN/CLIENTES
+                    </p>
+
+                    <h1>
+                        Clientes.
+                    </h1>
+
+
+                    <div class="intro-div">
+
+                        <p>
+                            Conheça quem faz parte da nossa comunidade.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <section class="dashboard-orders">
+
+
+                <article class="dashboard-orders-head">
+
+                    <div>
+
+                        <h2>
+                            Base de clientes
+                        </h2>
+
+                        <p>
+                            6 clientes encontrados
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     FILTROS
+                ================================================== -->
+
+                <article class="filters-client">
+
+                    <div class="filter-search">
+
+                        <i
+                            class="fa-solid fa-magnifying-glass lupa"
+                            aria-hidden="true"
+                        ></i>
+
+                        <input
+                            type="search"
+                            name="client-search"
+                            id="client-search"
+                            class="client-search"
+                            placeholder="Buscar por produto, categoria ou restaurante..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <select
+                        name="status"
+                        id="status"
+                        class="select-client"
+                    >
+                        <option value="">Todos os status</option>
+                        <option value="ativo">Ativo</option>
+                        <option value="inativo">Inativo</option>
+                    </select>
+
+                </article>
+
+
+                <!-- =================================================
+                     TABELA
+                ================================================== -->
+
+                <article class="table-container">
+
+                    <table class="orders-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Cliente</th>
+                                <th>Telefone</th>
+                                <th>Pedidos</th>
+                                <th>Total gasto</th>
+                                <th>Cadastro</th>
+                                <th>Estado</th>
+                                <th class="action-col">AÇÕES</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody class="orders-list">
+
+
+                            <tr
+                                class="order-row"
+                                data-cliente="Mariana Costa"
+                                data-email="mariana.costa@email.com"
+                                data-telefone="+244 923 456 781"
+                                data-pedidos="18"
+                                data-total-gasto="457306.15"
+                                data-cadastro="12 mar 2025"
+                                data-status="ativo"
+                                data-endereco="Rua Amílcar Cabral, 128 · Luanda"
+                            >
+
+                                <td class="nome-cliente">
+
+                                    <span class="abbr-name">MC</span>
+
+                                    <span class="text-flex">
+                                        Mariana Costa
+                                        <small class="email">
+                                            mariana.costa@email.com
+                                        </small>
+                                    </span>
+
+                                </td>
+
+
+                                <td data-contato="+244 923 456 781">
+                                    +244 923 456 781
+                                </td>
+
+
+                                <td data-pedidos="18">
+                                    18
+                                </td>
+
+
+                                <td
+                                    class="order-value"
+                                    data-total-gasto="457306.15"
+                                >
+                                    457 306,15 Kz
+                                </td>
+
+
+                                <td data-cadastro="12 mar 2025">
+                                    12 mar 2025
+                                </td>
+
+
+                                <td>
+
+                                    <span
+                                        class="badge active order-status"
+                                        data-order-status="active"
+                                    >
+                                        <span class="badge-dot"></span>
+                                        Ativo
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="btn-action-table"
+                                        data-order-id="2848"
+                                        data-cliente-id="CLI-001"
+                                        aria-label="Ver cliente Mariana Costa"
+                                    >
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <tr
+                                class="order-row"
+                                data-cliente="Rafael Almeida"
+                                data-email="rafael.almeida@email.com"
+                                data-telefone="+244 924 781 236"
+                                data-pedidos="14"
+                                data-total-gasto="328950.00"
+                                data-cadastro="27 abr 2025"
+                                data-status="ativo"
+                                data-endereco="Rua Rainha Ginga, 442 · Luanda"
+                            >
+
+                                <td class="nome-cliente">
+
+                                    <span class="abbr-name">RA</span>
+
+                                    <span class="text-flex">
+                                        Rafael Almeida
+                                        <small class="email">
+                                            rafael.almeida@email.com
+                                        </small>
+                                    </span>
+
+                                </td>
+
+
+                                <td data-contato="+244 924 781 236">
+                                    +244 924 781 236
+                                </td>
+
+
+                                <td data-pedidos="14">
+                                    14
+                                </td>
+
+
+                                <td
+                                    class="order-value"
+                                    data-total-gasto="328950.00"
+                                >
+                                    328 950,00 Kz
+                                </td>
+
+
+                                <td data-cadastro="27 abr 2025">
+                                    27 abr 2025
+                                </td>
+
+
+                                <td>
+
+                                    <span
+                                        class="badge active order-status"
+                                        data-order-status="active"
+                                    >
+                                        <span class="badge-dot"></span>
+                                        Ativo
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="btn-action-table"
+                                        data-order-id="2849"
+                                        data-cliente-id="CLI-002"
+                                        aria-label="Ver cliente Rafael Almeida"
+                                    >
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <tr
+                                class="order-row"
+                                data-cliente="Camila Ferreira"
+                                data-email="camila.ferreira@email.com"
+                                data-telefone="+244 925 613 904"
+                                data-pedidos="11"
+                                data-total-gasto="241780.50"
+                                data-cadastro="09 jun 2025"
+                                data-status="ativo"
+                                data-endereco="Rua de São Paulo, 1510 · Luanda"
+                            >
+
+                                <td class="nome-cliente">
+
+                                    <span class="abbr-name">CF</span>
+
+                                    <span class="text-flex">
+                                        Camila Ferreira
+                                        <small class="email">
+                                            camila.ferreira@email.com
+                                        </small>
+                                    </span>
+
+                                </td>
+
+
+                                <td data-contato="+244 925 613 904">
+                                    +244 925 613 904
+                                </td>
+
+
+                                <td data-pedidos="11">
+                                    11
+                                </td>
+
+
+                                <td
+                                    class="order-value"
+                                    data-total-gasto="241780.50"
+                                >
+                                    241 780,50 Kz
+                                </td>
+
+
+                                <td data-cadastro="09 jun 2025">
+                                    09 jun 2025
+                                </td>
+
+
+                                <td>
+
+                                    <span
+                                        class="badge active order-status"
+                                        data-order-status="active"
+                                    >
+                                        <span class="badge-dot"></span>
+                                        Ativo
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="btn-action-table"
+                                        data-order-id="2850"
+                                        data-cliente-id="CLI-003"
+                                        aria-label="Ver cliente Camila Ferreira"
+                                    >
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <tr
+                                class="order-row"
+                                data-cliente="Lucas Martins"
+                                data-email="lucas.martins@email.com"
+                                data-telefone="+244 926 348 512"
+                                data-pedidos="7"
+                                data-total-gasto="126450.00"
+                                data-cadastro="18 ago 2025"
+                                data-status="inativo"
+                                data-endereco="Rua da Samba, 603 · Luanda"
+                            >
+
+                                <td class="nome-cliente">
+
+                                    <span class="abbr-name">LM</span>
+
+                                    <span class="text-flex">
+                                        Lucas Martins
+                                        <small class="email">
+                                            lucas.martins@email.com
+                                        </small>
+                                    </span>
+
+                                </td>
+
+
+                                <td data-contato="+244 926 348 512">
+                                    +244 926 348 512
+                                </td>
+
+
+                                <td data-pedidos="7">
+                                    7
+                                </td>
+
+
+                                <td
+                                    class="order-value"
+                                    data-total-gasto="126450.00"
+                                >
+                                    126 450,00 Kz
+                                </td>
+
+
+                                <td data-cadastro="18 ago 2025">
+                                    18 ago 2025
+                                </td>
+
+
+                                <td>
+
+                                    <span
+                                        class="badge inactive order-status"
+                                        data-order-status="inactive"
+                                    >
+                                        <span class="badge-dot"></span>
+                                        Inativo
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="btn-action-table"
+                                        data-order-id="2851"
+                                        data-cliente-id="CLI-004"
+                                        aria-label="Ver cliente Lucas Martins"
+                                    >
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <tr
+                                class="order-row"
+                                data-cliente="Beatriz Santos"
+                                data-email="beatriz.santos@email.com"
+                                data-telefone="+244 927 519 683"
+                                data-pedidos="5"
+                                data-total-gasto="89320.00"
+                                data-cadastro="03 out 2025"
+                                data-status="inativo"
+                                data-endereco="Rua Comandante Valódia, 217 · Luanda"
+                            >
+
+                                <td class="nome-cliente">
+
+                                    <span class="abbr-name">BS</span>
+
+                                    <span class="text-flex">
+                                        Beatriz Santos
+                                        <small class="email">
+                                            beatriz.santos@email.com
+                                        </small>
+                                    </span>
+
+                                </td>
+
+
+                                <td data-contato="+244 927 519 683">
+                                    +244 927 519 683
+                                </td>
+
+
+                                <td data-pedidos="5">
+                                    5
+                                </td>
+
+
+                                <td
+                                    class="order-value"
+                                    data-total-gasto="89320.00"
+                                >
+                                    89 320,00 Kz
+                                </td>
+
+
+                                <td data-cadastro="03 out 2025">
+                                    03 out 2025
+                                </td>
+
+
+                                <td>
+
+                                    <span
+                                        class="badge inactive order-status"
+                                        data-order-status="inactive"
+                                    >
+                                        <span class="badge-dot"></span>
+                                        Inativo
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="btn-action-table"
+                                        data-order-id="2852"
+                                        data-cliente-id="CLI-005"
+                                        aria-label="Ver cliente Beatriz Santos"
+                                    >
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <tr
+                                class="order-row"
+                                data-cliente="André Manuel"
+                                data-email="andre.manuel@email.com"
+                                data-telefone="+244 928 642 715"
+                                data-pedidos="9"
+                                data-total-gasto="174600.00"
+                                data-cadastro="21 jan 2026"
+                                data-status="ativo"
+                                data-endereco="Rua do Maculusso, 89 · Luanda"
+                            >
+
+                                <td class="nome-cliente">
+
+                                    <span class="abbr-name">AM</span>
+
+                                    <span class="text-flex">
+                                        André Manuel
+                                        <small class="email">
+                                            andre.manuel@email.com
+                                        </small>
+                                    </span>
+
+                                </td>
+
+
+                                <td data-contato="+244 928 642 715">
+                                    +244 928 642 715
+                                </td>
+
+
+                                <td data-pedidos="9">
+                                    9
+                                </td>
+
+
+                                <td
+                                    class="order-value"
+                                    data-total-gasto="174600.00"
+                                >
+                                    174 600,00 Kz
+                                </td>
+
+
+                                <td data-cadastro="21 jan 2026">
+                                    21 jan 2026
+                                </td>
+
+
+                                <td>
+
+                                    <span
+                                        class="badge active order-status"
+                                        data-order-status="active"
+                                    >
+                                        <span class="badge-dot"></span>
+                                        Ativo
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="btn-action-table"
+                                        data-order-id="2853"
+                                        data-cliente-id="CLI-006"
+                                        aria-label="Ver cliente André Manuel"
+                                    >
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+
+
+                    <div class="table-bottom">
+
+                        <p>
+                            Mostrando
+                            <span>1</span>–<span>6</span>
+                            de
+                            <span>6</span>
+                            registros
+                        </p>
+
+
+                        <div class="btn-section-container">
+
+                            <button
+                                type="button"
+                                class="btn-section"
+                            >
+                                1
+                            </button>
+
+                            <button
+                                type="button"
+                                class="btn-section"
+                                aria-label="Próxima página"
+                            >
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <dialog class="modal" id="order-modal">
+
+                <div class="modal-head">
+
+                    <div>
+
+                        <h2>
+                            Mariana Costa
+                        </h2>
+
+                        <p>
+                            Visão geral do cliente.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="modal-close"
+                        aria-label="Fechar pedido"
+                    >
+
+                        <i class="fa-solid fa-xmark"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="modal-porfile">
+
+                    <div class="nome-cliente nome-cliente-modal">
+
+                        <span class="abbr-name">MC</span>
+
+                        <span class="text-flex">
+                            Mariana Costa
+
+                            <span
+                                class="badge active order-status"
+                                data-order-status="active"
+                            >
+                                <span class="badge-dot"></span>
+                                Ativo
+                            </span>
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-body">
+
+                    <div>
+
+                        <label>
+                            email
+                        </label>
+
+                        <p>
+                            mariana.costa@email.com
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Telefone
+                        </label>
+
+                        <p>
+                            +244 923 456 781
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Pedidos realizados
+                        </label>
+
+                        <p>
+                            18
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Total gasto
+                        </label>
+
+                        <p>
+                            457 306,15 Kz
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Cliente desde
+                        </label>
+
+                        <p>
+                            12 mar 2025
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-bottom">
+
+                    <button
+                        type="button"
+                        class="btn-modal"
+                    >
+
+                        Fechar
+
+                    </button>
+
+                </div>
+
+            </dialog>
+
+
+            <!-- =================================================
+                 MODAL — VISUALIZAR PRODUTO
+            ================================================== -->
+
+            <dialog
+                class="modal"
+                id="restaurant-modal"
+            >
+
+                <!-- Cabeçalho -->
+
+                <div class="modal-head">
+
+                    <div>
+
+                        <h2>
+                            Adicionar restaurante
+                        </h2>
+
+                        <p>
+                            Cadastre as informações do parceiro.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="modal-close"
+                        id="btn-close-restaurant-modal"
+                        aria-label="Fechar modal"
+                    >
+
+                        <i class="fa-solid fa-xmark"></i>
+
+                    </button>
+
+                </div>
+
+
+                <!-- Corpo -->
+
+                <div class="modal-middle">
+
+                    <!-- Nome e telefone -->
+
+                    <div class="form-group">
+
+                        <label for="abbr-name">
+                            Nome do restaurante <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="abbr-name"
+                            name="restaurant_name"
+                            placeholder="Ex.: Casa Oliva"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="restaurant-phone">
+                            Telefone <span>*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="restaurant-phone"
+                            name="restaurant_phone"
+                            placeholder="(11) 0000-0000"
+                        >
+
+                    </div>
+
+
+                    <!-- Endereço -->
+
+                    <div class="form-group form-group-endereco">
+
+                        <label for="restaurant-address">
+                            Endereço <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="restaurant-address"
+                            name="restaurant_address"
+                            placeholder="Rua, número, bairro e cidade"
+                        >
+
+                    </div>
+
+
+                    <!-- Descrição -->
+
+                    <div class="form-group form-group-descricao">
+
+                        <label for="restaurant-description">
+                            Descrição
+                        </label>
+
+                        <textarea
+                            id="restaurant-description"
+                            name="restaurant_description"
+                            placeholder="Conte um pouco sobre o restaurante"
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- Identidade visual -->
+
+                    <div class="form-section">
+
+                        <div class="section-title">
+                            IDENTIDADE VISUAL
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="restaurant-image">
+                                Imagem ou logo
+                            </label>
+
+
+                            <div class="image-upload">
+
+                                <div class="upload-info">
+
+                                    <i class="fa-regular fa-image"></i>
+
+                                    <span>
+                                        JPG ou PNG, até 5 MB
+                                    </span>
+
+                                </div>
+
+
+                                <label
+                                    for="restaurant-image"
+                                    class="upload-button"
+                                >
+
+                                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+
+                                    <span>
+                                        Selecionar imagem
+                                    </span>
+
+                                </label>
+
+
+                                <input
+                                    type="file"
+                                    id="restaurant-image"
+                                    name="restaurant_image"
+                                    accept=".jpg,.jpeg,.png"
+                                    hidden
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Status -->
+
+                    <div class="modal-middle-botom">
+
+                        <div class="status-info">
+
+                            <label for="restaurant-active">
+                                Restaurante ativo
+                            </label>
+
+                            <p>
+                                O restaurante estará visível na plataforma.
+                            </p>
+
+                        </div>
+
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="restaurant-active"
+                                name="restaurant_active"
+                                checked
+                            >
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Rodapé -->
+
+                <div class="modal-bottom">
+
+                    <button
+                        type="button"
+                        class="modal-cancel"
+                        id="btn-cancel-restaurant"
+                    >
+                        Cancelar
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="modal-save"
+                        id="btn-save-restaurant"
+                    >
+
+                        <i class="fa-solid fa-check"></i>
+
+                        <span>
+                            Salvar restaurante
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </dialog>
+
+
+        </main>
+
+    </div>
 
 
     <!-- =====================================================
@@ -340,3 +1358,4 @@
 </body>
 
 </html>
+

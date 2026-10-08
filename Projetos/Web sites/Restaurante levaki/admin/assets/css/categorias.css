@@ -1,0 +1,100 @@
+:root {
+
+    /* Cores principais */
+    --color-primary: #0C2922;
+    --color-primary-hover: #214438;
+    --color-primary-dark: #0A231E;
+
+    /* Dourado */
+    --color-accent: #B59563;
+    --color-accent-light: #C6AA7C;
+
+    /* Fundos */
+    --color-background: #F6F2E9;
+    --color-surface: #FFFFFF;
+
+    /* Texto */
+    --color-text: #0C2922;
+    --color-text-white: #FFFFFF;
+    --color-text-light: #9BA89D;
+
+    /* Fontes */
+    --font-bodoni: "Bodoni Moda", serif;
+    --font-manrope: "Manrope", sans-serif;
+
+    /* Bordas */
+    --color-border: #DDD7C9;
+
+    /* Estados */
+    --color-success: #2E7D32;
+    --color-warning: #C58A00;
+    --color-danger: #B3261E;
+
+    /* Extras */
+    --color-overlay: rgba(12, 41, 34, 0.6);
+}
+#btn-add-category{
+    background-color: var(--color-primary-dark);
+    color: var(--color-text-white);
+    border: 0;
+    border-radius: 6px;
+    padding: 10px;
+    transition: .2s;
+    width: 100%;
+
+}
+#btn-add-category:hover{
+    background-color: var(--color-primary-hover);
+}
+
+
+
+#category-search {
+    width: 100%;
+    padding: 12px 12px 12px 32px;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-size: 12px;
+
+}
+#category-search::placeholder {
+ color: var(--color-text-light);
+}
+
+
+#category-search:focus {
+ outline: 3px solid #c6aa7c52;
+ border-color: var(--color-accent);
+ box-shadow:
+    0 0 0 3px rgba(181, 149, 99, .12);
+}
+.category{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.num-category{
+    color: var(--color-accent);
+    background-color: #F1EDE2;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 10px;
+}
+.text-flex{
+    font-weight: bold;
+    color: var(--color-text);
+}
+@media(min-width:768px){
+    .page-intro{
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 0px 30px;
+    }
+    #btn-add-category{
+        width: fit-content;
+        height: fit-content;
+        align-self: flex-end;
+    }
+}

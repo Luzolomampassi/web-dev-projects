@@ -453,8 +453,10 @@ PESQUISA
 select:focus,
 
 #search:focus {
- outline: 3px solid #c6aa7c52;
- border-color: var(--color-accent);
+    outline: 3px solid #c6aa7c52;
+    border-color: var(--color-accent);
+    box-shadow:
+    0 0 0 3px rgba(181, 149, 99, .12);
 
 }
 
@@ -1598,11 +1600,12 @@ SELECT
 
 
 .select-status:focus {
- border-color: var(--color-accent);
+    border-color: var(--color-accent);
+     box-shadow:
+        0 0 0 3px rgba(181, 149, 99, .12);
 
-
- outline: 2px solid #b5966389;
- outline-offset: 1px;
+    outline: 2px solid #b5966389;
+    outline-offset: 1px;
 
 }
 
@@ -1687,11 +1690,6 @@ DESKTOP
  width: 100%;
  padding: 10px;
  border-radius: 8px;
-
-
-
-
-
 }
 
 
