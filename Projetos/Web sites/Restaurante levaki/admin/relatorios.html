@@ -53,18 +53,6 @@
 
 <body>
 
-
-    <!-- =====================================================
-         SIDEBAR
-    ====================================================== -->
-
-    
-
-
-    <!-- =====================================================
-         TOPBAR
-    ====================================================== -->
-
     <header class="topbar">
 
         <div class="topbar-left">
@@ -331,12 +319,7 @@
 
     </aside>
     <main>
-    
 
-
-        <!-- =================================================
-             INTRODUÇÃO
-        ================================================== -->
 
         <article class="page-intro">
 
@@ -357,21 +340,143 @@
                         Uma visão clara do desempenho da plataforma.
                     </p>
 
-                    <button
-                        type="button"
-                        class="btn-intro"
-                        id="btn-add-product"
-                    >
-                        + Adicionar restaurante
-                    </button>
-
                 </div>
 
             </div>
 
         </article>
 
+        <article class="report-toolbar panel">
+            <div>
+                <p class="eyebrow">PERÍODO SELECIONADO</p>
+                <h2>Desempenho da operação</h2>
+            </div>
+            <div class="range-tabs">
+                <button type="button">Hoje</button>
+                <button type="button" class="active">Últimos 7 dias</button>
+                <button type="button">Últimos 30 dias</button>
+                <button type="button">Este mês</button>
+                <button type="button">Personalizado</button>
+            </div>
+        </article>
+        <article class="custom-date panel">
+            <div class="fields">
+                <div class="field">
+                    <label for="de">De</label>
+                    <input type="date" name="de" id="de" class="date">
+                </div>
+                <div class="field">
+                    <label for="ate">Até</label>
+                    <input type="date" name="ate" id="ate" class="date">
+                </div>
+            </div>
 
+            <button type="button" class="btn-apply-period">Aplicar período</button>
+
+        </article>
+
+        <article class="report-stats">
+            <div class="report-stat panel">
+                <span>RECEITA TOTAL</span>
+                <h3>R$ 58.840</h3>
+                <p><svg class="" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 7-7 4 4 7-7M15 7h6v6"></path></svg> +12,8% em relação ao período anterior</p>
+            </div>
+            <div class="report-stat panel">
+                <span>Pedidos realizados</span>
+                <h3>1.024</h3>
+                <p>
+                    <svg class="" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m3 17 7-7 4 4 7-7M15 7h6v6"></path>
+                    </svg>
+                    +8,4% em relação ao período anterior</p>
+            </div>
+            <div class="report-stat panel">
+                <span>TICKET MÉDIO</span>
+                <h3>R$ 57,46</h3>
+                <p><svg class="" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 7-7 4 4 7-7M15 7h6v6"></path></svg> +3,2% em relação ao período anterior</p>
+            </div>
+            
+        </article>
+
+        <article class="report-main">
+            <div class="panel revenue-panel"><div class="section-head"><div><h2>Visão de receita</h2><p>Evolução da receita no período selecionado.</p></div><span class="chart-legend"><span></span> Receita</span></div><div class="chart-area"><div class="chart-y"><span>R$ 12 mil</span><span>R$ 9 mil</span><span>R$ 6 mil</span><span>R$ 3 mil</span><span>R$ 0</span></div><div class="bar-chart"><div class="bar-column"><div class="bar-track"><div class="bar " title="Seg: R$&nbsp;5.390,00" style="height: 49%;"></div></div><span>Seg</span></div><div class="bar-column"><div class="bar-track"><div class="bar " title="Ter: R$&nbsp;7.260,00" style="height: 66%;"></div></div><span>Ter</span></div><div class="bar-column"><div class="bar-track"><div class="bar " title="Qua: R$&nbsp;6.160,00" style="height: 56%;"></div></div><span>Qua</span></div><div class="bar-column"><div class="bar-track"><div class="bar " title="Qui: R$&nbsp;9.020,00" style="height: 82%;"></div></div><span>Qui</span></div><div class="bar-column"><div class="bar-track"><div class="bar " title="Sex: R$&nbsp;7.810,00" style="height: 71%;"></div></div><span>Sex</span></div><div class="bar-column"><div class="bar-track"><div class="bar highlight" title="Sáb: R$&nbsp;10.450,00" style="height: 95%;"></div></div><span>Sáb</span></div><div class="bar-column"><div class="bar-track"><div class="bar " title="Dom: R$&nbsp;8.580,00" style="height: 78%;"></div></div><span>Dom</span></div></div></div></div><div class="panel top-products"><div class="section-head"><div><h2>Mais vendidos</h2><p>Os favoritos dos clientes.</p></div></div><div class="rank-list"><div class="rank-row"><span class="rank-num">01</span><img alt="" src="https://images.unsplash.com/photo-1663530761401-15eefb544889?w=480&amp;q=80"><div><strong>Filé ao molho de ervas</strong><small>Casa Oliva</small></div><span class="rank-count">124 pedidos</span></div><div class="rank-row"><span class="rank-num">02</span><img alt="" src="https://images.unsplash.com/photo-1692197275441-40c874f40385?w=480&amp;q=80"><div><strong>Risoto de cogumelos</strong><small>Trattoria Vero</small></div><span class="rank-count">98 pedidos</span></div><div class="rank-row"><span class="rank-num">03</span><img alt="" src="https://images.unsplash.com/photo-1692197275931-0793e08efcc1?w=480&amp;q=80"><div><strong>Tataki de atum</strong><small>Nori &amp; Co.</small></div><span class="rank-count">82 pedidos</span></div><div class="rank-row"><span class="rank-num">04</span><img alt="" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=480&amp;q=80"><div><strong>Bowl da horta</strong><small>Bottega Verde</small></div><span class="rank-count">67 pedidos</span></div></div></div>
+        </article>
+
+        <article class="report-secundary">
+            <div class="breakdown-panel panel">
+                <div class="section-head">
+                    <h2>Restaurantes em destaque</h2>
+                    <p>Maior volume de pedidos no período.</p>
+                </div>
+                <div class="progress-list">
+                    <div>
+                        <div class="progress-label">
+                            <strong>Casa Oliva</strong>
+                            <span>342 pedidos</span>
+                        </div>
+                        <div>
+                            <progress class="progress" value="80" max="100"></progress>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="progress-label">
+                            <strong>Nori & Co.</strong>
+                            <span>286 pedidos</span>
+                        </div>
+                        <div>
+                            <progress class="progress" value="70" max="100"></progress>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="progress-label">
+                            <strong>Trattoria Vero</strong>
+                            <span>198 pedidos</span>
+                        </div>
+                        <div>
+                            <progress class="progress" value="60" max="100"></progress>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="breakdown-panel panel">
+                <div class="section-head">
+                    <h2>Categorias populares</h2>
+                    <p>O que os clientes mais procuram.</p>
+                </div>
+                <div class="progress-list">
+                    <div>
+                        <div class="progress-label">
+                            <strong>Entradas</strong>
+                            <span>46%</span>
+                        </div>
+                        <div>
+                            <progress class="progress" value="92" max="100"></progress>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="progress-label">
+                            <strong>Pratos principais</strong>
+                            <span>28%</span>
+                        </div>
+                        <div>
+                            <progress class="progress" value="56" max="100"></progress>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="progress-label">
+                            <strong>Sobremesas</strong>
+                            <span>18%</span>
+                        </div>
+                        <div>
+                            <progress class="progress" value="36" max="100"></progress>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+        </article>
 
 
 

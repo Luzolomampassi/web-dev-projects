@@ -21,7 +21,7 @@
     /* Texto */
     --color-text: #0C2922;
     --color-text-white: #FFFFFF;
-    --color-text-light: #9BA89D;
+    --color-text-light: #DCE3DB;
 
     /* Fontes */
     --font-bodoni: "Bodoni Moda", serif;
@@ -39,7 +39,10 @@
     --color-overlay: rgba(12, 41, 34, 0.6);
 }
 
-
+.select-wrap{
+    font-weight: bold;
+    
+}
 /* ============================================================
    TOPBAR
    ============================================================ */
@@ -182,7 +185,7 @@
     width: min(280px, 30vw);
 
     padding-right: 15px;
-
+   
     border-right: 2px solid var(--color-border);
 }
 
@@ -314,6 +317,31 @@
 }
 
 
+
+.btn-export {
+    min-height: 38px;
+    display: inline-flex;
+    background-color: transparent;
+    align-items: center;
+    font-weight: bold;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 11px;
+    font-weight: 800;
+    white-space: nowrap;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    transition: background .18s, transform .18s, border-color .18s;
+}
+.btn-export i{
+    font-weight: 100;
+}
+.btn-export:hover {
+    border-color: #b59563;
+    background: #f8f7f2;
+}
 /* ============================================================
    FILTROS
    ============================================================ */
@@ -325,6 +353,20 @@
     gap: 10px;
 
     margin-bottom: 10px;
+}
+.filters-extra>span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-right: auto;
+    font-size: 10px;
+    font-weight: 700;
+    color: #829385;
+}
+.selects-extras{
+    display: flex;
+    gap: 15px;
+    justify-content: right;
 }
 
 .filters {
@@ -344,7 +386,6 @@
 
     top: 50%;
     left: 13px;
-
     transform: translateY(-50%);
 
     color: var(--color-text-light);
@@ -352,7 +393,7 @@
     pointer-events: none;
 }
 
-.filter-search input,
+.filter-search #product-search,
 .select-wrap select {
     box-sizing: border-box;
 
@@ -360,11 +401,11 @@
     height: 44px;
 
     border: 1px solid var(--color-border);
-    border-radius: 6px;
+    border-radius: 4px;
 
     background-color: var(--color-surface);
 
-    color: var(--color-text);
+    color: #687C6C;
 
     font-family: var(--font-manrope);
     font-size: 12px;
@@ -372,15 +413,15 @@
     outline: none;
 }
 
-.filter-search input {
+.filter-search #product-search {
     padding: 0 12px 0 36px;
 }
 
-.filter-search input::placeholder {
+.filter-search #product-search::placeholder {
     color: var(--color-text-light);
 }
 
-.filter-search input:focus,
+.filter-search #product-search:focus,
 .select-wrap select:focus {
     border-color: var(--color-accent);
 
@@ -403,7 +444,9 @@
    A tabela principal já possui estilos no global.css.
    Aqui ficam apenas as ações específicas dos produtos.
 */
-
+td{
+    color: var(--color-text);
+}
 .orders-table tbody tr td:last-child button {
     padding: 5px;
 
@@ -440,17 +483,14 @@
    DIALOGS — BASE
    ============================================================ */
 
-dialog {
+.modal {
     margin: auto;
-
     padding: 0;
-
     border: 0;
 }
 
 dialog::backdrop {
     background-color: rgba(12, 41, 34, .48);
-
     backdrop-filter: blur(2px);
 }
 
@@ -648,22 +688,17 @@ dialog::backdrop {
    ============================================================ */
 
 #edit-modal {
-    box-sizing: border-box;
-
-    width: calc(100% - 20px);
-    max-width: 1000px;
-    max-height: calc(100vh - 20px);
-
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: 30px;
+    transform: translate(-50%,-50%);
     overflow-x: hidden;
     overflow-y: auto;
-
     border: 1px solid var(--color-border);
     border-radius: 8px;
-
     background-color: var(--color-surface);
-
     color: var(--color-text);
-
     box-shadow:
         0 25px 70px rgba(12, 41, 34, .20);
 }

@@ -1,0 +1,772 @@
+/* =====================================================
+   RELATÓRIOS — LEVAKI
+===================================================== */
+
+:root {
+    --report-radius: 10px;
+    --report-radius-sm: 6px;
+
+    --report-border: var(--color-border, #e8e9e0);
+    --report-muted: #78877c;
+    --report-muted-light: #a0aca1;
+
+    --report-surface-soft: #f6f7f3;
+    --report-grid: #edf0e9;
+
+    --report-shadow:
+        0 2px 8px rgba(12, 41, 34, 0.025),
+        0 8px 24px rgba(12, 41, 34, 0.035);
+
+    --report-transition: 180ms ease;
+}
+
+
+/* =====================================================
+   BASE DOS COMPONENTES
+===================================================== */
+
+
+
+main article {
+    margin-block-end: 20px;
+}
+
+.panel {
+    min-width: 0;
+    background: var(--color-surface, #fff);
+    border: 1px solid var(--report-border);
+    border-radius: var(--report-radius);
+    box-shadow: var(--report-shadow);
+}
+
+h3 {
+    padding: 0;
+    color: var(--color-text);
+    font-family: var(--font-bodoni), serif;
+    font-size: clamp(1.125rem, 1rem + 0.5vw, 1.5rem);
+    font-weight: 500;
+}
+
+
+/* =====================================================
+   CABEÇALHOS DE SECÇÃO
+===================================================== */
+
+.section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 24px 18px;
+}
+
+.section-head h2 {
+    margin: 0;
+    color: var(--color-text);
+    font-family: var(--font-bodoni), serif;
+    font-size: clamp(1.2rem, 1.05rem + 0.4vw, 1.5rem);
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.section-head p {
+    margin: 6px 0 0;
+    color: var(--report-muted);
+    font-family: var(--font-manrope), sans-serif;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   BARRA DE PERÍODO
+===================================================== */
+
+.report-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 22px 24px;
+}
+
+.report-toolbar > div:first-child {
+    min-width: 0;
+}
+
+.report-toolbar .eyebrow {
+    margin: 0 0 7px;
+    color: var(--color-accent);
+    font-family: var(--font-manrope), sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+}
+
+.report-toolbar h2 {
+    margin: 0;
+    color: var(--color-text);
+    font-family: var(--font-bodoni), serif;
+    font-size: clamp(1.25rem, 1.05rem + 0.5vw, 1.65rem);
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.range-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    padding: 5px;
+    background: var(--report-surface-soft);
+    border: 1px solid #eff0e9;
+    border-radius: 7px;
+}
+
+.range-tabs button {
+    min-height: 36px;
+    padding: 8px 12px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--report-muted);
+    font: 700 0.75rem/1.2 var(--font-manrope), sans-serif;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+        background-color var(--report-transition),
+        color var(--report-transition),
+        border-color var(--report-transition),
+        box-shadow var(--report-transition);
+}
+
+.range-tabs button:hover {
+    color: var(--color-primary);
+    background: rgba(12, 41, 34, 0.045);
+}
+
+.range-tabs button.active {
+    background: var(--color-surface);
+    color: var(--color-primary);
+    border-color: var(--report-border);
+    box-shadow: 0 1px 3px rgba(12, 41, 34, 0.05);
+}
+
+.range-tabs button:focus-visible,
+.btn-apply-period:focus-visible {
+    outline: 3px solid rgba(181, 149, 99, 0.45);
+    outline-offset: 3px;
+}
+
+
+/* =====================================================
+   FILTRO POR DATAS
+===================================================== */
+
+.custom-date {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 24px;
+}
+
+.fields {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.field {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 8px;
+    min-width: min(100%, 180px);
+}
+
+.field label {
+    color: var(--color-text);
+    font: 700 0.8125rem/1.4 var(--font-manrope), sans-serif;
+}
+
+.date {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid var(--report-border);
+    border-radius: var(--report-radius-sm);
+    background: #fff;
+    color: var(--color-text);
+    font: 500 0.8125rem/1.4 var(--font-manrope), sans-serif;
+    color-scheme: light;
+    transition:
+        border-color var(--report-transition),
+        box-shadow var(--report-transition);
+}
+
+.date:hover {
+    border-color: #bdc8bd;
+}
+
+.date:focus-visible {
+    border-color: var(--color-accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(181, 149, 99, 0.16);
+}
+
+.btn-apply-period {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 11px 20px;
+    border: 1px solid var(--color-primary);
+    border-radius: var(--report-radius-sm);
+    background: var(--color-primary);
+    color: var(--color-text-white);
+    font: 700 0.8125rem/1.3 var(--font-manrope), sans-serif;
+    cursor: pointer;
+    transition:
+        background-color var(--report-transition),
+        border-color var(--report-transition),
+        transform var(--report-transition);
+}
+
+.btn-apply-period:hover {
+    background: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+}
+
+.btn-apply-period:active {
+    transform: translateY(1px);
+}
+
+
+/* =====================================================
+   INDICADORES
+===================================================== */
+
+.report-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.report-stat {
+    position: relative;
+    min-width: 0;
+    padding: 24px;
+    overflow: hidden;
+    transition:
+        border-color var(--report-transition),
+        box-shadow var(--report-transition),
+        transform var(--report-transition);
+}
+
+.report-stat:hover {
+    border-color: #d9dfd5;
+    box-shadow: 0 8px 24px rgba(12, 41, 34, 0.055);
+    transform: translateY(-2px);
+}
+
+.report-stat > span {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--report-muted);
+    font: 800 0.6875rem/1.5 var(--font-manrope), sans-serif;
+    letter-spacing: 0.075em;
+    text-transform: uppercase;
+}
+
+.report-stat h3 {
+    margin: 0;
+    overflow-wrap: anywhere;
+    font-size: clamp(1.5rem, 1.2rem + 0.8vw, 2rem);
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+}
+
+.report-stat p {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    margin: 14px 0 0;
+    color: var(--color-success);
+    font: 600 0.75rem/1.6 var(--font-manrope), sans-serif;
+}
+
+.report-stat p svg {
+    flex: 0 0 auto;
+    margin-top: 2px;
+}
+
+
+/* =====================================================
+   GRÁFICO E PRODUTOS
+===================================================== */
+
+.report-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr);
+    align-items: stretch;
+    gap: 16px;
+    margin-block-start: 16px;
+}
+
+.revenue-panel,
+.top-products {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.chart-legend {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 8px;
+    color: var(--report-muted);
+    font: 600 0.75rem/1.4 var(--font-manrope), sans-serif;
+}
+
+.chart-legend > span {
+    width: 9px;
+    height: 9px;
+    border-radius: 3px;
+    background: var(--color-accent);
+}
+
+.chart-area {
+    display: flex;
+    gap: 14px;
+    height: 270px;
+    padding: 8px 24px 28px;
+}
+
+.chart-y {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 205px;
+    color: var(--report-muted-light);
+    font: 500 0.6875rem/1.2 var(--font-manrope), sans-serif;
+    white-space: nowrap;
+}
+
+.bar-chart {
+    position: relative;
+    display: flex;
+    flex: 1;
+    align-items: stretch;
+    justify-content: space-around;
+    min-width: 0;
+    height: 205px;
+    border-bottom: 1px solid var(--report-border);
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent calc(25% - 1px),
+        var(--report-grid) calc(25% - 1px),
+        var(--report-grid) 25%
+    );
+}
+
+.bar-column {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    max-width: 65px;
+}
+
+.bar-track {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.bar {
+    width: min(65%, 30px);
+    min-height: 3px;
+    border-radius: 4px 4px 0 0;
+    background: #d8dfd4;
+    transition:
+        height 350ms ease,
+        background-color var(--report-transition),
+        opacity var(--report-transition);
+}
+
+.bar-column:hover .bar {
+    background: var(--color-primary-hover);
+}
+
+.bar.highlight {
+    background: var(--color-accent);
+}
+
+.bar-column:hover .bar.highlight {
+    background: var(--color-accent-light);
+}
+
+.bar-column > span {
+    position: absolute;
+    top: calc(100% + 10px);
+    color: var(--report-muted);
+    font: 600 0.6875rem/1.2 var(--font-manrope), sans-serif;
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   LISTA DOS MAIS VENDIDOS
+===================================================== */
+
+.rank-list {
+    padding: 0 22px 18px;
+}
+
+.rank-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 13px 0;
+    border-top: 1px solid #eff1ea;
+}
+
+.rank-num {
+    flex: 0 0 22px;
+    color: var(--color-accent);
+    font: 500 1rem/1.3 var(--font-bodoni), serif;
+    font-variant-numeric: tabular-nums;
+}
+
+.rank-row img {
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    border-radius: 5px;
+    background: var(--report-surface-soft);
+    object-fit: cover;
+}
+
+.rank-row > div {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.rank-row strong {
+    overflow: hidden;
+    color: var(--color-text);
+    font: 700 0.75rem/1.5 var(--font-manrope), sans-serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rank-row small {
+    overflow: hidden;
+    color: var(--report-muted);
+    font: 500 0.6875rem/1.4 var(--font-manrope), sans-serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rank-count {
+    flex: 0 0 auto;
+    color: var(--report-muted);
+    font: 600 0.6875rem/1.4 var(--font-manrope), sans-serif;
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   RESTAURANTES E CATEGORIAS
+===================================================== */
+
+.report-secundary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 16px;
+}
+
+.breakdown-panel {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.breakdown-panel .section-head {
+    display: block;
+    padding-bottom: 20px;
+}
+
+.progress-list {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding: 0 24px 26px;
+}
+
+.progress-label {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.progress-label strong {
+    color: var(--color-text);
+    font: 700 0.8125rem/1.5 var(--font-manrope), sans-serif;
+}
+
+.progress-label span {
+    color: var(--report-muted);
+    font: 600 0.75rem/1.5 var(--font-manrope), sans-serif;
+    white-space: nowrap;
+}
+
+.progress {
+    display: block;
+    width: 100%;
+    height: 7px;
+    overflow: hidden;
+    border: 0;
+    border-radius: 999px;
+    appearance: none;
+    -webkit-appearance: none;
+    background: var(--report-grid);
+    color: var(--color-accent);
+}
+
+.progress::-webkit-progress-bar {
+    border-radius: 999px;
+    background: var(--report-grid);
+}
+
+.progress::-webkit-progress-value {
+    border-radius: 999px;
+    background: var(--color-accent);
+    transition: width 350ms ease;
+}
+
+.progress::-moz-progress-bar {
+    border-radius: 999px;
+    background: var(--color-accent);
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE — TABLETS
+===================================================== */
+
+@media (max-width: 1100px) {
+    main{
+    padding-right: 16px;
+    padding-left: 16px;
+}
+   
+    .report-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .range-tabs {
+        width: 100%;
+    }
+
+    .report-main {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .top-products {
+        min-width: 0;
+    }
+
+    .report-stat {
+        padding: 20px;
+    }
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE — TELEMÓVEIS
+===================================================== */
+
+@media (max-width: 700px) {
+    main article {
+        margin-block-end: 14px;
+    }
+
+    .report-toolbar,
+    .custom-date {
+        padding: 18px;
+    }
+
+    .range-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 5px;
+    }
+
+    .range-tabs button {
+        width: 100%;
+        white-space: normal;
+    }
+
+    .range-tabs button:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .custom-date {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .fields {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .field {
+        min-width: 0;
+    }
+
+    .btn-apply-period {
+        width: 100%;
+    }
+
+    .report-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .report-stat {
+        padding: 17px;
+    }
+
+    .report-stat:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .report-stat > span {
+        font-size: 0.625rem;
+    }
+
+    .report-stat p {
+        font-size: 0.6875rem;
+    }
+
+    .report-secundary {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .section-head {
+        padding: 19px 18px 16px;
+    }
+
+    .chart-area {
+        gap: 10px;
+        padding-inline: 14px;
+    }
+
+    .chart-y {
+        font-size: 0.625rem;
+    }
+
+    .bar-chart {
+        gap: 3px;
+    }
+
+    .bar-column > span {
+        font-size: 0.625rem;
+    }
+
+    .rank-list {
+        padding-inline: 16px;
+    }
+
+    .rank-row {
+        gap: 9px;
+    }
+
+    .rank-row img {
+        flex-basis: 36px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .rank-count {
+        font-size: 0.625rem;
+    }
+
+    .progress-list {
+        padding-inline: 18px;
+    }
+}
+
+
+
+@media (max-width: 380px) {
+    .report-stats {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .report-stat:last-child {
+        grid-column: auto;
+    }
+
+    .report-stat {
+        padding: 18px;
+    }
+
+    .rank-count {
+        max-width: 68px;
+        white-space: normal;
+        text-align: end;
+    }
+
+    .chart-area {
+        gap: 7px;
+        padding-inline: 10px;
+    }
+
+    .chart-y {
+        font-size: 0.5625rem;
+    }
+}
+
+
+/* =====================================================
+   ACESSIBILIDADE
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .report-stat,
+    .range-tabs button,
+    .btn-apply-period,
+    .date,
+    .bar,
+    .progress::-webkit-progress-value {
+        transition: none;
+    }
+
+    .report-stat:hover,
+    .btn-apply-period:active {
+        transform: none;
+    }
+}
+

@@ -54,17 +54,6 @@
 <body>
 
 
-    <!-- =====================================================
-         SIDEBAR
-    ====================================================== -->
-
-    
-
-
-    <!-- =====================================================
-         TOPBAR
-    ====================================================== -->
-
     <header class="topbar">
 
         <div class="topbar-left">
@@ -446,7 +435,7 @@
 
                         <tr
                             class="order-row"
-                            data-restaurante="Casa Oliva"
+                            data-category="entradas"
                         >
 
                             <td class="category">
@@ -488,7 +477,7 @@
 
                                 <button
                                     type="button"
-                                    class="btn-edit-product"
+                                    class="btn-edit-category"
                                     title="Editar"
                                     aria-label="Editar Spritz da casa"
                                 >
@@ -553,7 +542,7 @@
 
                                 <button
                                     type="button"
-                                    class="btn-edit-product"
+                                    class="btn-edit-category"
                                     title="Editar"
                                     aria-label="Editar Spritz da casa"
                                 >
@@ -574,7 +563,7 @@
                         </tr>
                         <tr
                             class="order-row"
-                            data-restaurante="Trattoria Vero"
+                            data-category="sobremesas"
                         >
 
                             <td class="category">
@@ -617,7 +606,7 @@
 
                                 <button
                                     type="button"
-                                    class="btn-edit-product"
+                                    class="btn-edit-category"
                                     title="Editar"
                                     aria-label="Editar Spritz da casa"
                                 >
@@ -638,7 +627,7 @@
                         </tr>
                         <tr
                             class="order-row"
-                            data-category="Bebidas"
+                            data-category="bebidas"
                         >
 
                             <td class="category">
@@ -683,7 +672,7 @@
 
                                 <button
                                     type="button"
-                                    class="btn-edit-product"
+                                    class="btn-edit-category"
                                     title="Editar"
                                     aria-label="Editar Spritz da casa"
                                 >
@@ -752,16 +741,16 @@
              MODAL — VISUALIZAR PRODUTO
         ================================================== -->
 
-        <dialog class="modal" id="restaurant-modal">
+        <dialog class="modal" id="category-edit-modal">
 
             <!-- Cabeçalho -->
             <div class="modal-head">
 
                 <div>
-                    <h2>Adicionar restaurante</h2>
+                    <h2>Editar categoria</h2>
 
                     <p>
-                        Cadastre as informações do parceiro.
+                        Organize os produtos em categorias claras.
                     </p>
                 </div>
 
@@ -777,163 +766,64 @@
             </div>
 
 
-            <!-- Corpo -->
-            <div class="modal-middle">
+            <div class="modal-body-category">
 
-                <!-- Nome e telefone -->
-                
+                    <div class="form-group">
 
-                    <div class="form-group ">
-
-                        <label for="num-category">
-                            Nome do restaurante <span>*</span>
+                        <label for="nome-category">
+                            Nome da categoria <span>*</span>
                         </label>
 
                         <input
                             type="text"
-                            id="num-category"
+                            id="nome-category-edit"
+                            class="nome-category"
                             name="restaurant_name"
-                            placeholder="Ex.: Casa Oliva"
+                            placeholder="Ex.:Entradas"
                         >
 
                     </div>
                 
-                    <div class="form-group">
-
-                        <label for="restaurant-phone">
-                            Telefone <span>*</span>
-                        </label>
-
-                        <input
-                            type="tel"
-                            id="restaurant-phone"
-                            name="restaurant_phone"
-                            placeholder="(11) 0000-0000"
-                        >
-
-                    </div>
-
-                <!-- Endereço -->
-                <div class="form-group form-group-endereco">
-
-                    <label for="restaurant-address">
-                        Endereço <span>*</span>
-                    </label>
-
-                    <input
-                        type="text"
-                        id="restaurant-address"
-                        name="restaurant_address"
-                        placeholder="Rua, número, bairro e cidade"
-                    >
-
-                </div>
-
-
                 <!-- Descrição -->
                 <div class="form-group form-group-descricao">
 
-                    <label for="restaurant-description">
+                    <label for="category-description">
                         Descrição
                     </label>
 
                     <textarea
-                        id="restaurant-description"
-                        name="restaurant_description"
-                        placeholder="Conte um pouco sobre o restaurante"
+                        class="category-description"
+                        id="category-description-edit"
+                        name="category_description"
+                        placeholder="Uma breve descrição da categoria"
                     ></textarea>
 
                 </div>
 
 
-                <!-- Identidade visual -->
-                <div class="form-section">
+            </div>
 
-                    <div class="section-title">
-                        IDENTIDADE VISUAL
-                    </div>
+            <div class="modal-middle-category">
+                <div>
+                    <h3>Categoria ativa</h3>
+                    <p>Visível na plataforma.</p>
+                </div>
+                <label>
 
-
-                    <div class="form-group">
-
-                        <label for="restaurant-image">
-                            Imagem ou logo
-                        </label>
-
-
-                        <div class="image-upload">
-
-                            <div class="upload-info">
-
-                                <i class="fa-regular fa-image"></i>
-
-                                <span>
-                                    JPG ou PNG, até 5 MB
-                                </span>
-
-                            </div>
-
-
-                            <label
-                                for="restaurant-image"
-                                class="upload-button"
-                            >
-
-                                <i class="fa-solid fa-arrow-up-from-bracket"></i>
-
-                                <span>
-                                    Selecionar imagem
-                                </span>
+                                <div class="toggle">
+                                     
+                                     <input
+                                    type="checkbox"
+                                    name="notificacoes-pedido"
+                                    role="switch"
+                                    class="check"
+                                    checked
+                                    
+                                    >
+                                    <span class="slider"></span>
+                                </div>
 
                             </label>
-
-
-                            <input
-                                type="file"
-                                id="restaurant-image"
-                                name="restaurant_image"
-                                accept=".jpg,.jpeg,.png"
-                                hidden
-                            >
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Status -->
-                <div class="modal-middle-botom">
-
-                    <div class="status-info">
-
-                        <label for="restaurant-active">
-                            Restaurante ativo
-                        </label>
-
-                        <p>
-                            O restaurante estará visível na plataforma.
-                        </p>
-
-                    </div>
-
-
-                    <label class="switch">
-
-                        <input
-                            type="checkbox"
-                            id="restaurant-active"
-                            name="restaurant_active"
-                            checked
-                        >
-
-                        <span class="slider"></span>
-
-                    </label>
-
-                </div>
-
             </div>
 
 
@@ -943,7 +833,7 @@
             <button
                 type="button"
                 class="modal-cancel"
-                id="btn-cancel-restaurant"
+                id="btn-cancel-category"
             >
                 Cancelar
             </button>
@@ -952,14 +842,126 @@
             <button
                 type="button"
                 class="modal-save"
-                id="btn-save-restaurant"
+                id="btn-save-category"
             >
 
                 <i class="fa-solid fa-check"></i>
 
-                <span>
                     Salvar restaurante
-                </span>
+
+            </button>
+
+        </div>
+
+        </dialog>
+        <dialog class="modal" id="category-create-modal">
+
+            <!-- Cabeçalho -->
+            <div class="modal-head">
+
+                <div>
+                    <h2>Adicionar categoria</h2>
+
+                    <p>
+                        Organize os produtos em categorias claras.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="btn-close-create-modal"
+                    aria-label="Fechar modal"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+
+            <div class="modal-body-category">
+
+                    <div class="form-group">
+
+                        <label for="nome-category">
+                            Nome da categoria <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nome-category-create"
+                            class="nome-category"
+                            name="nome-category"
+                            placeholder="Ex.:Entradas"
+                        >
+
+                    </div>
+                
+                <!-- Descrição -->
+                <div class="form-group form-group-descricao">
+
+                    <label for="category-description">
+                        Descrição
+                    </label>
+
+                    <textarea
+                        class="category-description"
+                        id="category-description-create"
+                        name="category_description"
+                        placeholder="Uma breve descrição da categoria"
+                    ></textarea>
+
+                </div>
+
+
+            </div>
+
+            <div class="modal-middle-category">
+                <div>
+                    <h3>Categoria ativa</h3>
+                    <p>Visível na plataforma.</p>
+                </div>
+                <label>
+
+                <div class="toggle">
+                        
+                    <input
+                    type="checkbox"
+                    name="notificacoes-pedido"
+                    role="switch"
+                    class="check"
+                    id="check-create"
+                    checked
+                    
+                    >
+                    <span class="slider"></span>
+                </div>
+
+                </label>
+            </div>
+
+
+        <!-- Rodapé -->
+        <div class="modal-bottom">
+
+            <button
+                type="button"
+                class="modal-cancel"
+                id="btn-cancel-category"
+            >
+                Cancelar
+            </button>
+
+
+            <button
+                type="button"
+                class="modal-save"
+                id="btn-create-category"
+            >
+
+                <i class="fa-solid fa-check"></i>
+
+                    Salvar restaurante
 
             </button>
 
@@ -977,7 +979,7 @@
          JAVASCRIPT
     ====================================================== -->
 
-    <script src="assets/scripts/main.js"></script>
+    <script src="assets/scripts/categorias.js"></script>
 
 </body>
 

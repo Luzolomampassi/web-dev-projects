@@ -372,9 +372,6 @@
         </article>
 
 
-        <!-- =================================================
-             CATÁLOGO
-        ================================================== -->
 
         <section class="dashboard-orders">
 
@@ -396,13 +393,15 @@
 
                 <div>
 
-                    <button
-                        type="button"
+                    <a  
+                        href="assets/levaki-produtos.csv"
                         class="btn-export"
+                        download
                     >
                         <i class="ri-download-2-line"></i>
                         Exportar
-                    </button>
+                        
+                    </a>
 
                 </div>
 
@@ -417,7 +416,6 @@
 
 
                 <div class="filter-search">
-
                     <i
                         class="fa-solid fa-magnifying-glass lupa"
                         aria-hidden="true"
@@ -497,7 +495,6 @@
 
                 </div>
 
-
                 <div class="select-wrap">
 
                     <select
@@ -523,63 +520,49 @@
 
             </article>
 
-
             <article class="filters-extra">
+                <span><svg class="" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M7 12h10m-7 5h4"></path></svg> Mais filtros</span>
 
 
-                <div class="select-wrap">
-
-                    <select
-                        name="preco-filtro"
-                        id="preco-filtro"
-                    >
-
-                        <option value="">
-                            Qualquer preço
-                        </option>
-
-                        <option value="0-9000">
-                            Até 9.000 Kz
-                        </option>
-
-                        <option value="9000-18000">
-                            9.000 Kz a 18.000 Kz
-                        </option>
-
-                        <option value="18000+">
-                            Acima de 18.000 Kz
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="select-wrap">
-
-                    <select
-                        name="ordem"
-                        id="ordem"
-                    >
-
-                        <option value="recent">
-                            Mais recentes
-                        </option>
-
-                        <option value="name-asc">
-                            Nome A-Z
-                        </option>
-
-                        <option value="price-asc">
-                            Menor preço
-                        </option>
-
-                        <option value="price-desc">
-                            Maior preço
-                        </option>
-
-                    </select>
-
+                <div class="selects-extras">
+                    <div class="select-wrap">
+                        <select
+                            name="preco-filtro"
+                            id="preco-filtro"
+                        >
+                            <option value="">
+                                Qualquer preço
+                            </option>
+                            <option value="0-9000">
+                                Até 9.000 Kz
+                            </option>
+                            <option value="9000-18000">
+                                9.000 Kz a 18.000 Kz
+                            </option>
+                            <option value="18000+">
+                                Acima de 18.000 Kz
+                            </option>
+                        </select>
+                    </div>
+                    <div class="select-wrap">
+                        <select
+                            name="ordem"
+                            id="ordem"
+                        >
+                            <option value="recent">
+                                Mais recentes
+                            </option>
+                            <option value="name-asc">
+                                Nome A-Z
+                            </option>
+                            <option value="price-asc">
+                                Menor preço
+                            </option>
+                            <option value="price-desc">
+                                Maior preço
+                            </option>
+                        </select>
+                    </div>
                 </div>
 
             </article>
@@ -1222,12 +1205,12 @@
 
                 <div>
 
-                    <h2 id="view-product-name">
-                        Spritz da casa
+                    <h2>
+                        Adicionar produto
                     </h2>
 
                     <p>
-                        Detalhes do produto no catálogo.
+                        Preencha os detalhes para manter o cardápio atualizado.
                     </p>
 
                 </div>
@@ -1237,7 +1220,7 @@
                     type="button"
                     class="modal-close"
                     id="btn-close-view-modal"
-                    aria-label="Fechar detalhes do produto"
+                    aria-label="Fechar a criação de produto"
                 >
                     <i class="fa-solid fa-xmark"></i>
                 </button>
@@ -1245,81 +1228,124 @@
             </div>
 
 
-            <div class="modal-image">
-
-                <img
-                    src=""
-                    alt="Imagem do produto"
-                    id="view-product-image"
-                >
-
-            </div>
-
 
             <div class="modal-body">
-
+                <!-- <p class="eyebrow">INFORMAÇÕES DO PRODUTO</p> -->
                 <div>
 
                     <label>
-                        Categoria
+                        Nome do produto
                     </label>
 
-                    <p id="view-product-category">
-                        Bebidas
-                    </p>
+                    <input type="text" name="edit-product" id="edit-product"
+                    placeholder="Ex.: Risoto de cogumelos">
 
                 </div>
 
 
                 <div>
 
+                    <label>
+                        Preço(kz)*
+                    </label>
+
+                    <input type="number" name="product-price" id="product-price">
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Categoria*
+                    </label>
+
+                   <select
+                        name="categoria-filtro"
+                        id="categoria-filtro"
+                    >
+
+                        <option value="">
+                            Todas as categorias
+                        </option>
+
+                        <option value="entradas">
+                            Entradas
+                        </option>
+
+                        <option value="pratos-principais">
+                            Pratos principais
+                        </option>
+
+                        <option value="sobremesas">
+                            Sobremesas
+                        </option>
+
+                        <option value="bebidas">
+                            Bebidas
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
                     <label>
                         Restaurante
                     </label>
 
-                    <p id="view-product-restaurant">
-                        Casa Oliva
-                    </p>
+                    <select
+                        name="restaurante-filtro"
+                        id="restaurante-filtro"
+                    >
+
+                        <option value="">
+                            Todos os restaurantes
+                        </option>
+
+                        <option value="casa-oliva">
+                            Casa Oliva
+                        </option>
+
+                        <option value="nori-co">
+                            Nori & Co
+                        </option>
+
+                        <option value="trattoria-vero">
+                            Trattoria Vero
+                        </option>
+
+                        <option value="bottega-verde">
+                            Bottega Verde
+                        </option>
+
+                    </select>
 
                 </div>
 
-
                 <div>
-
                     <label>
-                        Preço
+                        Restaurante
                     </label>
 
-                    <p id="view-product-price">
-                        18.900 Kz
-                    </p>
-
-                </div>
-
-
-                <div>
-
-                    <label>
-                        Disponibilidade
-                    </label>
-
-                    <p>
-
-                        <span
-                            class="badge unavailable order-status"
-                            id="view-product-status"
-                        >
-                            <span class="badge-dot"></span>
-                            Indisponível
-                        </span>
-
-                    </p>
+                    <textarea name="descricao-produto" id="descricao-produto" placeholder="Descreva os ingredientes e o que torna este prato especial"></textarea>
 
                 </div>
 
             </div>
 
 
+            <div class="modal-apresentation">
+                <div class="eyebrow">
+                    APRESENTAÇÃO E DISPONIBILIDADE
+                </div>
+                <div>
+                    <label for="">Imagem do produto</label>
+                </div>
+                
+
+            </div>
             <div class="modal-bottom">
 
                 <button
@@ -1715,6 +1741,7 @@
         </dialog>
 
     </main>
+    <script src="assets/scripts/produtos.js"></script>
 </div>
     
 
