@@ -1,33 +1,77 @@
-const btnFiltros = document.querySelectorAll(".btn-filtros")
-const projetos = document.querySelectorAll(".item")
-const search = document.querySelector("#search")
+const initializeProjectFilters = () => {
+    const filterButtons = [...document.querySelectorAll(".btn-filtros")];
+    const projectCards = [...document.querySelectorAll(".cards_projets .item")];
+    const searchInput = document.querySelector("#search");
+    const noResults = document.querySelector(".no-results");
 
-search.addEventListener('input', () =>{
-    projetos.forEach(projeto =>{
-        const nomeProjeto = projeto.querySelector("h3").textContent.toLocaleLowerCase()
-        if(nomeProjeto.includes(search.value.toLocaleLowerCase())){
-            projeto.style.display = 'grid'
-        }else{
-            document.body.querySelector(".noitem").textContent = 'Nenhum projeto encontrado'
-            projeto.style.display = 'none'
-        }
-    })
-})
-btnFiltros.forEach(btnSelecionado => {
-    btnSelecionado.addEventListener('click', () =>{
+    if (projectCards.length === 0 || !searchInput || !noResults) {
+        return;
+    }
 
-        projetos.forEach(projetoSelecionado =>{
-            if(btnSelecionado.dataset.categoria.includes('todos') ){
-                projetoSelecionado.style.display = 'grid'
-            }
-            else if(btnSelecionado.dataset.categoria.includes(projetoSelecionado.dataset.categoria)){
-                projetoSelecionado.style.display = 'grid'
-            }else{
-                projetoSelecionado.style.display = 'none'
-            }
-        })
-    })
-})
+    let selectedCategory = "todos";
 
-const projetoCompleto = document.querySelector(".projetos-completos")
-projetoCompleto.textContent = projetos.length
+    filterButtons.forEach((button) => {
+        const isSelected = button.dataset.categoria === selectedCategory;
+        button.classList.toggle("is-active", isSelected);
+        button.setAttribute("aria-pressed", String(isSelected));
+    });
+
+    const normalizeText = (value) => value
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLocaleLowerCase()
+        .trim();
+
+    const updateProjects = () => {
+        const searchTerm = normalizeText(searchInput.value);
+        let visibleProjects = 0;
+
+        projectCards.forEach((project) => {
+            const matchesCategory = selectedCategory === "todos" ||
+                project.dataset.categoria === selectedCategory;
+            const projectName = normalizeText(project.querySelector("h3")?.textContent ?? "");
+            const matchesSearch = projectName.includes(searchTerm);
+            const isVisible = matchesCategory && matchesSearch;
+
+            project.hidden = !isVisible;
+            visibleProjects += Number(isVisible);
+        });
+
+        noResults.hidden = visibleProjects > 0;
+    };
+
+    filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            selectedCategory = button.dataset.categoria ?? "todos";
+
+            filterButtons.forEach((filterButton) => {
+                const isSelected = filterButton === button;
+                filterButton.classList.toggle("is-active", isSelected);
+                filterButton.setAttribute("aria-pressed", String(isSelected));
+            });
+
+            updateProjects();
+        });
+    });
+
+    searchInput.addEventListener("input", updateProjects);
+
+    const completedProjects = document.querySelector(".projetos-completos");
+    if (completedProjects) {
+        completedProjects.textContent = String(projectCards.length);
+    }
+
+    const technologyCount = document.querySelector('[data-projet="main-technologies"]');
+    if (technologyCount) {
+        const technologies = new Set(
+            projectCards.flatMap((project) =>
+                [...project.querySelectorAll(".badge")].map((badge) => normalizeText(badge.textContent))
+            )
+        );
+        technologyCount.textContent = String(technologies.size);
+    }
+
+    updateProjects();
+};
+
+initializeProjectFilters();

@@ -9,7 +9,9 @@ try {
         if (!current_user()) json_response(['authenticated' => false]);
         $user = current_user();
         $q = $pdo->prepare('SELECT theme FROM user_settings WHERE user_id=?'); $q->execute([$user['id']]);
-        json_response(['authenticated' => true, 'user' => $user, 'settings' => $q->fetch() ?: ['theme' => 'light']]);
+        $profile = $pdo->prepare('SELECT username,email,bio,public_id FROM users WHERE id=?'); $profile->execute([$user['id']]);
+        $current = array_merge($user, $profile->fetch() ?: []); $_SESSION['user'] = $current;
+        json_response(['authenticated' => true, 'user' => $current, 'settings' => $q->fetch() ?: ['theme' => 'light']]);
     }
     require_csrf();
     $action = $_POST['action'] ?? '';
@@ -25,16 +27,18 @@ try {
             try { $q->execute([$username,$email,password_hash($password,PASSWORD_DEFAULT)]); }
             catch (PDOException $e) { if ((string)$e->getCode()==='23000') json_response(['error'=>'Esse email ou nome de jogador já está registado.'],409); throw $e; }
             $id=(int)$pdo->lastInsertId();
+            do { $publicId='AR-'.strtoupper(bin2hex(random_bytes(4))); $check=$pdo->prepare('SELECT 1 FROM users WHERE public_id=?'); $check->execute([$publicId]); } while ($check->fetchColumn());
+            $pdo->prepare('UPDATE users SET public_id=? WHERE id=?')->execute([$publicId,$id]);
             // Claim any pre-account data from the original single-user version.
             $pdo->prepare('UPDATE games SET user_id=? WHERE user_id IS NULL')->execute([$id]);
             $pdo->prepare('UPDATE collections SET user_id=? WHERE user_id IS NULL')->execute([$id]);
         } else {
-            $q=$pdo->prepare('SELECT id,username,email,password_hash,bio FROM users WHERE email=?'); $q->execute([$email]); $row=$q->fetch();
+            $q=$pdo->prepare('SELECT id,username,email,password_hash,bio,public_id FROM users WHERE email=?'); $q->execute([$email]); $row=$q->fetch();
             if (!$row || !password_verify($password,$row['password_hash'])) json_response(['error'=>'Email ou palavra-passe incorretos.'],401);
             $id=(int)$row['id']; $username=$row['username'];
         }
         session_regenerate_id(true);
-        $_SESSION['user']=['id'=>$id,'username'=>$username,'email'=>$email,'bio'=>$action==='register'?'':($row['bio']??'')];
+        $_SESSION['user']=['id'=>$id,'username'=>$username,'email'=>$email,'bio'=>$action==='register'?'':($row['bio']??''),'public_id'=>$action==='register'?$publicId:($row['public_id']??'')];
         $pdo->prepare("INSERT IGNORE INTO user_settings (user_id,theme) VALUES (?,'light')")->execute([$id]);
         json_response(['ok'=>true,'user'=>$_SESSION['user']]);
     }

@@ -40,7 +40,7 @@
 
 </head>
 
-<body>
+<body class="projects-page">
 
     <!-- ============================== Header ============================== -->
 
@@ -115,16 +115,18 @@
 
                     </a>
 
-                    <span
-                        class="
-                        aria-label="LinkedIn indisponível">
+                    <a
+                        href="https://www.linkedin.com/in/luzolo-mampassi-56265b437/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn">
 
                         <i
                             class="fa-brands fa-linkedin fa-xl"
                             aria-hidden="true">
                         </i>
 
-                    </span>
+                    </a>
 
                     <a
                         href="mailto:Luzolomampassi8@gmail.com"
@@ -164,20 +166,17 @@
 
         <section class="banner">
 
-            <div class="banner-content">
+                <div class="banner-content">
+
+                    <p class="projects-eyebrow">PORTFÓLIO DE DESENVOLVIMENTO</p>
 
                 <h2>
-                    Meus
-                    <span class="banner-text-mark">
-                        Projetos
-                    </span>
+                    Projetos em prática.
                 </h2>
 
                 <p>
-                    Alguns projetos que desenvolvi aplicando minhas
-                    <br>
-                    habilidades em desenvolvimento front-end e criando
-                    experiências digitais.
+                    Uma seleção de projetos que acompanham meu percurso em
+                    desenvolvimento web, interfaces e aplicações.
                 </p>
 
             </div>
@@ -193,7 +192,7 @@
 
                     <h3 data-projet="projets-completed" class="projetos-completos">0</h3>
 
-                    <p>Projetos concluídos</p>
+                    <p>Projetos apresentados</p>
 
                 </div>
 
@@ -204,7 +203,7 @@
                         aria-hidden="true">
                     </i>
 
-                    <h3 data-projet="main-tecnologies">0</h3>
+                    <h3 data-projet="main-technologies">0</h3>
 
                     <p>Tecnologias principais</p>
 
@@ -217,9 +216,9 @@
                         aria-hidden="true">
                     </i>
 
-                    <h3>1</h3>
+                    <h3>Web</h3>
 
-                    <p>Ano de aprendizado</p>
+                    <p>Foco de aprendizagem</p>
 
                 </div>
 
@@ -237,6 +236,7 @@
                     type="button"
                     class="btn-filtros"
                     aria-label="Mostrar todos os projetos"
+                    aria-pressed="true"
                     data-categoria="todos">
                     Todos
                 </button>
@@ -247,6 +247,7 @@
                     type="button"
                     class="btn-filtros"
                     aria-label="Filtrar websites"
+                    aria-pressed="false"
                     data-categoria="website">
                     Websites
                 </button>
@@ -254,7 +255,8 @@
                 <button
                     type="button"
                     class="btn-filtros"
-                    aria-label="Filtrar projetos de front-end"
+                    aria-label="Filtrar aplicações"
+                    aria-pressed="false"
                     data-categoria="app">
                     Aplicações
                 </button> 
@@ -263,6 +265,7 @@
                     type="button"
                     class="btn-filtros"
                     aria-label="Filtrar interfaces"
+                    aria-pressed="false"
                     data-categoria="interfaces">
                     Interfaces
                 </button>
@@ -271,6 +274,7 @@
                     type="button"
                     class="btn-filtros"
                     aria-label="Filtrar landing pages"
+                    aria-pressed="false"
                     data-categoria="landingPages">
                     Landing Pages
                 </button>
@@ -279,10 +283,7 @@
 
             <div class="search_bar">
 
-                <span
-                    for="search"
-                    class="sr-only">
-                </span>
+                <label for="search" class="sr-only">Buscar projetos pelo nome</label>
 
                 <input
                     type="search"
@@ -290,7 +291,7 @@
                     id="search"
                     placeholder="Buscar projeto"
                     autocomplete="off"
-                    
+                    aria-label="Buscar projetos pelo nome"
                 >
 
                 <i
@@ -557,7 +558,7 @@
                         <div class="card-buttons">
 
                             <a
-                                href="https://github.com/Luzolomampassi/web-dev-projects/tree/main/Projetos/Web%20sites/Restaurante%20Sabor%20%26%20Artes"
+                                href="https://github.com/Luzolomampassi/web-dev-projects/tree/main/Projetos/Web%20sites/Restaurante%20levaki"
                                 class="btn-primary"
                                 target="_blank"
                                 rel="noopener noreferrer">
@@ -594,15 +595,15 @@
 
                 </div>
 
-                <!-- ============================== Academy Landing Page ============================== -->
+                <!-- ============================== Landing Page Analytics ============================== -->
 
                 <div class="item" data-categoria="landingPages">
 
                     <div class="imagem">
 
                         <img
-                            src="../icones/trechos/img landing page.png"
-                            alt="Captura de tela da Academy Landing Page"
+                            src="../../Projetos/Web sites/Landings pages/Dashbord anality/img/hero.png"
+                            alt="Prévia do painel de analytics"
                             loading="lazy"
                         >
 
@@ -663,19 +664,18 @@
                     <div class="description">
 
                         <h3>
-                            Academy Landing Page
+                            Landing Page Analytics
                         </h3>
 
                         <p>
-                            Landing page moderna para uma plataforma
-                            de cursos de programação.
+                            Página de apresentação para um serviço fictício
+                            de análise e crescimento de negócios.
 
                             <details>
                                 <summary>Ver mais</summary>
 
-                                Desenvolvida para apresentar os cursos,
-                                destacar seus benefícios e incentivar
-                                novas inscrições.
+                                Reúne benefícios, planos e depoimentos numa
+                                interface responsiva com chamadas para ação.
 
                             </details>
 
@@ -957,10 +957,9 @@
                             <details>
                                 <summary>Ver mais</summary>
 
-                                Permite adicionar, concluir, pesquisar
-                                e filtrar tarefas de forma simples e
-                                intuitiva, com evolução planejada para
-                                integração com PHP e MySQL.
+                                Permite adicionar, concluir, pesquisar e
+                                filtrar tarefas. A lógica da aplicação é
+                                desenvolvida em JavaScript.
 
                             </details>
 
@@ -980,20 +979,12 @@
                                 JavaScript
                             </span>
 
-                            <span class="badge badge_php">
-                                PHP
-                            </span>
-
-                            <span class="badge badge_mysql">
-                                My<span class="sql">SQL</span>
-                            </span>
-
                         </div>
 
                         <div class="card-buttons">
 
                             <a
-                                href="https://github.com/Luzolomampassi/web-dev-projects/tree/main/Projetos/Applications/TaskFlow"
+                                href="https://github.com/Luzolomampassi/web-dev-projects/tree/main/Projetos/Applications/TaskPulse"
                                 class="btn-primary"
                                 target="_blank"
                                 rel="noopener noreferrer">
@@ -1035,7 +1026,7 @@
 
                         <img
                             src="../icones/trechos/arcadia.png"
-                            alt="Captura de tela do portfólio pessoal"
+                            alt="Captura de tela da biblioteca de jogos Arcadia"
                             loading="lazy"
                         >
 
@@ -1126,9 +1117,44 @@
                                 JavaScript
                             </span>
 
-</div>
+                        </div>
 
+                        <div class="card-buttons">
 
+                            <a
+                                href="https://github.com/Luzolomampassi/web-dev-projects/tree/main/Projetos/Web%20sites/Arcadia"
+                                class="btn-primary"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Ver código do Arcadia no GitHub">
+
+                                <i
+                                    class="fa-brands fa-github icone-card fa-xl"
+                                    aria-hidden="true">
+                                </i>
+
+                                <span class="txt_escondido">
+                                    GitHub
+                                </span>
+
+                            </a>
+
+                            <a
+                                href="../../Projetos/Web sites/Arcadia/index.php"
+                                class="btn-secundary"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                Ver projeto
+
+                                <i
+                                    class="fa-solid fa-arrow-right"
+                                    aria-hidden="true">
+                                </i>
+
+                            </a>
+
+                        </div>
 
                     </div>
 
@@ -1137,6 +1163,10 @@
 
 
             </article>
+
+            <p class="no-results" role="status" aria-live="polite" hidden>
+                Nenhum projeto corresponde à busca.
+            </p>
 
         </section>
 
@@ -1160,11 +1190,11 @@
         <p>
 
             <i
-                class="fa-solid fa-heart fa-lg icon-footer"
+                class="fa-solid fa-code fa-lg icon-footer"
                 aria-hidden="true">
             </i>
 
-            Feito com dedicação para aprender e evoluir.
+            Desenvolvimento em constante evolução.
 
         </p>
 

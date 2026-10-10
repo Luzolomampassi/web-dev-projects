@@ -96,6 +96,146 @@
 
 }
 
+/* Cards uniformes para a página inicial */
+body.home-page .projects {
+    padding: 64px max(24px, calc((100vw - 1240px) / 2)) 88px;
+    background: var(--color-bg);
+}
+
+body.home-page .projects-theme {
+    justify-content: flex-start;
+    padding: 0 0 28px;
+}
+
+body.home-page .projects-theme h2 {
+    position: relative;
+    margin: 0;
+    padding: 0 0 14px;
+    color: var(--color-text);
+    font-size: clamp(1.7rem, 3vw, 2.25rem);
+    letter-spacing: -0.035em;
+}
+
+body.home-page .projects-theme h2::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 44px;
+    height: 3px;
+    border-radius: 3px;
+    background: #8B5CF6;
+    content: "";
+}
+
+body.home-page .projects-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 18px;
+    cursor: default;
+}
+
+body.home-page .card-project {
+    width: 100%;
+    max-width: none;
+    min-height: 430px;
+    padding: 14px;
+    gap: 16px;
+    border: 1px solid #263248;
+    border-radius: 12px;
+    background: #080F20;
+    text-align: left;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.home-page .card-project:hover {
+    transform: translateY(-4px);
+    border-color: #51427A;
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.2);
+}
+
+body.home-page .card-project img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+body.home-page .card-project h3 {
+    color: var(--color-text);
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+}
+
+body.home-page .card-project p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+body.home-page .card-project .badges {
+    justify-content: flex-start;
+    gap: 7px;
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+body.home-page .card-project .badge-html,
+body.home-page .card-project .badge-css,
+body.home-page .card-project .badge-js,
+body.home-page .card-project .badge-tech {
+    padding: 5px 8px;
+    border: 1px solid #29364B;
+    border-radius: 5px;
+    color: #B8C3D5;
+    background: #111B2D;
+    font-size: 0.78rem;
+}
+
+body.home-page .card-project > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 44px;
+    margin-top: 2px;
+    padding: 8px 12px;
+    border: 1px solid #3C315A;
+    border-radius: 7px;
+    color: #D8CCFF;
+    background: rgba(91, 53, 181, 0.08);
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+body.home-page .card-project > a:hover {
+    transform: none;
+    border-color: #8064C4;
+    background: rgba(91, 53, 181, 0.2);
+}
+
+@media (max-width: 1000px) {
+    body.home-page .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    body.home-page .projects {
+        padding: 48px 20px 64px;
+    }
+
+    body.home-page .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    body.home-page .card-project {
+        min-height: 0;
+    }
+}
+
 .portfolio{
     border: 1px solid var(--color-primary);
     background-color: #0F0F36;

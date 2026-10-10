@@ -1,0 +1,3 @@
+<FilesMatch "^(\.env(\..*)?|\.git.*|config\.php)$">
+    Require all denied
+</FilesMatch>

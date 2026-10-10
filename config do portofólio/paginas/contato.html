@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio</title>
+    <meta name="description" content="Entre em contato com Luzolo Mampassi para conversar sobre projetos, colaboração e desenvolvimento web.">
+    <title>Contato | Luzolo Mampassi</title>
     <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <script src="https://kit.fontawesome.com/f6a9b3f1e7.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../style.css"">
+    <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="../estilos/header.css">
     <link rel="stylesheet" href="../estilos/contato.css">
+    <link rel="stylesheet" href="../estilos/contato-form.css">
     <link rel="stylesheet" href="../estilos/banner.css">
     <link rel="stylesheet" href="../estilos/footer.css">
    
 </head>
-<body>
+<body class="contact-page">
 <header>
         <nav>
-            <h1><i class="fa-solid fa-code  icone-nav"></i><a href="../../index.html">Luzolo Mampassi</a></h1>
-            <button id="menu-btn">☰</button>
+            <h1><i class="fa-solid fa-code icone-nav" aria-hidden="true"></i><a href="../../index.html">Luzolo Mampassi</a></h1>
+            <button id="menu-btn" type="button" aria-label="Abrir menu" aria-controls="menu" aria-expanded="false">☰</button>
 
             <div id="menu">
                 
@@ -25,25 +27,31 @@
                     <li><a href="../../index.html">Início</a></li>
                     <li><a href="projetos.html">Projetos</a></li>
                     <li><a href="sobreMim.html">Sobre mim</a></li>
-                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="contato.html" aria-current="page">Contato</a></li>
                 </ul>
 
 
                 <div class="icone-bar">
                     <a href="https://github.com/Luzolomampassi"
                         target="_blank"
-                        rel="noopener noreferrer">
-                        <i class="fa-brands fa-github fa-xl"></i>
+                        rel="noopener noreferrer"
+                        aria-label="GitHub">
+                        <i class="fa-brands fa-github fa-xl" aria-hidden="true"></i>
                     </a>
 
-                    <i class="fa-brands fa-linkedin fa-xl"></i>
+                    <a href="https://www.linkedin.com/in/luzolo-mampassi-56265b437/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin fa-xl" aria-hidden="true"></i>
+                    </a>
 
                     <a href="mailto:Luzolomampassi8@gmail.com"
-                        rel="noopener noreferrer">
-                        <i class="fa-regular fa-envelope fa-xl"></i>
+                        aria-label="Enviar e-mail">
+                        <i class="fa-regular fa-envelope fa-xl" aria-hidden="true"></i>
                     </a>
                     <a href="https://www.instagram.com/luzolomampassi8/"target="_blank"
-                        rel="noopener noreferrer"><i class="fa-brands fa-instagram fa-xl"></i></a>
+                        rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram fa-xl" aria-hidden="true"></i></a>
                 </div>
             </div>
         </nav>
@@ -53,55 +61,58 @@
         
         <!--============================== Banner Content ==============================-->
 
-            <article class="banner-conteiner" >
+            <article class="banner-conteiner">
                 <div class="boas-vinda">
-                    <p>Vamos conversar ?</p>
+                    <p>Contato</p>
                 </div>
 
                 <div class="banner-content">
-                    <h1>
-                        Tem um projeto,<br>
-                        em mente?
-                        <br><span class="banner-text-mark">Vamos construir
-                        <br>algo incrível juntos.</span>
-                    </h1>
+                    <h1>Vamos conversar sobre o seu próximo projeto.</h1>
                     <p>
-                       Estou sempre aberto para novas oportunidades, colaborações
-                        e desafios<br>interessantes. Entre em contato e vamos tirar
-                        <br> sua ideia do papel
+                        Tem uma ideia, uma pergunta ou quer trocar experiências?
+                        Envie uma mensagem pelo formulário ou entre em contato por e-mail.
                     </p>
                 </div>
-        </article>
-        
-            
-        </article>
+
+                <a class="contact-hero-link" href="#form-contato">
+                    Enviar mensagem <i class="bi bi-arrow-down" aria-hidden="true"></i>
+                </a>
+            </article>
     </section>
 
     <section class="contato">
         <article class="card_contato cards">
 
-            <form action="contato.php" autocomplete="on" method="post">
+            <form action="contato.php" autocomplete="on" method="post" id="form-contato">
                 <h2>Envie uma mensagem</h2>
                 <div class="linha input-box ">
-                    <div id="campo_nome">
-                    <input type="text" name="nome" id="nome" placeholder="Nome" autocomplete="name" minlength="4" required>
+                    <div id="campo_nome" class="input-box">
+                        <label for="nome">Nome</label>
+                        <input type="text" name="nome" id="nome" placeholder="Seu nome" autocomplete="name" minlength="4" maxlength="120" required>
+                    </div>
+                    <div id="campo_email" class="input-box">
+                        <label for="email">E-mail</label>
+                        <input type="email" name="email" id="email" placeholder="voce@exemplo.com" autocomplete="email" maxlength="254" required>
+                    </div>
                 </div>
-                <div id="campo_email" class="input-box ">
-                     <input type="email" name="email" id="email" placeholder="Seu@email.com" autocomplete="email"  required>
-                </div>  
+                <div id="campo_assunto" class="input-box">
+                    <label for="assunto">Assunto</label>
+                    <input type="text" name="assunto" id="assunto" placeholder="Sobre o que gostaria de falar?" maxlength="180" required>
                 </div>
-               
-                
-                <div id="campo_assunto" class="input-box ">
-                    <label for="assunto"></label>
-                    <input type="text" name="assunto" id="assunto" placeholder="Assunto" required>
+                <div id="campo_mensagem" class="input-box">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea name="mensagem" id="mensagem" placeholder="Escreva sua mensagem" maxlength="10000" required></textarea>
                 </div>
-                <div id="campo_mensagem" class="input-box ">
-                    <textarea name="mensagem" id="mensagem" placeholder="mensagem" required></textarea>
+                <div class="campo-website" aria-hidden="true">
+                    <label for="website">Deixe este campo vazio</label>
+                    <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
                 </div>
+                <p id="contact-feedback" role="status" aria-live="polite"></p>
                 <div>
-                    <button type="submit" class="btn-submit"><i class="fa-regular fa-paper-plane"> </i>Enviar Mensagem</button>
-                   
+                    <button type="submit" class="btn-submit">
+                        <i class="fa-regular fa-paper-plane" aria-hidden="true"></i>
+                        Enviar mensagem
+                    </button>
                 </div>
             </form>
         </article>
@@ -111,18 +122,18 @@
                  <h2>Informações de contato</h2>
             <div>
             <h3><i class="fa-solid fa-location-dot  fa-lg icone-infor"></i>Localização</h3>
-                <p>Luanda , Angola</p>
+                <p>Icolo e Bengo, Angola</p>
             </div>
             <div>
                 <h3><i class="fa-regular fa-envelope fa-lg icone-infor"></i>Email</h3>
-                <p>luzolomampassi8@gmail.com</p></div>
+                <p><a href="mailto:Luzolomampassi8@gmail.com">luzolomampassi8@gmail.com</a></p></div>
             <div>
-                <h3><i class="fa-regular fa-calendar fa-lg icone-infor"></i>Disponibilidade</h3>
-                <p>Disponível para novos contatos</p></div>
+                <h3><i class="fa-regular fa-comments fa-lg icone-infor" aria-hidden="true"></i>Colaboração</h3>
+                <p>Aberto a conversas sobre projetos e desenvolvimento web.</p></div>
             </div>
-            <div class="mapa-conteiner">
-                <h2>Onde estou</h2>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3095.014703618322!2d13.486484214663514!3d-8.888027089576548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a51ff401f7d0fd3%3A0xf525407a8f72ebbb!2sParque%20do%20bloco%2008!5e1!3m2!1spt-PT!2sao!4v1784040690513!5m2!1spt-PT!2sao" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" id="mapa" ><p>Houve um problema com o navegador</p></iframe>
+            <div class="contact-note">
+                <i class="fa-regular fa-paper-plane" aria-hidden="true"></i>
+                <p>Prefere escrever diretamente? Use o e-mail acima.</p>
             </div>
         </article>
        
@@ -133,23 +144,24 @@
 <footer>
 
     <p>
-        <i class="fa-regular fa-copyright" style="color: rgb(255, 255, 255);"></i>
+        <i class="fa-regular fa-copyright" aria-hidden="true"></i>
         2026 Luzolo Mampassi. Todos os direitos reservados.
     </p>
 
     <p>
-        <i class="fa-solid fa-heart fa-lg" style="color: rgb(255, 0, 0);"></i>
-        Feito com dedicação para aprender e evoluir.
+        <i class="fa-solid fa-code fa-lg" aria-hidden="true"></i>
+        Desenvolvimento em constante evolução.
     </p>
 
     <a href="https://github.com/Luzolomampassi"
         target="_blank"
         rel="noopener noreferrer">
-        <i class="fa-brands fa-github fa-xl"></i>
-        <i class="bi bi-box-arrow-up-right"></i>
+        <i class="fa-brands fa-github fa-xl" aria-hidden="true"></i>
+        <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
     </a>
 
 </footer>
     <script src="../../interacoes.js"></script>
+    <script src="../scripts/contato.js" defer></script>
 </body>
 </html>

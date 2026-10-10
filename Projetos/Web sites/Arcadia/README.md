@@ -23,8 +23,10 @@ O ficheiro `config.php` contém credenciais e não deve ser publicado num reposi
 - Registo, início e fim de sessão com palavras-passe guardadas por hash.
 - Dados isolados por conta para jogos, favoritos, lista de desejos e coleções.
 - Perfil editável com biografia e estatísticas pessoais.
+- Sistema de amizade com pesquisa por nome ou ID Arcadia, sugestões, pedidos, lista de amigos e partilha limitada de jogos e coleções entre amigos aceites.
 - Alteração de palavra-passe e tema claro/escuro guardado na conta.
 - Biblioteca com pesquisa, filtros, ordenação, vista em grelha/lista e capas carregadas.
+- Notificações para pedidos de amizade, amizades aceites e novas mensagens; chat privado entre amigos aceites.
 - Progresso de jogos, horas, avaliação, notas privadas e coleções personalizadas.
 
 PHP 8.1+ com PDO MySQL, fileinfo e mbstring; MySQL ou MariaDB; Apache ou servidor equivalente.

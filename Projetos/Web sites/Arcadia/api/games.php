@@ -35,10 +35,11 @@ try {
         $status = (string)($_POST['status'] ?? 'backlog');
         $allowed = ['backlog','playing','completed','paused','abandoned'];
         if (!in_array($status, $allowed, true)) json_response(['error' => 'Estado inválido.'], 422);
-        $hours = filter_var($_POST['hours'] ?? 0, FILTER_VALIDATE_FLOAT);
+        $hoursRaw = trim((string)($_POST['hours'] ?? '0'));
+        $hours = $hoursRaw === '' ? 0 : filter_var($hoursRaw, FILTER_VALIDATE_FLOAT);
         $ratingRaw = trim((string)($_POST['rating'] ?? ''));
-        $rating = $ratingRaw === '' ? null : filter_var($ratingRaw, FILTER_VALIDATE_FLOAT);
-        if ($hours === false || $hours < 0 || ($ratingRaw !== '' && ($rating === false || $rating < 0 || $rating > 10))) json_response(['error' => 'Verifica as horas e a avaliação (0 a 10).'], 422);
+        $rating = $ratingRaw === '' ? 0 : filter_var($ratingRaw, FILTER_VALIDATE_FLOAT);
+        if ($hours === false || $hours < 0 || $rating === false || $rating < 0 || $rating > 10) json_response(['error' => 'Verifica as horas e a avaliação (0 a 10).'], 422);
         $release = trim((string)($_POST['release_date'] ?? '')) ?: null;
         if ($release !== null && !preg_match('/^\d{4}-\d{2}-\d{2}$/', $release)) json_response(['error' => 'Data de lançamento inválida.'], 422);
         $cover = null;
@@ -77,4 +78,5 @@ try {
     json_response(['error'=>'Método não suportado.'], 405);
 } catch (InvalidArgumentException $e) { json_response(['error'=>$e->getMessage()],422); }
 catch (PDOException $e) { json_response(['error'=>'Não foi possível aceder à base de dados. Confirma a configuração e importa o esquema SQL.'],503); }
+catch (RuntimeException $e) { json_response(['error'=>$e->getMessage()],502); }
 catch (Throwable $e) { json_response(['error'=>$e->getMessage()],500); }

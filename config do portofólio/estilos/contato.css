@@ -260,6 +260,298 @@ textarea::placeholder{
     .linha{
     flex-direction:column;
 }
+
+/* Layout mais claro e consistente para a página de contato */
+body.contact-page {
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+body.contact-page .banner-contato {
+    width: min(1220px, 100%);
+    margin: 0 auto;
+    padding: clamp(52px, 8vw, 88px) 24px 36px;
+    background: transparent;
+}
+
+body.contact-page .banner-conteiner {
+    max-width: 780px;
+    margin: 0;
+}
+
+body.contact-page .boas-vinda {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0 0 18px;
+    padding: 0;
+    border-radius: 0;
+    color: var(--color-text-muted);
+    background: transparent;
+    font-size: 0.86rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+body.contact-page .boas-vinda::before {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #8B5CF6;
+    content: "";
+}
+
+body.contact-page .banner-content {
+    padding: 0;
+    animation: none;
+}
+
+body.contact-page .banner-content h1 {
+    max-width: 760px;
+    margin: 0 0 16px;
+    padding: 0;
+    color: var(--color-text);
+    font-size: clamp(2.5rem, 5vw, 4.25rem);
+    letter-spacing: -0.055em;
+    line-height: 1.1;
+}
+
+body.contact-page .banner-content > p {
+    max-width: 650px;
+    color: #B6C0D1;
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
+
+body.contact-page .contact-hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 22px;
+    color: #D1C3FA;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+body.contact-page .contact-hero-link:hover {
+    color: #FFFFFF;
+}
+
+body.contact-page .contato {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    align-items: start;
+    gap: 22px;
+    width: min(1220px, 100%);
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    animation: none;
+}
+
+body.contact-page .card_contato,
+body.contact-page .card-infor {
+    width: 100%;
+    height: auto;
+    padding: 0;
+}
+
+body.contact-page .contato form,
+body.contact-page .card-infor-conteiner,
+body.contact-page .contact-note {
+    width: 100%;
+    padding: 24px;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 12px;
+    background: #080F20;
+    box-shadow: none;
+}
+
+body.contact-page .contato form > h2,
+body.contact-page .card-infor h2 {
+    margin: 0 0 20px;
+    padding: 0;
+    color: var(--color-text);
+    font-size: 1.3rem;
+    letter-spacing: -0.025em;
+}
+
+body.contact-page .linha {
+    align-items: flex-start;
+    gap: 14px;
+}
+
+body.contact-page .input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+    margin-bottom: 16px;
+}
+
+body.contact-page .input-box label {
+    color: #C5CEDB;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+body.contact-page .input-box input,
+body.contact-page .input-box textarea {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 12px 13px;
+    border: 1px solid #2C384D;
+    border-radius: 7px;
+    color: var(--color-text);
+    background: #050B17;
+    font: inherit;
+    font-size: 0.94rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.contact-page .input-box textarea {
+    min-height: 170px;
+    max-height: 360px;
+    resize: vertical;
+}
+
+body.contact-page .input-box input::placeholder,
+body.contact-page .input-box textarea::placeholder {
+    color: #7F8A9E;
+    font-weight: 400;
+}
+
+body.contact-page .input-box input:focus,
+body.contact-page .input-box textarea:focus {
+    outline: none;
+    border-color: #8064C4;
+    box-shadow: 0 0 0 3px rgba(128, 100, 196, 0.16);
+}
+
+body.contact-page .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: auto;
+    min-height: 46px;
+    margin: 4px 0 0;
+    padding: 0 18px;
+    border: 1px solid #6B50AC;
+    border-radius: 7px;
+    color: #FFFFFF;
+    background: #5B35B5;
+    font: inherit;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+body.contact-page .btn-submit:hover {
+    transform: translateY(-2px);
+    background: #7048CC;
+    box-shadow: none;
+}
+
+body.contact-page .btn-submit:focus-visible,
+body.contact-page .contact-hero-link:focus-visible {
+    outline: 2px solid #B8A1F0;
+    outline-offset: 3px;
+}
+
+body.contact-page .card-infor-conteiner > div {
+    display: grid;
+    gap: 7px;
+    margin-top: 18px;
+}
+
+body.contact-page .card-infor-conteiner h3 {
+    color: #D9E0EA;
+    font-size: 0.93rem;
+}
+
+body.contact-page .card-infor-conteiner .icone-infor {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin: 0 2px 0 0;
+    padding: 7px;
+    border-radius: 7px;
+    color: #B9A3F3;
+    background: rgba(91, 53, 181, 0.16);
+    font-size: 0.95rem;
+}
+
+body.contact-page .card-infor-conteiner > div > p {
+    padding-left: 44px;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+body.contact-page .card-infor-conteiner a {
+    color: #C7B7EF;
+    text-decoration: none;
+}
+
+body.contact-page .card-infor-conteiner a:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+body.contact-page .contact-note {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-top: 14px;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+body.contact-page .contact-note i {
+    flex: 0 0 auto;
+    color: #B9A3F3;
+}
+
+body.contact-page footer .fa-code {
+    color: #B9A3F3;
+}
+
+@media (max-width: 760px) {
+    body.contact-page .contato {
+        grid-template-columns: 1fr;
+        max-width: 680px;
+        padding: 0 20px 56px;
+    }
+
+    body.contact-page .banner-contato {
+        max-width: 680px;
+        padding: 52px 20px 30px;
+    }
+}
+
+@media (max-width: 520px) {
+    body.contact-page .linha {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    body.contact-page .contato form,
+    body.contact-page .card-infor-conteiner,
+    body.contact-page .contact-note {
+        padding: 18px;
+    }
+
+    body.contact-page .btn-submit {
+        width: 100%;
+    }
+}
     .mapa-conteiner{
         width: 100%;
     }

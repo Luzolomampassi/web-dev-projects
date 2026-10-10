@@ -1,337 +1,125 @@
-<?php 
-     require '../../vendor/autoload.php';
-    require '../../config.php';
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
+<?php
+declare(strict_types=1);
 
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Recebendo os dados do formulário
-    $nome = $_POST["nome"] ?? "Preencha o nome";
-    $email = $_POST["email"] ?? "Preencha o email";
-    $emailDestinatario = "luzolomampassi8@gmail.com";
-    $assunto = $_POST["assunto"] ?? "Preencha o assunto";
-    $msg = $_POST["mensagem"] ?? "Preencha a mensagem";
+use PHPMailer\PHPMailer\PHPMailer;
 
-    $mensagemEmail = "Nome: $nome\n";
-    $mensagemEmail .= "E-mail: $email\n";
-    $mensagemEmail .= "Mensagem: $msg";
+header('Content-Type: application/json; charset=utf-8');
+header('Cache-Control: no-store');
 
-    // Usando o PHPMailer para o envio
+function respond(int $status, array $body): void
+{
+    http_response_code($status);
+    echo json_encode($body, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    exit;
+}
 
-    $mail = new PHPMailer();
+if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
+    header('Allow: POST');
+    respond(405, ['success' => false, 'message' => 'Método não permitido.']);
+}
+
+$contentType = strtolower(trim(explode(';', $_SERVER['CONTENT_TYPE'] ?? '')[0]));
+if ($contentType !== 'application/x-www-form-urlencoded' && $contentType !== 'multipart/form-data') {
+    respond(400, ['success' => false, 'message' => 'Pedido inválido. Atualize a página e tente novamente.']);
+}
+
+$fields = ['nome', 'email', 'assunto', 'mensagem'];
+foreach ($fields as $field) {
+    if (!isset($_POST[$field]) || !is_string($_POST[$field])) {
+        respond(400, ['success' => false, 'message' => 'Preencha todos os campos corretamente.']);
+    }
+}
+
+$nome = trim($_POST['nome']);
+$email = trim($_POST['email']);
+$assunto = trim($_POST['assunto']);
+$mensagem = trim($_POST['mensagem']);
+$website = isset($_POST['website']) && is_string($_POST['website']) ? trim($_POST['website']) : '';
+
+// Honeypot for simple bots. Return a normal success response without sending mail.
+if ($website !== '') {
+    respond(200, ['success' => true, 'message' => 'Mensagem enviada com sucesso.']);
+}
+
+if ($nome === '' || $email === '' || $assunto === '' || $mensagem === '') {
+    respond(422, ['success' => false, 'message' => 'Preencha todos os campos obrigatórios.']);
+}
+$nomeLength = preg_match_all('/./us', $nome);
+if ($nomeLength === false || $nomeLength < 4) {
+    respond(422, ['success' => false, 'message' => 'O nome deve ter pelo menos 4 caracteres.']);
+}
+if (strlen($nome) > 480 || strlen($assunto) > 720 || strlen($mensagem) > 40000) {
+    respond(422, ['success' => false, 'message' => 'Um ou mais campos excedem o tamanho permitido.']);
+}
+foreach ([$nome, $email, $assunto] as $headerValue) {
+    if (preg_match('/[\r\n]/', $headerValue)) {
+        respond(422, ['success' => false, 'message' => 'Os dados enviados são inválidos.']);
+    }
+}
+if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+    respond(422, ['success' => false, 'message' => 'Informe um endereço de e-mail válido.']);
+}
+
+// Prefer server environment variables; .env is a simple local/deployment fallback.
+$envPath = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . '.env';
+if (is_readable($envPath)) {
+    foreach (file($envPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) ?: [] as $line) {
+        $line = trim($line);
+        if ($line === '' || str_starts_with($line, '#') || !str_contains($line, '=')) {
+            continue;
+        }
+        [$key, $value] = explode('=', $line, 2);
+        $key = trim($key);
+        $value = trim($value);
+        if (strlen($value) >= 2 && (($value[0] === '"' && str_ends_with($value, '"')) || ($value[0] === "'" && str_ends_with($value, "'")))) {
+            $value = substr($value, 1, -1);
+        }
+        if (getenv($key) === false) {
+            putenv($key . '=' . $value);
+            $_ENV[$key] = $value;
+        }
+    }
+}
+
+$config = [
+    'host' => getenv('SMTP_HOST') ?: '',
+    'port' => getenv('SMTP_PORT') ?: '',
+    'username' => getenv('SMTP_USERNAME') ?: '',
+    'password' => getenv('SMTP_PASSWORD') ?: '',
+    'encryption' => strtolower(getenv('SMTP_ENCRYPTION') ?: 'tls'),
+    'from_email' => getenv('MAIL_FROM_EMAIL') ?: '',
+    'from_name' => getenv('MAIL_FROM_NAME') ?: 'Portfólio Luzolo Mampassi',
+    'to_email' => getenv('CONTACT_TO_EMAIL') ?: '',
+];
+$port = filter_var($config['port'], FILTER_VALIDATE_INT, ['options' => ['min_range' => 1, 'max_range' => 65535]]);
+if ($config['host'] === '' || $port === false || $config['username'] === '' || $config['password'] === '' ||
+    !in_array($config['encryption'], ['tls', 'ssl'], true) ||
+    filter_var($config['from_email'], FILTER_VALIDATE_EMAIL) === false ||
+    filter_var($config['to_email'], FILTER_VALIDATE_EMAIL) === false ||
+    preg_match('/[\r\n]/', $config['from_name'])) {
+    error_log('Contact form: SMTP configuration is missing or invalid.');
+    respond(503, ['success' => false, 'message' => 'O formulário está temporariamente indisponível. Tente novamente mais tarde.']);
+}
+
+try {
+    require dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+    $mail = new PHPMailer(true);
     $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
-    $mail->Port = 587;
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Host = $config['host'];
+    $mail->Port = $port;
     $mail->SMTPAuth = true;
-    $mail->Username = $smtpUser;
-    $mail->Password = $smtpPassword;
-    $mail->setFrom('luzolomampassi8@gmail.com', 'Luzolo');
-    $mail->addAddress($emailDestinatario);
+    $mail->Username = $config['username'];
+    $mail->Password = $config['password'];
+    $mail->SMTPSecure = $config['encryption'] === 'ssl' ? PHPMailer::ENCRYPTION_SMTPS : PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->CharSet = PHPMailer::CHARSET_UTF8;
+    $mail->setFrom($config['from_email'], $config['from_name']);
+    $mail->addAddress($config['to_email']);
     $mail->addReplyTo($email, $nome);
-    $mail->Subject = $assunto;
-    $mail->Body = $mensagemEmail;
-      
-    try {
-        $mail->send();
-
-    } catch (Exception $e) {
-        echo 'Erro ao enviar: ' . $mail->ErrorInfo;
-    }
-  
+    $mail->Subject = 'Contacto do portfólio: ' . $assunto;
+    $mail->Body = "Nome: {$nome}\nE-mail: {$email}\nAssunto: {$assunto}\n\nMensagem:\n{$mensagem}";
+    $mail->send();
+    respond(200, ['success' => true, 'message' => 'Mensagem enviada com sucesso. Obrigado pelo contacto.']);
+} catch (Throwable $exception) {
+    error_log('Contact form delivery failed: ' . $exception->getMessage());
+    respond(502, ['success' => false, 'message' => 'Não foi possível enviar a mensagem agora. Tente novamente mais tarde.']);
 }
- 
-        
-?>
-
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato</title>
-    <script src="https://kit.fontawesome.com/f6a9b3f1e7.js" crossorigin="anonymous"></script>
-     <link rel="stylesheet" href="../../style.css">
-    <link rel="stylesheet" href="../estilos/header.css">
-    <link rel="stylesheet" href="../estilos/contato.css">
-    <link rel="stylesheet" href="../estilos/banner.css">
-    <link rel="stylesheet" href="../estilos/footer.css">
-<style>
-.container {
-width: min(90%, 650px);
-min-height: 650px;
-margin: 50px auto;
-
-display: flex;
-justify-content: center;
-align-items: center;
-
-padding: 12px;
-
-background-color: white;
-border-radius: 20px;
-}
-
-.content {
-    position: relative;
-
-    width: 100%;
-    min-height: 625px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    padding: 40px;
-
-    overflow: hidden;
-
-    border: 1px solid #426070;
-    border-radius: 18px;
-
-    background:
-        radial-gradient(
-            circle at 50% 20%,
-            rgba(52, 203, 121, .15),
-            transparent 30%
-        ),
-        linear-gradient(
-            135deg,
-            #123b3c,
-            #0E2B32 55%,
-            #071a26
-        );
-
-    box-shadow:
-        0 0 40px rgba(52, 203, 121, .08),
-        inset 0 0 40px rgba(52, 203, 121, .03);
-
-    text-align: center;
-}
-
-
-/* CHECK */
-
-.check {
-    width: 110px;
-    height: 110px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    margin-bottom: 35px;
-
-    border-radius: 50%;
-
-    background: #28c778;
-
-    box-shadow:
-        0 0 0 15px rgba(52, 203, 121, .08),
-        0 0 0 28px rgba(52, 203, 121, .04),
-        0 0 35px rgba(52, 203, 121, .35);
-}
-
-.check i {
-    color: white;
-    font-size: 55px;
-}
-
-
-/* TÍTULO */
-
-h2 {
-    margin: 0;
-
-    max-width: 550px;
-
-    color: white;
-
-    font-size: clamp(1.8rem, 4vw, 2.7rem);
-    line-height: 1.2;
-
-    font-weight: 700;
-}
-
-h2 span {
-    display: block;
-
-    margin-top: 5px;
-
-    color: #34CB79;
-}
-
-
-/* TEXTO */
-
-p {
-    margin: 30px 0;
-
-    color: #d5dddd;
-
-    font-size: 1.1rem;
-    line-height: 1.7;
-}
-
-
-/* LINHA */
-
-.linha {
-    width: 230px;
-    height: 1px;
-
-    position: relative;
-
-    margin: 5px 0 35px;
-
-    background: rgba(255, 255, 255, .1);
-}
-
-.linha span {
-    position: absolute;
-
-    width: 9px;
-    height: 9px;
-
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-
-    border-radius: 50%;
-
-    background-color: #34CB79;
-
-    box-shadow: 0 0 10px #34CB79;
-}
-
-
-/* BOTÃO */
-
-a {
-    width: 85%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-
-    padding: 17px 20px;
-
-    color: white;
-
-    background: linear-gradient(
-        135deg,
-        #34CB79,
-        #20AE68
-    );
-
-    border-radius: 12px;
-
-    text-decoration: none;
-
-    font-size: 1rem;
-
-    box-shadow:
-        0 10px 25px rgba(52, 203, 121, .18);
-
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease;
-}
-
-a i {
-    font-size: 1.2rem;
-}
-
-a i:last-child {
-    transition: transform .2s ease;
-}
-
-a:hover {
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 14px 30px rgba(52, 203, 121, .3);
-}
-
-a:hover i:last-child {
-    transform: translateX(5px);
-}
-
-
-/* RESPONSIVIDADE */
-
-@media (max-width: 600px) {
-
-    .container {
-        width: 90%;
-        min-height: 400px;
-        margin: 30px auto;
-    }
-
-    .content {
-        min-height: 500px;
-        padding: 30px 20px;
-    }
-
-    .check {
-        width: 85px;
-        height: 85px;
-
-        margin-bottom: 25px;
-    }
-
-    .check i {
-        font-size: 42px;
-    }
-
-    h2 {
-        font-size: 1.7rem;
-    }
-
-    p {
-        font-size: .95rem;
-    }
-
-    a {
-        width: 100%;
-    }
-}
-</style>
-</head>
-<body>
-
-    <div class="container">
-    <div class="content">
-
-        <div class="check">
-            <i class="fa-solid fa-check"></i>
-        </div>
-
-        <h2>
-            Mensagem enviada com
-            <span>sucesso!</span>
-        </h2>
-
-        <p>
-            Obrigado por entrar em contato.<br>
-            Retornaremos em breve.
-        </p>
-
-        <div class="linha">
-            <span></span>
-        </div>
-
-        <a href="contato.html">
-            <i class="fa-regular fa-envelope"></i>
-            <strong>Voltar para o contato</strong>
-            <i class="fa-solid fa-arrow-right"></i>
-        </a>
-
-    </div>
-</div>
-    
-</body>
-</html>
