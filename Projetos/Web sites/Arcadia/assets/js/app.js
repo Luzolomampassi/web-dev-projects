@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  const state = { games: [], collections: [], memberships: [], page: 'dashboard', view: 'grid', search: '', wishlistForm: false };
+  const state = { games: [], collections: [], memberships: [], page: 'dashboard', view: 'grid', search: '', user: window.APP_CONFIG.user };
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
   const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -10,12 +10,12 @@
   async function request(url, options = {}) {
     const response = await fetch(url, options); let body;
     try { body = await response.json(); } catch { throw new Error('Resposta inválida do servidor.'); }
-    if (!response.ok) throw new Error(body.error || 'A operação não foi concluída.');
+    if (!response.ok) { const error=new Error(body.error || 'A operação não foi concluída.'); error.status=response.status; throw error; }
     return body;
   }
   async function load() {
     try { const data=await request('api/games.php'); state.games=data.games; state.collections=data.collections; state.memberships=data.memberships; render(); }
-    catch (error) { toast(error.message); $('.game-grid').innerHTML=empty('A ligação à base de dados não está pronta','Importa database/schema.sql e configura config.php para começar.'); }
+    catch (error) { if(error.status===401){location.href='index.php';return;} toast(error.message); $('.game-grid').innerHTML=empty('A ligação à base de dados não está pronta','Cria uma base de dados MySQL no alojamento e configura config.php para começar.'); }
   }
   function empty(title, text, button = false) { return `<div class="empty-state"><div><div class="empty-icon">✦</div><strong>${escapeHtml(title)}</strong><p>${escapeHtml(text)}</p>${button?'<button class="button button-primary" data-add>＋ Adicionar jogo</button>':''}</div></div>`; }
   function cover(game) { return game.cover_path ? `<img src="uploads/${encodeURIComponent(game.cover_path)}" alt="Capa de ${escapeHtml(game.title)}" loading="lazy">` : `<div class="cover-placeholder" aria-label="Sem capa">${escapeHtml(game.title.slice(0,1).toUpperCase())}</div>`; }
@@ -60,10 +60,10 @@
     const gamesById=new Map(state.games.map(g=>[Number(g.id),g]));
     $('#collection-grid').innerHTML=state.collections.length?state.collections.map(c=>{const ids=state.memberships.filter(m=>Number(m.collection_id)===Number(c.id)).map(m=>Number(m.game_id));return `<article class="collection-card"><div><div class="collection-art">▤</div><h3>${escapeHtml(c.name)}</h3><p>${ids.map(id=>gamesById.get(id)?.title).filter(Boolean).slice(0,3).map(escapeHtml).join(' · ')||'Adiciona jogos a esta coleção'}</p></div><div class="collection-footer"><span>${ids.length} ${ids.length===1?'jogo':'jogos'}</span><span><button data-assign="${c.id}">Adicionar jogo</button> · <button data-remove-collection="${c.id}">Apagar</button></span></div></article>`}).join(''):empty('Cria a tua primeira coleção','Agrupa os jogos que partilham uma história, um género ou uma vontade.',false);
   }
-  function render() {updateFilters();renderDashboard();renderLibrary();renderWishlist();renderCollections();}
+  function render() {updateFilters();renderDashboard();renderLibrary();renderWishlist();renderCollections();renderProfileStats();}
   function navigate(page) {
     state.page=page; $$('.page').forEach(el=>el.classList.toggle('active',el.id===`page-${page}`)); $$('.nav-item').forEach(el=>el.classList.toggle('active',el.dataset.page===page));
-    const names={dashboard:'Visão geral',library:'A minha biblioteca',wishlist:'Lista de desejos',collections:'Coleções'}; $('#breadcrumb-current').textContent=names[page]||names.dashboard; $('#sidebar').classList.remove('open');
+    const names={dashboard:'Visão geral',library:'A minha biblioteca',wishlist:'Lista de desejos',collections:'Coleções',profile:'Perfil do jogador',settings:'Definições'}; $('#breadcrumb-current').textContent=names[page]||names.dashboard; $('#sidebar').classList.remove('open');
   }
   function openModal(game=null, wishlist=false) {
     const form=$('#game-form');form.reset();form.elements.id.value=game?.id||'';form.elements.csrf.value=window.APP_CONFIG.csrf;$('#form-error').textContent='';
@@ -75,6 +75,15 @@
   function closeModal(){const modal=$('#game-modal');modal.classList.remove('open');modal.setAttribute('aria-hidden','true');}
   async function post(url, data) {data.append('csrf',window.APP_CONFIG.csrf);return request(url,{method:'POST',body:data,headers:{'X-CSRF-Token':window.APP_CONFIG.csrf}});}
   function gameById(id){return state.games.find(g=>Number(g.id)===Number(id));}
+  const profileForm=$('#profile-form'), settingsForm=$('#settings-form'), passwordForm=$('#password-form');
+  function updateProfile(user){state.user=user;$('#sidebar-username').textContent=user.username;$('#sidebar-avatar').textContent=user.username.slice(0,1).toLocaleUpperCase();$('#profile-name').textContent=user.username;$('#profile-avatar').textContent=user.username.slice(0,1).toLocaleUpperCase();$('#profile-email').textContent=user.email;$('#profile-bio-preview').textContent=user.bio||'Ainda não adicionaste uma descrição.';profileForm.elements.username.value=user.username;profileForm.elements.bio.value=user.bio||'';}
+  async function initAccount(){try{const data=await request('api/auth.php');updateProfile(data.user);document.body.classList.toggle('theme-light',data.settings.theme==='light');document.body.classList.toggle('theme-dark',data.settings.theme==='dark');settingsForm.elements.theme.value=data.settings.theme;localStorage.setItem('arcadia-theme',data.settings.theme);}catch(e){if(e.status===401)location.href='index.php';}}
+  profileForm.addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(profileForm);f.set('action','profile');try{const data=await post('api/auth.php',f);updateProfile(data.user);toast('Perfil atualizado.')}catch(err){$('#profile-error').textContent=err.message;}});
+  settingsForm.addEventListener('submit',async e=>{e.preventDefault();const theme=settingsForm.elements.theme.value;const f=new FormData();f.set('action','settings');f.set('theme',theme);try{await post('api/auth.php',f);document.body.classList.toggle('theme-light',theme==='light');document.body.classList.toggle('theme-dark',theme==='dark');localStorage.setItem('arcadia-theme',theme);toast('Definições guardadas.')}catch(err){toast(err.message);}});
+  passwordForm.addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(passwordForm);f.set('action','password');try{await post('api/auth.php',f);passwordForm.reset();toast('Palavra-passe atualizada.')}catch(err){$('#password-error').textContent=err.message;}});
+  async function logout(){const f=new FormData();f.set('action','logout');try{await post('api/auth.php',f);}finally{location.href='index.php';}}
+  $('#logout').addEventListener('click',logout);$('#settings-logout').addEventListener('click',logout);
+  function renderProfileStats(){const owned=state.games.filter(g=>!g.is_wishlist);$('#profile-total').textContent=owned.length;$('#profile-hours').textContent=owned.reduce((sum,g)=>sum+Number(g.hours||0),0).toLocaleString('pt-PT');$('#profile-completed').textContent=owned.filter(g=>g.status==='completed').length;$('#profile-collections').textContent=state.collections.length;}
   document.addEventListener('click',async event=>{
     const nav=event.target.closest('[data-page]');if(nav){navigate(nav.dataset.page);return;}
     const go=event.target.closest('[data-go]');if(go){navigate(go.dataset.go);return;}
@@ -95,7 +104,7 @@
   $('#global-search').addEventListener('input',event=>{state.search=event.target.value;navigate('library');$('#library-search').value=state.search;renderLibrary();});
   document.addEventListener('keydown',event=>{if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='k'){event.preventDefault();$('#global-search').focus();}if(event.key==='Escape')closeModal();});
   $('#game-modal').addEventListener('click',event=>{if(event.target.id==='game-modal')closeModal();});
-  $('#theme-toggle').addEventListener('click',()=>{document.body.classList.toggle('theme-light');localStorage.setItem('arcadia-theme',document.body.classList.contains('theme-light')?'light':'dark');});
-  if(localStorage.getItem('arcadia-theme')==='light')document.body.classList.add('theme-light');
+  $('#theme-toggle').addEventListener('click',()=>{const theme=document.body.classList.contains('theme-light')?'dark':'light';settingsForm.elements.theme.value=theme;settingsForm.requestSubmit();});
+  initAccount();
   load();
 })();

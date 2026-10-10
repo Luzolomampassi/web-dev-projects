@@ -1,53 +1,30 @@
 # Arcadia — Biblioteca pessoal de jogos
 
-Aplicação pessoal construída com PHP, MySQL, HTML, CSS e JavaScript puro. Os registos ficam na base de dados MySQL e as capas que carregares são guardadas em `uploads/`. A coleção começa vazia: adiciona os teus próprios jogos.
+Arcadia é uma aplicação PHP/MySQL para acompanhar jogos, progresso, favoritos e coleções. Inclui contas com email e palavra-passe, perfil de jogador, definições de aparência e dados privados por conta. A interface funciona em telemóveis e computadores.
 
-## Requisitos
+## Publicar no InfinityFree
 
-- PHP 8.1 ou superior com extensões `PDO_MySQL`, `fileinfo` e `mbstring`.
-- MySQL 8.0 ou MariaDB 10.5 ou superior.
-- Apache (por exemplo, XAMPP) ou o servidor embutido do PHP.
+1. No painel InfinityFree, cria uma base de dados MySQL e anota o hostname, o nome da base de dados, o utilizador e a palavra-passe. O hostname MySQL indicado pelo painel é diferente de `localhost`.
+2. Copia os ficheiros do projeto para `htdocs` do teu domínio, preservando `api/`, `assets/`, `includes/` e `uploads/`.
+3. Copia `config.example.php` para `config.php`. Preenche os quatro dados MySQL com os valores do painel e mantém `charset` como `utf8mb4`.
+4. Confirma que `uploads/` permite gravação pelo PHP para guardar capas.
+5. Abre o domínio em HTTPS e cria a tua conta em **Criar conta**. A aplicação cria as tabelas e acrescenta as colunas necessárias no primeiro acesso; o utilizador MySQL tem de permitir `CREATE` e `ALTER`.
+
+O ficheiro `config.php` contém credenciais e não deve ser publicado num repositório. O `.gitignore` já o exclui. Se o teu plano de alojamento impedir criação ou alteração de tabelas, importa `database/schema.sql` no phpMyAdmin e concede ao utilizador permissões para as alterações de migração.
 
 ## Instalação local com XAMPP
 
-1. Copia a pasta `biblioteca-jogos` para `C:\xampp\htdocs\biblioteca-jogos`.
-2. Inicia Apache e MySQL no XAMPP.
-3. Abre phpMyAdmin, seleciona **Importar** e importa `database/schema.sql`. O script cria a base de dados `arcadia` e as três tabelas necessárias.
-4. Copia `config.example.php` para `config.php`. Edita `config.php` com o utilizador e a palavra-passe do teu MySQL. Na configuração típica local do XAMPP, o utilizador é `root` e a palavra-passe está vazia.
-5. Confirma que o Apache consegue escrever em `uploads/` para poder guardar capas.
-6. Abre `http://localhost/biblioteca-jogos/`.
-
-## Usar o servidor embutido do PHP
-
-Com a base de dados configurada, abre um terminal nesta pasta e executa:
-
-```sh
-php -S 127.0.0.1:8000
-```
-
-Depois visita `http://127.0.0.1:8000`.
+1. Inicia Apache e MySQL no XAMPP.
+2. Copia `config.example.php` para `config.php`. Na configuração típica local, utiliza `127.0.0.1`, base de dados `arcadia`, utilizador `root` e palavra-passe vazia.
+3. Abre o projeto pelo Apache e cria uma conta. Também podes importar `database/schema.sql` antes do primeiro acesso.
 
 ## Funcionalidades
 
-- Dashboard com estatísticas calculadas a partir dos teus jogos.
-- Biblioteca em grelha ou lista, com pesquisa, filtros e ordenação.
-- Estados pessoais, horas, avaliação, notas e favoritos.
-- Lista de desejos com a ação para passar um título para a coleção normal: edita o jogo e desmarca **Guardar na lista de desejos**.
-- Coleções personalizadas com associação de jogos.
-- Capas carregadas localmente, validação de formulário e confirmação antes de apagar.
-- Interface adaptável a telemóveis, navegação por teclado, preferência de movimento reduzido e tema claro/escuro.
+- Registo, início e fim de sessão com palavras-passe guardadas por hash.
+- Dados isolados por conta para jogos, favoritos, lista de desejos e coleções.
+- Perfil editável com biografia e estatísticas pessoais.
+- Alteração de palavra-passe e tema claro/escuro guardado na conta.
+- Biblioteca com pesquisa, filtros, ordenação, vista em grelha/lista e capas carregadas.
+- Progresso de jogos, horas, avaliação, notas privadas e coleções personalizadas.
 
-## Pastas
-
-```text
-api/             Endpoints PHP para jogos e coleções
-assets/css/      Estilos e layouts responsivos
-assets/js/       Navegação, formulários e interações
-database/        Esquema SQL inicial
-includes/        Ligação à base de dados e utilitários PHP
-uploads/         Capas carregadas pelo utilizador
-config.example.php
-index.php
-```
-
-Os endpoints incluem token CSRF e usam consultas preparadas PDO. A aplicação destina-se a uso pessoal local; não inclui autenticação de utilizadores.
+PHP 8.1+ com PDO MySQL, fileinfo e mbstring; MySQL ou MariaDB; Apache ou servidor equivalente.

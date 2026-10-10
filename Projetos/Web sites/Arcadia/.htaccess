@@ -1,0 +1,5 @@
+RewriteEngine On
+
+# Protect account credentials and session traffic by always using TLS.
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]

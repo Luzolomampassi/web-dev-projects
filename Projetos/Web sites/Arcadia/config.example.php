@@ -1,10 +1,10 @@
 <?php
 return [
     'database' => [
-        'host' => '127.0.0.1',
+        'host' => 'sql107.infinityfree.com',
         'port' => 3306,
-        'name' => 'arcadia',
-        'username' => 'root',
+        'name' => 'if0_42784985_arcadia',
+        'username' => 'if0_42784985',
         'password' => '',
         'charset' => 'utf8mb4',
     ],

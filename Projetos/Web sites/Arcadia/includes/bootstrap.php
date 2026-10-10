@@ -28,7 +28,40 @@ function db(): PDO
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         PDO::ATTR_EMULATE_PREPARES => false,
     ]);
+    // Safe, idempotent upgrade for shared hosts where the database cannot be
+    // created by an imported SQL script. Existing tables and records survive.
+    $pdo->exec("CREATE TABLE IF NOT EXISTS users (id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, username VARCHAR(40) NOT NULL, email VARCHAR(190) NOT NULL, password_hash VARCHAR(255) NOT NULL, bio VARCHAR(500) NOT NULL DEFAULT '', created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, UNIQUE KEY users_username (username), UNIQUE KEY users_email (email)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+    $pdo->exec("CREATE TABLE IF NOT EXISTS games (id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,title VARCHAR(160) NOT NULL,platform VARCHAR(80) NOT NULL DEFAULT '',genre VARCHAR(80) NOT NULL DEFAULT '',status ENUM('backlog','playing','completed','paused','abandoned') NOT NULL DEFAULT 'backlog',hours DECIMAL(7,1) NOT NULL DEFAULT 0,rating DECIMAL(3,1) NULL,release_date DATE NULL,description TEXT NOT NULL,notes TEXT NOT NULL,favorite TINYINT(1) NOT NULL DEFAULT 0,is_wishlist TINYINT(1) NOT NULL DEFAULT 0,cover_path VARCHAR(255) NULL,created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,INDEX idx_games_title(title),INDEX idx_games_status(status),INDEX idx_games_created(created_at)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+    $pdo->exec("CREATE TABLE IF NOT EXISTS collections (id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,name VARCHAR(80) NOT NULL,created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+    $pdo->exec("CREATE TABLE IF NOT EXISTS game_collections (collection_id INT UNSIGNED NOT NULL,game_id INT UNSIGNED NOT NULL,PRIMARY KEY(collection_id,game_id),CONSTRAINT fk_gc_collection FOREIGN KEY(collection_id) REFERENCES collections(id) ON DELETE CASCADE,CONSTRAINT fk_gc_game FOREIGN KEY(game_id) REFERENCES games(id) ON DELETE CASCADE) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+    foreach (['games', 'collections'] as $table) {
+        $exists = $pdo->query("SHOW TABLES LIKE " . $pdo->quote($table))->fetchColumn();
+        if ($exists) {
+            $column = $pdo->query("SHOW COLUMNS FROM `$table` LIKE 'user_id'")->fetch();
+            if (!$column) $pdo->exec("ALTER TABLE `$table` ADD user_id INT UNSIGNED NULL, ADD INDEX idx_{$table}_user (user_id)");
+            if ($table === 'collections') {
+                foreach ($pdo->query("SHOW INDEX FROM collections")->fetchAll() as $index) {
+                    if ($index['Column_name'] === 'name' && (int)$index['Non_unique'] === 0 && $index['Key_name'] !== 'PRIMARY') {
+                        $pdo->exec('ALTER TABLE collections DROP INDEX `' . str_replace('`', '', $index['Key_name']) . '`');
+                    }
+                }
+            }
+        }
+    }
+    $pdo->exec("CREATE TABLE IF NOT EXISTS user_settings (user_id INT UNSIGNED NOT NULL PRIMARY KEY, theme VARCHAR(10) NOT NULL DEFAULT 'light', updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
     return $pdo;
+}
+
+function current_user(): ?array
+{
+    return isset($_SESSION['user']) && is_array($_SESSION['user']) ? $_SESSION['user'] : null;
+}
+
+function require_login(): array
+{
+    $user = current_user();
+    if (!$user) json_response(['error' => 'Inicia sessão para continuar.'], 401);
+    return $user;
 }
 
 function csrf_token(): string
