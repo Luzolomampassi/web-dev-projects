@@ -234,7 +234,7 @@ nav ul a:hover::before {
 
 /*========================== DESKTOP ==========================*/
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
 
     #menu-btn {
         display: none;
@@ -399,7 +399,7 @@ header > nav #menu ul a::before {
     bottom: -4px;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 767px) {
     header > nav #menu.ativo {
         display: flex;
         flex-direction: column;
@@ -447,6 +447,36 @@ header > nav #menu ul a::before {
     header > nav *::before {
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
+    }
+}
+
+@media (min-width: 768px) {
+    header > nav {
+        flex-wrap: nowrap;
+    }
+
+    header > nav h1 {
+        flex-shrink: 0;
+    }
+
+    header > nav #menu-btn {
+        display: none !important;
+    }
+
+    header > nav #menu {
+        display: flex;
+        position: static;
+        width: auto;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+        align-items: center;
+        flex: 0 0 auto;
+    }
+
+    header > nav #menu ul {
+        flex-direction: row;
     }
 }
 
