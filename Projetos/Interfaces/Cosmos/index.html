@@ -18,13 +18,20 @@
 
 <body>
 
+    <video class="space-background" autoplay muted loop playsinline preload="metadata"
+        poster="assets/imagem/Buraco negro bg.png" aria-hidden="true" tabindex="-1">
+        <source src="https://svs.gsfc.nasa.gov/vis/a010000/a013300/a013326/BH_AccretionDisk_Sim_360_wide_16x9_1080.webm" type="video/webm">
+        <source src="https://svs.gsfc.nasa.gov/vis/a010000/a013300/a013326/BH_AccretionDisk_Sim_360_wide_16x9_1080.mp4" type="video/mp4">
+    </video>
+    <div class="space-atmosphere" aria-hidden="true"></div>
+
     <div class="page">
 
         <!-- ================= HEADER ================= -->
 
         <header class="header">
 
-            <a href="#" class="logo" aria-label="Cosmos - Início">
+            <a href="#inicio" class="logo" aria-label="Cosmos - Início">
                 <span>✦</span>
                 <h2>Cosmos</h2>
             </a>
@@ -34,23 +41,23 @@
                 <ul class="menu">
 
                     <li>
-                        <a href="#">Início</a>
+                        <a href="#inicio">Início</a>
                     </li>
 
                     <li>
-                        <a href="#">Explorar</a>
+                        <a href="#explorar">Explorar</a>
                     </li>
 
                     <li>
-                        <a href="#">Ciência</a>
+                        <a href="#ciencia">Ciência</a>
                     </li>
 
                     <li>
-                        <a href="#">Galeria</a>
+                        <a href="#galeria">Galeria</a>
                     </li>
 
                     <li>
-                        <a href="#">Sobre</a>
+                        <a href="#sobre">Sobre</a>
                     </li>
 
                 </ul>
@@ -62,26 +69,25 @@
                 <button
                     type="button"
                     class="search"
-                    aria-label="Pesquisar">
+                    aria-label="Ir para a secção Explorar">
 
                     <i class="fa-solid fa-magnifying-glass"></i>
 
                 </button>
 
-                <button
-                    type="button"
-                    class="login">
+                <a class="login" href="#newsletter">
 
                     <i class="fa-regular fa-user"></i>
-                    <span>Entrar</span>
+                    <span>Receber novidades</span>
 
-                </button>
+                </a>
 
                 <button
                     type="button"
                     class="menu-toggle"
                     aria-label="Abrir menu"
-                    aria-expanded="false">
+                    aria-expanded="false"
+                    aria-controls="mobile-nav">
 
                     <i class="fa-solid fa-bars"></i>
 
@@ -94,28 +100,28 @@
 
         <!-- ================= MENU MOBILE ================= -->
 
-        <nav class="mobile-nav" aria-label="Navegação mobile">
+        <nav class="mobile-nav" id="mobile-nav" aria-label="Navegação mobile">
 
             <ul>
 
                 <li>
-                    <a href="#">Início</a>
+                    <a href="#inicio">Início</a>
                 </li>
 
                 <li>
-                    <a href="#">Explorar</a>
+                    <a href="#explorar">Explorar</a>
                 </li>
 
                 <li>
-                    <a href="#">Ciência</a>
+                    <a href="#ciencia">Ciência</a>
                 </li>
 
                 <li>
-                    <a href="#">Galeria</a>
+                    <a href="#galeria">Galeria</a>
                 </li>
 
                 <li>
-                    <a href="#">Sobre</a>
+                    <a href="#sobre">Sobre</a>
                 </li>
 
             </ul>
@@ -127,7 +133,7 @@
 
         <main>
 
-            <section class="hero">
+            <section class="hero" id="inicio">
 
                 <div class="banner">
 
@@ -159,17 +165,17 @@
 
                     <div class="banner-buttons">
 
-                        <a href="#" class="primary-button">
+                        <a href="#explorar" class="primary-button">
                             Explorar agora
                         </a>
 
-                        <a href="#" class="video-button">
+                        <a href="#ciencia" class="video-button">
 
                             <span>
-                                <i class="fa-solid fa-play"></i>
+                                <i class="fa-solid fa-arrow-down"></i>
                             </span>
 
-                            Ver vídeo
+                            Saiba mais
 
                         </a>
 
@@ -196,7 +202,7 @@
                             Buraco negro no centro da Via Láctea
                         </p>
 
-                        <a href="#" class="learn-more">
+                        <a href="#ciencia" class="learn-more">
                             Saiba mais
                             <i class="fa-solid fa-arrow-right-long"></i>
                         </a>
@@ -282,7 +288,7 @@
 
                     <!-- ================= NEWSLETTER ================= -->
 
-                    <article class="formulario">
+                    <article class="formulario" id="newsletter">
 
                         <div class="form_txt">
 
@@ -334,6 +340,7 @@
 
                 <section
                     class="explorar"
+                    id="explorar"
                     aria-labelledby="explorar-title">
 
                     <div class="top">
@@ -342,16 +349,16 @@
                             Explorar
                         </h2>
 
-                        <a href="#">
+                        <a href="#galeria">
                             Ver tudo
                         </a>
 
                     </div>
 
 
-                    <article class="item">
+                    <article class="item" id="ciencia">
 
-                        <a href="#" class="imagem">
+                        <a href="#ciencia" class="imagem">
 
                             <img
                                 src="assets/imagem/buraco negro.jfif"
@@ -373,7 +380,7 @@
                         </div>
 
                         <a
-                            href="#"
+                            href="#ciencia"
                             class="item-arrow"
                             aria-label="Ler mais">
 
@@ -384,9 +391,9 @@
                     </article>
 
 
-                    <article class="item">
+                    <article class="item" id="galeria">
 
-                        <a href="#" class="imagem">
+                        <a href="#galeria" class="imagem">
 
                             <img
                                 src="assets/imagem/jatos.jpeg"
@@ -408,7 +415,7 @@
                         </div>
 
                         <a
-                            href="#"
+                            href="#galeria"
                             class="item-arrow"
                             aria-label="Ler mais">
 
@@ -421,7 +428,7 @@
 
                     <article class="item">
 
-                        <a href="#" class="imagem">
+                        <a href="#ciencia" class="imagem">
 
                             <img
                                 src="assets/imagem/ondas-gravitacionais.webp"
@@ -443,7 +450,7 @@
                         </div>
 
                         <a
-                            href="#"
+                            href="#ciencia"
                             class="item-arrow"
                             aria-label="Ler mais">
 
@@ -462,7 +469,11 @@
 
         <!-- ================= FOOTER ================= -->
 
-        <footer>
+        <footer id="sobre">
+
+            <p class="media-credit">
+                Visualização: <a href="https://svs.gsfc.nasa.gov/13326/" target="_blank" rel="noopener noreferrer">NASA Goddard / Jeremy Schnittman</a>
+            </p>
 
             <div class="social">
 
@@ -510,6 +521,8 @@
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script>
+    <script src="assets/scripts/main.js" defer></script>
 </body>
 
 </html>

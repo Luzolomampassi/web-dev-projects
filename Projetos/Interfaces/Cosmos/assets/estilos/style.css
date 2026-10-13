@@ -38,11 +38,30 @@ body {
 
     font-family: Arial, Helvetica, sans-serif;
 
-    background:
-        #050505 url("../imagem/Buraco negro bg.png")
-        center center / cover no-repeat;
+    
+}
 
-    background-attachment: fixed;
+.space-background,
+.space-atmosphere {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.space-background {
+    z-index: 0;
+    object-fit: cover;
+    opacity: 0.62;
+    transform: scale(1.03);
+}
+
+.space-atmosphere {
+    z-index: 0;
+    background:
+        radial-gradient(ellipse at 52% 48%, transparent 15%, rgba(3, 3, 8, 0.2) 58%, rgba(3, 3, 8, 0.72) 100%),
+        linear-gradient(90deg, rgba(4, 4, 9, 0.38), transparent 52%, rgba(4, 4, 9, 0.25));
 }
 
 
@@ -51,6 +70,8 @@ body {
 ===================================================== */
 
 .page {
+    position: relative;
+    z-index: 1;
     width: calc(100% - 80px);
     max-width: 1420px;
     min-height: calc(100vh - 55px);
@@ -264,6 +285,23 @@ body {
 
 .mobile-nav {
     display: none;
+}
+
+.mobile-nav.is-open {
+    display: block;
+}
+
+.mobile-nav a:focus-visible,
+.menu-toggle:focus-visible,
+.search:focus-visible,
+.login:focus-visible {
+    outline: 2px solid #c5adff;
+    outline-offset: 4px;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 24px;
 }
 
 
@@ -1055,6 +1093,20 @@ footer > p {
     text-align: center;
 }
 
+.media-credit {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    color: rgba(255, 255, 255, 0.48);
+    font-size: 0.62rem;
+    text-align: right;
+}
+
+.media-credit a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
 
 /* =====================================================
    ÍCONES DAS PLATAFORMAS
@@ -1363,6 +1415,15 @@ footer > p {
         min-width: 320px;
 
         background-attachment: scroll;
+    }
+
+    .space-background {
+        opacity: 0.48;
+    }
+
+    .media-credit {
+        order: 4;
+        text-align: center;
     }
 
     .page {
@@ -1708,6 +1769,16 @@ footer > p {
         justify-content: center;
 
         gap: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .space-background {
+        display: none;
     }
 }
 
