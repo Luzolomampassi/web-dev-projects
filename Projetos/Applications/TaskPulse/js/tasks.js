@@ -1,6 +1,3 @@
-// ============================================================
-// ESTADO DA APLICAÇÃO
-// ============================================================
 
 import tarefas from "./data.js";
 
@@ -19,14 +16,14 @@ const campoPrioridade = document.querySelector("#prioridade");
 
 // Modal
 const modalTarefa = document.querySelector("#modal");
-const botaoAbrirModal = document.querySelectorAll(".btn-add");
+const botoesAbrirModal = document.querySelectorAll(".btn-add");
 const botoesCancelar = document.querySelectorAll(".btn-cancel");
 
 // Lista de tarefas
 const listaTarefas = document.querySelector(".list-tasks");
 
 // Pesquisa
-const barraPesquisa = document.querySelector("#bar-search");
+const barSearch = document.querySelector("#bar-search");
 
 // Filtros
 const botoesFiltros = document.querySelectorAll(".btn-filters");
@@ -35,113 +32,178 @@ const botoesFiltros = document.querySelectorAll(".btn-filters");
 const alertaPersonalizado = document.querySelector("#alert");
 const botaoAlerta = document.querySelector("#btn-alert");
 
-const estadoVazio = document.querySelector("#void-section")
+// Estado vazio
+const estadoVazio = document.querySelector("#void-section");
+
 // ============================================================
-// EVENTOS DO FORMULÁRIO
+// ESTADO DA EDIÇÃO
 // ============================================================
-atualizarEstadoVazio()
+
+// null significa que o formulário está no modo de criação.
+// Um ID significa que estamos a editar uma tarefa existente.
+let idTarefaEmEdicao = null;
+
+// ============================================================
+// INICIALIZAÇÃO
+// ============================================================
+
+// Renderizar tarefas que já existam no array
+tarefas.forEach((tarefa) => {
+    listaTarefas.appendChild(criarTarefa(tarefa));
+});
+
+atualizarEstadoVazio();
+resumos();
+
+// ============================================================
+// EVENTO DO FORMULÁRIO
+// ============================================================
 
 formularioTarefa.addEventListener("submit", (event) => {
     event.preventDefault();
 
     if (!validarFormulario()) {
         dispararAlerta();
-        return  ;
+        return;
     }
 
-    const dadosTarefa = converterDados();
+    // MODO DE EDIÇÃO
+    if (idTarefaEmEdicao !== null) {
+        const indiceTarefa = tarefas.findIndex(
+            (tarefa) => tarefa.id === idTarefaEmEdicao
+        );
 
-    tarefas.push(dadosTarefa);
-    
-    criarTarefa(dadosTarefa);
-    atualizarEstadoVazio()
-    resumos()
-    modalTarefa.close();
-    
-});
+        if (indiceTarefa === -1) {
+            dispararAlerta();
+            return;
+        }
 
+        // Preservar os dados que não devem ser alterados,
+        // como o ID e o estado de conclusão.
+        const tarefaAtualizada = {
+            ...tarefas[indiceTarefa],
+            ...obterDadosFormulario()
+        };
 
-// ============================================================
-// MODAL
-// ============================================================
+        // Atualizar o objeto dentro do array.
+        tarefas[indiceTarefa] = tarefaAtualizada;
 
-// Abrir modal
-botaoAbrirModal.forEach(botao => {
-    botao.addEventListener("click", () => {
+        // Encontrar o cartão antigo.
+        const elementoAntigo = Array.from(
+            listaTarefas.querySelectorAll(".task")
+        ).find(
+            (elemento) => elemento.dataset.id === idTarefaEmEdicao
+        );
+
+        // Criar o cartão atualizado.
+        const novoElemento = criarTarefa(tarefaAtualizada);
+
+        // Substituir o cartão antigo pelo novo.
+        if (elementoAntigo) {
+            elementoAntigo.replaceWith(novoElemento);
+        } else {
+            listaTarefas.appendChild(novoElemento);
+        }
+
+    } else {
+        // MODO DE CRIAÇÃO
+        const dadosTarefa = converterDados();
+
+        tarefas.push(dadosTarefa);
+
+        listaTarefas.appendChild(criarTarefa(dadosTarefa));
+    }
+
+    // Finalizar a operação
+    idTarefaEmEdicao = null;
 
     formularioTarefa.reset();
 
-    modalTarefa.showModal();
+    atualizarEstadoVazio();
+    resumos();
+
+    modalTarefa.close();
 });
 
-})
+// ============================================================
+// ABRIR MODAL PARA CRIAR TAREFA
+// ============================================================
 
+botoesAbrirModal.forEach((botao) => {
+    botao.addEventListener("click", () => {
+        // Garantir que não estamos a editar outra tarefa.
+        idTarefaEmEdicao = null;
 
+        formularioTarefa.reset();
 
-// Fechar modal ao clicar fora
+        modalTarefa.showModal();
+    });
+});
+
+// ============================================================
+// FECHAR MODAL
+// ============================================================
+
+// Clicar fora do conteúdo do modal
 modalTarefa.addEventListener("click", (event) => {
-
     if (event.target === modalTarefa) {
         modalTarefa.close();
     }
 });
 
-
 // Botões de cancelar
 botoesCancelar.forEach((botao) => {
-
     botao.addEventListener("click", () => {
         modalTarefa.close();
     });
-
 });
 
+// Limpar o modo de edição quando o modal for fechado,
+// incluindo quando o utilizador pressionar Escape.
+modalTarefa.addEventListener("close", () => {
+    idTarefaEmEdicao = null;
+    formularioTarefa.reset();
+});
 
 // ============================================================
 // ALERTA PERSONALIZADO
 // ============================================================
 
-// Fechar alerta
 botaoAlerta.addEventListener("click", () => {
-
     alertaPersonalizado.classList.remove("ativo");
-
 });
 
-// Exibir alerta
 function dispararAlerta() {
-
     alertaPersonalizado.classList.add("ativo");
-
 }
 
-function atualizarEstadoVazio(){
-    if(tarefas.length === 0){
-    estadoVazio.classList.add("is-active")
-    }else{
-        estadoVazio.classList.remove("is-active")
+// ============================================================
+// ESTADO VAZIO
+// ============================================================
+
+function atualizarEstadoVazio() {
+    if (tarefas.length === 0) {
+        estadoVazio.classList.add("is-active");
+    } else {
+        estadoVazio.classList.remove("is-active");
     }
-
 }
+
 // ============================================================
 // VALIDAÇÃO DO FORMULÁRIO
 // ============================================================
 
 function validarFormulario() {
-
-    // Verifica título
     if (campoTitulo.value.trim() === "") {
         return false;
     }
 
-    // Verifica categoria
     if (campoCategoria.value === "") {
         return false;
     }
 
-    // Define a data atual caso o usuário não informe uma
+    // Definir a data atual caso não tenha sido indicada.
     if (campoVencimento.value === "") {
-
         const hoje = new Date();
 
         const ano = hoje.getFullYear();
@@ -154,171 +216,115 @@ function validarFormulario() {
     return true;
 }
 
+// ============================================================
+// OBTER DADOS DO FORMULÁRIO
+// ============================================================
+
+function obterDadosFormulario() {
+    return {
+        titulo: campoTitulo.value.trim(),
+        descricao: campoDescricao.value.trim(),
+        categoria: campoCategoria.value,
+        vencimento: campoVencimento.value,
+        horario: campoHorario.value,
+        prioridade: campoPrioridade.value
+    };
+}
 
 // ============================================================
-// CONVERSÃO DOS DADOS
+// CONVERTER DADOS PARA UMA NOVA TAREFA
 // ============================================================
 
 function converterDados() {
-    const objetoTarefa = {
-
+    return {
         id: crypto.randomUUID(),
-
-        titulo: campoTitulo.value.trim(),
-
-        descricao: campoDescricao.value.trim(),
-
-        categoria: campoCategoria.value,
-
-        vencimento: campoVencimento.value,
-
-        horario: campoHorario.value,
-
-        prioridade: campoPrioridade.value,
-
+        ...obterDadosFormulario(),
         status: false
-
     };
-
-    return objetoTarefa;
 }
 
-
 // ============================================================
-// CRIAÇÃO DA TAREFA
+// CRIAR ELEMENTO DA TAREFA
 // ============================================================
 
 function criarTarefa(dadosTarefa) {
-
-    // --------------------------------------------------------
     // Elemento principal
-    // --------------------------------------------------------
-
     const elementoTarefa = document.createElement("div");
 
     elementoTarefa.classList.add("task");
     elementoTarefa.dataset.categoria = "pendentes";
-    elementoTarefa.dataset.status = false;
+    elementoTarefa.dataset.status = String(dadosTarefa.status);
     elementoTarefa.dataset.id = dadosTarefa.id;
 
-
-    // --------------------------------------------------------
     // Checkbox
-    // --------------------------------------------------------
-
     const rotuloCheckbox = document.createElement("label");
 
     const checkboxConclusao = document.createElement("input");
 
     checkboxConclusao.type = "checkbox";
     checkboxConclusao.classList.add("check");
+    checkboxConclusao.checked = dadosTarefa.status === true;
 
     rotuloCheckbox.appendChild(checkboxConclusao);
 
-
-    // --------------------------------------------------------
     // Conteúdo
-    // --------------------------------------------------------
-
     const conteudoTarefa = document.createElement("div");
 
     const tituloTarefa = document.createElement("h3");
-
     tituloTarefa.textContent = dadosTarefa.titulo;
 
-
     const descricaoTarefa = document.createElement("p");
-
     descricaoTarefa.textContent = dadosTarefa.descricao;
 
-
-    // --------------------------------------------------------
     // Badges
-    // --------------------------------------------------------
-
     const containerBadges = document.createElement("div");
-
     containerBadges.classList.add("badges");
 
-
     const badgeCategoria = document.createElement("div");
-
     badgeCategoria.classList.add("badge");
-
     badgeCategoria.textContent = dadosTarefa.categoria;
 
-
     const badgeVencimento = document.createElement("div");
-
     badgeVencimento.classList.add("badge");
-
     badgeVencimento.textContent = dadosTarefa.vencimento;
 
-
     const badgePrioridade = document.createElement("div");
-
     badgePrioridade.classList.add("badge");
-
     badgePrioridade.textContent = dadosTarefa.prioridade;
 
-
-    // --------------------------------------------------------
     // Classe da prioridade
-    // --------------------------------------------------------
-
     const prioridadeTarefa = dadosTarefa.prioridade.toLowerCase();
+
     elementoTarefa.dataset.prioridade = prioridadeTarefa;
-    
 
     if (prioridadeTarefa === "alta") {
         badgePrioridade.classList.add("alta");
-
     } else if (prioridadeTarefa === "media") {
         badgePrioridade.classList.add("media");
-
     } else {
         badgePrioridade.classList.add("baixa");
-
     }
 
-
-    // --------------------------------------------------------
     // Montagem dos badges
-    // --------------------------------------------------------
-
     containerBadges.appendChild(badgeCategoria);
     containerBadges.appendChild(badgeVencimento);
     containerBadges.appendChild(badgePrioridade);
 
-
-    // --------------------------------------------------------
     // Montagem do conteúdo
-    // --------------------------------------------------------
-
     conteudoTarefa.appendChild(tituloTarefa);
     conteudoTarefa.appendChild(descricaoTarefa);
     conteudoTarefa.appendChild(containerBadges);
 
-
-    // --------------------------------------------------------
     // Botões de ação
-    // --------------------------------------------------------
-
     const containerAcoes = document.createElement("div");
-
     containerAcoes.classList.add("task-actions");
-
 
     // Botão editar
     const botaoEditar = document.createElement("button");
 
     botaoEditar.classList.add("btn-edit");
-
-    botaoEditar.setAttribute(
-        "aria-label",
-        "Editar a tarefa"
-    );
-
+    botaoEditar.setAttribute("aria-label", "Editar a tarefa");
+    botaoEditar.setAttribute("title", "Editar tarefa");
 
     const iconeEditar = document.createElement("i");
 
@@ -329,17 +335,12 @@ function criarTarefa(dadosTarefa) {
 
     botaoEditar.appendChild(iconeEditar);
 
-
-    // Botão deletar
+    // Botão eliminar
     const botaoDeletar = document.createElement("button");
 
     botaoDeletar.classList.add("btn-delet");
-
-    botaoDeletar.setAttribute(
-        "aria-label",
-        "Deletar a tarefa"
-    );
-
+    botaoDeletar.setAttribute("aria-label", "Eliminar a tarefa");
+    botaoDeletar.setAttribute("title", "Eliminar tarefa");
 
     const iconeDeletar = document.createElement("i");
 
@@ -350,209 +351,160 @@ function criarTarefa(dadosTarefa) {
 
     botaoDeletar.appendChild(iconeDeletar);
 
-
-    // --------------------------------------------------------
     // Montagem dos botões
-    // --------------------------------------------------------
-
     containerAcoes.appendChild(botaoEditar);
     containerAcoes.appendChild(botaoDeletar);
 
-
-    // --------------------------------------------------------
-    // Montagem final da tarefa
-    // --------------------------------------------------------
-
+    // Montagem final
     elementoTarefa.appendChild(rotuloCheckbox);
-
     elementoTarefa.appendChild(conteudoTarefa);
-
     elementoTarefa.appendChild(containerAcoes);
 
-    listaTarefas.appendChild(elementoTarefa);
-
-
-    // --------------------------------------------------------
-    // Evento de edição
-    // --------------------------------------------------------
-
-    botaoEditar.addEventListener("click", () => {
-
-        modalTarefa.showModal();
-
-        const idTarefa = elementoTarefa.dataset.id;
-
-        const objetoTarefaEncontrado = tarefas.find(
-            item => item.id === idTarefa
-        );
-
-        
-    });
-
-
-    // --------------------------------------------------------
-    // Evento de exclusão
-    // --------------------------------------------------------
-
+    // Eliminar tarefa
     botaoDeletar.addEventListener("click", () => {
-
         elementoTarefa.remove();
 
-        const id = dadosTarefa.id;
-
-        const indice = tarefas.findIndex(item => item.id === id);
+        const indice = tarefas.findIndex(
+            (tarefa) => tarefa.id === dadosTarefa.id
+        );
 
         if (indice !== -1) {
             tarefas.splice(indice, 1);
         }
+
+        atualizarEstadoVazio();
         resumos();
+    });
 
-});
-
+    // Devolver o elemento para ser inserido ou substituir o antigo.
+    return elementoTarefa;
 }
 
-
 // ============================================================
-// CHECKBOX — CONCLUIR TAREFA
+// EDITAR TAREFA — DELEGAÇÃO DE EVENTOS
 // ============================================================
 
-listaTarefas.addEventListener("change", (event) => {
+listaTarefas.addEventListener("click", (event) => {
+    const botaoEditar = event.target.closest(".btn-edit");
 
-    if (!event.target.classList.contains("check")) {
+    if (!botaoEditar) {
         return;
     }
 
-    const checkboxSelecionado = event.target;
+    const elementoTarefa = botaoEditar.closest(".task");
 
-    const elementoTarefa = checkboxSelecionado.closest(".task");
+    if (!elementoTarefa) {
+        return;
+    }
 
-    const tituloTarefa = elementoTarefa.querySelector("h3");
-    
     const idTarefa = elementoTarefa.dataset.id;
 
     const objetoTarefaEncontrado = tarefas.find(
-        item => item.id === idTarefa
+        (tarefa) => tarefa.id === idTarefa
     );
 
-
-    if (checkboxSelecionado.checked) {
-
-        elementoTarefa.dataset.categoria = "concluidas";
-        elementoTarefa.dataset.status = true;
-        objetoTarefaEncontrado.status = true
-        tituloTarefa.style.textDecoration = "line-through";
-        resumos()
-
-    } else {
-
-        elementoTarefa.dataset.categoria = "pendentes";
-        elementoTarefa.dataset.status = false;
-        objetoTarefaEncontrado.status = false
-        tituloTarefa.style.textDecoration = "none";
-        resumos()
-
+    if (!objetoTarefaEncontrado) {
+        return;
     }
 
-});
+    // Guardar o ID para que o submit saiba qual tarefa atualizar.
+    idTarefaEmEdicao = idTarefa;
 
+    // Preencher o formulário com os dados existentes.
+    campoTitulo.value = objetoTarefaEncontrado.titulo;
+    campoDescricao.value = objetoTarefaEncontrado.descricao;
+    campoCategoria.value = objetoTarefaEncontrado.categoria;
+    campoVencimento.value = objetoTarefaEncontrado.vencimento;
+    campoHorario.value = objetoTarefaEncontrado.horario;
+    campoPrioridade.value = objetoTarefaEncontrado.prioridade;
+
+    modalTarefa.showModal();
+});
 
 // ============================================================
 // PESQUISA DE TAREFAS
 // ============================================================
 
-barraPesquisa.addEventListener("input", () => {
-
-    const textoPesquisa = barraPesquisa.value.trim().toLowerCase();
+barSearch.addEventListener("input", () => {
+    const textoPesquisa = barSearch.value.trim().toLowerCase();
     const elementosTarefas = document.querySelectorAll(".task");
 
     elementosTarefas.forEach((elementoTarefa) => {
+        const nomeTarefa = elementoTarefa
+            .querySelector("h3")
+            .textContent.trim()
+            .toLowerCase();
 
-        const nomeTarefa = elementoTarefa.querySelector("h3").textContent.trim().toLowerCase();
-
-        if (nomeTarefa.includes(textoPesquisa)) {
-
-            elementoTarefa.style.display = "grid";
-
-        } else {
-
-            elementoTarefa.style.display = "none";
-
-        }
-
+        elementoTarefa.style.display = nomeTarefa.includes(textoPesquisa)
+            ? "grid"
+            : "none";
     });
-
 });
-
 
 // ============================================================
 // FILTROS
+// ============================================================
+
 botoesFiltros.forEach((botaoFiltro) => {
-
     botaoFiltro.addEventListener("click", () => {
-
         const categoriaFiltro = botaoFiltro.dataset.categoria;
         const elementosTarefas = document.querySelectorAll(".task");
 
         elementosTarefas.forEach((elementoTarefa) => {
-
-            // Mostrar todas
-
             if (categoriaFiltro === "todos") {
-            elementoTarefa.style.display = "grid";
-        }
-            else if (categoriaFiltro === "importantes") {
-                elementoTarefa.style.display =
-                    elementoTarefa.dataset.prioridade === "alta" ? "grid" : "none";
-            }
-            else if (categoriaFiltro === elementoTarefa.dataset.categoria) {
                 elementoTarefa.style.display = "grid";
-            }
-            else {
+            } else if (categoriaFiltro === "importantes") {
+                elementoTarefa.style.display =
+                    elementoTarefa.dataset.prioridade === "alta"
+                        ? "grid"
+                        : "none";
+            } else if (
+                categoriaFiltro === elementoTarefa.dataset.categoria
+            ) {
+                elementoTarefa.style.display = "grid";
+            } else {
                 elementoTarefa.style.display = "none";
             }
-
         });
-
     });
-
 });
 
+// ============================================================
+// RESUMOS
+// ============================================================
 
-// 
-function resumos(){
-    const cardsResumos = document.querySelectorAll(".card")
-    cardsResumos.forEach(card =>{
-    const totais = tarefas.length
-    const concluidas = tarefas.filter(item => item.status === true).length
-    const pendentes = tarefas.filter(item => item.status === false).length
-    const importantes = tarefas.filter(item => item.prioridade === 'alta').length
-    
+function resumos() {
+    const cardsResumos = document.querySelectorAll(".card");
 
-    let numCard = card.querySelector("h3")
+    const totais = tarefas.length;
 
-    if(numCard.dataset.resumo === "totais"){
-        numCard.innerHTML = totais
-    }
-    else if(numCard.dataset.resumo === "concluidas"){
-        numCard.innerHTML = concluidas
-    }
-    else if(numCard.dataset.resumo === "pendentes"){
-        numCard.innerHTML = pendentes
-    }
-    else if(numCard.dataset.resumo === "importantes"){
-        numCard.innerHTML = importantes
-    }
+    const concluidas = tarefas.filter(
+        (tarefa) => tarefa.status === true
+    ).length;
 
-})
+    const pendentes = tarefas.filter(
+        (tarefa) => tarefa.status === false
+    ).length;
 
+    const importantes = tarefas.filter(
+        (tarefa) => tarefa.prioridade.toLowerCase() === "alta"
+    ).length;
+
+    cardsResumos.forEach((card) => {
+        const numCard = card.querySelector("h3");
+
+        if (!numCard) {
+            return;
+        }
+
+        if (numCard.dataset.resumo === "totais") {
+            numCard.textContent = totais;
+        } else if (numCard.dataset.resumo === "concluidas") {
+            numCard.textContent = concluidas;
+        } else if (numCard.dataset.resumo === "pendentes") {
+            numCard.textContent = pendentes;
+        } else if (numCard.dataset.resumo === "importantes") {
+            numCard.textContent = importantes;
+        }
+    });
 }
-
-
-
-
-
-
-
-
-
-

@@ -1692,6 +1692,116 @@ DESKTOP
  border-radius: 8px;
 }
 
+.mensagem {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: min(400px, calc(100% - 32px));
+    padding: 16px;
+
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #16a34a;
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgb(15 23 42 / 10%);
+
+    color: #0f172a;
+    font-size: 14px;
+
+    animation: mensagem-entrada 0.25s ease-out;
+    z-index: 1000;
+}
+
+.mensagem[hidden] {
+    display: none;
+}
+
+.mensagem-texto {
+    flex: 1;
+    margin: 0;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.mensagem-icone {
+    flex-shrink: 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.mensagem.sucesso {
+    border-left-color: #16a34a;
+}
+
+.mensagem.sucesso .mensagem-icone {
+    color: #16a34a;
+}
+
+.mensagem.erro {
+    border-left-color: #dc2626;
+}
+
+.mensagem.erro .mensagem-icone {
+    color: #dc2626;
+}
+
+.mensagem.aviso {
+    border-left-color: #d97706;
+}
+
+.mensagem.aviso .mensagem-icone {
+    color: #d97706;
+}
+
+.mensagem-fechar {
+    flex-shrink: 0;
+    align-self: flex-start;
+
+    padding: 0;
+    border: none;
+    background: transparent;
+
+    color: #64748b;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.mensagem-fechar:hover {
+    color: #0f172a;
+}
+
+@keyframes mensagem-entrada {
+    from {
+        opacity: 0;
+        transform: translateX(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .mensagem {
+        top: 12px;
+        right: 12px;
+        width: calc(100% - 24px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mensagem {
+        animation: none;
+    }
+}
 
 
 
@@ -1835,3 +1945,47 @@ DESKTOP
         width: 100%;
     }
 }
+
+
+@view-transition {
+    navigation: auto;
+}
+
+
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-old(root) {
+    animation: fade-out 150ms ease-in both;
+}
+
+::view-transition-new(root) {
+    animation: fade-in 200ms ease-out both;
+}
+
+@keyframes fade-out {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: scale(0.99);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation: none;
+    }
+}
+

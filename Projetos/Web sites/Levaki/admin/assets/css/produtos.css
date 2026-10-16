@@ -43,6 +43,77 @@
     font-weight: bold;
     
 }
+
+.product-actions {
+    white-space: nowrap;
+}
+
+.product-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 190px;
+    font-weight: 700;
+}
+
+.product-thumbnail {
+    display: block;
+    flex: 0 0 46px;
+    width: 46px;
+    height: 46px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #f1eee6;
+}
+
+.product-thumbnail-empty {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #a99a7e;
+}
+
+.orders-table .order-status {
+    min-width: 82px;
+    justify-content: center;
+    padding: 6px 9px;
+    border-radius: 6px;
+    font-size: 11px;
+}
+
+.product-actions button {
+    width: 34px;
+    height: 34px;
+    margin: 0 3px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-surface);
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+.product-actions .btn-delete-product {
+    color: var(--color-danger);
+}
+
+.product-actions button:hover,
+.product-actions button:focus-visible {
+    border-color: currentColor;
+}
+
+.pagination-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.pagination-buttons .btn-section[aria-current="page"] {
+    background: var(--color-primary);
+    color: var(--color-text-white);
+}
+
+.order-row[hidden] {
+    display: none;
+}
 /* ============================================================
    TOPBAR
    ============================================================ */
@@ -687,14 +758,23 @@ dialog::backdrop {
    MODAL EDITAR PRODUTO
    ============================================================ */
 
-#edit-modal {
+#modal-product.modal {
     position: fixed;
     top: 50%;
     left: 50%;
-    margin-top: 30px;
-    transform: translate(-50%,-50%);
+    right: auto;
+    bottom: auto;
+    box-sizing: border-box;
+    width: min(820px, calc(100vw - 32px));
+    max-width: none;
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
+    margin: 0;
+    padding: 0;
+    transform: translate(-50%, -50%);
     overflow-x: hidden;
     overflow-y: auto;
+    overscroll-behavior: contain;
     border: 1px solid var(--color-border);
     border-radius: 8px;
     background-color: var(--color-surface);
@@ -720,6 +800,10 @@ dialog::backdrop {
     padding: 24px 18px 22px;
 
     border-bottom: 1px solid var(--color-border);
+}
+
+#product-form {
+    width: 100%;
 }
 
 .product-modal-title {
@@ -790,7 +874,7 @@ dialog::backdrop {
 
 .product-modal-section {
     box-sizing: border-box;
-
+    
     padding: 27px 18px;
 }
 
@@ -1118,6 +1202,9 @@ dialog::backdrop {
    ============================================================ */
 
 .product-modal-actions {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
     box-sizing: border-box;
 
     display: flex;
@@ -1128,6 +1215,8 @@ dialog::backdrop {
     gap: 10px;
 
     padding: 24px 18px;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
 }
 
 .product-modal-cancel,
@@ -1187,6 +1276,13 @@ dialog::backdrop {
 }
 
 
+#modal-product .mensagem {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 10;
+    width: min(360px, calc(100% - 32px));
+}
 /* ============================================================
    TABLET
    ============================================================ */
@@ -1208,11 +1304,6 @@ dialog::backdrop {
 
 
     /* Modal de edição */
-
-    #edit-modal {
-        width: min(760px, calc(100% - 30px));
-        max-height: calc(100vh - 30px);
-    }
 
     .product-modal-head {
         padding: 28px 30px 25px;
@@ -1323,11 +1414,6 @@ dialog::backdrop {
 
 
     /* Modal de edição */
-
-    #edit-modal {
-        width: min(1000px, calc(100% - 80px));
-        max-height: calc(100vh - 80px);
-    }
 
     .product-modal-head {
         padding: 32px 42px 28px;

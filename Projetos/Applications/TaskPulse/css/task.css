@@ -26,49 +26,23 @@ VARIÁVEIS
 ================================ */
 
 :root {
-/* Cores principais */
---color-primary: #2563EB;
---color-primary-dark: #1D4ED8;
---color-primary-light: #DBEAFE;
-
-
-/* Superfícies */
---color-background: #F8FAFC;
---color-surface: #FFFFFF;
---color-white: #FFFFFF;
-
-/* Texto */
---color-text: #0F172A;
---color-text-secondary: #64748B;
---color-text-muted: #94A3B8;
-
-/* Bordas */
---color-border: #E2E8F0;
---color-border-light: #F1F5F9;
-
-/* Estados */
---color-success: #16A34A;
---color-success-light: #DCFCE7;
-
---color-warning: #D97706;
---color-warning-light: #FEF3C7;
-
---color-danger: #DC2626;
---color-danger-light: #FEE2E2;
-
-/* Sombras */
---shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
---shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
---shadow-lg: 0 10px 30px rgba(15, 23, 42, 0.12);
-
-/* Bordas */
---radius-sm: 6px;
---radius-md: 10px;
---radius-lg: 14px;
-
-
+    --color-primary: #4f46e5;
+    --color-primary-dark: #4338ca;
+    --color-primary-light: #eef2ff;
+    --color-background: #f6f7fb;
+    --color-surface: #ffffff;
+    --color-white: #ffffff;
+    --color-text: #172033;
+    --color-text-secondary: #69758a;
+    --color-border: #e6e9f1;
+    --color-success: #15966a;
+    --color-success-light: #e7f7ef;
+    --color-warning: #c77b13;
+    --color-warning-light: #fff5df;
+    --color-danger: #d84b5b;
+    --color-danger-light: #fff0f1;
+    --tp-shadow: 0 10px 30px rgba(24, 34, 64, .055);
 }
-
 /* ================================
 BASE
 ================================ */
@@ -768,10 +742,10 @@ transform: scale(1.15);
    TAREFA CONCLUÍDA
 ========================================== */
 
-.task:has(.check:checked) {
+/* .task:has(.check:checked) {
     background-color: #F0FDF4;
     border-color: #BBF7D0;
-}
+} */
 
 
 .task:has(.check:checked) h3 {
@@ -1027,7 +1001,24 @@ color: var(--color-warning);
 background-color: #FEF2F2;
 color: var(--color-danger);
 }
+.void-section{
+    margin: 10px 0px;
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px dashed var(--color-primary);
+    width: 100%;
+    min-height: 200px;
+    height: 100%;
+    border-radius: 8px;
+    background-color: #1d4fd81e;
+}
+.vazio{
+   
 
+}
 /* ================================
 TABLET
 ================================ */

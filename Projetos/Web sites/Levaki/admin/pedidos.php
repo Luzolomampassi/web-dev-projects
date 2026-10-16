@@ -55,7 +55,7 @@
                 type="button"
                 class="brand"
                 aria-label="Levaki, ir para dashboard"
-                href="index.html"
+                href="index.php"
             >
 
                 <span>
@@ -110,13 +110,13 @@
 
                 <label>Visão geral</label>
 
-                <a class="nav-item" href="index.html">
+                <a class="nav-item" href="index.php">
                 <i class="ri-dashboard-line icone"></i>
                 <span>Dashboard</span>
     
                 </a>
 
-                <a class="nav-item" href="pedidos.html">
+                <a class="nav-item" href="pedidos.php">
                     <i class="ri-group-line icone"></i>
                     <span>Pedidos</span>
                     
@@ -132,7 +132,7 @@
                 <a
                     
                     class="nav-item"
-                    href="produtos.html"
+                    href="produtos.php"
                 >
 
                     <i class="ri-box-3-line icone"></i>
@@ -145,7 +145,7 @@
                 <a
                     
                     class="nav-item"
-                    href="categorias.html"
+                    href="categorias.php"
                 >
 
                     <i class="ri-stack-line icone"></i>
@@ -158,7 +158,7 @@
                 <a
                     
                     class="nav-item"
-                    href="restaurantes.html"
+                    href="restaurantes.php"
                 >
 
                     <i class="fa-regular fa-house icone"></i>
@@ -171,7 +171,7 @@
                 <a
                     
                     class="nav-item"
-                    href="clientes.html"
+                    href="clientes.php"
                 >
 
                     <i class="ri-group-line icone"></i>
@@ -189,7 +189,7 @@
 
                 <a
                     class="nav-item"
-                      href="relatorios.html"
+                      href="relatorios.php"
                 >
 
                     <i class="fa-solid fa-chart-line icone"></i>
@@ -201,7 +201,7 @@
 
                 <a
                     class="nav-item"
-                      href="config.html"
+                      href="config.php"
                 >
 
                     <i class="ri-settings-5-line icone"></i>
