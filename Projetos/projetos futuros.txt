@@ -1,0 +1,9 @@
+3. Gestor de despesas pessoais
+Uma aplicação para registar receitas, despesas e acompanhar o orçamento.
+- PHP e MySQL.
+- Categorias, filtros por período e relatórios.
+- Gráficos e cálculos de totais.
+- Autenticação e dados separados por utilizador.
+Demonstra consultas SQL, agregações, lógica de negócio e apresentação de dados.
+
+
