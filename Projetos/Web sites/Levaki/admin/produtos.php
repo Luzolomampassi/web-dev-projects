@@ -405,157 +405,158 @@ $restaurantes = $pdo->query(
             <!-- =================================================
                  FILTROS
             ================================================== -->
+            <form action="consultar-produtos.php" method="POST" id="formSearch">
+                <article class="filters">
 
-            <article class="filters">
-
-
-                <div class="filter-search">
-                    <i
-                        class="fa-solid fa-magnifying-glass lupa"
-                        aria-hidden="true"
-                    >
-                    </i>
-                    <form action="produtos.php" method="get">
-                        <input
-                            type="search"
-                            name="product-search"
-                            id="product-search"
-                            placeholder="Buscar por produto, categoria ou restaurante..."
-                            autocomplete="on"
-                    >
-                    </form>
-                   
-                </div>
-
-
-                <div class="select-wrap">
-
-                    <select
-                        name="categoria-produtos"
-                        id="categoria-produtos"
-                    >
-
-                        <option value="">
-                            Todas as categorias
-                        </option>
-
-                                <?php foreach ($categorias as $categoria): ?>
-                                    <option value="<?= (int) $categoria['id'] ?>"><?= htmlspecialchars($categoria['nome'], ENT_QUOTES, 'UTF-8') ?></option>
-                                <?php endforeach; ?>
-
-                    </select>
-
-                </div>
-
-
-                <div class="select-wrap">
-
-                    <select
-                        name="restaurante-produots"
-                        id="restaurante-produtos"
-                    >
-
-                        <option value="">
-                            Todos os restaurantes
-                        </option>
-
-                        <option value="1">
-                            Levaki Grill
-                        </option>
-
-                        <option value="2">
-                            Bella Pasta
-                        </option>
-
-                        <option value="3">
-                            Sabor da Casa
-                        </option>
-
-                        <option value="4">
-                            Bottega Verde
-                        </option>
-
-                    </select>
-
-                </div>
-
-                <div class="select-wrap">
-
-                    <select
-                        name="disponibilidade"
-                        id="disponibilidade"
-                    >
-
-                        <option value="">
-                            Disponibilidade
-                        </option>
-
-                        <option value="available">
-                            Disponível
-                        </option>
-
-                        <option value="unavailable">
-                            Indisponível
-                        </option>
-
-                    </select>
-
-                </div>
-
-            </article>
-
-            <article class="filters-extra">
-                <span>
-                    <svg class="" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M4 7h16M7 12h10m-7 5h4"></path>
-                    </svg> Mais filtros
-                </span>
-
-
-                <div class="selects-extras">
-                    <div class="select-wrap">
-                        <select
-                            name="preco-filtro"
-                            id="preco-filtro"
+                
+                    <div class="filter-search">
+                        <i
+                            class="fa-solid fa-magnifying-glass lupa"
+                            aria-hidden="true"
                         >
+                        </i>
+                        
+                            <input
+                                type="search"
+                                name="product-search"
+                                id="product-search"
+                                placeholder="Buscar por produto, categoria ou restaurante..."
+                                autocomplete="on"
+                        >
+                    
+                    
+                    </div>
+
+
+                    <div class="select-wrap">
+
+                        <select
+                            name="categoria-produtos"
+                            id="categoria-produtos"
+                        >
+
                             <option value="">
-                                Qualquer preço
+                                Todas as categorias
                             </option>
-                            <option value="0-9000">
-                                Até 9.000 Kz
-                            </option>
-                            <option value="9000-18000">
-                                9.000 Kz a 18.000 Kz
-                            </option>
-                            <option value="18000+">
-                                Acima de 18.000 Kz
-                            </option>
+
+                                    <?php foreach ($categorias as $categoria): ?>
+                                        <option value="<?= (int) $categoria['id'] ?>"><?= htmlspecialchars($categoria['nome'], ENT_QUOTES, 'UTF-8') ?></option>
+                                    <?php endforeach; ?>
+
                         </select>
+
                     </div>
+
+
                     <div class="select-wrap">
+
                         <select
-                            name="ordem"
-                            id="ordem"
+                            name="restaurante-produtos"
+                            id="restaurante-produtos"
                         >
-                            <option value="recent">
-                                Mais recentes
+
+                            <option value="">
+                                Todos os restaurantes
                             </option>
-                            <option value="name-asc">
-                                Nome A-Z
+
+                            <option value="1">
+                                Levaki Grill
                             </option>
-                            <option value="price-asc">
-                                Menor preço
+
+                            <option value="2">
+                                Bella Pasta
                             </option>
-                            <option value="price-desc">
-                                Maior preço
+
+                            <option value="3">
+                                Sabor da Casa
                             </option>
+
+                            <option value="4">
+                                Bottega Verde
+                            </option>
+
                         </select>
+
                     </div>
-                </div>
 
-            </article>
+                    <div class="select-wrap">
+
+                        <select
+                            name="disponibilidade"
+                            id="disponibilidade"
+                        >
+
+                            <option value="">
+                                Disponibilidade
+                            </option>
+
+                            <option value="1">
+                                Disponível
+                            </option>
+
+                            <option value="0">
+                                Indisponível
+                            </option>
+
+                        </select>
+
+                    </div>
+            
+                </article>
+
+                <article class="filters-extra">
+                    <span>
+                        <svg class="" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M4 7h16M7 12h10m-7 5h4"></path>
+                        </svg> Mais filtros
+                    </span>
 
 
+                    <div class="selects-extras">
+                        <div class="select-wrap">
+                            <select
+                                name="preco-filtro"
+                                id="preco-filtro"
+                            >
+                                <option value="">
+                                    Qualquer preço
+                                </option>
+                                <option value="0-9000">
+                                    Até 9.000 Kz
+                                </option>
+                                <option value="9000-18000">
+                                    9.000 Kz a 18.000 Kz
+                                </option>
+                                <option value="18000+">
+                                    Acima de 18.000 Kz
+                                </option>
+                            </select>
+                        </div>
+                        <div class="select-wrap">
+                            <select
+                                name="ordem"
+                                id="ordem"
+                            >
+                                <option value="recent">
+                                    Mais recentes
+                                </option>
+                                <option value="name-asc">
+                                    Nome A-Z
+                                </option>
+                                <option value="price-asc">
+                                    Menor preço
+                                </option>
+                                <option value="price-desc">
+                                    Maior preço
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                </article>
+            </form>
+
+                                
             <!-- =================================================
                  TABELA
             ================================================== -->
@@ -631,9 +632,9 @@ $restaurantes = $pdo->query(
 
 
 
-<!-- =====================================================
-     MODAL — ADICIONAR / EDITAR PRODUTO
-====================================================== -->
+        <!-- =====================================================
+            MODAL — ADICIONAR / EDITAR PRODUTO
+        ====================================================== -->
 
         <dialog class="modal" id="modal-product">
             <div class="mensagem" id="mensagem" role="status" aria-live="polite" hidden>
@@ -652,7 +653,7 @@ $restaurantes = $pdo->query(
             <form
                 id="product-form"
                 action="processar-produtos.php"
-                method="post"
+                method="POST"
                 enctype="multipart/form-data"
             >
 
@@ -875,20 +876,15 @@ $restaurantes = $pdo->query(
 
     
 
-
+        <div id="alert" class="alert">
+            Inválido
+        </div>                     
     </main>
-    <script src="assets/scripts/mensagem.js"></script>
-    <script src="assets/scripts/produtos.js"></script>
+    
 </div>
     
 
-
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
-
-    <script src="assets/scripts/main.js"></script>
-    <script src="assets/scripts/mensagem.js"></script>
+    <script src="assets/js/produtos.js"></script>
 
 
 </body>

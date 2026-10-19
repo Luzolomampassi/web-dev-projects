@@ -1,3 +1,7 @@
+<?php 
+    require __DIR__ . '/includes/bootstrap.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-AO">
 
@@ -38,11 +42,6 @@
 
 
 <body>
-
-
-   
-
-
 
     <header class="topbar">
 
@@ -615,7 +614,7 @@
                     </div>
 
                     <div class="metric-value">
-                        248
+                        <?= 32 ?> 
                     </div>
 
                     <div class="metric-detail">
@@ -661,7 +660,7 @@
                     </div>
 
                     <div class="metric-value">
-                        32
+                        <?= 32 ?> 
                     </div>
 
                     <div class="metric-detail">
@@ -707,7 +706,7 @@
                     </div>
 
                     <div class="metric-value">
-                        1.284
+                       <?= 1.284 ?> 
                     </div>
 
                     <div class="metric-detail">
