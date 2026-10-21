@@ -1,112 +1,77 @@
 
+import { calcularDados } from "./data.js";
 
-// ==================== MENU ====================
+const dados = calcularDados();
 
-const btnMenu = document.querySelector("#btn-menu");
-const menu = document.querySelector("#menu");
-const iconMenu = btnMenu.querySelector("i");
+// ==================== CARDS ====================
 
+const valoresCards = {
+    total: document.querySelector(".total-tarefas"),
+    concluidas: document.querySelector(".tarefas-concluidas"),
+    pendentes: document.querySelector(".tarefas-pendentes"),
+    atrasadas: document.querySelector(".tarefas-atrasadas"),
+    taxaConclusao: document.querySelector(".taxa-conclusao")
+};
 
-btnMenu.addEventListener("click", () => {
-    menu.classList.toggle("ativo");
-    iconMenu.classList.toggle("fa-bars");
-    iconMenu.classList.toggle("fa-xmark");
+valoresCards.total.textContent = dados.totalTarefas;
+valoresCards.concluidas.textContent = dados.quantidadeConcluidas;
+valoresCards.pendentes.textContent = dados.quantidadePendentes;
+valoresCards.atrasadas.textContent = dados.quantidadeAtrasadas;
+valoresCards.taxaConclusao.textContent = `${dados.percentualConclusao}%`;
 
-    overlay.classList.toggle("ativo", menu.classList.contains("ativo"));
-});
+// ==================== DISTRIBUIÇÃO ====================
 
+const distribuicao = {
+    total: document.querySelector(".grafico-centro"),
 
-
-const indicadorConluidas = document.querySelector("#indicador-concluidas")
-const indicadorPendentes = document.querySelector("#indicador-concluidas")
-const indicadorAtrasadas= document.querySelector("#indicador-concluidas")
-const indicadorAndamento = document.querySelector("#indicador-concluidas")
-
-const indicadores = {
-    conluidas: indicadorConluidas,
-    pendentes: indicadorPendentes,
-    atrasadas:indicadorAtrasadas,
-    andamento:indicadorAndamento
-}
-
-
-const ctx = document.getElementById("tasksChart");
-new Chart(ctx, {
-    type: "bar",
-
-    data: {
-        labels: ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"],
-
-        datasets: [
-            {
-                data: [8, 12, 6, 14, 10, 4, 2],
-                backgroundColor: "#6366F1",
-                borderRadius: 6,
-                borderSkipped: false,
-                barThickness: 34
-            },
-            {
-                data: [5, 9, 11, 7, 8, 3, 1],
-                backgroundColor: "#D1D5DB",
-                borderRadius: 6,
-                borderSkipped: false,
-                barThickness: 34
-            }
-        ]
+    concluidas: {
+        quantidade: document.querySelector(".statusConcluidoElemento"),
+        percentagem: document.querySelector(".statusConcluidoElemento + p")
     },
 
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
+    pendentes: {
+        quantidade: document.querySelector(".statusPendenteElemento"),
+        percentagem: document.querySelector(".statusPendenteElemento + p")
+    },
 
-        plugins: {
-            legend: {
-                display: false
-            },
+    atrasadas: {
+        quantidade: document.querySelector(".statusAtrasadaElemento"),
+        percentagem: document.querySelector(".statusAtrasadaElemento + p")
+    },
 
-            tooltip: {
-                enabled: true
-            }
-        },
-
-        scales: {
-            x: {
-                grid: {
-                    display: false
-                },
-
-                border: {
-                    display: false
-                },
-
-                ticks: {
-                    color: "#9699A8",
-                    font: {
-                        size: 14
-                    }
-                }
-            },
-
-            y: {
-                beginAtZero: true,
-                max: 15,
-
-                ticks: {
-                    stepSize: 5,
-                    color: "#9699A8",
-                    font: {
-                        size: 14
-                    }
-                },
-
-                grid: {
-                    color: "#E5E7EB"
-                },
-
-                border: {
-                    display: false
-                }
-            }
-        }
+    andamento: {
+        quantidade: document.querySelector(".statusAndamentoElemento"),
+        percentagem: document.querySelector(".statusAndamentoElemento + p")
     }
-});
+};
+
+distribuicao.total.firstChild.textContent = dados.totalTarefas;
+
+function atualizarIndicador(elementos, quantidade, percentagem) {
+    elementos.quantidade.textContent = quantidade;
+    elementos.percentagem.textContent = `${percentagem}%`;
+}
+
+atualizarIndicador(
+    distribuicao.concluidas,
+    dados.quantidadeConcluidas,
+    dados.percentualConclusao
+);
+
+atualizarIndicador(
+    distribuicao.pendentes,
+    dados.quantidadePendentes,
+    dados.percentualPendentes
+);
+
+atualizarIndicador(
+    distribuicao.atrasadas,
+    dados.quantidadeAtrasadas,
+    dados.percentualAtrasadas
+);
+
+// atualizarIndicador(
+//     distribuicao.andamento,
+//     dados.quantidadeEmAndamento,
+//     dados.percentualEmAndamento
+// );

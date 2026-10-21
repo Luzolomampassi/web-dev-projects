@@ -1,60 +1,12 @@
 /* ================================
-   RESET
-================================ */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-/* ================================
-   VARIÁVEIS
-================================ */
-
-:root {
-    --color-primary: #2563EB;
-    --color-primary-dark: #1D4ED8;
-    --color-primary-light: #DBEAFE;
-
-    --color-background: #F1F5F9;
-    --color-surface: #FFFFFF;
-    --color-white: #FFFFFF;
-
-    --color-text: #0F172A;
-    --color-text-secondary: #64748B;
-
-    --color-border: #E2E8F0;
-
-    --color-success: #16A34A;
-    --color-success-light: #DCFCE7;
-
-    --color-warning: #D97706;
-    --color-warning-light: #FEF3C7;
-
-    --color-danger: #DC2626;
-    --color-danger-light: #FEE2E2;
-}
-
-
-/* ================================
    BASE
 ================================ */
 
 html {
     scroll-behavior: smooth;
-    background-color: var(--color-background);
 }
 
 body {
-    width: 100%;
-    min-height: 100vh;
-
-    background-color: var(--color-background);
-    color: var(--color-text);
-
-    font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5;
 }
 
@@ -72,23 +24,9 @@ button {
    MAIN
 ================================ */
 
-main {
-    width: 100%;
-    max-width: 1400px;
-
-    margin: 0 auto;
-
-    padding: 94px 16px 40px;
-}
-
-
 /* ================================
    CABEÇALHO DA PÁGINA
 ================================ */
-
-.page-header {
-    margin-bottom: 24px;
-}
 
 .page-header h1 {
     margin-bottom: 6px;
@@ -122,10 +60,12 @@ main {
     padding: 10px 16px;
 
     border: 0;
-    border-radius: 12px;
+    border-radius: 11px;
 
     background-color: var(--color-primary);
-    color: var(--color-white);
+    color: var(--color-on-primary);
+
+    box-shadow: 0 5px 12px rgba(var(--color-primary-rgb), 0.16);
 
     font-weight: 600;
     text-decoration: none;
@@ -137,6 +77,8 @@ main {
 
 .btn-primary:hover {
     background-color: var(--color-primary-dark);
+    box-shadow: 0 8px 18px rgba(var(--color-primary-rgb), 0.22);
+    transform: translateY(-1px);
 }
 
 .btn-primary:active {
@@ -144,7 +86,7 @@ main {
 }
 
 .btn-primary:focus-visible {
-    outline: 3px solid var(--color-primary-light);
+    outline: 3px solid var(--color-primary);
     outline-offset: 2px;
 }
 
@@ -249,14 +191,14 @@ main {
 
 .is-active {
     background-color: var(--color-primary);
-    color: var(--color-white);
+    color: var(--color-on-primary);
 
     border-color: var(--color-primary);
 }
 
 .btn-filter.is-active:hover {
     background-color: var(--color-primary-dark);
-    color: var(--color-white);
+    color: var(--color-on-primary);
 }
 
 
@@ -314,11 +256,11 @@ main {
     padding: 16px;
 
     border: 1px solid var(--color-border);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
 
     background-color: var(--color-surface);
 
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    box-shadow: var(--tp-shadow);
 }
 
 
@@ -413,7 +355,7 @@ main {
     padding: 14px;
 
     border: 1px solid var(--color-border);
-    border-radius: 10px;
+    border-radius: var(--radius-lg);
 
     background-color: var(--color-white);
 }
@@ -483,6 +425,10 @@ main {
 .empty-state {
     padding: 25px 15px;
 
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface-raised);
+
     text-align: center;
 
     color: var(--color-text-secondary);
@@ -496,7 +442,7 @@ main {
 .calendar-navigation button:focus-visible,
 .btn-filter:focus-visible,
 .calendar-filter select:focus-visible {
-    outline: 3px solid var(--color-primary-light);
+    outline: 3px solid var(--color-primary);
     outline-offset: 2px;
 }
 
@@ -506,10 +452,6 @@ main {
 ================================ */
 
 @media (min-width: 600px) {
-
-    main {
-        padding: 94px 24px 50px;
-    }
 
     .calendar-controls {
         display: flex;
@@ -550,25 +492,11 @@ main {
 
 @media (min-width: 1024px) {
 
-    main {
-        width: calc(100% - 250px);
-        max-width: none;
-
-        margin-left: 250px;
-        margin-right: 0;
-
-        padding: 40px;
-    }
-
-    .page-header {
-        margin-bottom: 28px;
-    }
-
     .upcoming-tasks,
     .day-summary,
     .day-tasks {
         padding: 22px 24px;
-        border-radius: 14px;
+        border-radius: var(--radius-lg);
     }
 
     .summary-grid {
@@ -582,11 +510,6 @@ main {
 ================================ */
 
 @media (max-width: 400px) {
-
-    main {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
 
     .page-header h1 {
         font-size: 1.45rem;

@@ -1,72 +1,10 @@
 /* ================================
-   RESET
-================================ */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-/* ================================
-   VARIÁVEIS
-================================ */
-
-:root {
-    --color-primary: #2563EB;
-    --color-primary-dark: #1D4ED8;
-    --color-primary-light: #DBEAFE;
-
-    --color-background: #F1F5F9;
-    --color-surface: #FFFFFF;
-    --color-white: #FFFFFF;
-
-    --color-text: #0F172A;
-    --color-text-secondary: #64748B;
-
-    --color-border: #E2E8F0;
-
-    --color-success: #16A34A;
-    --color-warning: #D97706;
-    --color-danger: #DC2626;
-
-    --color-success-light: #DCFCE7;
-    --color-warning-light: #FEF3C7;
-    --color-danger-light: #FEE2E2;
-}
-
-
-/* ================================
    BASE
 ================================ */
-
-html {
-    background-color: var(--color-background);
-}
-
-body {
-    width: 100%;
-    min-height: 100vh;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    color: var(--color-text);
-    background-color: var(--color-background);
-}
 
 button,
 a {
     cursor: pointer;
-}
-
-main {
-    width: 100%;
-    max-width: 1400px;
-
-    margin: 0 auto;
-
-    padding: 94px 16px 40px;
 }
 
 .section-title {
@@ -119,7 +57,7 @@ main {
 }
 
 .btn-filtro:focus-visible {
-    outline: 3px solid var(--color-primary-light);
+    outline: 3px solid var(--color-primary);
     outline-offset: 2px;
 }
 
@@ -144,7 +82,8 @@ main {
     background-color: var(--color-white);
 
     border: 1px solid var(--color-border);
-    border-radius: 11px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--tp-shadow);
 
     transition:
         transform 0.2s ease,
@@ -154,7 +93,7 @@ main {
 .card:hover {
     transform: translateY(-3px);
 
-    box-shadow: 0 5px 14px rgba(15, 23, 42, 0.06);
+    box-shadow: 0 14px 34px rgba(24, 34, 64, 0.09);
 }
 
 .card-title {
@@ -263,7 +202,8 @@ main {
     background-color: var(--color-white);
 
     border: 1px solid var(--color-border);
-    border-radius: 11px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--tp-shadow);
 }
 
 .produtividade {
@@ -301,7 +241,7 @@ main {
 }
 
 .square-criadas {
-    color: #9CA3AF;
+    color: var(--color-text-muted);
 }
 
 
@@ -473,7 +413,8 @@ main {
     background-color: var(--color-background);
 
     border: 1px solid var(--color-border);
-    border-radius: 10px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--tp-shadow);
 
     transition:
         border-color 0.2s ease,
@@ -545,10 +486,6 @@ main {
 
 @media (min-width: 768px) {
 
-    main {
-        padding: 94px 24px 50px;
-    }
-
     .cards-grid {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -564,16 +501,6 @@ main {
 ================================ */
 
 @media (min-width: 1024px) {
-
-    main {
-        width: calc(100% - 250px);
-        max-width: none;
-
-        margin-left: 250px;
-        margin-right: 0;
-
-        padding: 40px;
-    }
 
     .cards-grid {
         grid-template-columns: repeat(5, 1fr);

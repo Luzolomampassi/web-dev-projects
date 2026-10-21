@@ -2,26 +2,7 @@
    RESET
 ================================ */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    width: 100%;
-    background-color: var(--color-background);
-}
-
 body {
-    width: 100%;
-    min-height: 100vh;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    background-color: var(--color-background);
-    color: var(--color-text);
-
     line-height: 1.5;
 }
 
@@ -36,44 +17,8 @@ button {
 
 
 /* ================================
-   VARIÁVEIS
-================================ */
-
-:root {
-    --color-primary: #2563EB;
-    --color-primary-dark: #1D4ED8;
-    --color-primary-light: #DBEAFE;
-
-    --color-background: #F1F5F9;
-    --color-surface: #FFFFFF;
-    --color-white: #FFFFFF;
-
-    --color-text: #0F172A;
-    --color-text-secondary: #64748B;
-
-    --color-border: #E2E8F0;
-
-    --color-success: #16A34A;
-    --color-warning: #D97706;
-    --color-danger: #DC2626;
-}
-
-
-/* ================================
    BASE
 ================================ */
-
-main {
-    width: 100%;
-    padding: 94px 16px 40px;
-}
-
-.home {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
 
 /* ================================
    CABEÇALHO
@@ -138,12 +83,14 @@ main {
     padding: 0 18px;
 
     border: 0;
-    border-radius: 10px;
+    border-radius: 11px;
 
     background-color: var(--color-primary);
-    color: var(--color-white);
+    color: var(--color-on-primary);
 
     font-weight: 700;
+
+    box-shadow: 0 5px 12px rgba(var(--color-primary-rgb), 0.16);
 
     text-decoration: none;
 
@@ -154,6 +101,7 @@ main {
 
 .btn-primary:hover {
     background-color: var(--color-primary-dark);
+    box-shadow: 0 8px 18px rgba(var(--color-primary-rgb), 0.22);
     transform: translateY(-1px);
 }
 
@@ -162,7 +110,7 @@ main {
 }
 
 .btn-primary:focus-visible {
-    outline: 3px solid var(--color-primary-light);
+    outline: 3px solid var(--color-primary);
     outline-offset: 2px;
 }
 
@@ -194,11 +142,17 @@ main {
     padding: 18px;
 
     border: 1px solid var(--color-border);
-    border-radius: 14px;
+    border-radius: var(--radius-lg);
 
     background-color: var(--color-white);
 
-    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
+    box-shadow: var(--tp-shadow);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.overview-card:hover {
+    box-shadow: 0 14px 34px rgba(24, 34, 64, 0.09);
+    transform: translateY(-2px);
 }
 
 .card-icon {
@@ -262,11 +216,11 @@ main {
     padding: 20px;
 
     border: 1px solid var(--color-border);
-    border-radius: 14px;
+    border-radius: var(--radius-lg);
 
     background-color: var(--color-white);
 
-    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
+    box-shadow: var(--tp-shadow);
 }
 
 .panel-heading {
@@ -323,8 +277,9 @@ main {
 
     padding: 24px;
 
-    border: 1px dashed #CBD5E1;
+    border: 1px dashed var(--color-border);
     border-radius: 12px;
+    background-color: var(--color-surface-raised);
 
     text-align: center;
 }
@@ -485,10 +440,6 @@ main {
 
 @media (min-width: 760px) {
 
-    main {
-        padding: 94px 24px 50px;
-    }
-
     .home-heading {
         flex-direction: row;
 
@@ -534,21 +485,6 @@ main {
 
 @media (min-width: 1024px) {
 
-    main {
-        width: calc(100% - 350px);
-
-        margin-left: 350px;
-
-        padding: 94px 24px 50px;
-    }
-
-    .home {
-        width: 100%;
-        max-width: 1160px;
-        margin: 0 0 0 240px;
-    }
-
-
 }
 
 
@@ -557,11 +493,6 @@ main {
 ================================ */
 
 @media (max-width: 400px) {
-
-    main {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
 
     .overview-cards {
         grid-template-columns: 1fr;

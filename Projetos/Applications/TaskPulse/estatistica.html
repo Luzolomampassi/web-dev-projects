@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskPulse</title>
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/estatisticas.css">
     <script src="https://kit.fontawesome.com/f6a9b3f1e7.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-   
-    <link rel="stylesheet" href="css/visual-refresh.css">
 </head>
 <body>
     <div class="overlay"></div> 
@@ -97,7 +97,7 @@
     <section class="cards-grid">
         <article class="card">
             <p class="card-title">Total de Tarefas <i class="fa-solid fa-list fa-lg"></i></p>
-            <h2 class="card-value total-tarefas">100</h2>
+            <h2 class="card-value total-tarefas">0</h2>
             <p class="card-comparison"><i class="fa-solid fa-arrow-up"></i> +8 VS.periodo anterior</p>
         </article>
 
@@ -105,7 +105,7 @@
             <p class="card-title">
                 Concluídas
                 <i class="fa-regular fa-square-check fa-lg"></i></p>
-            <p class="card-value tarefas-concluidas">47</p>
+            <p class="card-value tarefas-concluidas">0</p>
             <p class="card-comparison"><i class="fa-solid fa-arrow-up"></i> +12 VS.periodo anterior</p>
         </article>
 
@@ -114,7 +114,7 @@
                 Pendentes
                 <i class="fa-regular fa-clock fa-lg"></i>
             </p>
-            <p class="card-value tarefas-pendentes">28</p>
+            <p class="card-value tarefas-pendentes">0</p>
             <p class="card-comparison">
                 <i class="fa-solid fa-arrow-up"></i>
                 +12 VS.periodo anterior
@@ -126,7 +126,7 @@
                 Atrasadas
                 <i class="fa-solid fa-triangle-exclamation fa-lg"></i>
             </p>
-            <p class="card-value tarefas-atrasadas">11</p>
+            <p class="card-value tarefas-atrasadas">0</p>
             <p class="card-comparison">
                 <i class="fa-solid fa-arrow-down"></i>
                 +2 VS.periodo anterior
@@ -138,7 +138,7 @@
                 Taxa de conclusão
                 <i class="fa-solid fa-percent fa-lg"></i> 
             </p>
-            <p class="card-value taxa-conclusao">47%</p>
+            <p class="card-value taxa-conclusao">0%</p>
             <p class="card-comparison">
                 <i class="fa-solid fa-arrow-up"></i>
                 +5 VS.periodo anterior
@@ -181,7 +181,7 @@
             <div class="distribuicao-content">
                 <article class="grafico-distribuicao">
                     <div class="grafico-centro">
-                         100
+                        0
                         <span>tarefas</span>
                     </div>
                 </article>
@@ -192,8 +192,8 @@
                             <span>Concluídas</span>
                         </p>
                         <div>
-                            <p class="quantidade-status">47</p>
-                            <p>47%</p>
+                            <p class="quantidade-status statusConcluidoElemento">0</p>
+                            <p>0%</p>
                         </div>
                     </div>
                     <div class="status-tarefa">
@@ -202,8 +202,8 @@
                             <span>Pendentes</span>
                         </p>
                         <div>
-                            <p class="quantidade-status">28</p>
-                            <p>28%</p>
+                            <p class="quantidade-status statusPendenteElemento">0</p>
+                            <p>0%</p>
                         </div>
                     </div>
                     <div class="status-tarefa">
@@ -212,20 +212,11 @@
                             <span>Atrasadas</span>
                         </p>
                         <div>
-                            <p class="quantidade-status">11</p>
-                            <p>11%</p>
+                            <p class="quantidade-status statusAtrasadaElemento">0</p>
+                            <p>0%</p>
                         </div>
                     </div>
-                    <div class="status-tarefa">
-                        <p>
-                            <span id="indicador-andamento"><i class="fa-solid fa-square"></i></span>
-                            <span>Em andamento</span>
-                        </p>
-                        <div>
-                            <p class="quantidade-status">14</p>
-                            <p>14%</p>
-                        </div>
-                    </div>
+                    
                 </article>
             </div>        
     </article>
@@ -282,58 +273,8 @@
         </div>
         <div class="atividade-item">
             <div>
-                <p>Revisão de design do dashboard</p>
-                <p>TaskPulse Web · há 12 min</p>
-            </div>
-            <div>
-                Concluída
-            </div>
-        </div>
-
-        <div class="atividade-item">
-            <div>
-                <p>Integração com API de pagamentos</p>
-                <p>Backend Core · há 34 min</p>
-            </div>
-            <div>
-                Criada
-            </div>
-        </div>
-
-        <div class="atividade-item">
-            <div>
-                <p>Testes de regressão Q3</p>
-                <p>QA Sprint · há 1h 20min</p>
-            </div>
-            <div>
-                Atrasada
-            </div>
-        </div>
-
-        <article class="atividade-item">
-            <div>
-                <p>Documentação de endpoints</p>
-                <p>Backend Core · há 2h 05min</p>
-            </div>
-            <div>
-                Atualizada
-            </div>
-        </article>
-
-        <div class="atividade-item">
-            <div>
                 <p>Onboarding de novos usuários</p>
                 <p>Growth · há 3h</p>
-            </div>
-            <div>
-                Concluída
-            </div>
-        </div>
-
-        <div class="atividade-item">
-            <div>
-                <p>Análise de métricas de conversão</p>
-                <p>Growth · ontem 18:42</p>
             </div>
             <div>
                 Concluída
@@ -343,6 +284,6 @@
 </section>
 
 </main>  
-    <script src="js/estatisticas.js"></script>
+     <script type="module" src="js/estatisticas.js"></script>
 </body>
 </html>

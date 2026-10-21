@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskPulse</title>
+    <script src="js/theme.js"></script>
     <script src="https://kit.fontawesome.com/f6a9b3f1e7.js"></script>
+    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/config.css">
-    <link rel="stylesheet" href="css/visual-refresh.css">
 </head>
-<body>
+<body> 
     
 <header>
     <div class="header-content">
@@ -665,8 +666,8 @@
                 <p>Baixe suas tarefas em formato JSON ou CSV.</p>
             </div>
             <div class="buttons-exportar">
-                <button type="button" class="btn-exportar">JSON</button>
-                <button type="button" class="btn-exportar">CSV</button>
+                <button type="button" class="btn-exportar" id="btn-exportar-json">JSON</button>
+                <button type="button" class="btn-exportar" id="btn-exportar-csv">CSV</button>
             </div>
         </article>
     </section>
@@ -679,7 +680,7 @@
             
         </div>
     </div>
-
+    <div class="notification"></div>
 </main>
     
     <script src="js/config.js"></script>

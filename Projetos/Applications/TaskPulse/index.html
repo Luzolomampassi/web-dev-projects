@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -7,13 +8,16 @@
 
     <title>TaskPulse - Visão geral</title>
 
+    <script src="js/theme.js"></script>
     <script src="https://kit.fontawesome.com/f6a9b3f1e7.js"></script>
-    <link rel="stylesheet" href="css/home.css">
+
+    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/visual-refresh.css">
+    <link rel="stylesheet" href="css/home.css">
 </head>
 
 <body>
+
     <!-- ================= HEADER ================= -->
 
     <header>
@@ -37,7 +41,6 @@
             <nav id="menu" class="menu">
 
                 <ul>
-
                     <li>
                         <a href="index.html" class="active">
                             <i class="fa-regular fa-house fa-xl"></i>
@@ -79,7 +82,6 @@
                             <span>Configurações</span>
                         </a>
                     </li>
-
                 </ul>
 
             </nav>
@@ -88,31 +90,25 @@
 
     </header>
 
-
     <!-- ================= HOME ================= -->
 
     <main class="home">
+
         <section class="home-heading">
+
             <div>
-                <span class="eyebrow">
-                    Visão geral
-                </span>
-                <h1>
-                    Olá, seja bem-vindo ao TaskPulse
-                </h1>
+                <span class="eyebrow">Visão geral</span>
+
+                <h1>Olá, seja bem-vindo ao TaskPulse</h1>
 
                 <p>
                     Acompanhe suas tarefas e veja o que precisa da sua atenção.
                 </p>
-
             </div>
 
             <a href="task.html" class="btn-primary">
-
                 <i class="fa-solid fa-plus"></i>
-
                 Nova tarefa
-
             </a>
 
         </section>
@@ -129,12 +125,10 @@
 
                 <div>
                     <span>Total de tarefas</span>
-                    <strong data-stat="total" id="total-tarefas">0</strong>
-
+                    <strong id="total-task-count">0</strong>
                 </div>
 
             </article>
-
 
             <article class="overview-card">
 
@@ -143,15 +137,11 @@
                 </div>
 
                 <div>
-
                     <span>Concluídas</span>
-
-                    <strong data-stat="completed" class="completed-tasks">0</strong>
-
+                    <strong id="completed-task-count">0</strong>
                 </div>
 
             </article>
-
 
             <article class="overview-card">
 
@@ -160,38 +150,30 @@
                 </div>
 
                 <div>
-
                     <span>Pendentes</span>
-
-                    <strong data-stat="pending" class="tasks-pending">
-                        0
-                    </strong>
-
+                    <strong id="pending-task-count">0</strong>
                 </div>
 
             </article>
 
-
             <article class="overview-card">
+
                 <div class="card-icon">
                     <i class="fa-regular fa-star"></i>
                 </div>
 
                 <div>
                     <span>Importantes</span>
-                    <strong data-stat="important" id="important-tasks"> 0</strong>
-
+                    <strong id="important-task-count">0</strong>
                 </div>
 
             </article>
 
         </section>
 
-
         <!-- ================= DASHBOARD ================= -->
 
         <section class="dashboard-grid">
-
 
             <!-- Tarefas de hoje -->
 
@@ -200,33 +182,21 @@
                 <div class="panel-heading">
 
                     <div>
-
-                        <span class="eyebrow">
-                            Hoje
-                        </span>
-
-                        <h2>
-                            Prioridades do dia
-                        </h2>
-
+                        <span class="eyebrow">Hoje</span>
+                        <h2>Prioridades do dia</h2>
                     </div>
 
-                    <a href="task.html">
-                        Ver tarefas
-                    </a>
+                    <a href="task.html">Ver tarefas</a>
 
                 </div>
 
-
-                <div class="task-preview" id="today-tasks">
+                <div class="task-preview" id="today-task-list">
 
                     <div class="empty-state">
 
                         <i class="fa-regular fa-calendar-check"></i>
 
-                        <h3>
-                            Nenhuma tarefa para hoje
-                        </h3>
+                        <h3>Nenhuma tarefa para hoje</h3>
 
                         <p>
                             As tarefas com vencimento hoje aparecerão aqui.
@@ -238,7 +208,6 @@
 
             </article>
 
-
             <!-- Progresso -->
 
             <article class="panel progress-panel">
@@ -246,84 +215,53 @@
                 <div class="panel-heading">
 
                     <div>
-
-                        <span class="eyebrow">
-                            Desempenho
-                        </span>
-
-                        <h2>
-                            Progresso
-                        </h2>
-
+                        <span class="eyebrow">Desempenho</span>
+                        <h2>Progresso</h2>
                     </div>
 
-                    <a href="estatistica.html">
-                        Estatísticas
-                    </a>
+                    <a href="estatistica.html">Estatísticas</a>
 
                 </div>
-
 
                 <div class="progress-content">
 
                     <div
                         class="progress-circle"
+                        id="task-progress-circle"
+                        role="progressbar"
                         aria-label="Progresso das tarefas"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        aria-valuenow="0"
                     >
 
                         <div class="progress-circle-inner">
 
-                            <strong data-stat="progress" id="completed-tasks">
+                            <strong id="task-completion-percentage">
                                 0%
                             </strong>
 
-                            <span>
-                                concluído
-                            </span>
+                            <span>concluído</span>
 
                         </div>
 
                     </div>
 
-
                     <div class="progress-info">
 
                         <div class="progress-row">
-
-                            <span>
-                                Concluídas
-                            </span>
-
-                            <strong data-stat="completed-detail" class="completed-task">
-                                0
-                            </strong>
-
+                            <span>Concluídas</span>
+                            <strong id="progress-completed-count">0</strong>
                         </div>
 
-
                         <div class="progress-row">
-
-                            <span>
-                                Pendentes
-                            </span>
-
-                            <strong data-stat="pending-detail" class="tasks-pending">
-                                0
-                            </strong>
-
+                            <span>Pendentes</span>
+                            <strong id="progress-pending-count">0</strong>
                         </div>
 
-
                         <div class="progress-row">
-
-                            <span>
-                                Importantes
-                            </span>
-
-                            <strong data-stat="important-detail">
-                                0
-                            </strong>
-
+                            <span>Importantes</span>
+                            <strong id="progress-important-count">0</strong>
                         </div>
 
                     </div>
@@ -334,7 +272,6 @@
 
         </section>
 
-
         <!-- ================= PRÓXIMAS TAREFAS ================= -->
 
         <section class="panel upcoming-panel">
@@ -342,36 +279,21 @@
             <div class="panel-heading">
 
                 <div>
-
-                    <span class="eyebrow">
-                        Agenda
-                    </span>
-
-                    <h2>
-                        Próximas tarefas
-                    </h2>
-
+                    <span class="eyebrow">Agenda</span>
+                    <h2>Próximas tarefas</h2>
                 </div>
 
-                <a href="calendario.html">
-                    Abrir calendário
-                </a>
+                <a href="calendario.html">Abrir calendário</a>
 
             </div>
 
-
-            <div
-                class="upcoming-list"
-                id="upcoming-tasks"
-            >
+            <div class="upcoming-list" id="upcoming-task-list">
 
                 <div class="empty-state">
 
                     <i class="fa-regular fa-calendar"></i>
 
-                    <h3>
-                        Nenhuma tarefa agendada
-                    </h3>
+                    <h3>Nenhuma tarefa agendada</h3>
 
                     <p>
                         Crie tarefas para acompanhar seus próximos prazos.
@@ -384,7 +306,6 @@
         </section>
 
     </main>
-
 
     <!-- ================= JAVASCRIPT ================= -->
 

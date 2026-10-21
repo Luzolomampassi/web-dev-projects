@@ -1,65 +1,129 @@
+:root {
+    color-scheme: light;
+
+    --color-primary: #4f46e5;
+    --color-primary-rgb: 79, 70, 229;
+    --color-primary-dark: #4338ca;
+    --color-primary-light: #eef2ff;
+
+    --color-background: #f6f7fb;
+    --color-surface: #ffffff;
+    --color-surface-raised: #ffffff;
+    --color-white: #ffffff;
+    --color-on-primary: #ffffff;
+
+    --color-text: #172033;
+    --color-text-secondary: #69758a;
+    --color-text-muted: #94a3b8;
+    --color-border: #e6e9f1;
+
+    --color-success: #15966a;
+    --color-success-light: #e7f7ef;
+    --color-warning: #c77b13;
+    --color-warning-light: #fff5df;
+    --color-danger: #d84b5b;
+    --color-danger-light: #fff0f1;
+    --color-info: #0284c7;
+    --color-info-rgb: 2, 132, 199;
+    --color-info-light: #e0f2fe;
+
+    --shadow-sm: 0 2px 8px rgba(24, 34, 64, 0.06);
+    --shadow-md: 0 6px 18px rgba(24, 34, 64, 0.08);
+    --shadow-lg: 0 14px 34px rgba(24, 34, 64, 0.12);
+    --tp-shadow: 0 10px 30px rgba(24, 34, 64, 0.055);
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+html.light {
+    color-scheme: light;
+}
+
+html.dark {
+    color-scheme: dark;
+
+    --color-primary: #a5b4fc;
+    --color-primary-rgb: 165, 180, 252;
+    --color-primary-dark: #c7d2fe;
+    --color-primary-light: #312e81;
+
+    --color-background: #0f172a;
+    --color-surface: #1e293b;
+    --color-surface-raised: #273449;
+    --color-white: #1e293b;
+    --color-on-primary: #172033;
+
+    --color-text: #f8fafc;
+    --color-text-secondary: #cbd5e1;
+    --color-text-muted: #94a3b8;
+    --color-border: #3b475c;
+
+    --color-success: #34d399;
+    --color-success-light: #064e3b;
+    --color-warning: #fbbf24;
+    --color-warning-light: #78350f;
+    --color-danger: #fb7185;
+    --color-danger-light: #881337;
+    --color-info: #38bdf8;
+    --color-info-rgb: 56, 189, 248;
+    --color-info-light: #0c4a6e;
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.22);
+    --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 14px 34px rgba(0, 0, 0, 0.4);
+    --tp-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-:root {
-    --color-primary: #2563EB;
-    --color-primary-dark: #1D4ED8;
-    --color-primary-light: #DBEAFE;
 
-    --color-background: #F1F5F9;
-    --color-surface: #FFFFFF;
-    --color-white: #FFFFFF;
-
-    --color-text: #0F172A;
-    --color-text-secondary: #64748B;
-
-    --color-border: #E2E8F0;
-
-    --color-success: #16A34A;
-    --color-success-light: #DCFCE7;
-
-    --color-warning: #D97706;
-    --color-warning-light: #FEF3C7;
-
-    --color-danger: #DC2626;
-    --color-danger-light: #FEE2E2;
-
-    --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
-    --shadow-md: 0 6px 18px rgba(15, 23, 42, 0.08);
-
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 18px;
-
-    --transition-fast: 0.2s ease;
-    --transition-normal: 0.3s ease;
+html,
+body {
+    min-height: 100%;
+    background-color: var(--color-background);
 }
-body.dark {
-    --color-primary: #3B82F6;
-    --color-primary-dark: #60A5FA;
-    --color-primary-light: #1E3A8A;
 
-    --color-background: #0F172A;
-    --color-surface: #1E293B;
-    --color-white: #1E293B;
+body {
+    min-height: 100vh;
+    color: var(--color-text);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
 
-    --color-text: #F8FAFC;
-    --color-text-secondary: #94A3B8;
+button,
+a,
+input,
+select,
+textarea {
+    -webkit-tap-highlight-color: transparent;
+}
 
-    --color-border: #334155;
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+    border-color: var(--color-border);
+    border-radius: 10px;
+}
 
-    --color-success: #22C55E;
-    --color-success-light: #14532D;
+input:not([type="checkbox"]):not([type="radio"]):focus,
+select:focus,
+textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.12);
+}
 
-    --color-warning: #F59E0B;
-    --color-warning-light: #78350F;
-
-    --color-danger: #EF4444;
-    --color-danger-light: #7F1D1D;
-
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.18);
-    --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.24);
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid rgba(var(--color-primary-rgb), 0.35);
+    outline-offset: 2px;
 }

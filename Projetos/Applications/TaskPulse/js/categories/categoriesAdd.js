@@ -1,14 +1,14 @@
-// ============================================================
-// ELEMENTOS DO FORMULÁRIO
-// ============================================================
-import tarefas from "../data.js";
-import { obterResumoTarefas } from "../data.js";
+let categorias = []
+const categoriasSalvas = JSON.parse(localStorage.getItem("categorias")) 
+
+
+import {calcularDados } from "../data.js";
 
 const nome = document.querySelector("#nome");
 const descricaoTxt = document.querySelector("#descricao");
 const formularioCategoria = document.querySelector("#form");
 const alerta = document.querySelector("#alert");
-const categorias = []
+
 
 // ============================================================
 // ELEMENTOS DA PRÉ-VISUALIZAÇÃO
@@ -165,17 +165,17 @@ formularioCategoria.addEventListener("submit", (event) => {
 
 function totalCategory() {
 
-    const { concluidas, pendentes } = obterResumoTarefas();
-
-    let totalCategoriaElemento = document.querySelector("#total-categorias");
-    let totalTarefas = document.querySelector("#total-tarefas");
-    let totalConcluidas = document.querySelector("#total-concluidas");
-    let totalPendentes = document.querySelector("#total-pendentes");
+    const{quantidadeConcluidas, quantidadePendentes,totalTarefas}= calcularDados();
+    
+    const totalCategoriaElemento = document.querySelector("#total-categorias");
+    const totalTarefasElemento = document.querySelector("#total-tarefas");
+    const totalConcluidasElemento = document.querySelector("#total-concluidas");
+    const totalPendentesElemento = document.querySelector("#total-pendentes");
 
     totalCategoriaElemento.textContent = categorias.length;
-    totalTarefas.textContent = tarefas.length;
-    totalConcluidas.textContent = concluidas;
-    totalPendentes.textContent = pendentes;
+    totalTarefasElemento.textContent = totalTarefas
+    totalConcluidasElemento.textContent = quantidadeConcluidas;
+    totalPendentesElemento.textContent = quantidadePendentes;
 }
 
 
@@ -501,4 +501,9 @@ function addCategory(dados) {
     });
 
 }
+
+function guardarCategoria(){
+    localStorage.setItem("categoria", JSON.stringify(categorias))
+}
+totalCategory()
 

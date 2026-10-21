@@ -1,104 +1,37 @@
 /* ================================
-   RESET
-================================ */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-/* ================================
-   VARIÁVEIS
-================================ */
-
-:root {
-    --color-primary: #2563EB;
-    --color-primary-dark: #1D4ED8;
-    --color-primary-light: #DBEAFE;
-
-    --color-background: #F1F5F9;
-    --color-surface: #FFFFFF;
-    --color-white: #FFFFFF;
-
-    --color-text: #0F172A;
-    --color-text-secondary: #64748B;
-
-    --color-border: #E2E8F0;
-
-    --color-success: #16A34A;
-    --color-success-light: #DCFCE7;
-
-    --color-warning: #D97706;
-    --color-warning-light: #FEF3C7;
-
-    --color-danger: #DC2626;
-    --color-danger-light: #FEE2E2;
-
-    --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
-    --shadow-md: 0 6px 18px rgba(15, 23, 42, 0.08);
-
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 18px;
-
-    --transition-fast: 0.2s ease;
-    --transition-normal: 0.3s ease;
-}
-
-
-/* ================================
    TEMA ESCURO
 ================================ */
 
-body.dark {
-    --color-primary: #3B82F6;
-    --color-primary-dark: #60A5FA;
-    --color-primary-light: #1E3A8A;
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
 
-    --color-background: #0F172A;
-    --color-surface: #1E293B;
-    --color-white: #1E293B;
+    padding: 15px 20px;
+    border-radius: 8px;
 
-    --color-text: #F8FAFC;
-    --color-text-secondary: #94A3B8;
+    background: var(--color-surface-raised);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    font-size: 14px;
 
-    --color-border: #334155;
+    opacity: 0;
+    transform: translateY(-15px);
+    pointer-events: none;
 
-    --color-success: #22C55E;
-    --color-success-light: #14532D;
-
-    --color-warning: #F59E0B;
-    --color-warning-light: #78350F;
-
-    --color-danger: #EF4444;
-    --color-danger-light: #7F1D1D;
-
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.18);
-    --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.24);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 /* ================================
    BASE
 ================================ */
 
-html {
-    min-height: 100%;
-
-    background-color: var(--color-background);
-}
-
 body {
-    width: 100%;
-    min-height: 100vh;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    color: var(--color-text);
-    background-color: var(--color-background);
-
     transition:
         color var(--transition-normal),
         background-color var(--transition-normal);
@@ -113,16 +46,6 @@ select {
 button {
     cursor: pointer;
 }
-
-main {
-    width: 100%;
-    max-width: 1400px;
-
-    margin: 0 auto;
-
-    padding: 94px 16px 40px;
-}
-
 
 /* ================================
    SEÇÕES
@@ -170,7 +93,7 @@ section {
     line-height: 1.5;
 }
 
-
+ 
 /* ================================
    PERFIL
 ================================ */
@@ -181,6 +104,9 @@ section {
     color: var(--color-text);
 
     background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--tp-shadow);
 }
 
 .perfil-body {
@@ -390,6 +316,7 @@ section {
 
     background-color: var(--color-surface);
     color: var(--color-text);
+    box-shadow: var(--tp-shadow);
 
     cursor: pointer;
 
@@ -510,7 +437,7 @@ select:focus {
 
     border-radius: 20px;
 
-    background-color: #64748B;
+    background-color: var(--color-text-muted);
 }
 
 .slider {
@@ -593,11 +520,11 @@ select:focus {
     border-radius: var(--radius-md);
 
     background-color: var(--color-danger);
-    color: var(--color-white);
+    color: var(--color-on-primary);
 }
 
 .btn-delete:hover {
-    background-color: #B91C1C;
+    background-color: var(--color-danger);
 }
 
 .btn-cancelar {
@@ -714,7 +641,7 @@ select:focus {
 
     padding: 10px 16px;
 
-    border-radius: var(--radius-md);
+    border-radius: 11px;
 
     font: inherit;
     font-weight: 700;
@@ -738,13 +665,15 @@ select:focus {
     border: 0;
 
     background-color: var(--color-primary);
-    color: #FFFFFF;
+    color: var(--color-on-primary);
 
     box-shadow: var(--shadow-sm);
 }
 
 .btn-save:hover {
     background-color: var(--color-primary-dark);
+    box-shadow: 0 8px 18px rgba(var(--color-primary-rgb), 0.22);
+    transform: translateY(-1px);
 }
 
 
@@ -766,10 +695,6 @@ input:focus-visible,
 ================================ */
 
 @media (min-width: 768px) {
-
-    main {
-        padding: 94px 24px 50px;
-    }
 
     .section-content {
         margin-bottom: 30px;
@@ -794,16 +719,6 @@ input:focus-visible,
 ================================ */
 
 @media (min-width: 1024px) {
-
-    main {
-        width: calc(100% - 250px);
-        max-width: none;
-
-        margin-left: 250px;
-        margin-right: 0;
-
-        padding: 40px;
-    }
 
     .perfil-body {
         display: grid;

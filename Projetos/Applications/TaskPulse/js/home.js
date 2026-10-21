@@ -1,19 +1,35 @@
-import tarefas from "./data.js";
-import {obterResumoTarefas} from "./data.js";
+import { calcularDados } from "./data.js";
 
-const {concluidas , pendentes} = obterResumoTarefas()
-const overviewCards=document.querySelectorAll(".overview-card")
-const completed = document.querySelectorAll(".completed-tasks")
-const pending = document.querySelectorAll(".tasks-pending")
-const important = document.querySelector("#important-tasks")
-const total = document.querySelector("#total-tarefas")
+const dados = calcularDados();
 
-total.textContent = tarefas.length
+// Elementos do resumo
+const totalTarefasElemento = document.querySelector("#total-task-count");
+const tarefasConcluidasElemento = document.querySelector("#completed-task-count");
+const tarefasPendentesElemento = document.querySelector("#pending-task-count");
+const tarefasImportantesElemento = document.querySelector("#important-task-count");
 
+// Elementos do progresso
+const circuloProgressoElemento = document.querySelector("#task-progress-circle");
+const percentualConclusaoElemento = document.querySelector("#task-completion-percentage");
 
-completed.forEach(completa =>{
-    completed.textContent = concluidas
-})
-pending.forEach(completa =>{
-    pending.textContent = pendentes
-})
+const progressoConcluidasElemento = document.querySelector("#progress-completed-count");
+const progressoPendentesElemento = document.querySelector("#progress-pending-count");
+const progressoImportantesElemento = document.querySelector("#progress-important-count");
+
+// Atualizar resumo
+totalTarefasElemento.textContent = dados.totalTarefas;
+tarefasConcluidasElemento.textContent = dados.quantidadeConcluidas;
+tarefasPendentesElemento.textContent = dados.quantidadePendentes + dados.quantidadeAtrasadas;
+tarefasImportantesElemento.textContent = dados.quantidadeImportantes;
+
+// Atualizar progresso
+percentualConclusaoElemento.textContent = `${dados.percentualConclusao}%`;
+
+circuloProgressoElemento.setAttribute(
+    "aria-valuenow",
+    dados.percentualConclusao
+);
+
+progressoConcluidasElemento.textContent = dados.quantidadeConcluidas;
+progressoPendentesElemento.textContent = dados.quantidadePendentes + dados.quantidadeAtrasadas;
+progressoImportantesElemento.textContent = dados.quantidadeImportantes;

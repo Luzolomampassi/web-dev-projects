@@ -1,4 +1,6 @@
-const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+import { obterTarefas } from "./data.js";
+
+const tarefas = obterTarefas();
 
 localStorage.setItem("tarefas", JSON.stringify(tarefas))
 
@@ -118,6 +120,7 @@ formularioTarefa.addEventListener("submit", (event) => {
 
     atualizarEstadoVazio();
     resumos();
+    salvarTarefas();
 
     modalTarefa.close();
 });
@@ -367,20 +370,16 @@ function criarTarefa(dadosTarefa) {
 
     // Eliminar tarefa
     botaoDeletar.addEventListener("click", () => {
-        elementoTarefa.remove();
-        
-
-        
-
         const indice = tarefas.findIndex(
             (tarefa) => tarefa.id === dadosTarefa.id
         );
-        localStorage.removeItem("indice")
-        
-      
-        
-        
+        if (indice === -1) {
+            return;
+        }
 
+        tarefas.splice(indice, 1);
+        elementoTarefa.remove();
+        salvarTarefas();
         atualizarEstadoVazio();
         resumos();
     });
@@ -487,8 +486,6 @@ botoesFiltros.forEach((botaoFiltro) => {
 // ============================================================
 
 function resumos() {
-    const cardsResumos = document.querySelectorAll(".card");
-
     const totais = tarefas.length;
 
     const concluidas = tarefas.filter(
@@ -503,21 +500,22 @@ function resumos() {
         (tarefa) => tarefa.prioridade.toLowerCase() === "alta"
     ).length;
 
-    cardsResumos.forEach((card) => {
-        const numCard = card.querySelector("h3");
+    document.querySelectorAll("[data-resumo]").forEach((resumo) => {
+        const contador = resumo.matches("h3") ? resumo : resumo.querySelector("h3");
 
-        if (!numCard) {
+        if (!contador) {
             return;
         }
 
-        if (numCard.dataset.resumo === "totais") {
-            numCard.textContent = totais;
-        } else if (numCard.dataset.resumo === "concluidas") {
-            numCard.textContent = concluidas;
-        } else if (numCard.dataset.resumo === "pendentes") {
-            numCard.textContent = pendentes;
-        } else if (numCard.dataset.resumo === "importantes") {
-            numCard.textContent = importantes;
+        const valores = {
+            totais,
+            concluidas,
+            pendentes,
+            importantes
+        };
+
+        if (Object.hasOwn(valores, resumo.dataset.resumo)) {
+            contador.textContent = valores[resumo.dataset.resumo];
         }
     });
 }

@@ -1,49 +1,9 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-:root {
-    --color-primary: #2563EB;
-    --color-primary-dark: #1D4ED8;
-    --color-primary-light: #DBEAFE;
-
-    --color-background: #F8FAFC;
-    --color-surface: #FFFFFF;
-    --color-white: #FFFFFF;
-
-    --color-text: #0F172A;
-    --color-text-secondary: #64748B;
-
-    --color-border: #E2E8F0;
-
-    --color-success: #16A34A;
-    --color-success-light: #DCFCE7;
-
-    --color-warning: #D97706;
-    --color-warning-light: #FEF3C7;
-
-    --color-danger: #DC2626;
-    --color-danger-light: #FEE2E2;
-}
-
 input[type="date"],
 select,
 button {
     cursor: pointer;
 }
 
-body {
-    width: 100%;
-    min-height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--background-color);
-}
-main{
-    padding-top: 80px;
-}
 /* =========================
    HEADER MOBILE
 ========================= */
@@ -141,12 +101,12 @@ header h2 {
     align-items: center;
     gap: 15px;
 
-    color: var(--color-primary-dark);
+    color: var(--color-text-secondary);
     font-weight: 500;
     text-decoration: none;
 
     padding: 12px 15px;
-    border-radius: 16px;
+    border-radius: 11px;
 
     transition:
         background-color 0.3s ease,
@@ -155,18 +115,112 @@ header h2 {
 
 #menu a:hover,
 #menu a:focus {
-    background-color: var(--color-primary-dark);
-    color: var(--color-primary);
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
 }
 
-#menu a:focus {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+#menu a:focus:not(:focus-visible) {
+    outline: none;
+}
+
+#menu a.active {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
 }
 
 #menu a i {
     width: 25px;
     text-align: center;
+}
+
+.logo {
+    padding-top: 20px;
+}
+
+body:not(:has(.auth-page)) > header {
+    box-shadow: 4px 0 24px rgba(24, 34, 64, 0.035);
+}
+
+body:not(:has(.auth-page)) header h2 {
+    color: var(--color-text);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+}
+
+#menu ul {
+    gap: 6px;
+}
+
+#menu a {
+    font-size: 0.94rem;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+#menu a:hover {
+    transform: translateX(2px);
+}
+
+#menu a i {
+    color: inherit;
+}
+
+body:not(:has(.auth-page)) main {
+    width: 100%;
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 42px clamp(18px, 3.4vw, 52px) 56px;
+}
+
+body:not(:has(.auth-page)) h1,
+body:not(:has(.auth-page)) h2,
+body:not(:has(.auth-page)) h3,
+body:not(:has(.auth-page)) h4 {
+    letter-spacing: -0.025em;
+}
+
+body:not(:has(.auth-page)) .page-header {
+    margin-bottom: 30px;
+}
+
+body:not(:has(.auth-page)) .page-header h1,
+body:not(:has(.auth-page)) .inicio h1,
+body:not(:has(.auth-page)) .inicio h2 {
+    font-weight: 800;
+}
+
+body:not(:has(.auth-page)) .page-header p {
+    margin-top: 7px;
+}
+
+@media (min-width: 1024px) {
+    body:not(:has(.auth-page)) main {
+        width: calc(100% - 250px);
+        margin-left: 250px;
+    }
+
+    .home {
+        max-width: none;
+        margin: 0;
+    }
+
+    .home main,
+    body:not(:has(.auth-page)) main.home {
+        max-width: none;
+    }
+}
+
+@media (max-width: 1023px) {
+    body:not(:has(.auth-page)) main {
+        padding: 92px 16px 38px;
+    }
+
+    .home-heading {
+        padding-top: 0;
+    }
 }
 
 
@@ -181,12 +235,6 @@ header h2 {
         width: 100%;
         min-height: 100vh;
     }
-    main {
-    padding: 10px 20px 10px;
-}
-    main {
-    margin-left: 250px;
-}
     header {
         position: fixed;
         top: 0;
@@ -232,7 +280,7 @@ header h2 {
     .logo {
         display: flex;
         align-items: center;
-        padding: 10px;
+        padding: 20px 10px 10px;
     }
 
     #menu ul {
