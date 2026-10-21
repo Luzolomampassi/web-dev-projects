@@ -584,25 +584,69 @@ $restaurantes = $pdo->query(
 
                     <tbody class="orders-list">
                         <?php foreach ($produtos as $produto): ?>
-                            <tr class="order-row" data-dish-id="<?= (int) $produto['id'] ?>" data-prato="<?= htmlspecialchars($produto['nome'], ENT_QUOTES, 'UTF-8') ?>" data-preco="<?= htmlspecialchars((string) $produto['preco'], ENT_QUOTES, 'UTF-8') ?>" data-categoria="<?= (int) $produto['categoria_id'] ?>" data-restaurante="<?= (int) $produto['restaurante_id'] ?>" data-descricao="<?= htmlspecialchars($produto['descricao'] ?? '', ENT_QUOTES, 'UTF-8') ?>" data-imagem="<?= htmlspecialchars($produto['imagem'] ?? '', ENT_QUOTES, 'UTF-8') ?>" data-disponibilidade="<?= !empty($produto['disponivel']) ? 'available' : 'unavailable' ?>">
+                            <tr
+                                class="order-row"
+                                data-id="<?= (int) $produto['id'] ?>"
+                                data-nome="<?= htmlspecialchars($produto['nome'], ENT_QUOTES, 'UTF-8') ?>"
+                                data-preco="<?= htmlspecialchars((string) $produto['preco'], ENT_QUOTES, 'UTF-8') ?>"
+                                data-categoria-id="<?= (int) $produto['categoria_id'] ?>"
+                                data-restaurante-id="<?= (int) $produto['restaurante_id'] ?>"
+                                data-descricao="<?= htmlspecialchars($produto['descricao'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
+                                data-imagem="<?= htmlspecialchars($produto['imagem'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
+                                data-disponibilidade="<?= !empty($produto['disponivel']) ? 'available' : 'unavailable' ?>"
+                            >
                                 <td>
                                     <span class="product-name-cell">
-                                    <?php if (!empty($produto['imagem'])): ?>
-                                        <img class="product-thumbnail" src="<?= htmlspecialchars($produto['imagem'], ENT_QUOTES, 'UTF-8') ?>" alt="Imagem de <?= htmlspecialchars($produto['nome'], ENT_QUOTES, 'UTF-8') ?>" loading="lazy">
-                                    <?php else: ?>
-                                        <span class="product-thumbnail product-thumbnail-empty" aria-hidden="true"><i class="fa-regular fa-image"></i></span>
-                                    <?php endif; ?>
-                                    <span><?= htmlspecialchars($produto['nome'], ENT_QUOTES, 'UTF-8') ?></span>
+                                        <?php if (!empty($produto['imagem'])): ?>
+                                            <img
+                                                class="product-thumbnail"
+                                                src="<?= htmlspecialchars($produto['imagem'], ENT_QUOTES, 'UTF-8') ?>"
+                                                alt="Imagem de <?= htmlspecialchars($produto['nome'], ENT_QUOTES, 'UTF-8') ?>"
+                                                loading="lazy"
+                                            >
+                                        <?php else: ?>
+                                            <span class="product-thumbnail product-thumbnail-empty" aria-hidden="true">
+                                                <i class="fa-regular fa-image"></i>
+                                            </span>
+                                        <?php endif; ?>
+
+                                        <span><?= htmlspecialchars($produto['nome'], ENT_QUOTES, 'UTF-8') ?></span>
                                     </span>
                                 </td>
+
                                 <td><?= htmlspecialchars($produto['categoria'] ?? '—', ENT_QUOTES, 'UTF-8') ?></td>
+
                                 <td><?= htmlspecialchars($produto['restaurante'] ?? '—', ENT_QUOTES, 'UTF-8') ?></td>
+
                                 <td><?= htmlspecialchars((string) $produto['preco'], ENT_QUOTES, 'UTF-8') ?> Kz</td>
+
                                 <td><?= htmlspecialchars($produto['criado_em'] ?? '—', ENT_QUOTES, 'UTF-8') ?></td>
-                                <td><span class="badge order-status <?= !empty($produto['disponivel']) ? 'active' : 'inactive' ?>"><span class="badge-dot" aria-hidden="true"></span><?= !empty($produto['disponivel']) ? 'Disponível' : 'Indisponível' ?></span></td>
+
+                                <td>
+                                    <span class="badge order-status <?= !empty($produto['disponivel']) ? 'active' : 'inactive' ?>">
+                                        <span class="badge-dot" aria-hidden="true"></span>
+                                        <?= !empty($produto['disponivel']) ? 'Disponível' : 'Indisponível' ?>
+                                    </span>
+                                </td>
+
                                 <td class="product-actions">
-                                    <button type="button" class="btn-edit-product" title="Editar <?= htmlspecialchars($produto['nome'], ENT_QUOTES, 'UTF-8') ?>" aria-label="Editar produto <?= htmlspecialchars($produto['nome'], ENT_QUOTES, 'UTF-8') ?>"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></button>
-                                    <button type="button" class="btn-delete-product" title="Eliminar <?= htmlspecialchars($produto['nome'], ENT_QUOTES, 'UTF-8') ?>" aria-label="Eliminar produto <?= htmlspecialchars($produto['nome'], ENT_QUOTES, 'UTF-8') ?>"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+                                    <button
+                                        type="button"
+                                        class="btn-edit-product"
+                                        title="Editar <?= htmlspecialchars($produto['nome'], ENT_QUOTES, 'UTF-8') ?>"
+                                        aria-label="Editar produto <?= htmlspecialchars($produto['nome'], ENT_QUOTES, 'UTF-8') ?>"
+                                    >
+                                        <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="btn-delete-product"
+                                        title="Eliminar <?= htmlspecialchars($produto['nome'], ENT_QUOTES, 'UTF-8') ?>"
+                                        aria-label="Eliminar produto <?= htmlspecialchars($produto['nome'], ENT_QUOTES, 'UTF-8') ?>"
+                                    >
+                                        <i class="fa-solid fa-trash" aria-hidden="true"></i>
+                                    </button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -885,6 +929,7 @@ $restaurantes = $pdo->query(
     
 
     <script src="assets/js/produtos.js"></script>
+    <script src="assets/js/consultar-produtos.js"></script>
 
 
 </body>

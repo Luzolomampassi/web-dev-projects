@@ -1008,16 +1008,60 @@ color: var(--color-danger);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 3px dashed var(--color-primary);
+    border: 1px dashed #c7d2fe;
     width: 100%;
     min-height: 200px;
     height: 100%;
-    border-radius: 8px;
-    background-color: #1d4fd81e;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, #eef2ff 0%, #f8faff 100%);
 }
 .vazio{
-   
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 440px;
+    gap: 12px;
+    padding: 24px 12px;
+    text-align: center;
+}
+.vazio-icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 4px;
+    border-radius: 18px;
+    background: #e0e7ff;
+    color: var(--color-primary);
+    font-size: 24px;
+}
+.vazio h1 {
+    color: var(--color-text);
+    font-size: clamp(1.15rem, 3vw, 1.45rem);
+}
+.vazio p {
+    max-width: 360px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+.vazio .btn-add {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 4px;
+    padding: 11px 16px;
+    width: fit-content;
+    border: 0;
+    border-radius: var(--radius-md);
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-weight: 600;
+    transition: background-color .2s ease, transform .2s ease;
+}
+.vazio .btn-add:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-1px);
 }
 /* ================================
 TABLET
@@ -1192,6 +1236,28 @@ main {
 .task:hover .task-actions button,
 .task:focus-within .task-actions button {
     opacity: 1;
+}
+
+.task:has(.check:checked) {
+    background-color: #f1f3f5;
+    border-color: #e2e5e9;
+}
+
+.task:has(.check:checked):hover {
+    background-color: #eceff2;
+}
+
+.task:has(.check:checked) h3,
+.task:has(.check:checked) p,
+.task:has(.check:checked) .badge {
+    color: #8b929b;
+    text-decoration: line-through;
+    text-decoration-color: #a8afb8;
+    text-decoration-thickness: 1.5px;
+}
+
+.task:has(.check:checked) .check {
+    accent-color: #8b929b;
 }
 
 #modal {

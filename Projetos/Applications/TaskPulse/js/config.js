@@ -1,4 +1,3 @@
-// ========================== Theme ==========================
 const body = document.body
 const cardsTheme = document.querySelectorAll(".card")
 const textThme = document.querySelector("#theme-text")
@@ -25,10 +24,6 @@ cardsTheme.forEach(theme => {
        
     })
 });
-
-
-
-
 
 
 // ========================== Switch ==========================
@@ -106,3 +101,24 @@ btnSaveProfile.addEventListener("click", () => {
 
 
 const fotoPerfil = document.querySelector("#input-foto")
+
+
+const form = document.querySelector("#form-perfil")
+
+form.addEventListener("submit", (event) =>{
+    event.preventDefault()
+    const dados = new FormData(form)
+
+    
+    let usuario = {
+        nome: dados.get("nome"),
+        email: dados.get("email"),
+    }
+    const perfil = JSON.parse(localStorage.getItem("usuario" ) ?? []) 
+    localStorage.setItem("usuario", JSON.stringify(usuario))
+})
+
+
+
+
+

@@ -1,5 +1,6 @@
+const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
 
-import tarefas from "./data.js";
+localStorage.setItem("tarefas", JSON.stringify(tarefas))
 
 // ============================================================
 // ELEMENTOS DO DOM
@@ -78,14 +79,11 @@ formularioTarefa.addEventListener("submit", (event) => {
             return;
         }
 
-        // Preservar os dados que não devem ser alterados,
-        // como o ID e o estado de conclusão.
         const tarefaAtualizada = {
             ...tarefas[indiceTarefa],
             ...obterDadosFormulario()
         };
 
-        // Atualizar o objeto dentro do array.
         tarefas[indiceTarefa] = tarefaAtualizada;
 
         // Encontrar o cartão antigo.
@@ -98,7 +96,6 @@ formularioTarefa.addEventListener("submit", (event) => {
         // Criar o cartão atualizado.
         const novoElemento = criarTarefa(tarefaAtualizada);
 
-        // Substituir o cartão antigo pelo novo.
         if (elementoAntigo) {
             elementoAntigo.replaceWith(novoElemento);
         } else {
@@ -252,7 +249,7 @@ function criarTarefa(dadosTarefa) {
     const elementoTarefa = document.createElement("div");
 
     elementoTarefa.classList.add("task");
-    elementoTarefa.dataset.categoria = "pendentes";
+    elementoTarefa.dataset.categoria = dadosTarefa.status ? "concluidas" : "pendentes";
     elementoTarefa.dataset.status = String(dadosTarefa.status);
     elementoTarefa.dataset.id = dadosTarefa.id;
 
@@ -264,6 +261,14 @@ function criarTarefa(dadosTarefa) {
     checkboxConclusao.type = "checkbox";
     checkboxConclusao.classList.add("check");
     checkboxConclusao.checked = dadosTarefa.status === true;
+
+    checkboxConclusao.addEventListener("change", () => {
+        dadosTarefa.status = checkboxConclusao.checked;
+        elementoTarefa.dataset.status = String(dadosTarefa.status);
+        elementoTarefa.dataset.categoria = dadosTarefa.status ? "concluidas" : "pendentes";
+        salvarTarefas();
+        resumos();
+    });
 
     rotuloCheckbox.appendChild(checkboxConclusao);
 
@@ -363,14 +368,18 @@ function criarTarefa(dadosTarefa) {
     // Eliminar tarefa
     botaoDeletar.addEventListener("click", () => {
         elementoTarefa.remove();
+        
+
+        
 
         const indice = tarefas.findIndex(
             (tarefa) => tarefa.id === dadosTarefa.id
         );
-
-        if (indice !== -1) {
-            tarefas.splice(indice, 1);
-        }
+        localStorage.removeItem("indice")
+        
+      
+        
+        
 
         atualizarEstadoVazio();
         resumos();
@@ -378,6 +387,10 @@ function criarTarefa(dadosTarefa) {
 
     // Devolver o elemento para ser inserido ou substituir o antigo.
     return elementoTarefa;
+}
+
+function salvarTarefas() {
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
 }
 
 // ============================================================
