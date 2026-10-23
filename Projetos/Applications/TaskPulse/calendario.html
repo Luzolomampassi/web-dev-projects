@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskPulse — Calendário</title>
+    <title>TaskPulse | Calendário</title>
     <script src="js/theme.js"></script>
+    <link rel="shortcut icon" href="icones/favicon.ico" type="image/x-icon">
     <script src="https://kit.fontawesome.com/f6a9b3f1e7.js"></script>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/header.css">
@@ -14,78 +15,73 @@
 
     <div class="overlay"></div>
 
-    <header class="header">
-        <div class="header-content">
+    <header>
+    <div class="header-content">
+        <button id="btn-menu" aria-label="Abrir menu">
+            <i class="fa-solid fa-bars fa-xl"></i>
+        </button>
 
-            <button
-                type="button"
-                id="btn-menu"
-                class="btn-menu"
-                aria-label="Abrir menu"
-            >
-                <i class="fa-solid fa-bars fa-xl"></i>
-            </button>
+        <h2>Configurações</h2>
+    </div>
 
-            <h2 class="header-title">TaskPulse</h2>
-
+    <div class="menu-container">
+        <div class="logo">
+            <h2>TaskFlow</h2>
         </div>
 
-        <div class="menu-container">
+        <nav id="menu" class="menu">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <i class="fa-regular fa-house fa-xl"></i>
+                        <span>Visão geral</span>
+                    </a>
+                </li>
 
-            <div class="logo">
-                <h2>TaskPulse</h2>
-            </div>
+                <li>
+                    <a href="task.html">
+                        <i class="fa-solid fa-clipboard-check fa-xl"></i>
+                        <span>Tarefas</span>
+                    </a>
+                </li>
 
-            <nav id="menu" class="menu" aria-label="Menu principal">
-                <ul class="menu-list">
+                <li>
+                    <a href="calendario.html">
+                        <i class="fa-regular fa-calendar fa-xl"></i>
+                        <span>Calendário</span>
+                    </a>
+                </li>
 
-                    <li class="menu-item">
-                        <a href="index.html" class="menu-link">
-                            <i class="fa-regular fa-house fa-xl"></i>
-                            <span>Visão geral</span>
-                        </a>
-                    </li>
+                <li>
+                    <a href="categorias.html">
+                        <i class="fa-solid fa-bars fa-xl"></i>
+                        <span>Categorias</span>
+                    </a>
+                </li>
 
-                    <li class="menu-item">
-                        <a href="task.html" class="menu-link">
-                            <i class="fa-solid fa-clipboard-check fa-xl"></i>
-                            <span>Tarefas</span>
-                        </a>
-                    </li>
+                <li>
+                    <a href="arquivos.html">
+                        <i class="fa-solid fa-box-archive fa-xl"></i>
+                        <span>Arquivos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="estatistica.html">
+                        <i class="fa-solid fa-chart-simple fa-xl"></i>
+                        <span>Estatísticas</span>
+                    </a>
+                </li>
 
-                    <li class="menu-item">
-                        <a href="calendario.html" class="menu-link">
-                            <i class="fa-regular fa-calendar fa-xl"></i>
-                            <span>Calendário</span>
-                        </a>
-                    </li>
-
-                    <li class="menu-item">
-                        <a href="categorias.html" class="menu-link">
-                            <i class="fa-solid fa-bars fa-xl"></i>
-                            <span>Categorias</span>
-                        </a>
-                    </li>
-
-                    <li class="menu-item">
-                        <a href="estatistica.html" class="menu-link">
-                            <i class="fa-solid fa-chart-simple fa-xl"></i>
-                            <span>Estatísticas</span>
-                        </a>
-                    </li>
-
-                    <li class="menu-item">
-                        <a href="config.html" class="menu-link">
-                            <i class="fa-solid fa-gear fa-xl"></i>
-                            <span>Configurações</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </nav>
-
-        </div>
-    </header>
+                <li>
+                    <a href="config.html">
+                        <i class="fa-solid fa-gear fa-xl"></i>
+                        <span>Configurações</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
     <main class="main-content">
         <!-- Cabeçalho da página -->

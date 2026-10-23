@@ -76,6 +76,8 @@ section {
 }
 
 .section-content h3 {
+    display: flex;
+    gap: 2px;
     margin-bottom: 4px;
 
     color: var(--color-text);
@@ -569,10 +571,17 @@ select:focus {
     background-color: var(--color-background);
     color: var(--color-text);
 }
+.export-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 0;
+    flex-wrap: wrap;
+}
 
 .buttons-exportar {
     display: flex;
-
+    flex-direction: column;
     justify-content: space-between;
 
     gap: 10px;
@@ -581,15 +590,11 @@ select:focus {
 }
 
 .btn-exportar {
-    flex: 1;
-
     min-height: 40px;
-
     padding: 10px;
-
+    width: 100%;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-
     background-color: var(--color-surface);
     color: var(--color-text);
 
@@ -598,13 +603,131 @@ select:focus {
 
 .btn-exportar:hover {
     border-color: var(--color-primary);
-
     background-color: var(--color-primary-light);
-
     color: var(--color-primary);
 }
 
+.file-icon {
+    width: 43px;
+    height: 46px;
+    border-radius: 8px;
+    background: #eff6ff;
+    color: var(--color-primary);
+    display: grid;
+    place-items: center;
+}
+.file-icon.csv {
+    background: #f0fdf4;
+    color: #26916a;
+}
+.export-copy {
+    flex: 1;
+}
 
+.btn-exportar {
+    background: white;
+    color: #334155;
+    box-shadow: 0 1px 2px #0f172a04;
+}
+
+.btn-exportar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 550;
+    border: 1px solid var(--color-line);
+    padding: 10px 13px;
+    min-height: 36px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+.extension {
+    display: flex;
+    align-items: center;
+    padding: 1px 5px;
+    background: var(--color-canvas);
+    border: 1px solid #edf0f4;
+    color: #94a3b8;
+    font-size: 9px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+.export-copy div{
+    display: flex;
+    gap: 6px;
+}
+.export-copy > p{
+    color: var(--color-muted);
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.section-intro{
+    width: 100%;
+}
+
+
+
+.upload-zone {
+    background: var(--color-surface);;
+    border: 1px dashed #bed0e7;
+    border-radius: 7px;
+    gap: 13px;
+    margin-top: 19px;
+    padding: 23px 20px;
+    display: flex;
+    flex-wrap: wrap;    
+    
+}
+
+.upload-icon {
+    width: 41px;
+    height: 41px;
+    color: var(--color-muted);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    border-radius: 9px;
+    place-items: center;
+    display: grid;
+    box-shadow: 0 2px 3px #0f172a03;
+}
+.upload-copy {
+    flex: 1;
+}
+
+.visually-hidden {
+    display: none;
+}
+.import-note {
+    color: var(--color-muted);
+    gap: 7px;
+    margin-top: 13px;
+    display: flex;
+    align-items: center;
+}
+
+
+.button-secondary {
+    color: #334155;
+    background: #fff;
+    box-shadow: 0 1px 2px #0f172a04;
+    width: 100%;
+}
+.button {
+    border: 1px solid var(--color-line);
+    white-space: nowrap;
+    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+    padding: 10px 13px;
+    font-size: 10px;
+    font-weight: 550;
+    display: inline-flex;
+}
 /* ================================
    SALVAR
 ================================ */
@@ -695,6 +818,22 @@ input:focus-visible,
 ================================ */
 
 @media (min-width: 768px) {
+    .upload-zone{
+        align-items: center;
+    }
+    .upload-copy{
+        display: flex;
+        flex-direction: column;
+    }
+    .upload-copy span{
+        font-size: 12px;
+    }
+    .upload-zone .button {
+        margin-left: 54px;
+    }
+    .button-secondary {
+        width: fit-content;
+    }
 
     .section-content {
         margin-bottom: 30px;
@@ -704,12 +843,19 @@ input:focus-visible,
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .buttons-exportar {
-        width: auto;
+    .exportar {
+        padding: 10px 20px;
     }
 
     .btn-exportar {
-        min-width: 130px;
+        max-width: 130px;
+    }
+    .export-option {
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+     .upload-zone {
+        flex-wrap: wrap;
     }
 }
 
@@ -719,6 +865,7 @@ input:focus-visible,
 ================================ */
 
 @media (min-width: 1024px) {
+ 
 
     .perfil-body {
         display: grid;

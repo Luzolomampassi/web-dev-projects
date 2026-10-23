@@ -117,7 +117,7 @@ btnDeletData.addEventListener("click", () => {
         container.classList.add("confirmando")
 
     } else {
-        localStorage.clear()
+        localStorage.removeItem("tarefas")
 
         dispararNotificacao("Dados eliminados com sucesso")
 
@@ -216,6 +216,8 @@ btnExportarJSON.addEventListener("click", () => {
     URL.revokeObjectURL(url);
 });
 
+
+
 btnExportarCSV.addEventListener("click", () => {
     const dados = JSON.parse(
         localStorage.getItem("tarefas") ?? "[]"
@@ -225,11 +227,23 @@ btnExportarCSV.addEventListener("click", () => {
         return;
     }
 
-    const dadosJSON = JSON.stringify(dados, null, 2);
+    const colunas = Object.keys(dados[0]);
+
+    const linhas = dados.map(tarefa =>
+        colunas.map(coluna => {
+            const valor = String(tarefa[coluna] ?? "");
+            return `"${valor.replace(/"/g, '""')}"`;
+        }).join(",")
+    );
+
+    const dadosCSV = [
+        colunas.join(","),
+        ...linhas
+    ].join("\n");
 
     const ficheiro = new Blob(
-        [dadosJSON],
-        { type: "application/csv" }
+        ["\uFEFF", dadosCSV],
+        { type: "text/csv;charset=utf-8;" }
     );
 
     const url = URL.createObjectURL(ficheiro);
@@ -242,3 +256,122 @@ btnExportarCSV.addEventListener("click", () => {
 
     URL.revokeObjectURL(url);
 });
+
+
+const checkboxes = document.querySelectorAll(".checkbox")
+const selects = document.querySelectorAll(".selects")
+
+const settings = {
+    preferencias_pessoais: {
+        prioridade_padrao: "baixa",
+        categoria_padrao: "pessoal",
+        prazo_padrao: "nenhum",
+
+        arquivar_tarefas_concluidas: false,
+        confirmar_exclusao_de_tarefas: false,
+        adicao_rapida_de_tarefas: false,
+    },
+
+    notificacoes: {
+        lembretes_de_tarefas: false,
+        tarefas_concluidas: false,
+        resumo_diario: false
+    },
+
+    interface: {
+        modo_compacto: false,
+        exibir_tarefas_concluidas: false,
+        animacoes_de_interface: false,
+        cabecalho_fixo: false
+    }
+};
+
+function guardarSettings() {
+    localStorage.setItem("settings", JSON.stringify(settings));
+}
+
+function aplicarSettings() {
+    let settingsGuardadas
+
+    try {
+        const dados = localStorage.getItem("settings");
+
+        if (dados === null) {
+            return;
+        }
+
+        settingsGuardadas = JSON.parse(dados);
+
+    } catch (erro) {
+        console.error("Erro ao carregar as configurações:", erro);
+        return;
+    }
+
+    checkboxes.forEach(check => {
+        const setting = check.dataset.setting;
+        const section = check.closest("section");
+        const settingList = section?.dataset.settinglist;
+
+        const valor = settingsGuardadas?.[settingList]?.[setting];
+
+        if (typeof valor === "boolean" && settings[settingList]) {
+            settings[settingList][setting] = valor;
+
+            check.checked = valor;
+            check.dataset.ativo = String(valor);
+        }
+    });
+
+    selects.forEach(select => {
+        const setting = select.dataset.setting;
+        const section = select.closest("section");
+        const settingList = section?.dataset.settinglist;
+
+        const valor = settingsGuardadas?.[settingList]?.[setting];
+
+        if (typeof valor === "string" && settings[settingList]) {
+            settings[settingList][setting] = valor;
+            select.value = valor;
+        }
+    });
+}
+
+checkboxes.forEach(check => {
+    check.addEventListener("change", () => {
+        const setting = check.dataset.setting;
+        const section = check.closest("section");
+        const settingList = section?.dataset.settinglist;
+
+        if (!settings[settingList] || !setting) {
+            return;
+        }
+
+        settings[settingList][setting] = check.checked;
+        check.dataset.ativo = String(check.checked);
+
+        guardarSettings();
+    });
+});
+
+selects.forEach(select => {
+    select.addEventListener("change", () => {
+        const setting = select.dataset.setting;
+        const section = select.closest("section");
+        const settingList = section?.dataset.settinglist;
+
+        if (!settings[settingList] || !setting) {
+            return;
+        }
+
+        settings[settingList][setting] = select.value;
+
+        guardarSettings();
+    });
+});
+
+aplicarSettings();
+
+
+
+
+

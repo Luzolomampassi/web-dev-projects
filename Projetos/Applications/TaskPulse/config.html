@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-AO">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskPulse</title>
-    <script src="js/theme.js"></script>
+    <title>TaskPulse | Configurações</title>
+    <script src="js/theme.js" defer></script>
+    <link rel="shortcut icon" href="icones/favicon.ico" type="image/x-icon">
     <script src="https://kit.fontawesome.com/f6a9b3f1e7.js"></script>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/config.css">
+
 </head>
-<body> 
-    
+<body>
+
 <header>
     <div class="header-content">
         <button id="btn-menu" aria-label="Abrir menu">
@@ -57,6 +59,13 @@
                 </li>
 
                 <li>
+                    <a href="arquivos.html">
+                        <i class="fa-solid fa-box-archive fa-xl"></i>
+                        <span>Arquivos</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="estatistica.html">
                         <i class="fa-solid fa-chart-simple fa-xl"></i>
                         <span>Estatísticas</span>
@@ -73,170 +82,179 @@
         </nav>
     </div>
 </header>
+
 <main>
-    <!--  ===================================
-      Perfil
-       =================================== -->
+    <!-- ===================================
+         Perfil
+    =================================== -->
     <section class="perfil">
 
-    <div class="section-content">
-        <h3>Perfil</h3>
-        <p>Suas informações pessoais e foto de exibição.</p>
-    </div>
-
-    <div class="perfil-body">
-    <div class="foto">
-
-        <img
-            src="#"
-            alt="Foto de perfil do usuário"
-            id="foto-perfil"
-        >
-
-        <input
-            type="file"
-            id="input-foto"
-            class="input-foto"
-            accept="image/*"
-        >
-
-        <div class="profile-actions">
-
-            <button
-                type="button"
-                class="upload-photo"
-                id="upload-photo"
-                aria-label="Carregar foto de perfil"
-            >
-                Carregar uma foto
-            </button>
-
-            <button
-                type="button"
-                class="remove-photo"
-                id="remove-photo"
-                aria-label="Remover foto de perfil"
-            >
-                Remover
-            </button>
-
-        </div>
-
-    </div>
-
-
-
-        <form action="#" id="form-perfil" class="form-perfil">
-
-            <div class="form-group">
-                <label for="nome">Nome completo</label>
-                <input type="text" name="nome" id="nome" >
-            </div>
-
-            <div class="form-group">
-                <label for="email">E-mail</label>
-                <input type="email" name="email" id="email">
-            </div>
-
-            <button type="submit" class="btn-save-perfil" id="btn-save-perfil" >
-                Salvar alterações
-            </button>
-
-            <button type="button" class="btn-editar-perfil" id="btn-editar-perfil" >
-                <i class="fa-regular fa-pen-to-square"></i>
-                Editar perfil
-            </button>
-
-        </form>
-
-    </div>
-
-</section>
-    <!-- ===================================
-      Aparencia
-      =================================== -->
-    <section class="aparencia">
         <div class="section-content">
-            <h3>Aparência</h3>
-            <p>Escolha como o TaskFlow aparece para você.</p>
+            <h3>Perfil</h3>
+            <p>Suas informações pessoais e foto de exibição.</p>
         </div>
-        <div class="cards-theme">
-            <button aria-label="Adiconar o tema claro" data-theme="claro" class="card">
-                <svg
-                    class="theme-preview"
-                    viewBox="0 0 300 120"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
+
+        <div class="perfil-body">
+            <div class="foto">
+
+                <img
+                    src="#"
+                    alt="Foto de perfil do usuário"
+                    id="foto-perfil"
                 >
-                    <!-- Fundo -->
-                    <rect width="300" height="120" rx="12" fill="#F8F8FB"/>
 
-                    <!-- Sidebar -->
-                    <rect
-                        x="0"
-                        y="0"
-                        width="52"
-                        height="120"
-                        fill="#FFFFFF"
-                    />
+                <input
+                    type="file"
+                    id="input-foto"
+                    class="input-foto"
+                    accept="image/*"
+                >
 
-                    <!-- Separador -->
-                    <line
-                        x1="52"
-                        y1="0"
-                        x2="52"
-                        y2="120"
-                        stroke="#E5E7EF"
-                    />
+                <div class="profile-actions">
 
-                    <!-- Menu -->
-                    <rect x="10" y="18" width="30" height="7" rx="3.5" fill="#E5E7EF"/>
-                    <rect x="10" y="32" width="30" height="7" rx="3.5" fill="#E5E7EF"/>
-                    <rect x="10" y="46" width="30" height="7" rx="3.5" fill="#E5E7EF"/>
-                    <rect x="10" y="60" width="30" height="7" rx="3.5" fill="#E5E7EF"/>
-                    <rect x="10" y="74" width="30" height="7" rx="3.5" fill="#9C9AFF"/>
+                    <button
+                        type="button"
+                        class="upload-photo"
+                        id="upload-photo"
+                        aria-label="Carregar foto de perfil"
+                    >
+                        Carregar uma foto
+                    </button>
 
-                    <!-- Conteúdo -->
-                    <rect x="68" y="16" width="82" height="10" rx="5" fill="#E5E7EF"/>
+                    <button
+                        type="button"
+                        class="remove-photo"
+                        id="remove-photo"
+                        aria-label="Remover foto de perfil"
+                    >
+                        Remover
+                    </button>
 
-                    <!-- Card 1 -->
-                    <rect
-                        x="68"
-                        y="36"
-                        width="214"
-                        height="30"
-                        rx="9"
-                        fill="#FFFFFF"
-                        stroke="#E5E7EF"
-                    />
+                </div>
+            </div>
 
-                    <!-- Card 2 -->
-                    <rect
-                        x="68"
-                        y="74"
-                        width="214"
-                        height="30"
-                        rx="9"
-                        fill="#FFFFFF"
-                        stroke="#E5E7EF"
-                        opacity="0.65"
-                    />
-                </svg>
-                <i class="fa-solid fa-circle-check fa-xl"></i>
-                <p><i class="fa-regular fa-sun"></i> Claro</p>
-            </button >
+            <form action="#" id="form-perfil" class="form-perfil">
 
-            <button aria-label="Adiconar o tema escuro" data-theme="escuro" class="card">
-                <svg
-                    class="theme-preview"
-                    viewBox="0 0 300 120"
+                <div class="form-group">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" name="nome" id="nome">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email">
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn-save-perfil"
+                    id="btn-save-perfil"
+                >
+                    Salvar alterações
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-editar-perfil"
+                    id="btn-editar-perfil"
+                >
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    Editar perfil
+                </button>
+
+            </form>
+        </div>
+
+    </section>
+
+    <!-- ===================================
+         Aparência
+    =================================== -->
+
+        <section class="aparencia">
+            <div class="section-content">
+                <h3>Aparência</h3>
+                <p>Escolha como o TaskFlow aparece para você.</p>
+            </div>
+
+            <div class="cards-theme">
+
+                <button
+                    aria-label="Adicionar o tema claro"
+                    data-theme="claro"
+                    class="card"
+                >
+                    <svg
+                        class="theme-preview"
+                        viewBox="0 0 300 120"
                         xmlns="http://www.w3.org/2000/svg"
                         aria-hidden="true"
                     >
-                        <!-- Fundo -->
+                        <rect width="300" height="120" rx="12" fill="#F8F8FB"/>
+
+                        <rect
+                            x="0"
+                            y="0"
+                            width="52"
+                            height="120"
+                            fill="#FFFFFF"
+                        />
+
+                        <line
+                            x1="52"
+                            y1="0"
+                            x2="52"
+                            y2="120"
+                            stroke="#E5E7EF"
+                        />
+
+                        <rect x="10" y="18" width="30" height="7" rx="3.5" fill="#E5E7EF"/>
+                        <rect x="10" y="32" width="30" height="7" rx="3.5" fill="#E5E7EF"/>
+                        <rect x="10" y="46" width="30" height="7" rx="3.5" fill="#E5E7EF"/>
+                        <rect x="10" y="60" width="30" height="7" rx="3.5" fill="#E5E7EF"/>
+                        <rect x="10" y="74" width="30" height="7" rx="3.5" fill="#9C9AFF"/>
+
+                        <rect x="68" y="16" width="82" height="10" rx="5" fill="#E5E7EF"/>
+
+                        <rect
+                            x="68"
+                            y="36"
+                            width="214"
+                            height="30"
+                            rx="9"
+                            fill="#FFFFFF"
+                            stroke="#E5E7EF"
+                        />
+
+                        <rect
+                            x="68"
+                            y="74"
+                            width="214"
+                            height="30"
+                            rx="9"
+                            fill="#FFFFFF"
+                            stroke="#E5E7EF"
+                            opacity="0.65"
+                        />
+                    </svg>
+
+                    <i class="fa-solid fa-circle-check fa-xl"></i>
+                    <p><i class="fa-regular fa-sun"></i> Claro</p>
+                </button>
+
+                <button
+                    aria-label="Adicionar o tema escuro"
+                    data-theme="escuro"
+                    class="card"
+                >
+                    <svg
+                        class="theme-preview"
+                        viewBox="0 0 300 120"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
                         <rect width="300" height="120" rx="12" fill="#111827"/>
 
-                        <!-- Sidebar -->
                         <rect
                             x="0"
                             y="0"
@@ -245,7 +263,6 @@
                             fill="#1F2937"
                         />
 
-                        <!-- Separador -->
                         <line
                             x1="52"
                             y1="0"
@@ -254,17 +271,14 @@
                             stroke="#374151"
                         />
 
-                        <!-- Menu -->
                         <rect x="10" y="18" width="30" height="7" rx="3.5" fill="#374151"/>
                         <rect x="10" y="32" width="30" height="7" rx="3.5" fill="#374151"/>
                         <rect x="10" y="46" width="30" height="7" rx="3.5" fill="#374151"/>
                         <rect x="10" y="60" width="30" height="7" rx="3.5" fill="#374151"/>
                         <rect x="10" y="74" width="30" height="7" rx="3.5" fill="#6366F1"/>
 
-                        <!-- Conteúdo -->
                         <rect x="68" y="16" width="82" height="10" rx="5" fill="#374151"/>
 
-                        <!-- Card 1 -->
                         <rect
                             x="68"
                             y="36"
@@ -275,7 +289,6 @@
                             stroke="#374151"
                         />
 
-                        <!-- Card 2 -->
                         <rect
                             x="68"
                             y="74"
@@ -286,404 +299,642 @@
                             stroke="#374151"
                             opacity="0.7"
                         />
-                </svg>
-                <i class="fa-solid fa-circle-check fa-xl"></i>
-                <p><i class="fa-regular fa-moon"></i> Escuro</p>
-            </button>
-            <button aria-label="Adiconar o tema do sistema" data-theme="sistema" class="card">
+                    </svg>
+
+                    <i class="fa-solid fa-circle-check fa-xl"></i>
+                    <p><i class="fa-regular fa-moon"></i> Escuro</p>
+                </button>
+
+                <button
+                    aria-label="Adicionar o tema do sistema"
+                    data-theme="sistema"
+                    class="card"
+                >
+                    <svg
+                        class="theme-preview"
+                        viewBox="0 0 300 120"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
+                        <clipPath id="system-left">
+                            <rect width="150" height="120" rx="12"/>
+                        </clipPath>
+
+                        <g clip-path="url(#system-left)">
+                            <rect width="150" height="120" fill="#F8F8FB"/>
+
+                            <rect width="28" height="120" fill="#FFFFFF"/>
+
+                            <line
+                                x1="28"
+                                y1="0"
+                                x2="28"
+                                y2="120"
+                                stroke="#E5E7EF"
+                            />
+
+                            <rect x="7" y="20" width="14" height="5" rx="2.5" fill="#E5E7EF"/>
+                            <rect x="7" y="31" width="14" height="5" rx="2.5" fill="#E5E7EF"/>
+                            <rect x="7" y="42" width="14" height="5" rx="2.5" fill="#E5E7EF"/>
+
+                            <rect
+                                x="36"
+                                y="18"
+                                width="104"
+                                height="20"
+                                rx="5"
+                                fill="#FFFFFF"
+                                stroke="#E5E7EF"
+                            />
+
+                            <rect
+                                x="36"
+                                y="45"
+                                width="104"
+                                height="20"
+                                rx="5"
+                                fill="#FFFFFF"
+                                stroke="#E5E7EF"
+                                opacity="0.7"
+                            />
+
+                            <rect
+                                x="36"
+                                y="72"
+                                width="104"
+                                height="20"
+                                rx="5"
+                                fill="#FFFFFF"
+                                stroke="#E5E7EF"
+                                opacity="0.5"
+                            />
+                        </g>
+
+                        <clipPath id="system-right">
+                            <rect x="150" width="150" height="120" rx="12"/>
+                        </clipPath>
+
+                        <g clip-path="url(#system-right)">
+                            <rect x="150" width="150" height="120" fill="#111827"/>
+
+                            <rect
+                                x="150"
+                                width="28"
+                                height="120"
+                                fill="#1F2937"
+                            />
+
+                            <line
+                                x1="178"
+                                y1="0"
+                                x2="178"
+                                y2="120"
+                                stroke="#374151"
+                            />
+
+                            <rect x="157" y="20" width="14" height="5" rx="2.5" fill="#374151"/>
+                            <rect x="157" y="31" width="14" height="5" rx="2.5" fill="#374151"/>
+                            <rect x="157" y="42" width="14" height="5" rx="2.5" fill="#374151"/>
+
+                            <rect
+                                x="186"
+                                y="18"
+                                width="104"
+                                height="20"
+                                rx="5"
+                                fill="#1F2937"
+                                stroke="#374151"
+                            />
+
+                            <rect
+                                x="186"
+                                y="45"
+                                width="104"
+                                height="20"
+                                rx="5"
+                                fill="#1F2937"
+                                stroke="#374151"
+                                opacity="0.7"
+                            />
+
+                            <rect
+                                x="186"
+                                y="72"
+                                width="104"
+                                height="20"
+                                rx="5"
+                                fill="#1F2937"
+                                stroke="#374151"
+                                opacity="0.5"
+                            />
+                        </g>
+                    </svg>
+
+                    <i class="fa-solid fa-circle-check fa-xl"></i>
+                    <p><i class="fa-solid fa-display"></i> Sistema</p>
+                </button>
+
+                <p id="theme-text"></p>
+            </div>
+        </section>
+
+        <!-- ===================================
+            Preferências de tarefas
+        =================================== -->
+    
+        <section id="preferencias_pessoais" data-settinglist="preferencias_pessoais">
+
+            <div class="section-content">
+                <h3>Preferências de tarefas</h3>
+                <p>Defina padrões para novas tarefas criadas.</p>
+            </div>
+
+            <div class="task-preferences">
+
+                <div class="setting">
+                    <label for="prioridade">Prioridade padrão</label>
+
+                    <select name="prioridade" id="prioridade" class="selects" data-setting="prioridade_padrao">
+                        <option value="baixa">Baixa</option>
+                        <option value="media">Média</option>
+                        <option value="alta">Alta</option>
+                    </select>
+                </div>
+
+                <div class="setting">
+                    <label for="categoria">Categoria padrão</label>
+
+                    <select name="categoria" id="categoria" class="selects" data-setting="categoria_padrao">
+                        <option value="pessoal">Pessoal</option>
+                        <option value="trabalho">Trabalho</option>
+                        <option value="estudo">Estudo</option>
+                        <option value="saude">Saúde</option>
+                        <option value="financas">Finanças</option>
+                    </select>
+                </div>
+
+                <div class="setting">
+                    <label for="prazo">Prazo padrão</label>
+
+                    <select name="prazo" id="prazo" class="selects"  data-setting="prazo_padrao">
+                        <option value="nenhum">Nenhum</option>
+                        <option value="hoje">Hoje</option>
+                        <option value="amanha">Amanhã</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="settings-list">
+
+                <article class="setting-option">
+                    <div>
+                        <h4>Arquivar tarefas concluídas</h4>
+                        <p>Tarefas concluídas são movidas para o arquivo após 7 dias.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            class="checkbox"
+                            name="arquivar_tarefas_concluidas"
+                            aria-label="Arquivar tarefas concluídas"
+                         data-setting="arquivar_tarefas_concluidas">
+                        <div class="slider"></div>
+                    </label>
+                </article>
+
+                <article class="setting-option">
+                    <div>
+                        <h4>Confirmar exclusão de tarefas</h4>
+                        <p>Exibe um diálogo de confirmação antes de excluir uma tarefa.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            class="checkbox"
+                            name="confirmar_exclusao_de_tarefas"
+                            aria-label="Confirmar exclusão de tarefas"
+                         data-setting="confirmar_exclusao_de_tarefas">
+                        <span class="slider"></span>
+                    </label>
+                </article>
+
+                <article class="setting-option">
+                    <div>
+                        <h4>Adição rápida de tarefas</h4>
+                        <p>Permite criar tarefas com Enter sem abrir o formulário completo.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            class="checkbox"
+                            name="adicao_rapida_de_tarefas"
+                            aria-label="Adição rápida de tarefas"
+                         data-setting="adicao_rapida_de_tarefas">
+                        <span class="slider"></span>
+                    </label>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ===================================
+            Notificações
+        =================================== -->
+        <section id="notificacoes" data-settinglist="notificacoes">
+
+            <div class="section-content">
+                <h3>Notificações</h3>
+                <p>Controle quais alertas você deseja receber.</p>
+            </div>
+
+            <p class="notification-info">
+                <i class="fa-regular fa-bell"></i>
+                As notificações dependem das permissões do seu navegador.
+            </p>
+
+            <div class="settings-list">
+
+                <article class="setting-option">
+                    <div>
+                        <h4>Lembretes de tarefas</h4>
+                        <p>Receba lembretes antes do prazo das suas tarefas.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            class="checkbox"
+                            name="lembretes_de_tarefas"
+                            aria-label="Lembretes de tarefas"
+                         data-setting="lembretes_de_tarefas">
+                        <span class="slider"></span>
+                    </label>
+                </article>
+
+                <!--
+                <article class="setting-option">
+                    <div>
+                        <h4>Tarefas vencendo</h4>
+                        <p>Seja notificado quando uma tarefa estiver atrasada.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            class="checkbox"
+                            aria-label="Tarefas vencendo"
+                        >
+                        <span class="slider"></span>
+                    </label>
+                </article>
+                -->
+
+                <article class="setting-option">
+                    <div>
+                        <h4>Tarefas concluídas</h4>
+                        <p>Receba uma confirmação quando uma tarefa for concluída.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            class="checkbox"
+                            name="tarefas_concluidas"
+                            aria-label="Tarefas concluídas"
+                         data-setting="tarefas_concluidas">
+                        <span class="slider"></span>
+                    </label>
+                </article>
+
+                <article class="setting-option">
+                    <div>
+                        <h4>Resumo diário</h4>
+                        <p>Receba um resumo das suas tarefas toda manhã às 8h.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            name="resumo_diario"
+                            class="checkbox"
+                            aria-label="Resumo diário"
+                         data-setting="resumo_diario">
+                        <span class="slider"></span>
+                    </label>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ===================================
+            Interface
+        =================================== -->
+        <section id="interface" data-settinglist="interface">
+
+            <div class="section-content">
+                <h3>Interface</h3>
+                <p>Ajuste o comportamento e a densidade da interface.</p>
+            </div>
+
+            <div class="settings-list">
+
+                <article class="setting-option">
+                    <div>
+                        <h4>Modo compacto</h4>
+                        <p>Reduz o espaçamento entre elementos para exibir mais conteúdo.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            class="checkbox"
+                            name="modo_compacto"
+                            data-setting="modo_compacto"
+                            aria-label="Modo compacto"
+                        >
+                        <span class="slider"></span>
+                    </label>
+                </article>
+
+                <article class="setting-option">
+                    <div>
+                        <h4>Exibir tarefas concluídas</h4>
+                        <p>Mostra tarefas concluídas na lista principal de tarefas.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            class="checkbox"
+                            name="exibir_tarefas_concluidas"
+                            aria-label="Exibir tarefas concluídas"
+                         data-setting="exibir_tarefas_concluidas">
+                        <span class="slider"></span>
+                    </label>
+                </article>
+
+                <article class="setting-option">
+                    <div>
+                        <h4>Animações de interface</h4>
+                        <p>Ativa transições e animações visuais.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            class="checkbox"
+                            name="animacoes_de_interface"
+                            aria-label="Animações de interface"
+                         data-setting="animacoes_de_interface">
+                        <span class="slider"></span>
+                    </label>
+                </article>
+
+                <article class="setting-option">
+                    <div>
+                        <h4>Cabeçalho fixo</h4>
+                        <p>Mantém o cabeçalho visível durante a rolagem da página.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            class="checkbox"
+                            name="cabecalho_fixo"
+                            aria-label="Cabeçalho fixo"
+                         data-setting="cabecalho_fixo">
+                        <span class="slider"></span>
+                    </label>
+                </article>
+
+            </div>
+        </section>
+    
+    <!-- ===================================
+         Dados
+    =================================== -->
+    <section class="dados">
+
+        <article class="section-content">
+            <h3>
                 <svg
-                    class="theme-preview"
-                    viewBox="0 0 300 120"
-                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                     aria-hidden="true"
                 >
-                    <!-- Metade clara -->
-                    <clipPath id="system-left">
-                        <rect width="150" height="120" rx="12"/>
-                    </clipPath>
-
-                    <g clip-path="url(#system-left)">
-                        <rect width="150" height="120" fill="#F8F8FB"/>
-
-                        <!-- Sidebar -->
-                        <rect
-                            width="28"
-                            height="120"
-                            fill="#FFFFFF"
-                        />
-
-                        <line
-                            x1="28"
-                            y1="0"
-                            x2="28"
-                            y2="120"
-                            stroke="#E5E7EF"
-                        />
-
-                        <!-- Menu -->
-                        <rect x="7" y="20" width="14" height="5" rx="2.5" fill="#E5E7EF"/>
-                        <rect x="7" y="31" width="14" height="5" rx="2.5" fill="#E5E7EF"/>
-                        <rect x="7" y="42" width="14" height="5" rx="2.5" fill="#E5E7EF"/>
-
-                        <!-- Cards -->
-                        <rect
-                            x="36"
-                            y="18"
-                            width="104"
-                            height="20"
-                            rx="5"
-                            fill="#FFFFFF"
-                            stroke="#E5E7EF"
-                        />
-
-                        <rect
-                            x="36"
-                            y="45"
-                            width="104"
-                            height="20"
-                            rx="5"
-                            fill="#FFFFFF"
-                            stroke="#E5E7EF"
-                            opacity="0.7"
-                        />
-
-                        <rect
-                            x="36"
-                            y="72"
-                            width="104"
-                            height="20"
-                            rx="5"
-                            fill="#FFFFFF"
-                            stroke="#E5E7EF"
-                            opacity="0.5"
-                        />
-                    </g>
-
-                    <!-- Metade escura -->
-                    <clipPath id="system-right">
-                        <rect x="150" width="150" height="120" rx="12"/>
-                    </clipPath>
-
-                    <g clip-path="url(#system-right)">
-                        <rect x="150" width="150" height="120" fill="#111827"/>
-
-                        <!-- Sidebar -->
-                        <rect
-                            x="150"
-                            width="28"
-                            height="120"
-                            fill="#1F2937"
-                        />
-
-                        <line
-                            x1="178"
-                            y1="0"
-                            x2="178"
-                            y2="120"
-                            stroke="#374151"
-                        />
-
-                        <!-- Menu -->
-                        <rect x="157" y="20" width="14" height="5" rx="2.5" fill="#374151"/>
-                        <rect x="157" y="31" width="14" height="5" rx="2.5" fill="#374151"/>
-                        <rect x="157" y="42" width="14" height="5" rx="2.5" fill="#374151"/>
-
-                        <!-- Cards -->
-                        <rect
-                            x="186"
-                            y="18"
-                            width="104"
-                            height="20"
-                            rx="5"
-                            fill="#1F2937"
-                            stroke="#374151"
-                        />
-
-                        <rect
-                            x="186"
-                            y="45"
-                            width="104"
-                            height="20"
-                            rx="5"
-                            fill="#1F2937"
-                            stroke="#374151"
-                            opacity="0.7"
-                        />
-
-                        <rect
-                            x="186"
-                            y="72"
-                            width="104"
-                            height="20"
-                            rx="5"
-                            fill="#1F2937"
-                            stroke="#374151"
-                            opacity="0.5"
-                        />
-                    </g>
+                    <ellipse cx="12" cy="5" rx="8" ry="3"></ellipse>
+                    <path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"></path>
                 </svg>
-                <i class="fa-solid fa-circle-check fa-xl"></i>
-                <p><i class="fa-solid fa-display"></i> Sistema</p>
-            </button>
-            <p id="theme-text"></p>
-        </div>
-    </section>
-    <!-- ===================================
-     Preferencias de tarefas
-      =================================== -->
-    <!-- ===================================
-     Preferências de tarefas
-=================================== -->
-<section class="preferencias-tarefas">
-    <div class="section-content">
-        <h3>Preferências de tarefas</h3>
-        <p>Defina padrões para novas tarefas criadas.</p>
-    </div>
-
-    <div class="task-preferences">
-
-        <div class="setting">
-            <label for="prioridade">Prioridade padrão</label>
-
-            <select name="prioridade" id="prioridade">
-                <option value="baixa">Baixa</option>
-                <option value="media">Média</option>
-                <option value="alta">Alta</option>
-            </select>
-        </div>
-
-        <div class="setting">
-            <label for="categoria">Categoria padrão</label>
-
-            <select name="categoria" id="categoria">
-                <option value="pessoal">Pessoal</option>
-                <option value="trabalho">Trabalho</option>
-                <option value="estudo">Estudo</option>
-                <option value="saude">Saúde</option>
-                <option value="financas">Finanças</option>
-            </select>
-        </div>
-
-        <div class="setting">
-            <label for="prazo">Prazo padrão</label>
-
-            <select name="prazo" id="prazo">
-                <option value="nenhum">Nenhum</option>
-                <option value="hoje">Hoje</option>
-                <option value="amanha">Amanhã</option>
-            </select>
-        </div>
-
-    </div>
-
-    <div class="settings-list">
-        <article class="setting-option">
-            <div>
-                <h4>Arquivar tarefas concluídas</h4>
-                <p>Tarefas concluídas são movidas para o arquivo após 7 dias.</p>
-            </div>
-            <label class="switch">
-                <input type="checkbox" class="checkbox"  aria-label="Exibir tarefas concluídas">
-                <div class="slider"></div>
-            </label>
+                Armazenamento
+            </h3>
         </article>
 
-        <article class="setting-option">
-            <div>
-                <h4>Confirmar exclusão de tarefas</h4>
-                <p>Exibe um diálogo de confirmação antes de excluir uma tarefa.</p>
-            </div>
-            <label class="switch">
-                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface">
-                <span class="slider"></span>
-            </label>
-        </article>
-
-        <article class="setting-option">
-            <div>
-                <h4>Adição rápida de tarefas</h4>
-                <p>Permite criar tarefas com Enter sem abrir o formulário completo.</p>
-            </div>
-            <label class="switch">
-                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface">
-                <span class="slider"></span>
-            </label>
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- ===================================
-     Notificações
-=================================== -->
-<section class="notificacoes">
-
-    <div class="section-content">
-        <h3>Notificações</h3>
-        <p>Controle quais alertas você deseja receber.</p>
-    </div>
-
-    <p class="notification-info">
-        <i class="fa-regular fa-bell"></i>
-        As notificações dependem das permissões do seu navegador.
-    </p>
-
-    <div class="settings-list">
-
-        <article class="setting-option">
-            <div>
-                <h4>Lembretes de tarefas</h4>
-                <p>Receba lembretes antes do prazo das suas tarefas.</p>
-            </div>
-            <label class="switch">
-                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface" aria-label="Cabeçalho fixo">
-                <span class="slider"></span>
-            </label>
-        </article>
-
-        <article class="setting-option">
-            <div>
-                <h4>Tarefas vencendo</h4>
-                <p>Seja notificado quando uma tarefa estiver atrasada.</p>
-            </div>
-            <label class="switch">
-                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface">
-                <span class="slider"></span>
-            </label>
-        </article>
-
-        <article class="setting-option">
-            <div>
-                <h4>Tarefas concluídas</h4>
-                <p>Receba uma confirmação quando uma tarefa for concluída.</p>
-            </div>
-            <label class="switch">
-                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface">
-                <span class="slider"></span>
-            </label>
-        </article>
-
-        <article class="setting-option">
-            <div>
-                <h4>Resumo diário</h4>
-                <p>Receba um resumo das suas tarefas toda manhã às 8h.</p>
-            </div>
-            <label class="switch">
-                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface">
-                <span class="slider"></span>
-            </label>
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- ===================================
-     Interface
-=================================== -->
-<section class="interface">
-
-    <div class="section-content">
-        <h3>Interface</h3>
-        <p>Ajuste o comportamento e a densidade da interface.</p>
-    </div>
-
-    <div class="settings-list">
-
-        <article class="setting-option">
-            <div>
-                <h4>Modo compacto</h4>
-                <p>Reduz o espaçamento entre elementos para exibir mais conteúdo.</p>
-            </div>
-            <label class="switch">
-                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface">
-                <span class="slider"></span>
-            </label>
-        </article>
-
-        <article class="setting-option">
-            <div>
-                <h4>Exibir tarefas concluídas</h4>
-                <p>Mostra tarefas concluídas na lista principal de tarefas.</p>
-            </div>
-            <label class="switch">
-                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface">
-                <span class="slider"></span>
-            </label>
-        </article>
-
-        <article class="setting-option">
-            <div>
-                <h4>Animações de interface</h4>
-                <p>Ativa transições e animações visuais.</p>
-            </div>
-            <label class="switch">
-                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface">
-                <span class="slider"></span>
-            </label>
-        </article>
-
-        <article class="setting-option">
-            <div>
-                <h4>Cabeçalho fixo</h4>
-                <p>Mantém o cabeçalho visível durante a rolagem da página.</p>
-            </div>
-            <label class="switch">
-                <input type="checkbox" class="checkbox" class="checkbox" aria-label="Animações de interface">
-                <span class="slider"></span>
-            </label>
-        </article>
-
-    </div>
-
-</section>
-
-
-    <!-- ===================================
-     dados 
-    ===================================-->
-     <section class="dados">
-        <article class="section-content">
-            <h3>Dados</h3>
-        </article>
         <article class="warning">
-            <h3><i class="fa-solid fa-triangle-exclamation"></i> Limpar todos os dados </h3>
-            <p>Esta ação remove permanentemente todas as tarefas, categorias e configurações salvas localmente. Não é possível desfazer essa ação.</p>
+            <h3>
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                Limpar todos os dados
+            </h3>
 
-        <div>
-            <p class="txt-aviso">Tem certeza? Esta ação não pode ser desfeita.</p>
-            
-            <button id="btn-delete" class="btn-delete"><i class="fa-regular fa-trash-can"></i> Limpar todos os dados</button>
-            <button id="btn-cancelar" class="btn-cancelar">Cancelar</button>
-        </div>
-        </article>
-        <article class="exportar">
+            <p>
+                Esta ação remove permanentemente todas as tarefas, categorias e configurações
+                salvas localmente. Não é possível desfazer essa ação.
+            </p>
+
             <div>
+                <p class="txt-aviso">Tem certeza? Esta ação não pode ser desfeita.</p>
+
+                <button id="btn-delete" class="btn-delete">
+                    <i class="fa-regular fa-trash-can"></i>
+                    Limpar todos os dados
+                </button>
+
+                <button id="btn-cancelar" class="btn-cancelar">
+                    Cancelar
+                </button>
+            </div>
+        </article>
+
+        <article class="exportar">
+            <div class="section-intro">
                 <h3>Exportar dados</h3>
                 <p>Baixe suas tarefas em formato JSON ou CSV.</p>
             </div>
+
             <div class="buttons-exportar">
-                <button type="button" class="btn-exportar" id="btn-exportar-json">JSON</button>
-                <button type="button" class="btn-exportar" id="btn-exportar-csv">CSV</button>
+
+                <div class="export-option">
+                    <span class="file-icon json">
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.65"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                        >
+                            <path d="M9 3H5v18h14V7l-4-4H9M14 3v5h5M9 11l-2 3 2 3m6-6 2 3-2 3"></path>
+                        </svg>
+                    </span>
+
+                    <div class="export-copy">
+                        <div>
+                            <h4>Exportar JSON</h4>
+                            <span class="extension">.json</span>
+                        </div>
+                        <p>Cópia de segurança completa das tarefas.</p>
+                    </div>
+
+                    <button type="button" class="btn-exportar" id="btn-exportar-json">
+                        <i class="fa-solid fa-download"></i>
+                        Exportar JSON
+                    </button>
+                </div>
+
+                <div class="export-option">
+                    <span class="file-icon csv">
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.65"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                        >
+                            <path d="M14 3H5v18h14V8zM14 3v5h5"></path>
+                            <path d="M8 12h8v6H8zM8 15h8M12 12v6"></path>
+                        </svg>
+                    </span>
+
+                    <div class="export-copy">
+                        <div>
+                            <h4>Exportar CSV</h4>
+                            <span class="extension">.csv</span>
+                        </div>
+                        <p>Exporta as tarefas em formato de tabela.</p>
+                    </div>
+
+                    <button type="button" class="btn-exportar" id="btn-exportar-csv">
+                        <i class="fa-solid fa-download"></i>
+                        Exportar CSV
+                    </button>
+                </div>
+
             </div>
         </article>
+
+        <article class="importar">
+            <div>
+                <h3>Importar dados</h3>
+                <p>Restaura tarefas a partir de uma cópia de segurança JSON.</p>
+            </div>
+
+            <div class="upload-zone">
+                <span class="upload-icon">
+                    <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.65"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="M12 16V4m-4 4 4-4 4 4M4 15v5h16v-5"></path>
+                    </svg>
+                </span>
+
+                <div class="upload-copy">
+                    <strong>Seleciona um ficheiro JSON</strong>
+                    <span>Apenas ficheiros JSON válidos.</span>
+                </div>
+
+                <button class="button button-secondary">
+                    Selecionar ficheiro
+                    <svg
+                        width="15"
+                        height="15"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.65"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="M12 16V4m-4 4 4-4 4 4M4 15v5h16v-5"></path>
+                    </svg>
+                </button>
+
+                <input
+                    accept=".json,application/json"
+                    class="visually-hidden"
+                    aria-label="Selecionar cópia de segurança JSON"
+                    type="file"
+                >
+            </div>
+
+            <div class="import-note">
+                <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M12 11v6M12 7h.01"></path>
+                </svg>
+
+                <p>
+                    Os dados serão validados antes da importação. Podes escolher combinar
+                    ou substituir as tarefas existentes.
+                </p>
+            </div>
+        </article>
+
     </section>
 
-    <div class="conteiner-last" >
+    <div class="conteiner-last">
         <p class="last-update">Última atualização:</p>
+
         <div class="buttons-last">
-            <button class="btn-cancela" id="btn-cancela">Cancelar</button>
-            <button class="btn-save" id="btn-save">Salvar as alterações</button>
-            
+            <button class="btn-cancela" id="btn-cancela">
+                Cancelar
+            </button>
+
+            <button class="btn-save" id="btn-save">
+                Salvar as alterações
+            </button>
         </div>
     </div>
+
     <div class="notification"></div>
 </main>
-    
-    <script src="js/config.js"></script>
-    <script src="js/main.js"></script> 
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+
 </body>
 </html>
