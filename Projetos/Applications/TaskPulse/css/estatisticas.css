@@ -1,6 +1,47 @@
 /* ================================
    BASE
 ================================ */
+:root {
+    color-scheme: light;
+
+    --color-primary: #4f46e5;
+    --color-primary-rgb: 79, 70, 229;
+    --color-primary-dark: #4338ca;
+    --color-primary-light: #eef2ff;
+
+    --color-background: #f6f7fb;
+    --color-surface: #ffffff;
+    --color-surface-raised: #ffffff;
+    --color-white: #ffffff;
+    --color-on-primary: #ffffff;
+
+    --color-text: #172033;
+    --color-text-secondary: #69758a;
+    --color-text-muted: #94a3b8;
+    --color-border: #e6e9f1;
+
+    --color-success: #15966a;
+    --color-success-light: #e7f7ef;
+    --color-warning: #c77b13;
+    --color-warning-light: #fff5df;
+    --color-danger: #d84b5b;
+    --color-danger-light: #fff0f1;
+    --color-info: #0284c7;
+    --color-info-rgb: 2, 132, 199;
+    --color-info-light: #e0f2fe;
+
+    --shadow-sm: 0 2px 8px rgba(24, 34, 64, 0.06);
+    --shadow-md: 0 6px 18px rgba(24, 34, 64, 0.08);
+    --shadow-lg: 0 14px 34px rgba(24, 34, 64, 0.12);
+    --tp-shadow: 0 10px 30px rgba(24, 34, 64, 0.055);
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
 
 button,
 a {
@@ -237,11 +278,11 @@ a {
 }
 
 .square-concluidas {
-    color: var(--color-primary);
+    color: var(--color-success);
 }
 
 .square-criadas {
-    color: var(--color-text-muted);
+    color: var(--color-primary);
 }
 
 
@@ -539,4 +580,30 @@ a {
     .estatisticas-grid {
         grid-template-columns: repeat(3, 1fr);
     }
+}
+
+
+.badge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    text-transform: capitalize;
+    gap:2px;
+}
+.concluido{
+    background-color: var(--color-success);
+}
+.pendente{
+    background-color: var(--color-primary);
+}
+.badge::before {
+    content: "\2022";
+    display: flex;
+    align-items: center;
 }

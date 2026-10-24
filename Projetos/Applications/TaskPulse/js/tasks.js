@@ -1,9 +1,6 @@
-import { obterTarefas } from "./data.js";
+import { calcularDados, obterTarefas } from "./data.js";
 
 const tarefas = obterTarefas();
-
-localStorage.setItem("tarefas", JSON.stringify(tarefas))
-
 // ============================================================
 // ELEMENTOS DO DOM
 // ============================================================
@@ -194,6 +191,7 @@ function atualizarEstadoVazio() {
 // ============================================================
 
 function validarFormulario() {
+
     if (campoTitulo.value.trim() === "") {
         return false;
     }
@@ -437,7 +435,7 @@ listaTarefas.addEventListener("click", (event) => {
 // PESQUISA DE TAREFAS
 // ============================================================
 
-barSearch.addEventListener("input", () => {
+barSearch.addEventListener("input", (event) => {
     const textoPesquisa = barSearch.value.trim().toLowerCase();
     const elementosTarefas = document.querySelectorAll(".task");
 
@@ -486,19 +484,7 @@ botoesFiltros.forEach((botaoFiltro) => {
 // ============================================================
 
 function resumos() {
-    const totais = tarefas.length;
-
-    const concluidas = tarefas.filter(
-        (tarefa) => tarefa.status === true
-    ).length;
-
-    const pendentes = tarefas.filter(
-        (tarefa) => tarefa.status === false
-    ).length;
-
-    const importantes = tarefas.filter(
-        (tarefa) => tarefa.prioridade.toLowerCase() === "alta"
-    ).length;
+    const dados = calcularDados(tarefas);
 
     document.querySelectorAll("[data-resumo]").forEach((resumo) => {
         const contador = resumo.matches("h3") ? resumo : resumo.querySelector("h3");
@@ -508,10 +494,10 @@ function resumos() {
         }
 
         const valores = {
-            totais,
-            concluidas,
-            pendentes,
-            importantes
+            totais: dados.totalTarefas,
+            concluidas: dados.quantidadeConcluidas,
+            pendentes: dados.quantidadePendentes,
+            importantes: dados.quantidadeImportantes
         };
 
         if (Object.hasOwn(valores, resumo.dataset.resumo)) {

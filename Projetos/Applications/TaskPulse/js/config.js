@@ -1,12 +1,121 @@
+// ========================== Foto de perfil ==========================
+
+const fotoPerfil = document.querySelector("#foto-perfil");
+const secaoFotoPerfil = document.querySelector(".foto");
+const inputFoto = document.querySelector("#input-foto");
+const abrirMenuFoto = document.querySelector("#photo-menu-trigger");
+const menuFoto = document.querySelector("#profile-actions");
+const adicionarFoto = document.querySelector("#upload-photo");
+const mudarFoto = document.querySelector("#change-photo");
+const removerFoto = document.querySelector("#remove-photo");
+const verFoto = document.querySelector("#view-photo");
+const previewFoto = document.querySelector("#photo-preview");
+const imagemPreview = document.querySelector("#photo-preview-image");
+const fecharPreviewFoto = document.querySelector("#photo-preview-close");
+const chaveFotoPerfil = "fotoPerfil";
+
+function atualizarFotoPerfil(foto) {
+    if (foto) {
+        fotoPerfil.src = foto;
+        fotoPerfil.alt = "Foto de perfil";
+        secaoFotoPerfil.classList.add("has-photo");
+    } else {
+        fotoPerfil.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Ccircle cx='90' cy='90' r='90' fill='%23434348'/%3E%3Ccircle cx='90' cy='68' r='32' fill='%23d6d6d6'/%3E%3Cpath d='M35 157c8-27 31-43 55-43s47 16 55 43a90 90 0 0 1-110 0' fill='%23d6d6d6'/%3E%3C/svg%3E";
+        fotoPerfil.alt = "Avatar padrão do perfil";
+        secaoFotoPerfil.classList.remove("has-photo");
+    }
+}
+
+atualizarFotoPerfil(localStorage.getItem(chaveFotoPerfil));
+
+abrirMenuFoto.addEventListener("click", () => {
+    const estaAberto = menuFoto.classList.toggle("is-open");
+    abrirMenuFoto.setAttribute("aria-expanded", String(estaAberto));
+});
+
+function fecharMenuFoto() {
+    menuFoto.classList.remove("is-open");
+    abrirMenuFoto.setAttribute("aria-expanded", "false");
+}
+
+adicionarFoto.addEventListener("click", () => {
+    fecharMenuFoto();
+    inputFoto.click();
+    setTimeout(() =>{
+        dispararNotificacao("Foto de perfil adicionada com sucesso")
+    },2000)
+});
+
+
+mudarFoto.addEventListener("click", () => {
+    fecharMenuFoto();
+    inputFoto.click();
+});
+
+inputFoto.addEventListener("change", () => {
+    const ficheiro = inputFoto.files?.[0];
+    if (!ficheiro) return;
+
+    if (!ficheiro.type.startsWith("image/")) {
+        inputFoto.value = "";
+        return;
+    }
+
+    const leitor = new FileReader();
+    leitor.addEventListener("load", () => {
+        if (typeof leitor.result !== "string") return;
+
+        try {
+            localStorage.setItem(chaveFotoPerfil, leitor.result);
+            atualizarFotoPerfil(leitor.result);
+        } catch (erro) {
+            console.error("Não foi possível guardar a foto de perfil:", erro);
+        }
+
+        inputFoto.value = "";
+    });
+    leitor.readAsDataURL(ficheiro);
+});
+
+removerFoto.addEventListener("click", () => {
+    localStorage.removeItem(chaveFotoPerfil);
+    atualizarFotoPerfil(null);
+    fecharMenuFoto();
+    setTimeout(() =>{
+        dispararNotificacao("Foto de perfil removida com sucesso")
+    },0)
+});
+
+verFoto.addEventListener("click", () => {
+    const fotoGuardada = localStorage.getItem(chaveFotoPerfil);
+    if (!fotoGuardada) return;
+
+    imagemPreview.src = fotoGuardada;
+    previewFoto.showModal();
+    fecharMenuFoto();
+});
+
+fecharPreviewFoto.addEventListener("click", () => previewFoto.close());
+
+previewFoto.addEventListener("click", (event) => {
+    if (event.target === previewFoto) previewFoto.close();
+});
+
+document.addEventListener("click", (event) => {
+    if (!secaoFotoPerfil.contains(event.target)) fecharMenuFoto();
+});
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") fecharMenuFoto();
+});
+
 // ========================== Elementos principais ==========================
 
 const body = document.body
 const cardsTheme = document.querySelectorAll(".card")
 const textThme = document.querySelector("#theme-text")
-const preferencia = localStorage.getItem("theme") ?? "light"
-
 const mediaSistema = window.matchMedia(
-    "(prefers-color-scheme: light)"
+    "(prefers-color-scheme: dark)"
 )
 
 
@@ -44,6 +153,17 @@ function aplicarPreferencia() {
 }
 
 aplicarPreferencia()
+
+const temaGuardado = localStorage.getItem("theme") ?? "light"
+const temaCartao = {
+    light: "claro",
+    dark: "escuro",
+    system: "sistema"
+}[temaGuardado] ?? "claro"
+
+cardsTheme.forEach(card => {
+    card.classList.toggle("ativo", card.dataset.theme === temaCartao)
+})
 
 mediaSistema.addEventListener("change", () => {
     if (localStorage.getItem("theme") === "system") {
@@ -84,12 +204,12 @@ cardsTheme.forEach(theme => {
 const checkbox = document.querySelectorAll(".checkbox")
 
 checkbox.forEach(check => {
+    check.classList.toggle("on", check.checked)
+    check.classList.toggle("off", !check.checked)
+
     check.addEventListener("change", () => {
-        if (check.checked) {
-            check.classList.add("on")
-        } else {
-            check.classList.remove("off")
-        }
+        check.classList.toggle("on", check.checked)
+        check.classList.toggle("off", !check.checked)
     })
 })
 
@@ -104,7 +224,7 @@ let confirmando = false
 
 function reporEstado() {
     confirmando = false
-    btnDeletData.innerHTML = "Limpar dados"
+    btnDeletData.innerHTML = '<i class="fa-regular fa-trash-can"></i> Limpar todos os dados'
     btnDeletData.classList.remove("deleting")
     container.classList.remove("confirmando")
 }
@@ -112,16 +232,23 @@ function reporEstado() {
 btnDeletData.addEventListener("click", () => {
     if (!confirmando) {
         confirmando = true
+        
         btnDeletData.innerHTML = "Sim, limpar dados"
         btnDeletData.classList.add("deleting")
         container.classList.add("confirmando")
 
     } else {
         localStorage.removeItem("tarefas")
+        localStorage.removeItem("settings")
+        localStorage.removeItem("fotoPerfil")
+        localStorage.removeItem("theme")
+        localStorage.removeItem("categorias")
+        localStorage.removeItem("categoria")
 
-        dispararNotificacao("Dados eliminados com sucesso")
+        dispararNotificacao("Dados do TaskPulse eliminados")
 
         reporEstado()
+        setTimeout(() => window.location.reload(), 800)
     }
 })
 
@@ -134,60 +261,32 @@ btnCancelar.addEventListener("click", () => {
 
 // ========================== Última atualização ==========================
 
-const btnSave = document.querySelector("#btn-save")
-const lastUpdate = document.querySelector(".last-update")
+// const btnSave = document.querySelector("#btn-save")
+// const lastUpdate = document.querySelector(".last-update")
 
-btnSave.addEventListener("click", () => {
-    const today = new Date()
-    const year = today.getFullYear()
+// btnSave.addEventListener("click", () => {
+//     const today = new Date()
+//     const year = today.getFullYear()
 
-    const hours = today.toLocaleString("pt-AO", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit"
-    })
+//     const hours = today.toLocaleString("pt-AO", {
+//         hour: "2-digit",
+//         minute: "2-digit",
+//         second: "2-digit"
+//     })
 
-    const month = today.toLocaleString("pt-BR", {
-        month: "long"
-    })
+//     const month = today.toLocaleString("pt-BR", {
+//         month: "long"
+//     })
 
-    const day = String(today.getDate()).padStart(2, "0")
+//     const day = String(today.getDate()).padStart(2, "0")
 
-    lastUpdate.innerHTML = `Última atualização:${day} de ${month} de ${year}, ${hours}`
-})
-
-
-// ========================== Edição do perfil ==========================
-
-const btnEditProfile = document.querySelector("#btn-editar-perfil")
-const btnSaveProfile = document.querySelector("#btn-save-perfil")
-const caixas = document.querySelectorAll(".form-group > input")
-
-btnEditProfile.addEventListener("click", () => {
-    btnSaveProfile.style.display = "flex"
-    btnEditProfile.classList.add("active")
-
-    caixas.forEach(caixa => {
-        caixa.classList.add("editavel")
-    })
-})
-
-btnSaveProfile.addEventListener("click", () => {
-    btnSaveProfile.style.display = "none"
-    btnEditProfile.classList.remove("active")
-
-    caixas.forEach(caixa => {
-        caixa.classList.remove("editavel")
-    })
-})
+//     lastUpdate.innerHTML = `Última atualização:${day} de ${month} de ${year}, ${hours}`
+// })
 
 
-// ========================== Foto e formulário de perfil ==========================
 
 const btnExportarJSON = document.querySelector("#btn-exportar-json")
 const btnExportarCSV = document.querySelector("#btn-exportar-csv")
-
-
 
 btnExportarJSON.addEventListener("click", () => {
     const dados = JSON.parse(
@@ -215,8 +314,6 @@ btnExportarJSON.addEventListener("click", () => {
 
     URL.revokeObjectURL(url);
 });
-
-
 
 btnExportarCSV.addEventListener("click", () => {
     const dados = JSON.parse(

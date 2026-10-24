@@ -19,7 +19,7 @@ const progressoImportantesElemento = document.querySelector("#progress-important
 // Atualizar resumo
 totalTarefasElemento.textContent = dados.totalTarefas;
 tarefasConcluidasElemento.textContent = dados.quantidadeConcluidas;
-tarefasPendentesElemento.textContent = dados.quantidadePendentes + dados.quantidadeAtrasadas;
+tarefasPendentesElemento.textContent = dados.quantidadePendentes;
 tarefasImportantesElemento.textContent = dados.quantidadeImportantes;
 
 // Atualizar progresso
@@ -31,5 +31,5 @@ circuloProgressoElemento.setAttribute(
 );
 
 progressoConcluidasElemento.textContent = dados.quantidadeConcluidas;
-progressoPendentesElemento.textContent = dados.quantidadePendentes + dados.quantidadeAtrasadas;
+progressoPendentesElemento.textContent = dados.quantidadePendentes;
 progressoImportantesElemento.textContent = dados.quantidadeImportantes;

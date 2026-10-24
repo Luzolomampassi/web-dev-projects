@@ -59,7 +59,7 @@
                 </li>
 
                 <li>
-                    <a href="arquivos.html">
+                    <a href="arquivados.html">
                         <i class="fa-solid fa-box-archive fa-xl"></i>
                         <span>Arquivos</span>
                     </a>
@@ -96,10 +96,9 @@
 
         <div class="perfil-body">
             <div class="foto">
-
                 <img
-                    src="#"
-                    alt="Foto de perfil do usuário"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Ccircle cx='90' cy='90' r='90' fill='%23434348'/%3E%3Ccircle cx='90' cy='68' r='32' fill='%23d6d6d6'/%3E%3Cpath d='M35 157c8-27 31-43 55-43s47 16 55 43a90 90 0 0 1-110 0' fill='%23d6d6d6'/%3E%3C/svg%3E"
+                    alt="Avatar padrão do perfil"
                     id="foto-perfil"
                 >
 
@@ -110,28 +109,43 @@
                     accept="image/*"
                 >
 
-                <div class="profile-actions">
+                <button type="button" class="photo-menu-trigger" id="photo-menu-trigger" aria-label="Opções da foto de perfil" aria-expanded="false" aria-controls="profile-actions">
+                    <i class="fa-solid fa-camera" aria-hidden="true"></i>
+                </button>
+
+                <div class="profile-actions" id="profile-actions" role="menu" aria-label="Opções da foto de perfil">
 
                     <button
                         type="button"
                         class="upload-photo"
                         id="upload-photo"
+                        role="menuitem"
                         aria-label="Carregar foto de perfil"
                     >
-                        Carregar uma foto
+                        Adicionar foto
                     </button>
+
+                    <button type="button" class="change-photo" id="change-photo" role="menuitem">Mudar de foto</button>
+
+                    <button type="button" class="view-photo" id="view-photo" role="menuitem">Ver foto</button>
 
                     <button
                         type="button"
                         class="remove-photo"
                         id="remove-photo"
+                        role="menuitem"
                         aria-label="Remover foto de perfil"
                     >
-                        Remover
+                        Remover foto
                     </button>
 
                 </div>
             </div>
+
+            <dialog class="photo-preview" id="photo-preview" aria-label="Pré-visualização da foto de perfil">
+                <button type="button" class="photo-preview-close" id="photo-preview-close" aria-label="Fechar pré-visualização">&times;</button>
+                <img src="" alt="Foto de perfil ampliada" id="photo-preview-image">
+            </dialog>
 
             <form action="#" id="form-perfil" class="form-perfil">
 
@@ -547,12 +561,14 @@
         <section id="notificacoes" data-settinglist="notificacoes">
 
             <div class="section-content">
-                <h3>Notificações</h3>
+                <h3>
+                    <i class="fa-regular fa-bell"></i>
+                    Notificações
+                </h3>
                 <p>Controle quais alertas você deseja receber.</p>
             </div>
 
             <p class="notification-info">
-                <i class="fa-regular fa-bell"></i>
                 As notificações dependem das permissões do seu navegador.
             </p>
 
@@ -838,7 +854,7 @@
             </div>
         </article>
 
-        <article class="importar">
+        <article class="importar ">
             <div>
                 <h3>Importar dados</h3>
                 <p>Restaura tarefas a partir de uma cópia de segurança JSON.</p>
@@ -916,7 +932,7 @@
 
     </section>
 
-    <div class="conteiner-last">
+    <!-- <div class="conteiner-last">
         <p class="last-update">Última atualização:</p>
 
         <div class="buttons-last">
@@ -928,7 +944,7 @@
                 Salvar as alterações
             </button>
         </div>
-    </div>
+    </div> -->
 
     <div class="notification"></div>
 </main>

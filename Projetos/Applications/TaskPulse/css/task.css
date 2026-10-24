@@ -434,32 +434,6 @@ box-shadow: var(--shadow-md);
 transform: translateY(-1px);
 }
 
-/* ================================
-OVERLAY
-================================ */
-
-.overlay {
-position: fixed;
-inset: 0;
-z-index: 20;
-
-
-background-color: rgba(15, 23, 42, 0.55);
-
-opacity: 0;
-visibility: hidden;
-
-transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease;
-
-
-}
-
-.overlay.ativo {
-opacity: 1;
-visibility: visible;
-}
 
 /* ================================
 PESQUISA
@@ -1165,11 +1139,8 @@ DESKTOP
 
 .task > div {
     display: grid;
-
-    grid-template-columns: 1fr 4fr 1fr;
-
+    grid-template-columns: auto minmax(0, 4fr) 1fr;
     column-gap: 10px;
-
     align-items: center;
 }
 

@@ -10,18 +10,17 @@
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/calendario.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/locales-all.global.min.js"></script>
 </head>
 <body>
-
-    <div class="overlay"></div>
-
     <header>
     <div class="header-content">
         <button id="btn-menu" aria-label="Abrir menu">
             <i class="fa-solid fa-bars fa-xl"></i>
         </button>
 
-        <h2>Configurações</h2>
+        <h2>Calendário</h2>
     </div>
 
     <div class="menu-container">
@@ -60,9 +59,9 @@
                 </li>
 
                 <li>
-                    <a href="arquivos.html">
+                    <a href="arquivados.html">
                         <i class="fa-solid fa-box-archive fa-xl"></i>
-                        <span>Arquivos</span>
+                        <span>Arquivados</span>
                     </a>
                 </li>
                 <li>
@@ -96,7 +95,7 @@
                     Visualize e organize suas tarefas por data
                 </p>
             </div>
-            <button type="button" id="btn-nova-tarefa" class="btn-primary" > <i class="fa-solid fa-plus"></i> Nova tarefa </button>
+            <button type="button" id="btn-nova-tarefa" class="btn-primary" > <i class="fa-solid fa-plus"></i> Adicionar Tarefa </button>
         </section>
 
         <!-- Controles do calendário -->
@@ -137,11 +136,10 @@
                     aria-label="Filtrar por categoria"
                 >
                     <option value="todas">Todas</option>
-                    <option value="desenvolvimento">Desenvolvimento</option>
-                    <option value="design">Design</option>
-                    <option value="estudos">Estudos</option>
-                    <option value="pessoal">Pessoal</option>
-                    <option value="trabalho">Trabalho</option>
+                    <option value="estudo">Estudo</option>
+                    <option value="projeto">Projeto</option>
+                    <option value="saude">Saúde</option>
+                    <option value="carreira">Carreira</option>
                 </select>
 
             </div>
@@ -168,64 +166,7 @@
                 <h2>Próximas tarefas</h2>
             </div>
 
-            <div id="lista-proximas-tarefas" class="task-list">
-
-                <article class="task-item">
-                    <div class="task-info">
-                        <h3>Entrega do trabalho</h3>
-                        <p>12/09/2026 · 18:00</p>
-                    </div>
-
-                    <span class="task-priority priority-high">
-                        Alta
-                    </span>
-                </article>
-
-                <article class="task-item">
-                    <div class="task-info">
-                        <h3>Estudar PHP</h3>
-                        <p>15/09/2026 · 08:30</p>
-                    </div>
-
-                    <span class="task-priority priority-medium">
-                        Média
-                    </span>
-                </article>
-
-                <article class="task-item">
-                    <div class="task-info">
-                        <h3>Planejar tarefas</h3>
-                        <p>16/09/2026 · 11:00</p>
-                    </div>
-
-                    <span class="task-priority priority-low">
-                        Baixa
-                    </span>
-                </article>
-
-                <article class="task-item">
-                    <div class="task-info">
-                        <h3>Code Review</h3>
-                        <p>18/09/2026 · 15:00</p>
-                    </div>
-
-                    <span class="task-priority priority-medium">
-                        Média
-                    </span>
-                </article>
-
-                <article class="task-item">
-                    <div class="task-info">
-                        <h3>Reunião de equipe</h3>
-                        <p>22/09/2026 · 10:00</p>
-                    </div>
-
-                    <span class="task-priority priority-high">
-                        Alta
-                    </span>
-                </article>
-
-            </div>
+            <div id="lista-proximas-tarefas" class="upcoming-tasks-list"></div>
 
         </section>
 
@@ -234,27 +175,27 @@
 
             <div class="section-heading">
                 <h2>Resumo do dia</h2>
-                <p id="data-resumo">10/09/2026</p>
+                <p id="data-resumo"></p>
             </div>
 
             <div class="summary-grid">
 
-                <article class="summary-card">
+                <article class="summary-item">
                     <h3 id="total-tarefas-dia">0</h3>
                     <p>Total</p>
                 </article>
 
-                <article class="summary-card">
+                <article class="summary-item">
                     <h3 id="tarefas-concluidas-dia">0</h3>
                     <p>Concluídas</p>
                 </article>
 
-                <article class="summary-card">
+                <article class="summary-item">
                     <h3 id="tarefas-pendentes-dia">0</h3>
                     <p>Pendentes</p>
                 </article>
 
-                <article class="summary-card">
+                <article class="summary-item">
                     <h3 id="tarefas-prioridade-alta">0</h3>
                     <p>Alta prioridade</p>
                 </article>
@@ -267,51 +208,83 @@
         <section class="day-tasks">
 
             <div class="section-heading">
-                <h2 id="data-tarefas-dia">
-                    10/09/2026
-                </h2>
+                <h2 id="data-tarefas-dia"></h2>
             </div>
 
-            <div id="lista-tarefas-dia" class="day-task-list">
-
-                <article class="day-task">
-
-                    <div class="day-task-info">
-                        <p class="day-task-title">
-                           Nenhuma tarefa neste dia
-                        </p>
-                    </div>
-
-                    <div class="day-task-actions">
-
-                        <button
-                            type="button"
-                            class="btn-task-action btn-complete"
-                            aria-label="Concluir tarefa"
-                        >
-                            <i class="fa-solid fa-check"></i>
-                        </button>
-
-                        <button
-                            type="button"
-                            class="btn-task-action btn-delete"
-                            aria-label="Excluir tarefa"
-                        >
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-
-                    </div>
-
-                </article>
-
-            </div>
+            <div id="lista-tarefas-dia" class="day-tasks-list"></div>
 
         </section>
+
+        <dialog class="modal" id="modal">
+            <div class="modal-top">
+                <div>
+                    <h2>Adicionar Tarefa</h2>
+                    <p>Preencha os dados da tarefa abaixo</p>
+                </div>
+                <button type="button" aria-label="Cancelar a criação da tarefa" class="btn-cancel"> <i class="fa-solid fa-x"></i></button>
+
+            </div>
+            <form id="form-task">
+                <div class="form-group full-width">
+                    <label for="tarefa">Nome da tarefa</label>
+                    <input
+                        type="text"
+                        id="tarefa"
+                        name="tarefa"
+                        placeholder="Ex.: Estudar JavaScript"
+                        required
+                    >
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="descricao">Descrição</label>
+                    <textarea
+                        id="descricao"
+                        name="descricao"
+                        placeholder="Adiciona alguns detalhes..."
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="categoria">Categoria</label>
+                    <select id="categoria" name="categoria" required>
+                        <option value="estudo">Estudo</option>
+                        <option value="projeto">Projeto</option>
+                        <option value="saude">Saúde</option>
+                        <option value="carreira">Carreira</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="prioridade">Prioridade</label>
+                    <select id="prioridade" name="prioridade" required>
+                        <option value="alta">Alta</option>
+                        <option value="media">Média</option>
+                        <option value="baixa">Baixa</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="data">Data</label>
+                    <input type="date" id="data" name="data" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="time">Horário</label>
+                    <input type="time" id="time" name="time">
+                </div>
+
+                <button type="submit" id="btn-new-task">
+                    Adicionar tarefa
+                </button>
+            </form>
+
+        </dialog>
+
 
     </main>
 
     <script type="module" src="js/calendario.js"></script>
-    <script type="module" src="js/data.js"></script>
 </body>
 
-</htm
+</html>

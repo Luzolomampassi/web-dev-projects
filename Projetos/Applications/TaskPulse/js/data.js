@@ -1,34 +1,30 @@
-// const tarefas = [];
-
-// function obterResumoTarefas() {
-
-//     const concluidas = tarefas.filter(
-//         item => item.status === true
-//     ).length;
-
-//     const pendentes = tarefas.filter(
-//         item => item.status === false
-//     ).length;
-
-//     const importantes = tarefas.filter(
-//         item => item.prioridade === "alta"
-//     ).length
-
-//     return {
-//         concluidas,
-//         pendentes,
-//         importantes
-//     };
-// }
-
-// export default tarefas;
-// export { obterResumoTarefas };
-
-
 export function obterTarefas() {
-    const tarefasSalvas = JSON.parse(localStorage.getItem("tarefas") ?? "[]");
-    return Array.isArray(tarefasSalvas) ? tarefasSalvas : [];
+    try {
+        const tarefasSalvas = JSON.parse(
+            localStorage.getItem("tarefas") ?? "[]"
+        );
+
+        return Array.isArray(tarefasSalvas)
+            ? tarefasSalvas
+            : [];
+
+    } catch (erro) {
+        console.error("Erro ao carregar tarefas:", erro);
+        return [];
+    }
 }
+
+export function salvarTarefas(tarefas) {
+    if (!Array.isArray(tarefas)) {
+        throw new TypeError("As tarefas devem ser um array.");
+    }
+
+    localStorage.setItem(
+        "tarefas",
+        JSON.stringify(tarefas)
+    );
+}
+
 
 export function calcularDados(tarefasSalvas = obterTarefas()) {
 
@@ -40,25 +36,28 @@ export function calcularDados(tarefasSalvas = obterTarefas()) {
     );
 
     const tarefasAbertas = tarefasSalvas.filter(
-        tarefa => tarefa.status === false
+        tarefa => tarefa.status !== true
     );
 
     const tarefasAtrasadas = tarefasAbertas.filter(tarefa => {
         if (!tarefa.vencimento) return false;
 
-        const [ano, mes, dia] = tarefa.vencimento.split("-").map(Number);
+        const [ano, mes, dia] = normalizarData(tarefa.vencimento)
+            .split("-")
+            .map(Number);
         const dataVencimento = new Date(ano, mes - 1, dia);
 
         return dataVencimento < hoje;
     });
 
-    const tarefasPendentes = tarefasAbertas.filter(
+    const tarefasAbertasNoPrazo = tarefasAbertas.filter(
         tarefa => !tarefasAtrasadas.includes(tarefa)
     );
 
     const totalTarefas = tarefasSalvas.length;
     const quantidadeConcluidas = tarefasConcluidas.length;
-    const quantidadePendentes = tarefasPendentes.length;
+    const quantidadePendentes = tarefasAbertas.length;
+    const quantidadeAbertasNoPrazo = tarefasAbertasNoPrazo.length;
     const quantidadeAtrasadas = tarefasAtrasadas.length;
 
     const quantidadeImportantes = tarefasSalvas.filter(
@@ -74,11 +73,13 @@ export function calcularDados(tarefasSalvas = obterTarefas()) {
         totalTarefas,
         quantidadeConcluidas,
         quantidadePendentes,
+        quantidadeAbertasNoPrazo,
         quantidadeAtrasadas,
         quantidadeImportantes,
         // quantidadeEmAndamento: 0,
         percentualConclusao: percentual(quantidadeConcluidas),
         percentualPendentes: percentual(quantidadePendentes),
+        percentualAbertasNoPrazo: percentual(quantidadeAbertasNoPrazo),
         percentualAtrasadas: percentual(quantidadeAtrasadas),
         percentualEmAndamento: 0
     };
@@ -94,7 +95,7 @@ export function calcularResumoDia(tarefas, dataSelecionada) {
     });
 
     const concluidas = tarefasDoDia.filter(
-        tarefa => tarefa.concluida === true
+        tarefa => tarefa.status === true
     ).length;
 
     const altaPrioridade = tarefasDoDia.filter(

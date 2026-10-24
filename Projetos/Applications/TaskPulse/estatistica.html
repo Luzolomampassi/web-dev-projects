@@ -13,7 +13,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="overlay"></div> 
 <header>
     <div class="header-content">
         <button id="btn-menu" aria-label="Abrir menu">
@@ -59,9 +58,9 @@
                 </li>
 
                 <li>
-                    <a href="arquivos.html">
+                    <a href="arquivados.html">
                         <i class="fa-solid fa-box-archive fa-xl"></i>
-                        <span>Arquivos</span>
+                        <span>Arquivados</span>
                     </a>
                 </li>
                 <li>
@@ -157,12 +156,12 @@
     <section class="charts-grid">
         <article class="produtividade">
             <h2 class="section-title" >Produtividade semanal</h2>
-            <p>Tarefas concluídas vs tarefas criadas por dia</p>
+                <p>Tarefas com vencimento e concluídas por dia</p>
             <p>
-                <span id="indicador-concluida"><i class="fa-solid fa-square"></i></span> Concluídas
-                <span id="square-criadas">
+                <span class="square-concluidas"><i class="fa-solid fa-square"></i></span> Concluídas
+                <span class="square-criadas">
                     <i class="fa-solid fa-square"></i></span>
-                    Criadas
+                    Com vencimento
             </p>
             <article class="colunas">
                         <div class="chart-card">
@@ -206,7 +205,7 @@
                     <div class="status-tarefa">
                         <p>
                             <span id="indicador-pendentes"><i class="fa-solid fa-square"></i></span>
-                            <span>Pendentes</span>
+                            <span>No prazo</span>
                         </p>
                         <div>
                             <p class="quantidade-status statusPendenteElemento">0</p>
@@ -236,39 +235,22 @@
         <article class="estatisticas-grid">
             <div class="estatistica-box">
                 <p>Média Diária</p>
-                <h3>8,3</h3>
+                <h3>0</h3>
                 <p>tarefas/dia</p>
             </div>
 
             <div class="estatistica-box">
-                <p>Tempo médio</p>
-                <h3>2,4h</h3>
-                <p>por tarefa</p>
-            </div>
-
-            <div class="estatistica-box">
                 <p>Streak Atual</p>
-                <h3>12</h3>
+                <h3>0</h3>
                 <p>dias consecutivos</p>
             </div>
 
             <div class="estatistica-box">
                 <p>Melhor dia</p>
-                <h3>Qui</h3>
+                <h3>0</h3>
                 <p>14 concluídas</p>
             </div>
 
-            <div class="estatistica-box">
-                <p>Projetos ativos</p>
-                <h3>7</h3>
-                <p>em andamento</p>
-            </div>
-
-            <div class="estatistica-box">
-                <p>Colaboradores</p>
-                <h3>4</h3>
-                <p>contribuindo</p>
-            </div>
         </article>
     </article>
 
@@ -276,14 +258,14 @@
     <article class="atividades">
         <div class="atividade-item">
             <h2 class="section-title" >Atividade recente</h2>
-            <a href="#">Ver Tudo</a>
+            <a href="task.html">Ver Tudo</a>
         </div>
         <div class="atividade-item">
             <div>
                 <p>Onboarding de novos usuários</p>
                 <p>Growth · há 3h</p>
             </div>
-            <div>
+            <div class="badge concluido">
                 Concluída
             </div>
         </div>
