@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-AO">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskPulse | Tarefas</title>
     
     <script src="js/theme.js"></script>
+    <script src="js/nav-current.js" defer></script>
     <link rel="shortcut icon" href="icones/favicon.ico" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/f6a9b3f1e7.js"></script>
+    <script src="https://kit.fontawesome.com/f6a9b3f1e7.js" defer></script>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/task.css">
+    <link rel="stylesheet" href="css/page-banner.css">
 </head>
 <body>
    
@@ -20,19 +22,19 @@
             <i class="fa-solid fa-bars fa-xl"></i>
         </button>
 
-        <h2>Configurações</h2>
+        <h2>Tarefas</h2>
     </div>
 
     <div class="menu-container">
         <div class="logo">
-            <h2>TaskFlow</h2>
+            <h2>TaskPulse</h2>
         </div>
 
         <nav id="menu" class="menu">
             <ul>
                 <li>
                     <a href="index.html">
-                        <i class="fa-regular fa-house fa-xl"></i>
+                        <i class="fa-solid fa-house fa-xl"></i>
                         <span>Visão geral</span>
                     </a>
                 </li>
@@ -46,14 +48,14 @@
 
                 <li>
                     <a href="calendario.html">
-                        <i class="fa-regular fa-calendar fa-xl"></i>
+                        <i class="fa-solid fa-calendar-days fa-xl"></i>
                         <span>Calendário</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="categorias.html">
-                        <i class="fa-solid fa-bars fa-xl"></i>
+                         <i class="fa-solid fa-tags fa-xl"></i>
                         <span>Categorias</span>
                     </a>
                 </li>
@@ -61,12 +63,12 @@
                 <li>
                     <a href="arquivados.html">
                         <i class="fa-solid fa-box-archive fa-xl"></i>
-                        <span>Arquivos</span>
+                        <span>Arquivados</span>
                     </a>
                 </li>
                 <li>
                     <a href="estatistica.html">
-                        <i class="fa-solid fa-chart-simple fa-xl"></i>
+                        <i class="fa-solid fa-chart-column fa-xl"></i>
                         <span>Estatísticas</span>
                     </a>
                 </li>
@@ -82,14 +84,14 @@
     </div>
 </header>
     <main>
-        <section class="inicio card">
+        <section class="inicio card page-banner">
             <div>
                 <h3 data-resumo="pendentes">0</h3>
                 <p>Tarefas pendentes</p>
             </div>
           
            
-            <button type="submit" aria-label="Adiciona tarefa" class="btn-add"><i class="fa-solid fa-plus fa-xl"></i>Nova Tarefa</button>
+            <button type="submit" aria-label="Adicionar tarefa" class="btn-add"><i class="fa-solid fa-plus fa-xl"></i>Nova Tarefa</button>
         </section>
         <section class="resumo-top resumo">
             <div class="cards">
@@ -124,7 +126,7 @@
             </div>
             <form id="form-task" action="#">
                 <label for="tarefa">Título</label>
-                <input type="text" name="tarefa" id="tarefa" placeholder="Ex.:Revisar documentanção da API">
+                <input type="text" name="tarefa" id="tarefa" placeholder="Ex.: Rever a documentação da API">
 
                 <label for="descricao">Descrição</label>
                 <textarea name="descricao" id="descricao" placeholder="Descreva brevemente a tarefa "></textarea>
@@ -155,13 +157,13 @@
                     </div>
                 
                     <div>
-                        <label for="time">Horário(opcional)</label>
+                        <label for="time">Horário (opcional)</label>
                         <input type="time" name="time" id="time">
                     </div>
                 </div>
                 <div class="form-button">
                     <button type="button"  aria-label="Cancelar a criação da tarefa" class="btn-cancel">Cancelar</button>
-                    <button  type="submit" aria-label="Cria um nova tarefa" id="btn-new-task">Adicionar Tarefa</button>
+                    <button  type="submit" aria-label="Criar nova tarefa" id="btn-new-task">Adicionar Tarefa</button>
                 </div>
                 
             </form>
@@ -185,15 +187,31 @@
         <!-- Barra de pesquisar e filtros -->
         <section class="search">
             <form action="#">
-                <input type="search" aria-label="pesquisa" name="bar-search" id="bar-search" placeholder="Pesquisar tarefas..." autocomplete="off">
+                <input type="search" aria-label="Pesquisar tarefas" name="bar-search" id="bar-search" placeholder="Pesquisar tarefas..." autocomplete="off">
                 <button type="button" aria-label="Adicionar tarefa" class="btn-add"><i class="fa-solid fa-plus"></i>Nova</button>
             </form>
            
             <article class="filtros">
-                <button aria-label="btn de filtro" class="btn-filters" data-categoria="todos">Todos</button>
-                <button aria-label="btn de filtro" class="btn-filters" data-categoria="pendentes">Pendentes</button>
-                <button aria-label="btn de filtro" class="btn-filters" data-categoria="concluidas">Concluídas</button>
-                <button aria-label="btn de filtro" class="btn-filters" data-categoria="importantes">Importantes</button>
+                <button aria-label="Filtrar tarefas" class="btn-filters" data-categoria="todos">Todos</button>
+                <button aria-label="Filtrar tarefas" class="btn-filters" data-categoria="pendentes">Pendentes</button>
+                <button aria-label="Filtrar tarefas" class="btn-filters" data-categoria="concluidas">Concluídas</button>
+                <button aria-label="Filtrar tarefas" class="btn-filters" data-categoria="importantes">Importantes</button>
+            </article>
+            <article class="filtros">
+                <button aria-label="Ordena em grid" class="btn-order" data-ordem="grid">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-grid w-4 h-4"><rect width="7" height="7" x="3" y="3" rx="1"></rect><rect width="7" height="7" x="14" y="3" rx="1"></rect><rect width="7" height="7" x="14" y="14" rx="1"></rect><rect width="7" height="7" x="3" y="14" rx="1"></rect>
+                    </svg>
+                </button>
+                <button aria-label="Ordena por linhas" class="btn-order" data-ordem="row">
+                    <svg
+                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list w-4 h-4">
+                        <line x1="8" x2="21" y1="6" y2="6"></line>
+                        <line x1="8" x2="21" y1="12" y2="12"></line>
+                        <line x1="8" x2="21" y1="18" y2="18"></line><line x1="3" x2="3.01" y1="6" y2="6"></line>
+                        <line x1="3" x2="3.01" y1="12" y2="12"></line>
+                        <line x1="3" x2="3.01" y1="18" y2="18"></line>
+                    </svg>
+                </button>
             </article>
         </section>
         <!-- ========== Tarefas =========== -->

@@ -1,0 +1,73 @@
+/* ================================
+   BANNER DE INTRODUÇÃO DAS PÁGINAS
+================================ */
+
+.page-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    min-width: 0;
+    margin: 0 0 24px;
+    padding: clamp(20px, 3.5vw, 32px);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background:
+        radial-gradient(circle at 100% 0, var(--color-primary-light), transparent 45%),
+        var(--color-surface);
+    box-shadow: var(--tp-shadow);
+    color: var(--color-text);
+}
+
+.page-banner > :first-child {
+    min-width: 0;
+}
+
+.page-banner .eyebrow {
+    margin: 0 0 8px;
+    color: var(--color-primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.page-banner h1 {
+    margin: 0;
+    color: var(--color-text);
+    font-size: clamp(1.55rem, 1.2rem + 1.5vw, 2.2rem);
+    line-height: 1.2;
+}
+
+.page-banner p {
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+}
+
+.page-banner-copy > p:last-child,
+.page-banner .section-heading > p {
+    max-width: 58ch;
+    margin: 9px 0 0;
+}
+
+.page-banner > a,
+.page-banner > button {
+    flex: 0 0 auto;
+    width: auto;
+}
+
+@media (max-width: 640px) {
+    .page-banner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        padding: 20px;
+    }
+
+    .page-banner > a,
+    .page-banner > button {
+        width: 100%;
+    }
+}

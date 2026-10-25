@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-AO">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskPulse | Calendário</title>
     <script src="js/theme.js"></script>
+    <script src="js/nav-current.js" defer></script>
     <link rel="shortcut icon" href="icones/favicon.ico" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/f6a9b3f1e7.js"></script>
+    <script src="https://kit.fontawesome.com/f6a9b3f1e7.js" defer></script>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/calendario.css">
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/locales-all.global.min.js"></script>
+    <link rel="stylesheet" href="css/page-banner.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/locales/pt-br.global.min.js" defer></script>
 </head>
 <body>
     <header>
@@ -25,14 +27,14 @@
 
     <div class="menu-container">
         <div class="logo">
-            <h2>TaskFlow</h2>
+            <h2>TaskPulse</h2>
         </div>
 
         <nav id="menu" class="menu">
             <ul>
                 <li>
                     <a href="index.html">
-                        <i class="fa-regular fa-house fa-xl"></i>
+                        <i class="fa-solid fa-house fa-xl"></i>
                         <span>Visão geral</span>
                     </a>
                 </li>
@@ -46,14 +48,14 @@
 
                 <li>
                     <a href="calendario.html">
-                        <i class="fa-regular fa-calendar fa-xl"></i>
+                        <i class="fa-solid fa-calendar-days fa-xl"></i>
                         <span>Calendário</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="categorias.html">
-                        <i class="fa-solid fa-bars fa-xl"></i>
+                         <i class="fa-solid fa-tags fa-xl"></i>
                         <span>Categorias</span>
                     </a>
                 </li>
@@ -66,7 +68,7 @@
                 </li>
                 <li>
                     <a href="estatistica.html">
-                        <i class="fa-solid fa-chart-simple fa-xl"></i>
+                        <i class="fa-solid fa-chart-column fa-xl"></i>
                         <span>Estatísticas</span>
                     </a>
                 </li>
@@ -84,7 +86,7 @@
 
     <main class="main-content">
         <!-- Cabeçalho da página -->
-        <section class="page-header">
+        <section class="page-header page-banner">
             <div class="section-heading">
                 <h1>
                     <i class="fa-regular fa-calendar"></i>
@@ -241,7 +243,7 @@
                     <textarea
                         id="descricao"
                         name="descricao"
-                        placeholder="Adiciona alguns detalhes..."
+                        placeholder="Adicione alguns detalhes..."
                     ></textarea>
                 </div>
 

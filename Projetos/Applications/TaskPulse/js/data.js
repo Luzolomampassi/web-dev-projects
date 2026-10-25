@@ -35,6 +35,10 @@ export function calcularDados(tarefasSalvas = obterTarefas()) {
         tarefa => tarefa.status === true
     );
 
+    const tarefasArquivadas = tarefasSalvas.filter(
+        tarefa => tarefa.arquivada === true
+    );
+
     const tarefasAbertas = tarefasSalvas.filter(
         tarefa => tarefa.status !== true
     );
@@ -59,6 +63,7 @@ export function calcularDados(tarefasSalvas = obterTarefas()) {
     const quantidadePendentes = tarefasAbertas.length;
     const quantidadeAbertasNoPrazo = tarefasAbertasNoPrazo.length;
     const quantidadeAtrasadas = tarefasAtrasadas.length;
+    const quantidadeArquivadas = tarefasArquivadas.length;
 
     const quantidadeImportantes = tarefasSalvas.filter(
         tarefa => tarefa.prioridade === "alta"
@@ -76,7 +81,7 @@ export function calcularDados(tarefasSalvas = obterTarefas()) {
         quantidadeAbertasNoPrazo,
         quantidadeAtrasadas,
         quantidadeImportantes,
-        // quantidadeEmAndamento: 0,
+        quantidadeArquivadas,
         percentualConclusao: percentual(quantidadeConcluidas),
         percentualPendentes: percentual(quantidadePendentes),
         percentualAbertasNoPrazo: percentual(quantidadeAbertasNoPrazo),
@@ -122,3 +127,5 @@ function normalizarData(data) {
 
     return data.slice(0, 10);
 }
+
+

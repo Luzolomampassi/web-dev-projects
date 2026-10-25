@@ -163,7 +163,6 @@ const calendario = new FullCalendar.Calendar(
 
             atualizarBotaoDiaSelecionado(info.dayEl);
             atualizarResumoDia(dataSelecionada);
-            renderizarTarefasDoDia(dataSelecionada);
 
             abrirModalCriacao(dataSelecionada);
         }
@@ -182,7 +181,6 @@ botaoHoje.addEventListener("click", () => {
     dataSelecionada = obterDataLocal(new Date());
 
     atualizarResumoDia(dataSelecionada);
-    renderizarTarefasDoDia(dataSelecionada);
 });
 
 botaoMesAnterior.addEventListener("click", () => {
@@ -239,8 +237,6 @@ function atualizarTituloCalendario(view) {
 filtroCategoria.addEventListener("change", () => {
     calendario.refetchEvents();
     atualizarResumoDia(dataSelecionada);
-    renderizarTarefasDoDia(dataSelecionada);
-    renderizarProximasTarefas();
 });
 
 // ============================================================

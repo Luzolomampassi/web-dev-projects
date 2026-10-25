@@ -1104,3 +1104,214 @@ textarea:focus-visible {
         opacity: 0;
     }
 }
+
+/* ================================
+   CABEÇALHO DA PÁGINA ARQUIVADOS
+================================ */
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+
+    margin-bottom: 24px;
+    padding: clamp(20px, 3.5vw, 34px);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background:
+        radial-gradient(circle at 100% 0, var(--color-primary-light), transparent 45%),
+        var(--color-surface);
+    box-shadow: var(--tp-shadow);
+}
+
+.intro-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+}
+
+.intro-copy .eyebrow {
+    margin: 0 0 8px;
+}
+
+.intro h1 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: clamp(1.6rem, 1.25rem + 1.8vw, 2.3rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+}
+
+.intro h1 i {
+    color: var(--color-primary);
+    font-size: 0.78em;
+}
+
+.intro-copy > p:last-child {
+    max-width: 58ch;
+    margin: 10px 0 0;
+    color: var(--color-text-secondary);
+    font-size: clamp(0.92rem, 0.88rem + 0.2vw, 1rem);
+}
+
+.intro > .back-to-tasks {
+    width: auto;
+    max-width: 100%;
+    gap: 9px;
+    white-space: normal;
+}
+
+.cards-container {
+    padding: 0 0 8px;
+}
+
+.cards {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 14px;
+}
+
+.card {
+    min-height: 112px;
+    padding: clamp(15px, 2vw, 20px);
+}
+
+.card > div p {
+    font-size: clamp(0.78rem, 0.75rem + 0.15vw, 0.88rem);
+}
+
+.card > div h2 {
+    font-size: clamp(1.45rem, 1.2rem + 1vw, 1.9rem);
+}
+
+.card .fa-box-archive {
+    background-color: var(--color-info-light);
+    color: var(--color-info);
+}
+
+.card .fa-circle-check {
+    background-color: var(--color-success-light);
+    color: var(--color-success);
+}
+
+.card .fa-clock {
+    background-color: var(--color-warning-light);
+    color: var(--color-warning);
+}
+
+.search {
+    align-items: stretch;
+    gap: 10px;
+    margin: 8px 0 14px;
+    padding-top: 0;
+}
+
+.search form {
+    min-width: 0;
+}
+
+#bar-search {
+    min-height: 46px;
+    font: inherit;
+}
+
+.filtros {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.select-filters {
+    min-height: 44px;
+    min-width: 0;
+    font: inherit;
+}
+
+.tarefas {
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-surface);
+    box-shadow: var(--tp-shadow);
+}
+
+.list-tasks {
+    padding: 10px;
+}
+
+.task {
+    min-width: 0;
+}
+
+.task h3,
+.task p,
+.badge {
+    overflow-wrap: anywhere;
+}
+
+.void-section {
+    margin-top: 14px;
+}
+
+@media (min-width: 768px) {
+    .intro {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+    }
+
+    .intro > .back-to-tasks {
+        flex: 0 0 auto;
+    }
+}
+
+@media (max-width: 520px) {
+    .intro {
+        gap: 14px;
+        padding: 20px 16px;
+    }
+
+    .intro > .back-to-tasks {
+        width: 100%;
+    }
+
+    .cards {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .card {
+        min-height: 96px;
+    }
+
+    .filtros {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .select-filters {
+        width: 100%;
+    }
+
+    .task {
+        grid-template-columns: auto minmax(0, 1fr);
+        row-gap: 10px;
+    }
+
+    .task-actions {
+        grid-column: 2;
+        justify-self: end;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card,
+    .intro > .back-to-tasks,
+    .void-section,
+    .vazio-icon {
+        transition: none;
+    }
+}

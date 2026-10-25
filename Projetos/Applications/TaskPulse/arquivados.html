@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-AO">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskPulse | Tarefas</title>
+    <title>TaskPulse | Arquivados</title>
     
     <script src="js/theme.js"></script>
+    <script src="js/nav-current.js" defer></script>
     <link rel="shortcut icon" href="icones/favicon.ico" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/f6a9b3f1e7.js"></script>
+    <script src="https://kit.fontawesome.com/f6a9b3f1e7.js" defer></script>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/arquivados.css">
+    <link rel="stylesheet" href="css/page-banner.css">
 </head>
 <body>
    
@@ -20,19 +22,19 @@
             <i class="fa-solid fa-bars fa-xl"></i>
         </button>
 
-        <h2>Configurações</h2>
+        <h2>Arquivados</h2>
     </div>
 
     <div class="menu-container">
         <div class="logo">
-            <h2>TaskFlow</h2>
+            <h2>TaskPulse</h2>
         </div>
 
         <nav id="menu" class="menu">
             <ul>
                 <li>
                     <a href="index.html">
-                        <i class="fa-regular fa-house fa-xl"></i>
+                        <i class="fa-solid fa-house fa-xl"></i>
                         <span>Visão geral</span>
                     </a>
                 </li>
@@ -46,14 +48,14 @@
 
                 <li>
                     <a href="calendario.html">
-                        <i class="fa-regular fa-calendar fa-xl"></i>
+                        <i class="fa-solid fa-calendar-days fa-xl"></i>
                         <span>Calendário</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="categorias.html">
-                        <i class="fa-solid fa-bars fa-xl"></i>
+                        <i class="fa-solid fa-tags fa-xl"></i>
                         <span>Categorias</span>
                     </a>
                 </li>
@@ -66,7 +68,7 @@
                 </li>
                 <li>
                     <a href="estatistica.html">
-                        <i class="fa-solid fa-chart-simple fa-xl"></i>
+                        <i class="fa-solid fa-chart-column fa-xl"></i>
                         <span>Estatísticas</span>
                     </a>
                 </li>
@@ -82,38 +84,35 @@
     </div>
 </header>
     <main>
-        <section class="intro">
-            <p class="eyebrow">Organização</p>
-            <h1>Tarefas Arquivadas</h1>
-            <p>Consulte e organize as tarefas que foram arquivadas.</p>
-            <div>
-                <h3 data-resumo="pendentes">0</h3>
-                <p>Tarefas pendentes</p>
+        <section class="intro page-banner">
+            <div class="intro-copy">
+                <p class="eyebrow">Organização</p>
+                <h1><i class="fa-solid fa-box-archive" aria-hidden="true"></i> Arquivados</h1>
+                <p>Consulte as tarefas que já não fazem parte da sua lista ativa.</p>
             </div>
-          
-           
-            <a href="task.html">
-                Voltar às tarefas ativas
+            <a class="back-to-tasks" href="task.html">
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                Voltar às tarefas
             </a>
         </section>
         <section class="cards-container">
             <div class="cards">
                 <div class="card">
-                    <i class="fa-solid fa-box-archive fa-xl icon-card"></i>
+                    <i class="fa-solid fa-box-archive fa-xl icon-card" aria-hidden="true"></i>
                     <div>
                         <p>Total arquivadas</p>
                         <h2 data-resumo="pendentes">0</h2>
                     </div>
                 </div>
                 <div class="card">
-                    <i class="fa-solid fa-circle-check fa-xl icon-card"></i>
+                    <i class="fa-solid fa-circle-check fa-xl icon-card" aria-hidden="true"></i>
                     <div>
                         <p>Concluídas</p>
                         <h2 data-resumo="concluidas">0</h2>
                     </div>
                 </div>
                 <div class="card">
-                    <i class="fa-solid fa-clock fa-xl icon-card"></i>
+                    <i class="fa-solid fa-clock fa-xl icon-card" aria-hidden="true"></i>
                     <div>
                         <p>Sem conclusão</p>
                         <h2 data-resumo="pendentes">0</h2>
@@ -134,7 +133,7 @@
             </div>
             <form id="form-task" action="#">
                 <label for="tarefa">Título</label>
-                <input type="text" name="tarefa" id="tarefa" placeholder="Ex.:Revisar documentanção da API">
+                <input type="text" name="tarefa" id="tarefa" placeholder="Ex.: Rever a documentação da API">
 
                 <label for="descricao">Descrição</label>
                 <textarea name="descricao" id="descricao" placeholder="Descreva brevemente a tarefa "></textarea>
@@ -165,13 +164,13 @@
                     </div>
                 
                     <div>
-                        <label for="time">Horário(opcional)</label>
+                        <label for="time">Horário (opcional)</label>
                         <input type="time" name="time" id="time">
                     </div>
                 </div>
                 <div class="form-button">
                     <button type="button"  aria-label="Cancelar a criação da tarefa" class="btn-cancel">Cancelar</button>
-                    <button  type="submit" aria-label="Cria um nova tarefa" id="btn-new-task">Adicionar Tarefa</button>
+                    <button  type="submit" aria-label="Criar nova tarefa" id="btn-new-task">Adicionar Tarefa</button>
                 </div>
                 
             </form>
@@ -192,10 +191,10 @@
         <button id="btn-alert">Entendi</button>
     </div>
         </div>
-        <!-- Barra de pesquisar e filtros -->
+        <!-- Pesquisa e filtros -->
         <section class="search">
             <form action="#">
-                <input type="search" aria-label="pesquisa" name="bar-search" id="bar-search" placeholder="Pesquisar tarefas arquivadas...">
+                <input type="search" aria-label="Pesquisar tarefas arquivadas" name="bar-search" id="bar-search" placeholder="Pesquisar tarefas arquivadas..." autocomplete="off">
             </form>
            
             <article class="filtros">
@@ -208,8 +207,8 @@
                 </select>
                 <select name="select-estados" id="select-estados" class="select-filters">
                     <option value="">Todos os estados</option>
-                    <option value="conluidas">Concluídos</option>
-                    <option value="pendentes">Não concluídos</option>
+                    <option value="concluidas">Concluídas</option>
+                    <option value="pendentes">Por concluir</option>
                 </select>
                 <select name="breve" id="breve" class="select-filters">
                     <option value="recentes">Mais recentes</option>

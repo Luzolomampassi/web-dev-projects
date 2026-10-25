@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskPulse | Configurações</title>
     <script src="js/theme.js" defer></script>
+    <script src="js/nav-current.js" defer></script>
     <link rel="shortcut icon" href="icones/favicon.ico" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/f6a9b3f1e7.js"></script>
+    <script src="https://kit.fontawesome.com/f6a9b3f1e7.js" defer></script>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/config.css">
@@ -25,14 +26,14 @@
 
     <div class="menu-container">
         <div class="logo">
-            <h2>TaskFlow</h2>
+            <h2>TaskPulse</h2>
         </div>
 
         <nav id="menu" class="menu">
             <ul>
                 <li>
                     <a href="index.html">
-                        <i class="fa-regular fa-house fa-xl"></i>
+                        <i class="fa-solid fa-house fa-xl"></i>
                         <span>Visão geral</span>
                     </a>
                 </li>
@@ -46,14 +47,14 @@
 
                 <li>
                     <a href="calendario.html">
-                        <i class="fa-regular fa-calendar fa-xl"></i>
+                        <i class="fa-solid fa-calendar-days fa-xl"></i>
                         <span>Calendário</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="categorias.html">
-                        <i class="fa-solid fa-bars fa-xl"></i>
+                         <i class="fa-solid fa-tags fa-xl"></i>
                         <span>Categorias</span>
                     </a>
                 </li>
@@ -61,13 +62,13 @@
                 <li>
                     <a href="arquivados.html">
                         <i class="fa-solid fa-box-archive fa-xl"></i>
-                        <span>Arquivos</span>
+                        <span>Arquivados</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="estatistica.html">
-                        <i class="fa-solid fa-chart-simple fa-xl"></i>
+                        <i class="fa-solid fa-chart-column fa-xl"></i>
                         <span>Estatísticas</span>
                     </a>
                 </li>
@@ -90,8 +91,8 @@
     <section class="perfil">
 
         <div class="section-content">
-            <h3>Perfil</h3>
-            <p>Suas informações pessoais e foto de exibição.</p>
+            <h3>Personalização local</h3>
+            <p>Escolha uma foto para identificar o TaskPulse neste navegador.</p>
         </div>
 
         <div class="perfil-body">
@@ -142,41 +143,15 @@
                 </div>
             </div>
 
+            <div class="profile-local-copy">
+                <h4>Foto de exibição</h4>
+                <p>A imagem fica guardada apenas neste navegador e neste dispositivo.</p>
+            </div>
+
             <dialog class="photo-preview" id="photo-preview" aria-label="Pré-visualização da foto de perfil">
                 <button type="button" class="photo-preview-close" id="photo-preview-close" aria-label="Fechar pré-visualização">&times;</button>
                 <img src="" alt="Foto de perfil ampliada" id="photo-preview-image">
             </dialog>
-
-            <form action="#" id="form-perfil" class="form-perfil">
-
-                <div class="form-group">
-                    <label for="nome">Nome completo</label>
-                    <input type="text" name="nome" id="nome">
-                </div>
-
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" name="email" id="email">
-                </div>
-
-                <button
-                    type="submit"
-                    class="btn-save-perfil"
-                    id="btn-save-perfil"
-                >
-                    Salvar alterações
-                </button>
-
-                <button
-                    type="button"
-                    class="btn-editar-perfil"
-                    id="btn-editar-perfil"
-                >
-                    <i class="fa-regular fa-pen-to-square"></i>
-                    Editar perfil
-                </button>
-
-            </form>
         </div>
 
     </section>
@@ -188,7 +163,7 @@
         <section class="aparencia">
             <div class="section-content">
                 <h3>Aparência</h3>
-                <p>Escolha como o TaskFlow aparece para você.</p>
+                <p>Escolha como o TaskPulse aparece para si.</p>
             </div>
 
             <div class="cards-theme">
@@ -678,6 +653,27 @@
 
                 <article class="setting-option">
                     <div>
+                        <h4 id="grid-mode-title">Visualização em grelha</h4>
+                        <p id="grid-mode-description">
+                            Organiza os cartões de tarefas numa grelha responsiva, com várias colunas conforme o espaço disponível.
+                        </p>
+                    </div>
+
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            class="checkbox"
+                            name="modo_grid"
+                            data-setting="modo_grid"
+                            aria-labelledby="grid-mode-title"
+                            aria-describedby="grid-mode-description"
+                        >
+                        <span class="slider"></span>
+                    </label>
+                </article>
+
+                <article class="setting-option">
+                    <div>
                         <h4>Exibir tarefas concluídas</h4>
                         <p>Mostra tarefas concluídas na lista principal de tarefas.</p>
                     </div>
@@ -783,7 +779,7 @@
         <article class="exportar">
             <div class="section-intro">
                 <h3>Exportar dados</h3>
-                <p>Baixe suas tarefas em formato JSON ou CSV.</p>
+                <p>Descarregue as suas tarefas em formato JSON ou CSV.</p>
             </div>
 
             <div class="buttons-exportar">

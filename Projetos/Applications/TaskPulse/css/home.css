@@ -425,12 +425,150 @@ button {
     margin-bottom: 18px;
 }
 
-.upcoming-list {
-    display: grid;
 
+.upcoming-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
     gap: 10px;
+}
+
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
 
     min-width: 0;
+
+    padding: 14px;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+
+    background-color: var(--color-white);
+}
+
+.task-info {
+    min-width: 0;
+}
+
+.task-info h3 {
+    margin-bottom: 4px;
+
+    overflow: hidden;
+
+    font-size: 0.95rem;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.task-info p {
+    overflow: hidden;
+
+    color: var(--color-text-secondary);
+
+    font-size: 0.85rem;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* ================================
+   STATUS
+================================ */
+
+.task-status {
+    flex-shrink: 0;
+
+    padding: 5px 9px;
+
+    border-radius: 999px;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.task-status.pending {
+    background-color: var(--color-warning-light);
+    color: var(--color-warning);
+}
+
+.task-status.completed {
+    background-color: var(--color-success-light);
+    color: var(--color-success);
+}
+
+.task-status.important {
+    background-color: var(--color-danger-light);
+    color: var(--color-danger);
+}
+
+.task-status.priority-alta {
+    background: var(--color-danger-light);
+    color: var(--color-danger);
+}
+
+.task-status.priority-media {
+    background: var(--color-warning-light);
+    color: var(--color-warning);
+}
+
+.task-status.priority-baixa {
+    background: var(--color-info-light);
+    color: var(--color-info);
+}
+
+.task-item.is-complete .task-info h3 {
+    color: var(--color-text-muted);
+    text-decoration: line-through;
+}
+
+.task-actions {
+    display: flex;
+    flex-shrink: 0;
+    gap: 8px;
+}
+
+.btn-task-action {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    border: 1px solid var(--color-border);
+    border-radius: 9px;
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+}
+
+.btn-task-action:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-task-action.btn-delete:hover {
+    color: var(--color-danger);
+    border-color: var(--color-danger);
+}
+
+
+/* ================================
+   ESTADO VAZIO
+================================ */
+
+.empty-state {
+    padding: 25px 15px;
+
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface-raised);
+
+    text-align: center;
+
+    color: var(--color-text-secondary);
 }
 
 

@@ -542,7 +542,7 @@ box-shadow: var(--shadow-sm);
 
 
 }
-
+.btn-order,
 .btn-filters {
 padding: 9px 14px;
 
@@ -562,7 +562,17 @@ transition:
 
 
 }
+.btn-order{
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--color-border);
 
+}
+.btn-order:hover{
+background-color: var(--color-surface);
+color: var(--color-primary);
+
+}
 .btn-filters:hover {
 background-color: var(--color-primary-light);
 color: var(--color-primary);
@@ -572,11 +582,13 @@ color: var(--color-primary);
 background-color: var(--color-primary);
 color: var(--color-on-primary);
 }
-
+.btn-order:focus-visible,
 .btn-filters:focus-visible {
 outline: 2px solid var(--color-primary-dark);
 outline-offset: 2px;
 }
+
+
 
 /* ================================
 TAREFAS
@@ -1005,6 +1017,7 @@ color: var(--color-danger);
     background: var(--color-primary-dark);
     transform: translateY(-1px);
 }
+
 /* ================================
 TABLET
 ================================ */
@@ -1111,7 +1124,59 @@ DESKTOP
 .list-tasks {
     gap: 0;
 }
+.grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, 360px), 1fr)
+    );
 
+    gap: 16px;
+    margin-block-start: 20px;
+    align-items: stretch;
+}
+
+.grid .task {
+    min-width: 0;
+    min-height: 200px;
+    padding: 16px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+
+    background-color: var(--color-surface);
+
+    box-shadow: none;
+
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.grid .task > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+}
+
+.grid .task:hover {
+    background-color: var(--color-surface-raised);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .grid .task {
+        transition: none;
+    }
+
+    .grid .task:hover {
+        transform: none;
+    }
+}
 .task {
     grid-template-columns: 0.4fr 5.1fr 0.4fr;
 

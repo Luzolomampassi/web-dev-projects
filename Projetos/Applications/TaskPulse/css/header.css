@@ -29,7 +29,8 @@ header {
 
 header h2 {
     color: var(--color-primary);
-    font-size: 20px;
+    font-size: clamp(1rem, 0.92rem + 0.45vw, 1.25rem);
+    line-height: 1.2;
 }
 
 #btn-menu {
@@ -128,6 +129,12 @@ header h2 {
     color: var(--color-primary-dark);
 }
 
+#menu a[aria-current="page"] {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    font-weight: 700;
+}
+
 #menu a i {
     width: 25px;
     text-align: center;
@@ -162,6 +169,17 @@ body:not(:has(.auth-page)) header h2 {
 
 #menu a:hover {
     transform: translateX(2px);
+}
+
+#menu a[aria-current="page"] {
+    color: var(--color-primary);
+    background-color: var(--color-primary-light);
+    font-weight: 700;
+}
+
+#menu a:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
 }
 
 #menu a i {
@@ -312,6 +330,10 @@ body:not(:has(.auth-page)) .page-header p {
 
 @view-transition {
     navigation: auto;
+}
+
+::view-transition {
+    background-color: var(--color-background);
 }
 
 

@@ -607,3 +607,122 @@ a {
     display: flex;
     align-items: center;
 }
+
+/* ================================
+   FILTRO PERSONALIZADO E DADOS REAIS
+================================ */
+
+.data-bar {
+    width: 100%;
+    max-width: 820px;
+    flex-wrap: wrap;
+}
+
+.periodo-custom {
+    display: flex;
+    flex: 1 0 100%;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px;
+    border-top: 1px solid var(--color-border);
+}
+
+#periodo-personalizado[hidden],
+.periodo-erro[hidden] {
+    display: none;
+}
+
+.periodo-custom label {
+    display: grid;
+    gap: 6px;
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+}
+
+.periodo-custom input {
+    min-height: 38px;
+    padding: 5px 9px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font: inherit;
+}
+
+.btn-aplicar-periodo {
+    min-height: 38px;
+    padding: 6px 12px;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    font: inherit;
+    font-weight: 600;
+}
+
+.btn-aplicar-periodo:hover {
+    background: var(--color-primary-dark);
+}
+
+.periodo-erro {
+    flex-basis: 100%;
+    margin: 0;
+    color: var(--color-danger);
+    font-size: 0.875rem;
+}
+
+.periodo-descricao {
+    margin: -10px 0 18px;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+}
+
+.atividade-tarefa {
+    padding: 12px 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.atividade-tarefa > div {
+    min-width: 0;
+}
+
+.atividade-titulo {
+    overflow-wrap: anywhere;
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.atividade-detalhe,
+.atividade-vazia,
+[data-stat="melhor-dia-data"] {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+}
+
+.atividade-vazia {
+    padding: 14px 0;
+}
+
+.badge.atrasada {
+    background: var(--color-danger);
+    color: var(--color-on-primary);
+}
+
+@media (max-width: 520px) {
+    .periodo-custom {
+        align-items: stretch;
+    }
+
+    .periodo-custom label,
+    .periodo-custom input,
+    .btn-aplicar-periodo {
+        width: 100%;
+    }
+
+    .atividade-tarefa {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+}

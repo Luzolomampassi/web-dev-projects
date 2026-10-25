@@ -111,8 +111,29 @@ section {
 }
 
 .perfil-body {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
     padding: 24px 12px;
-    margin-bottom: 15px;
+}
+
+.perfil-body .foto {
+    margin-bottom: 0;
+}
+
+.profile-local-copy h4 {
+    margin-bottom: 5px;
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.profile-local-copy p {
+    max-width: 46ch;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
 .foto {
@@ -981,32 +1002,8 @@ input:focus-visible,
 ================================ */
 
 @media (min-width: 1024px) {
- 
-
     .perfil-body {
-        display: grid;
-
-        grid-template-columns: 0.4fr 3fr;
-
-        align-items: start;
-
-        gap: 30px;
-
-        padding: 0;
-    }
-
-    .form-perfil {
-        display: grid;
-
-        grid-template-columns: 1fr 1fr;
-
-        column-gap: 20px;
-
-        width: 100%;
-    }
-
-    .btn-editar-perfil {
-        grid-column: 2 / 3;
+        padding: 24px 12px 12px;
     }
 
     .conteiner-last {

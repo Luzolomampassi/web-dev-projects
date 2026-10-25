@@ -253,6 +253,7 @@ function criarTarefa(dadosTarefa) {
     elementoTarefa.dataset.categoria = dadosTarefa.status ? "concluidas" : "pendentes";
     elementoTarefa.dataset.status = String(dadosTarefa.status);
     elementoTarefa.dataset.id = dadosTarefa.id;
+    elementoTarefa.dataset.arquivada = false;
 
     // Checkbox
     const rotuloCheckbox = document.createElement("label");
@@ -477,6 +478,19 @@ botoesFiltros.forEach((botaoFiltro) => {
             }
         });
     });
+});
+
+const botoesOrder = document.querySelectorAll(".btn-order")
+
+botoesOrder.forEach(botao => {
+    botao.addEventListener("click", () =>{
+        if(botao.dataset.ordem === "grid"){
+            listaTarefas.classList.add("grid")
+        }
+        else{
+            listaTarefas.classList.remove("grid")
+        }
+    })
 });
 
 // ============================================================
