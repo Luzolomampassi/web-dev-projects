@@ -367,8 +367,8 @@ textarea:focus,
    ESTADO
 ================================ */
 
-.task-concluidas,
-.task-pendentes {
+.tasks-concluidas,
+.tasks-pendentes {
     display: inline-flex;
     align-items: center;
 
@@ -379,19 +379,19 @@ textarea:focus,
     font-size: 0.78rem;
 }
 
-.task-concluidas::before,
-.task-pendentes::before {
+.tasks-concluidas::before,
+.tasks-pendentes::before {
     content: "•";
 
     font-size: 1rem;
     font-weight: 700;
 }
 
-.task-concluidas::before {
+.tasks-concluidas::before {
     color: var(--color-success);
 }
 
-.task-pendentes::before {
+.tasks-pendentes::before {
     color: var(--color-warning);
 }
 
@@ -573,6 +573,11 @@ textarea {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
+
+.option.is-open {
+    display: flex;
+    flex-direction: column;
+}
 
 .btn-edit {
     background: none;

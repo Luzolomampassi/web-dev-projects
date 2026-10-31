@@ -250,9 +250,10 @@ function criarTarefa(dadosTarefa) {
     const elementoTarefa = document.createElement("div");
 
     elementoTarefa.classList.add("task");
-    elementoTarefa.dataset.categoria = dadosTarefa.status ? "concluidas" : "pendentes";
+    elementoTarefa.dataset.estado = dadosTarefa.status ? "concluidas" : "pendentes";
     elementoTarefa.dataset.status = String(dadosTarefa.status);
     elementoTarefa.dataset.id = dadosTarefa.id;
+    elementoTarefa.dataset.categoria = "";
     elementoTarefa.dataset.arquivada = false;
 
     // Checkbox
@@ -289,6 +290,7 @@ function criarTarefa(dadosTarefa) {
 
     const badgeCategoria = document.createElement("div");
     badgeCategoria.classList.add("badge");
+    elementoTarefa.dataset.categoria = dadosTarefa.categoria;
     badgeCategoria.textContent = dadosTarefa.categoria;
 
     const badgeVencimento = document.createElement("div");

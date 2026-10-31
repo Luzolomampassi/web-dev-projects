@@ -127,5 +127,49 @@ function normalizarData(data) {
 
     return data.slice(0, 10);
 }
+function obterCategorias(){
+    try{
+        const dadosJson = localStorage.getItem("categorias") ?? "[]"
+
+        const categorias = JSON.parse(dadosJson)
+
+        return Array.isArray(categorias) ? categorias : []
+    }
+    catch(erro){
+        console.error("Houve um erro na buscar por categorias" + erro)
+        return []
+    }
+}
+export function dadosCategoria() {
+    const categorias = obterCategorias();
+    const tarefas = obterTarefas();
+
+    const resumoCategorias = categorias.map(categoria => {
+
+        const tarefasDaCategoria = tarefas.filter(tarefa => {
+            return tarefa.categoria === categoria.titulo
+        });
+
+        
+        const quantidadeConcluida = tarefasDaCategoria.filter(tarefa => {
+          return  tarefa.status === true
+        }).length;
+
+        const quantidadePendente = tarefasDaCategoria.filter(tarefa => {
+           return tarefa.status === false
+        }).length;
+
+       
+        return {
+            id: categoria.id,
+            titulo: categoria.titulo,
+            total: tarefasDaCategoria.length,
+            quantidadeConcluida,
+            quantidadePendente
+        };
+    });
+
+    return resumoCategorias;
+}
 
 

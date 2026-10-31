@@ -27,12 +27,6 @@ btnCancelar.addEventListener("click", () =>{
     modal.close()
 })
 
-const btnEdit = document.querySelectorAll(".btn-edit")
-btnEdit.forEach(element => {
-    element.addEventListener('click', () =>{
-        element.classList.add('editar')
-    })
-});
 
 
 
