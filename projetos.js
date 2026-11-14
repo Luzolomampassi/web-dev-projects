@@ -74,4 +74,8 @@ const initializeProjectFilters = () => {
     updateProjects();
 };
 
-initializeProjectFilters();
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeProjectFilters);
+} else {
+    initializeProjectFilters();
+}

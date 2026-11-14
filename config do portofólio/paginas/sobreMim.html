@@ -13,11 +13,26 @@
     <meta name="author" content="Luzolo Mampassi">
 
     <title>Sobre mim | Luzolo Mampassi</title>
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+
+    <!-- ============================== Open Graph & Twitter ============================== -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://luzolomampassi.github.io/web-dev-projects/config%20do%20portofólio/paginas/sobreMim.html">
+    <meta property="og:title" content="Sobre mim | Luzolo Mampassi">
+    <meta property="og:description" content="Sobre Luzolo Mampassi, estudante e desenvolvedor em formação.">
+    <meta property="og:image" content="https://luzolomampassi.github.io/web-dev-projects/config%20do%20portofólio/icones/trechos/capa-do-portfolio.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@luzolomampassi">
+    <meta name="twitter:creator" content="@luzolomampassi">
 
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="../estilos/header.css">
     <link rel="stylesheet" href="../estilos/sobre.css">
     <link rel="stylesheet" href="../estilos/footer.css">
+    <link rel="stylesheet" href="../estilos/temas.css">
 
     <!-- ============================== Ícones ============================== -->
 
@@ -30,9 +45,10 @@
         src="https://kit.fontawesome.com/f6a9b3f1e7.js"
         crossorigin="anonymous">
     </script>
+    </script>
 </head>
 
-<body class="about-page">
+<body class="about-page" data-theme="lime">
 
     <!-- ============================== Header ============================== -->
 
@@ -88,6 +104,12 @@
                     </li>
 
                 </ul>
+
+                <div class="theme-switcher" role="group" aria-label="Escolher tema de cores">
+                    <button type="button" data-theme-choice="lime" aria-label="Tema verde-lima" aria-pressed="true"><span class="theme-swatch theme-swatch-lime"></span></button>
+                    <button type="button" data-theme-choice="blue" aria-label="Tema azul" aria-pressed="false"><span class="theme-swatch theme-swatch-blue"></span></button>
+                    <button type="button" data-theme-choice="violet" aria-label="Tema violeta" aria-pressed="false"><span class="theme-swatch theme-swatch-violet"></span></button>
+                </div>
 
                 <div class="icone-bar">
 
@@ -290,7 +312,7 @@
 
             <!-- ============================== Habilidades ============================== -->
 
-            <article class="skills">
+            <article class="skills panel">
 
                 <h2>Habilidades</h2>
 
@@ -440,7 +462,7 @@
 
             <!-- ============================== Minha Jornada ============================== -->
 
-            <article class="jornada">
+            <article class="jornada panel">
 
                 <h2>Minha jornada</h2>
 
@@ -538,7 +560,23 @@
 
             </article>
 
+
+            <article class="certificados-section panel" aria-labelledby="titulo-certificados">
+                <h2 id="titulo-certificados">Certificados</h2>
+
+                <div class="certificados-empty">
+                    <span class="certificados-empty-icon" aria-hidden="true">
+                        <i class="fa-solid fa-award"></i>
+                    </span>
+                    <div>
+                        <h3>Em breve</h3>
+                        <p>Esta secção será atualizada com os certificados disponíveis.</p>
+                    </div>
+                </div>
+            </article>
+
         </section>
+       
 
     </main>
 

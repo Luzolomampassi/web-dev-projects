@@ -1,0 +1,405 @@
+/* Paletas escolhidas pelo visitante; a estrutura escura permanece igual. */
+body[data-theme="lime"] {
+    --color-primary: #a3e635;
+    --color-primary-hover: #bef264;
+    --color-secondary: #84cc16;
+    --color-accent: #d9f99d;
+    --color-header: #090d09;
+    --color-banner: #0b100b;
+    --color-bg: #080b08;
+    --color-card: #101610;
+    --color-card2: #141b13;
+    --color-surface: #172117;
+    --color-surface2: #1d2b1a;
+    --color-border: #293529;
+    --color-text: #f3f6ef;
+    --color-text-muted: #aab5a2;
+    --gradient-primary: linear-gradient(135deg, #a3e635, #84cc16);
+    --gradient-herobody: radial-gradient(ellipse at top right, #1b2a16, #080b08 65%);
+}
+
+body[data-theme="blue"] {
+    --color-primary: #38bdf8;
+    --color-primary-hover: #7dd3fc;
+    --color-secondary: #60a5fa;
+    --color-accent: #bae6fd;
+    --color-surface: #102b42;
+    --color-surface2: #123c60;
+    --color-border: #29445b;
+    --gradient-primary: linear-gradient(135deg, #38bdf8, #2563eb);
+}
+
+body[data-theme="violet"] {
+    --color-primary: #a78bfa;
+    --color-primary-hover: #c4b5fd;
+    --color-secondary: #c084fc;
+    --color-accent: #ddd6fe;
+    --color-surface: #271650;
+    --color-surface2: #431c68;
+    --color-border: #43345e;
+    --gradient-primary: linear-gradient(135deg, #a78bfa, #7c3aed);
+}
+
+/* Aplica a cor selecionada aos destaques que ainda tinham valores fixos. */
+body[data-theme] header > nav .icone-nav,
+body[data-theme] header > nav #menu ul a[aria-current="page"]::before,
+body[data-theme].home-page .boas-vindas::before,
+body[data-theme].home-page .banner-text-mark,
+body[data-theme].home-page .projects-theme h2::after {
+    color: var(--color-primary);
+    background-color: var(--color-primary);
+}
+
+body[data-theme].home-page .banner-text-mark {
+    background: none;
+}
+
+body[data-theme].home-page .banner-buttons .btn-primary {
+    color: #07100a;
+    background: var(--gradient-primary);
+}
+
+body[data-theme].home-page .card-project > a {
+    border-color: var(--color-primary);
+    color: var(--color-accent);
+}
+
+body[data-theme].home-page .card-project > a:hover {
+    border-color: var(--color-primary-hover);
+    background: color-mix(in srgb, var(--color-primary) 14%, transparent);
+}
+
+.theme-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.theme-switcher button {
+    display: grid;
+    width: 30px;
+    height: 30px;
+    place-items: center;
+    border: 1px solid rgba(203, 213, 225, 0.35);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+}
+
+.theme-switcher button[aria-pressed="true"] {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.theme-switcher button:focus-visible {
+    outline: 2px solid var(--color-primary-hover);
+    outline-offset: 3px;
+}
+
+.theme-swatch {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+
+.theme-swatch-lime { background: #a3e635; }
+.theme-swatch-blue { background: #38bdf8; }
+.theme-swatch-violet { background: #a78bfa; }
+
+.certificados-section {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 18px;
+}
+
+.certificados-section > h2 {
+    margin: 0;
+}
+
+.certificados-empty {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-height: 132px;
+    padding: 24px;
+    border: 1px dashed var(--color-border);
+    border-radius: 10px;
+    background: var(--color-card2);
+}
+
+.certificados-empty-icon {
+    display: grid;
+    flex: 0 0 52px;
+    width: 52px;
+    height: 52px;
+    place-items: center;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    color: var(--color-primary);
+    background: var(--color-surface);
+    font-size: 1.4rem;
+}
+
+.certificados-empty h3 {
+    margin-bottom: 6px;
+    color: var(--color-text);
+    font-size: 1.05rem;
+}
+
+.certificados-empty p {
+    color: var(--color-text-muted);
+    line-height: 1.55;
+}
+
+@media (max-width: 560px) {
+    .certificados-empty {
+        align-items: flex-start;
+        gap: 14px;
+        padding: 18px;
+    }
+
+    .certificados-empty-icon {
+        flex-basis: 44px;
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 767px) {
+    header > nav #menu .theme-switcher {
+        justify-content: flex-start;
+        padding: 4px;
+    }
+}
+
+/* Tema verde-lima: fundos escuros em camadas, texto claro e acentos verdes. */
+body[data-theme="lime"] {
+    --color-primary: #a3e635;
+    --color-primary-hover: #bef264;
+    --color-secondary: #84cc16;
+    --color-accent: #d9f99d;
+    --color-header: #090d09;
+    --color-banner: #0b100b;
+    --color-bg: #080b08;
+    --color-card: #101610;
+    --color-card2: #141b13;
+    --color-surface: #172117;
+    --color-surface2: #1d2b1a;
+    --color-surface3: #1d2b1a;
+    --color-border: #293529;
+    --color-text: #f3f6ef;
+    --color-text-muted: #aab5a2;
+    --color-text-secondary: #aab5a2;
+    --color-icon-bg: #172117;
+    --gradient-primary: linear-gradient(135deg, #a3e635, #84cc16);
+    --gradient-secundary: linear-gradient(135deg, #84cc16, #4d7c0f);
+    --gradient-herobody: radial-gradient(ellipse at top right, #1b2a16, #080b08 65%);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+body[data-theme="lime"] header,
+body[data-theme="lime"] footer {
+    background-color: var(--color-header);
+    border-color: var(--color-border);
+}
+
+body[data-theme="lime"] header > nav {
+    border-color: var(--color-border);
+    background: rgba(9, 13, 9, 0.96);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+body[data-theme="lime"] header > nav .icone-nav,
+body[data-theme="lime"] header > nav #menu ul a[aria-current="page"]::before {
+    color: var(--color-primary);
+    background-color: var(--color-primary);
+}
+
+body[data-theme="lime"] #menu,
+body[data-theme="lime"] .card-project,
+body[data-theme="lime"] .card,
+body[data-theme="lime"] .item,
+body[data-theme="lime"] .search_container,
+body[data-theme="lime"] .cards,
+body[data-theme="lime"] .card_contato,
+body[data-theme="lime"] .card-infor,
+body[data-theme="lime"] .contact-note,
+body[data-theme="lime"] .contact-hero-link,
+body[data-theme="lime"] .panel,
+body[data-theme="lime"] .highlights-container,
+body[data-theme="lime"] .experiencias,
+body[data-theme="lime"] .skills,
+body[data-theme="lime"] .jornada,
+body[data-theme="lime"] .certificados-section,
+body[data-theme="lime"] .highlight-tec,
+body[data-theme="lime"] .hightlight-certificado,
+body[data-theme="lime"] .highlight,
+body[data-theme="lime"] .modal,
+body[data-theme="lime"] .content,
+body[data-theme="lime"] .perfil {
+    border-color: var(--color-border);
+    background-color: var(--color-card);
+}
+
+body[data-theme="lime"] .banner,
+body[data-theme="lime"] .banner-sobre,
+body[data-theme="lime"] .banner-contato,
+body[data-theme="lime"] .banner-projetos {
+    background-color: var(--color-banner);
+    background-image: var(--gradient-herobody);
+}
+
+body[data-theme="lime"] h1,
+body[data-theme="lime"] h2,
+body[data-theme="lime"] h3,
+body[data-theme="lime"] h4,
+body[data-theme="lime"] label {
+    color: var(--color-text);
+}
+
+body[data-theme="lime"] p,
+body[data-theme="lime"] li,
+body[data-theme="lime"] .banner-content > p,
+body[data-theme="lime"] .banner-text-mark + p {
+    color: var(--color-text-muted);
+}
+
+body[data-theme="lime"] .banner-content > p,
+body[data-theme="lime"] .banner-sobre .banner-content > p,
+body[data-theme="lime"].projects-page .banner-content > p:last-child,
+body[data-theme="lime"].projects-page .description > p,
+body[data-theme="lime"] .perfil > p,
+body[data-theme="lime"] .perfil-iniciais {
+    color: var(--color-text);
+}
+
+body[data-theme="lime"] a,
+body[data-theme="lime"] .banner-text-mark,
+body[data-theme="lime"] .boas-vinda,
+body[data-theme="lime"] .boas-vinda::before,
+body[data-theme="lime"] .boas-vindas::before,
+body[data-theme="lime"] .icone-nav,
+body[data-theme="lime"] .icon-footer.fa-heart,
+body[data-theme="lime"] .highlight,
+body[data-theme="lime"] .perfil-linha,
+body[data-theme="lime"] .banner_icon,
+body[data-theme="lime"] .contact-note i,
+body[data-theme="lime"] .projects-theme h2::after,
+body[data-theme="lime"] .panel > h2::after {
+    color: var(--color-primary);
+}
+
+body[data-theme="lime"] .banner-buttons .btn-primary,
+body[data-theme="lime"] .btn-submit,
+body[data-theme="lime"] .projects-page .btn-primary {
+    border-color: var(--color-primary);
+    color: #10150b;
+    background: var(--gradient-primary);
+}
+
+body[data-theme="lime"] .banner-buttons .btn-primary:hover,
+body[data-theme="lime"] .btn-submit:hover,
+body[data-theme="lime"] .projects-page .btn-primary:hover {
+    color: #080b08;
+    background: var(--color-primary-hover);
+}
+
+body[data-theme="lime"] input,
+body[data-theme="lime"] textarea,
+body[data-theme="lime"] select {
+    border-color: #344332;
+    color: var(--color-text);
+    background-color: #0b100b;
+}
+
+body[data-theme="lime"] input:focus,
+body[data-theme="lime"] textarea:focus,
+body[data-theme="lime"] select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(163, 230, 53, 0.14);
+}
+
+body[data-theme="lime"] .badge-html,
+body[data-theme="lime"] .badge-css,
+body[data-theme="lime"] .badge-js,
+body[data-theme="lime"] .badge-tech,
+body[data-theme="lime"] .projects-page .badge {
+    border-color: rgba(163, 230, 53, 0.18);
+    color: #d9f99d;
+    background-color: #172315;
+}
+
+body[data-theme="lime"] .progress-bar,
+body[data-theme="lime"] .circle,
+body[data-theme="lime"] .highlight-tec::before,
+body[data-theme="lime"] .timeline::before,
+body[data-theme="lime"] .boas-vinda::before,
+body[data-theme="lime"] .boas-vindas::before,
+body[data-theme="lime"] .perfil-linha {
+    background: var(--color-primary);
+}
+
+body[data-theme="lime"] .projects-page .card .banner_icon,
+body[data-theme="lime"] .projects-page .links_container > p {
+    border-color: var(--color-border);
+    color: var(--color-accent);
+    background-color: var(--color-surface);
+}
+
+body[data-theme="lime"].about-page .perfil {
+    border-color: var(--color-border);
+    background:
+        radial-gradient(ellipse at 82% 15%, rgba(163, 230, 53, 0.12), transparent 42%),
+        linear-gradient(145deg, #141b13, #090d09 72%);
+}
+
+body[data-theme="lime"] .boas-vinda {
+    border: 1px solid rgba(163, 230, 53, 0.2);
+    background: rgba(163, 230, 53, 0.08);
+}
+
+body[data-theme="lime"] .projects-page .filters button {
+    border-color: var(--color-border);
+    color: var(--color-text-muted);
+    background-color: var(--color-card2);
+}
+
+body[data-theme="lime"] .projects-page .filters button:hover,
+body[data-theme="lime"] .projects-page .filters button.is-active {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background-color: var(--color-surface2);
+}
+
+body[data-theme="lime"] .projects-page .btn-secundary:hover,
+body[data-theme="lime"] .projects-page .item:hover .btn-secundary,
+body[data-theme="lime"] .projects-page .item:focus-within .btn-secundary {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background-color: var(--color-surface2);
+}
+
+body[data-theme="lime"] .theme-switcher button[aria-pressed="true"] {
+    outline-color: var(--color-primary);
+}
+
+body[data-theme="lime"] :focus-visible {
+    outline-color: var(--color-primary);
+}
+
+body[data-theme="lime"] ::selection {
+    color: #10150b;
+    background: var(--color-primary);
+}
+
+body[data-theme="lime"]::-webkit-scrollbar-track {
+    background: var(--color-bg);
+}
+
+body[data-theme="lime"]::-webkit-scrollbar-thumb,
+body[data-theme="lime"]::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+}

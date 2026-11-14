@@ -340,7 +340,7 @@ a:focus-visible{
         width: 40%;
     }
    .banner{
-    font-size:clamp(1.3em,2.2rem) ;
+    font-size:clamp(1.3em, 2.2rem, 3rem) ;
    }
 
     .banner-container{

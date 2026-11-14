@@ -11,6 +11,20 @@
     <meta name="author" content="Luzolo Mampassi">
 
     <title>Luzolo Mampassi | Portfólio</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+    <!-- ============================== Open Graph & Twitter ============================== -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://luzolomampassi.github.io/web-dev-projects/">
+    <meta property="og:title" content="Luzolo Mampassi | Portfólio">
+    <meta property="og:description" content="Conheça os projetos de Luzolo Mampassi, estudante de desenvolvimento web e criador de interfaces e aplicações.">
+    <meta property="og:image" content="https://luzolomampassi.github.io/web-dev-projects/config%20do%20portofólio/icones/trechos/capa-do-portfolio.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@luzolomampassi">
+    <meta name="twitter:creator" content="@luzolomampassi">
 
     <!-- ============================== CSS ============================== -->
 
@@ -19,6 +33,7 @@
     <link rel="stylesheet" href="config do portofólio/estilos/footer.css">
     <link rel="stylesheet" href="config do portofólio/estilos/header.css">
     <link rel="stylesheet" href="config do portofólio/estilos/projects-inicio.css">
+    <link rel="stylesheet" href="config do portofólio/estilos/temas.css">
 
     <!-- ============================== Ícones ============================== -->
 
@@ -36,7 +51,7 @@
     </script>
 </head>
 
-<body class="home-page">
+<body class="home-page" data-theme="lime">
 
     <!-- ============================== Header ============================== -->
 
@@ -92,6 +107,12 @@
                     </li>
 
                 </ul>
+
+                <div class="theme-switcher" role="group" aria-label="Escolher tema de cores">
+                    <button type="button" data-theme-choice="lime" aria-label="Tema verde-lima" aria-pressed="true"><span class="theme-swatch theme-swatch-lime"></span></button>
+                    <button type="button" data-theme-choice="blue" aria-label="Tema azul" aria-pressed="false"><span class="theme-swatch theme-swatch-blue"></span></button>
+                    <button type="button" data-theme-choice="violet" aria-label="Tema violeta" aria-pressed="false"><span class="theme-swatch theme-swatch-violet"></span></button>
+                </div>
 
                 <div class="icone-bar">
 

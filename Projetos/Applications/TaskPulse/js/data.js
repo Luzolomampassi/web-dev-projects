@@ -26,6 +26,21 @@ export function salvarTarefas(tarefas) {
 }
 
 
+
+export function obterArquivadas(){
+
+    try {
+        const tarefasArquivadas = JSON.parse(localStorage.getItem("tarefasArquivadas") ?? "[]");
+
+        return Array.isArray(tarefasArquivadas) ? tarefasArquivadas : [];
+
+    } catch (erro) {
+        console.error("Erro ao carregar tarefas:", erro);
+        return [];
+    }
+    
+}
+
 export function calcularDados(tarefasSalvas = obterTarefas()) {
 
     const hoje = new Date();

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://luzolomampassi.github.io/web-dev-projects/sitemap.xml

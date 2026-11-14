@@ -8,6 +8,16 @@ if (formContato) {
         event.preventDefault();
         if (!formContato.reportValidity() || botaoContato.disabled) return;
 
+        // CSRF token: double-submit cookie pattern
+        let token = document.cookie.match('(^|; )csrf_token=([^;]*)');
+        if (!token) {
+            token = crypto.randomUUID?.() || Math.random().toString(36).substring(2);
+            document.cookie = `csrf_token=${token}; path=/; SameSite=Lax; max-age=3600`;
+        } else {
+            token = token[2];
+        }
+        document.getElementById('csrf_token').value = token;
+
         botaoContato.disabled = true;
         feedbackContato.textContent = 'A enviar a mensagem…';
 

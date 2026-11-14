@@ -60,6 +60,39 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
     respond(422, ['success' => false, 'message' => 'Informe um endereço de e-mail válido.']);
 }
 
+// CSRF protection: double-submit cookie pattern
+$cookieToken = $_COOKIE['csrf_token'] ?? '';
+$postToken = $_POST['csrf_token'] ?? '';
+if (empty($cookieToken) || empty($postToken) || !hash_equals($cookieToken, $postToken)) {
+    respond(403, ['success' => false, 'message' => 'Token de segurança inválido. Recarregue a página e tente novamente.']);
+}
+
+// Rate limiting: máximo de 5 envios por IP por hora
+$rateLimitFile = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'state' . DIRECTORY_SEPARATOR . 'contact_rate.log';
+$ip = $_SERVER['REMOTE_ADDR'] ?? 'desconhecido';
+$now = time();
+$janela = 3600; // 1 hora em segundos
+$limite = 5;
+
+$registros = [];
+if (is_readable($rateLimitFile)) {
+    $linhas = file($rateLimitFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($linhas as $linha) {
+        $partes = explode('|', trim($linha), 2);
+        if (count($partes) === 2 && $partes[0] === $ip) {
+            $tempo = (int)$partes[1];
+            if ($now - $tempo < $janela) {
+                $registros[] = $tempo;
+            }
+        }
+    }
+}
+
+if (count($registros) >= $limite) {
+    http_response_code(429);
+    respond(429, ['success' => false, 'message' => 'Você enviou muitas mensagens. Tente novamente em 1 hora.']);
+}
+
 // Prefer server environment variables; .env is a simple local/deployment fallback.
 $envPath = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . '.env';
 if (is_readable($envPath)) {
@@ -115,10 +148,16 @@ try {
     $mail->setFrom($config['from_email'], $config['from_name']);
     $mail->addAddress($config['to_email']);
     $mail->addReplyTo($email, $nome);
-    $mail->Subject = 'Contacto do portfólio: ' . $assunto;
+    $mail->Subject = 'Contato do portfólio: ' . $assunto;
     $mail->Body = "Nome: {$nome}\nE-mail: {$email}\nAssunto: {$assunto}\n\nMensagem:\n{$mensagem}";
     $mail->send();
-    respond(200, ['success' => true, 'message' => 'Mensagem enviada com sucesso. Obrigado pelo contacto.']);
+    // Registra envio para rate limiting
+    $rateLimitFile = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'state' . DIRECTORY_SEPARATOR . 'contact_rate.log';
+    $ip = $_SERVER['REMOTE_ADDR'] ?? 'desconhecido';
+    $now = time();
+    file_put_contents($rateLimitFile, "$ip|$now\n", FILE_APPEND | LOCK_EX);
+
+    respond(200, ['success' => true, 'message' => 'Mensagem enviada com sucesso. Obrigado pelo contato.']);
 } catch (Throwable $exception) {
     error_log('Contact form delivery failed: ' . $exception->getMessage());
     respond(502, ['success' => false, 'message' => 'Não foi possível enviar a mensagem agora. Tente novamente mais tarde.']);

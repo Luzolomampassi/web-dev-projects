@@ -603,6 +603,48 @@ gap: 10px;
 
 }
 
+.tasks-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.pagination-button,
+.pagination-current {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 38px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font: inherit;
+}
+
+.pagination-button {
+    cursor: pointer;
+}
+
+.pagination-button:hover {
+    background-color: var(--color-background);
+}
+
+.pagination-button:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.pagination-current {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    font-weight: 600;
+}
+
 .task {
 display: grid;
 grid-template-columns: auto minmax(0, 1fr) auto;
@@ -749,43 +791,58 @@ align-items: center;
 
 
 }
-
+/* Ações da tarefa: ações diretas em ecrãs pequenos */
 .task-actions {
-display: flex;
-align-items: center;
-
-
-gap: 5px;
-
-
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    min-width: max-content;
+    margin-left: auto;
+    position: relative;
 }
 
-.task-actions button {
-width: 34px;
-height: 34px;
-
-
-display: flex;
-align-items: center;
-justify-content: center;
-
-border: 0;
-border-radius: var(--radius-md);
-
-background-color: transparent;
-color: var(--color-text-muted);
-
-cursor: pointer;
-
-transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
-
-
+.button-list {
+    display: none;
 }
 
-.task-actions button:hover {
-background-color: var(--color-background);
+.task-actions-list {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: var(--radius-md);
+}
+
+.task-actions-list button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 36px;
+    width: 36px;
+    min-height: 36px;
+    padding: 0;
+
+    border: 0;
+    border-radius: var(--radius-md);
+
+    background-color: transparent;
+    color: var(--color-text-muted);
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.task-actions-list button:hover {
+    background-color: var(--color-background);
+}
+
+.task-actions-list button:focus-visible,
+.button-list:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
 }
 
 .btn-edit:hover {
@@ -802,35 +859,38 @@ BADGES
 ================================ */
 
 .badges {
-display: flex;
-align-items: center;
-flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 
 
-gap: 8px;
-margin-top: 8px;
+    gap: 8px;
+    margin-top: 8px;
 
 
 }
 
 .badge {
-position: relative;
+    position: relative;
 
 
-display: inline-flex;
-align-items: center;
+    display: inline-flex;
+    align-items: center;
 
-width: fit-content;
+    width: fit-content;
 
-padding: 4px 8px;
+    padding: 4px 8px;
 
-border-radius: 999px;
+    border-radius: 8px;
+    border: 1px solid #253247;
 
-font-size: 0.8rem;
-font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: 600;
 
-white-space: nowrap;
-text-transform: capitalize;
+    white-space: nowrap;
+    text-transform: capitalize;
+
+    background-color: #1E293B;
 
 
 }
@@ -838,7 +898,7 @@ text-transform: capitalize;
 .alta,
 .media,
 .baixa {
-padding-left: 9px;
+    padding-left: 9px;
 }
 
 .alta::before,
@@ -856,19 +916,19 @@ font-weight: bold;
 }
 
 .alta {
-color: var(--color-danger);
-background-color: var(--color-danger-light);
+    color: var(--color-danger);
+    background-color: var(--color-danger-light);
 }
 
 .media {
-color: var(--color-warning);
-background-color: var(--color-warning-light);
+    color: var(--color-warning);
+    background-color: var(--color-warning-light);
 }
 
 .baixa {
-color: var(--color-success);
-background-color: var(--color-success-light);
-}
+    color: var(--color-success);
+    background-color: var(--color-success-light);
+    }
 
 /* ================================
 RESUMO
@@ -1124,11 +1184,12 @@ DESKTOP
 .list-tasks {
     gap: 0;
 }
+body:has(.grid) .campos{
+    display: none;
+}
 .grid {
     display: grid;
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(min(100%, 360px), 1fr)
+    grid-template-columns: repeat(auto-fit,minmax(min(100%, 360px), 1fr)
     );
 
     gap: 16px;
@@ -1136,9 +1197,11 @@ DESKTOP
     align-items: stretch;
 }
 
+
 .grid .task {
+    align-items: flex-start;
     min-width: 0;
-    min-height: 200px;
+    min-height: 160px;
     padding: 16px;
 
     border: 1px solid var(--color-border);
@@ -1154,12 +1217,28 @@ DESKTOP
         transform 0.2s ease;
 }
 
+.grid .task > label {
+    padding-top: 5px;
+}
+
 .grid .task > div {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 8px;
     text-align: center;
+    height: 100%;
+
+    align-items: baseline;
+    justify-content: space-between;
+}
+.grid .task > div .badges {
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.grid .task > .task-actions {
+    height: fit-content;
+    justify-content: flex-end;
 }
 
 .grid .task:hover {
@@ -1220,18 +1299,75 @@ DESKTOP
     display: flex;
     text-align: center;
 }
+/* Menu suspenso das ações no desktop */
+.task-actions {
+    position: relative;
+    z-index: 5;
+    margin-left: auto;
+}
 
-.task-actions button {
-    opacity: 0;
+/* Evita que a regra geral dos cartões centralize a área das ações. */
+.grid .task > .task-actions {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    text-align: right;
+}
+
+.button-list {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+
+    border: 0;
+    border-radius: var(--radius-md);
+
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
 
     transition:
-        opacity 0.2s ease,
         background-color 0.2s ease,
         color 0.2s ease;
 }
 
-.task:hover .task-actions button,
-.task:focus-within .task-actions button {
+.button-list:hover {
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+.task-actions-list {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+
+    position: absolute;
+    bottom: calc(100% + 8px);
+    right: 0;
+    z-index: 20;
+
+    min-width: 44px;
+    padding: 5px;
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.task-actions-list.show {
+    display: flex;
+}
+
+.task-actions-list button {
+    width: 100%;
+    min-height: 36px;
+    flex: 0 0 36px;
     opacity: 1;
 }
 

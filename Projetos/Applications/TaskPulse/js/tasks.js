@@ -1,6 +1,6 @@
-import { calcularDados, obterTarefas } from "./data.js";
-
+import { calcularDados, obterTarefas, obterArquivadas} from "./data.js";
 const tarefas = obterTarefas();
+const tarefasArquivadas = obterArquivadas()
 // ============================================================
 // ELEMENTOS DO DOM
 // ============================================================
@@ -48,9 +48,7 @@ let idTarefaEmEdicao = null;
 // ============================================================
 
 // Renderizar tarefas que já existam no array
-tarefas.forEach((tarefa) => {
-    listaTarefas.appendChild(criarTarefa(tarefa));
-});
+
 
 atualizarEstadoVazio();
 resumos();
@@ -118,7 +116,6 @@ formularioTarefa.addEventListener("submit", (event) => {
     atualizarEstadoVazio();
     resumos();
     salvarTarefas();
-
     modalTarefa.close();
 });
 
@@ -225,7 +222,7 @@ function obterDadosFormulario() {
         categoria: campoCategoria.value,
         vencimento: campoVencimento.value,
         horario: campoHorario.value,
-        prioridade: campoPrioridade.value
+        prioridade: campoPrioridade.value,
     };
 }
 
@@ -237,7 +234,9 @@ function converterDados() {
     return {
         id: crypto.randomUUID(),
         ...obterDadosFormulario(),
+        arquivada:false,
         status: false
+        
     };
 }
 
@@ -324,13 +323,61 @@ function criarTarefa(dadosTarefa) {
     conteudoTarefa.appendChild(descricaoTarefa);
     conteudoTarefa.appendChild(containerBadges);
 
+    // Lista de botões
+    const list = document.createElement("div")
+    list.classList.add("task-actions")
+
+    const Botaolist = document.createElement("button")
+    Botaolist.classList.add("button-list")
+    const iconList = document.createElement("i");
+    iconList.setAttribute("aria-hidden", "true");
+
+    const svgNS = "http://www.w3.org/2000/svg";
+
+    // Criar o SVG
+    const ellipsisSVG = document.createElementNS(svgNS, "svg");
+
+    ellipsisSVG.setAttribute("viewBox", "0 0 24 24");
+    ellipsisSVG.setAttribute("width", "20");
+    ellipsisSVG.setAttribute("height", "20");
+    ellipsisSVG.setAttribute("fill", "currentColor");
+
+    // Criar os três pontos
+    for (const cy of [5, 12, 19]) {
+        const circle = document.createElementNS(svgNS, "circle");
+
+        circle.setAttribute("cx", "12");
+        circle.setAttribute("cy", cy);
+        circle.setAttribute("r", "1.5");
+
+        ellipsisSVG.appendChild(circle);
+    }
+
+    // Montar o elemento
+    iconList.appendChild(ellipsisSVG);
+
+    Botaolist.appendChild(iconList)
+   
+
     // Botões de ação
-    const containerAcoes = document.createElement("div");
-    containerAcoes.classList.add("task-actions");
+    const taskActionsContainer = document.createElement("div");
+    taskActionsContainer.classList.add("task-actions-list");
+
+    // Botão editar
+    const botaoArquivar = document.createElement("button");
+    botaoArquivar.classList.add("btn-archive");
+    botaoArquivar.setAttribute("aria-label", "Arquiva a tarefa");
+    botaoArquivar.setAttribute("title", "Arquivar tarefa");
+
+    const iconeArquivar = document.createElement("i");
+    iconeArquivar.classList.add(
+        "fa-solid",
+        "fa-box-archive"
+    );
+    botaoArquivar.appendChild(iconeArquivar);
 
     // Botão editar
     const botaoEditar = document.createElement("button");
-
     botaoEditar.classList.add("btn-edit");
     botaoEditar.setAttribute("aria-label", "Editar a tarefa");
     botaoEditar.setAttribute("title", "Editar tarefa");
@@ -361,29 +408,71 @@ function criarTarefa(dadosTarefa) {
     botaoDeletar.appendChild(iconeDeletar);
 
     // Montagem dos botões
-    containerAcoes.appendChild(botaoEditar);
-    containerAcoes.appendChild(botaoDeletar);
+    taskActionsContainer.appendChild(botaoArquivar);
+    taskActionsContainer.appendChild(botaoEditar);
+    taskActionsContainer.appendChild(botaoDeletar);
+    list.appendChild(Botaolist)
+    list.appendChild(taskActionsContainer)
 
     // Montagem final
     elementoTarefa.appendChild(rotuloCheckbox);
     elementoTarefa.appendChild(conteudoTarefa);
-    elementoTarefa.appendChild(containerAcoes);
+    elementoTarefa.appendChild(list);
+
+    // Mostra lista
+   // Abre ou fecha o menu ao clicar no botão
+    Botaolist.addEventListener("click", () => {
+        taskActionsContainer.classList.toggle("show");
+    });
+
+    // Fecha o menu ao clicar fora
+    document.addEventListener("click", (event) => {
+        const clicouNoBotao = Botaolist.contains(event.target);
+        const clicouNoMenu = taskActionsContainer.contains(event.target);
+        if (!clicouNoBotao && !clicouNoMenu) {
+            taskActionsContainer.classList.remove("show");
+        }
+    });
 
     // Eliminar tarefa
-    botaoDeletar.addEventListener("click", () => {
+    function eliminar(objetoProcurado, elementoTarefa) {
         const indice = tarefas.findIndex(
-            (tarefa) => tarefa.id === dadosTarefa.id
+            (tarefa) => tarefa.id === objetoProcurado.id
         );
+
         if (indice === -1) {
             return;
         }
 
         tarefas.splice(indice, 1);
         elementoTarefa.remove();
+
         salvarTarefas();
         atualizarEstadoVazio();
         resumos();
+    }
+
+    botaoDeletar.addEventListener("click", () => {
+        eliminar(dadosTarefa, elementoTarefa);
     });
+    // Arquivar
+    botaoArquivar.addEventListener("click", () =>{
+
+        const elemento = botaoArquivar.closest(".task")
+        elemento.dataset.arquivada = true
+
+        const objeto = tarefas.find((tarefa) => tarefa.id === elemento?.dataset.id);
+        if(objeto === ""){
+            return
+        }
+        objeto.arquivada = true 
+        tarefasArquivadas.push(objeto)
+        salvarArquivadas()
+
+        eliminar(objeto, elemento)
+        resumos();
+        
+    })
 
     // Devolver o elemento para ser inserido ou substituir o antigo.
     return elementoTarefa;
@@ -392,6 +481,11 @@ function criarTarefa(dadosTarefa) {
 function salvarTarefas() {
     localStorage.setItem("tarefas", JSON.stringify(tarefas));
 }
+
+function salvarArquivadas() {
+    localStorage.setItem("tarefasArquivadas", JSON.stringify(tarefasArquivadas));
+}
+
 
 // ============================================================
 // EDITAR TAREFA — DELEGAÇÃO DE EVENTOS
@@ -494,6 +588,57 @@ botoesOrder.forEach(botao => {
         }
     })
 });
+
+
+
+const btnPrevious = document.querySelector("#tasks-page-previous")
+const btnNext = document.querySelector("#tasks-page-next")
+const tasksPageCurrent = document.querySelector("#tasks-current-page")
+let currentPage = 1
+let startIndex = 0
+let endIndex = 10
+const pageSize = 10
+
+btnPrevious.addEventListener("click", () =>{
+    if(currentPage <=  1){
+        return
+    }
+    currentPage -= 1
+    startIndex -= 10
+    endIndex -= 10
+    tasksPageCurrent.textContent =  currentPage
+    renderizarTarefas()
+})
+
+btnNext.addEventListener("click", () =>{
+    let limite = Math.ceil(tarefas.length / pageSize)
+    if(currentPage >=  limite){  
+        return
+    }
+    currentPage += 1
+    startIndex += 10
+    endIndex += 10
+    tasksPageCurrent.textContent =  currentPage
+    renderizarTarefas()
+})
+
+
+function renderizarTarefas() {
+    listaTarefas.replaceChildren();
+
+    const inicio = Math.max(0, Math.trunc(startIndex));
+
+    const fim = Math.min(endIndex,inicio + 9,tarefas.length - 1
+    );
+
+    for (let i = inicio; i <= fim; i++) {
+        listaTarefas.appendChild(criarTarefa(tarefas[i]));
+    }
+}
+renderizarTarefas()
+
+
+
 
 // ============================================================
 // RESUMOS
