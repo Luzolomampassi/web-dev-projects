@@ -5,9 +5,13 @@ require dirname(__DIR__) . '/includes/bootstrap.php';
 try {
     $pdo=db();$user=require_login();$uid=(int)$user['id'];$method=$_SERVER['REQUEST_METHOD']??'GET';
     if($method==='GET'){
-        $q=$pdo->prepare('SELECT n.id,n.type,n.reference_id,n.body,n.is_read,n.created_at,n.actor_id,u.username AS actor_name FROM notifications n LEFT JOIN users u ON u.id=n.actor_id WHERE n.user_id=? ORDER BY n.id DESC LIMIT 100');$q->execute([$uid]);$items=$q->fetchAll();
+        $page = max(1, (int)($_GET['page'] ?? 1));
+        $limit = max(1, min(100, (int)($_GET['limit'] ?? 50)));
+        $offset = ($page - 1) * $limit;
+        $q=$pdo->prepare('SELECT n.id,n.type,n.reference_id,n.body,n.is_read,n.created_at,n.actor_id,u.username AS actor_name FROM notifications n LEFT JOIN users u ON u.id=n.actor_id WHERE n.user_id=? ORDER BY n.id DESC LIMIT ? OFFSET ?');$q->execute([$uid, $limit, $offset]);$items=$q->fetchAll();
+        $q=$pdo->prepare('SELECT COUNT(*) AS total FROM notifications WHERE user_id=?');$q->execute([$uid]);$total=(int)$q->fetchColumn();
         $q=$pdo->prepare('SELECT COUNT(*) FROM notifications WHERE user_id=? AND is_read=0');$q->execute([$uid]);
-        json_response(['notifications'=>$items,'unread'=>(int)$q->fetchColumn()]);
+        json_response(['notifications'=>$items,'unread'=>(int)$q->fetchColumn(), 'pagination' => ['page' => $page, 'limit' => $limit, 'total' => $total, 'pages' => (int)ceil($total / $limit)]]);
     }
     if($method!=='POST')json_response(['error'=>'Método não suportado.'],405);
     require_csrf();$action=(string)($_POST['action']??'');

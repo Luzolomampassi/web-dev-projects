@@ -6,10 +6,14 @@ try {
     $pdo = db(); $user = require_login(); $uid=(int)$user['id'];
     $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
     if ($method === 'GET') {
-        $stmt=$pdo->prepare('SELECT * FROM games WHERE user_id=? ORDER BY created_at DESC, id DESC'); $stmt->execute([$uid]); $games=$stmt->fetchAll();
+        $page = max(1, (int)($_GET['page'] ?? 1));
+        $limit = max(1, min(100, (int)($_GET['limit'] ?? 50)));
+        $offset = ($page - 1) * $limit;
+        $stmt=$pdo->prepare('SELECT * FROM games WHERE user_id=? ORDER BY created_at DESC, id DESC LIMIT ? OFFSET ?'); $stmt->execute([$uid, $limit, $offset]); $games=$stmt->fetchAll();
+        $stmt=$pdo->prepare('SELECT COUNT(*) AS total FROM games WHERE user_id=?'); $stmt->execute([$uid]); $total=(int)$stmt->fetchColumn();
         $stmt=$pdo->prepare('SELECT c.id, c.name, c.created_at, COUNT(gc.game_id) AS game_count FROM collections c LEFT JOIN game_collections gc ON gc.collection_id = c.id WHERE c.user_id=? GROUP BY c.id ORDER BY c.name'); $stmt->execute([$uid]); $collections=$stmt->fetchAll();
         $stmt=$pdo->prepare('SELECT gc.game_id, gc.collection_id FROM game_collections gc JOIN collections c ON c.id=gc.collection_id WHERE c.user_id=?');$stmt->execute([$uid]);$members=$stmt->fetchAll();
-        json_response(['games' => array_map('game_payload', $games), 'collections' => $collections, 'memberships' => $members]);
+        json_response(['games' => array_map('game_payload', $games), 'collections' => $collections, 'memberships' => $members, 'pagination' => ['page' => $page, 'limit' => $limit, 'total' => $total, 'pages' => (int)ceil($total / $limit)]]);
     }
     if ($method === 'POST') {
         require_csrf();
@@ -48,6 +52,18 @@ try {
             $mime = (new finfo(FILEINFO_MIME_TYPE))->file($_FILES['cover']['tmp_name']);
             $extensions = ['image/jpeg'=>'jpg','image/png'=>'png','image/webp'=>'webp','image/gif'=>'gif'];
             if (!isset($extensions[$mime])) json_response(['error' => 'Formato de imagem não suportado. Usa JPG, PNG, WebP ou GIF.'], 422);
+
+            // Valida extensão do nome original
+            $originalName = (string)$_FILES['cover']['name'];
+            $ext = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+            $allowedExt = ['jpg','jpeg','png','webp','gif'];
+            if (!in_array($ext, $allowedExt, true)) json_response(['error' => 'Extensão de ficheiro não permitida.'], 422);
+
+            // Valida que é realmente uma imagem (dimensões)
+            $imageInfo = @getimagesize($_FILES['cover']['tmp_name']);
+            if ($imageInfo === false) json_response(['error' => 'O ficheiro não é uma imagem válida.'], 422);
+            if ($imageInfo[0] > 4096 || $imageInfo[1] > 4096) json_response(['error' => 'A imagem excede 4096 px de largura ou altura.'], 422);
+
             if (!is_dir(UPLOAD_DIR) && !mkdir(UPLOAD_DIR, 0755, true)) throw new RuntimeException('Não foi possível preparar a pasta de capas.');
             $filename = bin2hex(random_bytes(18)) . '.' . $extensions[$mime];
             if (!move_uploaded_file($_FILES['cover']['tmp_name'], UPLOAD_DIR . '/' . $filename)) throw new RuntimeException('Não foi possível guardar a capa.');
@@ -72,6 +88,21 @@ try {
             $pdo->prepare('INSERT INTO games (title,platform,genre,status,hours,rating,release_date,description,notes,favorite,is_wishlist,cover_path,user_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)')->execute([...$data,$cover,$uid]);
             $gameId=(int)$pdo->lastInsertId();
         }
+
+        // Sincronizar coleções do jogo
+        $colecoes = $_POST['collections'] ?? [];
+        if (!is_array($colecoes)) $colecoes = [$colecoes];
+        $colecoes = array_filter(array_map(fn($c) => filter_var($c, FILTER_VALIDATE_INT), $colecoes));
+        // Remover associações antigas
+        $pdo->prepare('DELETE FROM game_collections WHERE game_id=?')->execute([$gameId]);
+        // Inserir novas associações (validando que a coleção pertence ao user)
+        if ($colecoes) {
+            $ins = $pdo->prepare('INSERT INTO game_collections (collection_id, game_id) SELECT c.id, ? FROM collections c WHERE c.id=? AND c.user_id=?');
+            foreach ($colecoes as $cid) {
+                $ins->execute([$gameId, $cid, $uid]);
+            }
+        }
+
         $stmt=$pdo->prepare('SELECT * FROM games WHERE id=?'); $stmt->execute([$gameId]);
         json_response(['ok'=>true,'game'=>game_payload($stmt->fetch())]);
     }

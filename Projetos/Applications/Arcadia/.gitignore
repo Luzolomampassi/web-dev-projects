@@ -1,3 +1,28 @@
-/config.php
-/uploads/*
-!/uploads/.gitkeep
+# Arcadia — ficheiros a excluir do controlo de versão
+
+# Configuração local com credenciais reais (não publicar)
+config.php
+.env
+.env.local
+
+# Pasta de uploads de capas de jogos (conteúdo gerado pelo utilizador)
+uploads/
+
+# Logs
+*.log
+logs/
+
+# IDE / editores
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Compilado / cache
+__cache/
+*.tmp

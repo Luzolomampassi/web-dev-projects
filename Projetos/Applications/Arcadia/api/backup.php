@@ -12,6 +12,15 @@ try {
         $q = $pdo->prepare('SELECT * FROM games WHERE user_id=? ORDER BY id');
         $q->execute([$uid]);
         $games = array_map('game_payload', $q->fetchAll());
+        // Incluir dados da capa (base64) quando existir, para não perder na importação
+        foreach ($games as &$game) {
+            if (!empty($game['cover_path']) && is_file(UPLOAD_DIR . '/' . basename((string)$game['cover_path']))) {
+                $game['cover_data'] = 'data:' . (new finfo(FILEINFO_MIME_TYPE))->file(UPLOAD_DIR . '/' . basename((string)$game['cover_path'])) . ';base64,' . base64_encode(file_get_contents(UPLOAD_DIR . '/' . basename((string)$game['cover_path'])));
+            } else {
+                $game['cover_data'] = null;
+            }
+        }
+        unset($game);
         $q = $pdo->prepare('SELECT id,name,created_at FROM collections WHERE user_id=? ORDER BY id');
         $q->execute([$uid]);
         $collections = $q->fetchAll();
@@ -51,7 +60,22 @@ try {
     foreach ($backup['games'] as $game) {
         $steamId=$game['steam_app_id']??null;
         if($steamId!==null&&(!filter_var($steamId,FILTER_VALIDATE_INT)||$steamId<1))json_response(['error'=>'A cópia contém um identificador Steam inválido.'],422);
-        $insertGame->execute([clean_text($game['title'],160),clean_text($game['platform']??'',80),clean_text($game['genre']??'',80),$game['status']??'backlog',(float)($game['hours']??0),(float)($game['rating']??0),$game['release_date']??null,clean_text($game['description']??'',2000),clean_text($game['notes']??'',3000),!empty($game['favorite'])?1:0,!empty($game['is_wishlist'])?1:0,null,$steamId,$uid]);
+        $coverPath = null;
+        if (!empty($game['cover_data']) && is_string($game['cover_data']) && strpos($game['cover_data'], 'data:') === 0) {
+            list($mime, $data) = explode(',', $game['cover_data'], 2);
+            $decoded = base64_decode($data, true);
+            if ($decoded !== false) {
+                $extMap = ['image/jpeg'=>'jpg','image/png'=>'png','image/webp'=>'webp','image/gif'=>'gif'];
+                $ext = $extMap[$mime] ?? 'jpg';
+                if (!is_dir(UPLOAD_DIR) && !mkdir(UPLOAD_DIR, 0755, true)) throw new RuntimeException('Não foi possível preparar a pasta de capas.');
+                $coverFilename = bin2hex(random_bytes(18)) . '.' . $ext;
+                if (file_put_contents(UPLOAD_DIR . '/' . $coverFilename, $decoded) === false) {
+                    throw new RuntimeException('Não foi possível restaurar a capa do jogo.');
+                }
+                $coverPath = $coverFilename;
+            }
+        }
+        $insertGame->execute([clean_text($game['title'],160),clean_text($game['platform']??'',80),clean_text($game['genre']??'',80),$game['status']??'backlog',(float)($game['hours']??0),(float)($game['rating']??0),$game['release_date']??null,clean_text($game['description']??'',2000),clean_text($game['notes']??'',3000),!empty($game['favorite'])?1:0,!empty($game['is_wishlist'])?1:0,$coverPath,$steamId,$uid]);
         $gameIds[(string)($game['id']??'')] = (int)$pdo->lastInsertId();
     }
     $collectionIds = [];

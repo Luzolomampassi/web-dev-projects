@@ -39,13 +39,32 @@ try {
             json_response(['results'=>$q->fetchAll()]);
         }
 
-        $q = $pdo->prepare("SELECT u.id,u.public_id,u.username,u.bio,f.created_at FROM friendships f JOIN users u ON u.id=IF(f.requester_id=?,f.recipient_id,f.requester_id) WHERE (f.user_one=? OR f.user_two=?) AND f.status='accepted' ORDER BY u.username");
-        $q->execute([$uid,$uid,$uid]); $friends = $q->fetchAll();
-        $q = $pdo->prepare("SELECT f.requester_id AS id,u.public_id,u.username,f.created_at FROM friendships f JOIN users u ON u.id=f.requester_id WHERE f.recipient_id=? AND f.status='pending' ORDER BY f.created_at DESC");
-        $q->execute([$uid]); $incoming = $q->fetchAll();
-        $q = $pdo->prepare("SELECT f.recipient_id AS id,u.public_id,u.username,f.created_at FROM friendships f JOIN users u ON u.id=f.recipient_id WHERE f.requester_id=? AND f.status='pending' ORDER BY f.created_at DESC");
-        $q->execute([$uid]); $outgoing = $q->fetchAll();
-        json_response(['friends'=>$friends,'incoming'=>$incoming,'outgoing'=>$outgoing]);
+        $page = max(1, (int)($_GET['page'] ?? 1));
+        $limit = max(1, min(100, (int)($_GET['limit'] ?? 50)));
+        $offset = ($page - 1) * $limit;
+        $q = $pdo->prepare("SELECT u.id,u.public_id,u.username,u.bio,f.created_at FROM friendships f JOIN users u ON u.id=IF(f.requester_id=?,f.recipient_id,f.requester_id) WHERE (f.user_one=? OR f.user_two=?) AND f.status='accepted' ORDER BY u.username LIMIT ? OFFSET ?");
+        $q->execute([$uid,$uid,$uid, $limit, $offset]); $friends = $q->fetchAll();
+        $q = $pdo->prepare("SELECT COUNT(*) AS total FROM friendships f WHERE (f.user_one=? OR f.user_two=?) AND f.status='accepted'");
+        $q->execute([$uid,$uid]); $totalFriends=(int)$q->fetchColumn();
+        $q = $pdo->prepare("SELECT f.requester_id AS id,u.public_id,u.username,f.created_at FROM friendships f JOIN users u ON u.id=f.requester_id WHERE f.recipient_id=? AND f.status='pending' ORDER BY f.created_at DESC LIMIT ? OFFSET ?");
+        $q->execute([$uid, $limit, $offset]); $incoming = $q->fetchAll();
+        $q = $pdo->prepare("SELECT COUNT(*) AS total FROM friendships f WHERE f.recipient_id=? AND f.status='pending'");
+        $q->execute([$uid]); $totalIncoming=(int)$q->fetchColumn();
+        $q = $pdo->prepare("SELECT f.recipient_id AS id,u.public_id,u.username,f.created_at FROM friendships f JOIN users u ON u.id=f.recipient_id WHERE f.requester_id=? AND f.status='pending' ORDER BY f.created_at DESC LIMIT ? OFFSET ?");
+        $q->execute([$uid, $limit, $offset]); $outgoing = $q->fetchAll();
+        $q = $pdo->prepare("SELECT COUNT(*) AS total FROM friendships f WHERE f.requester_id=? AND f.status='pending'");
+        $q->execute([$uid]); $totalOutgoing=(int)$q->fetchColumn();
+        json_response([
+            'friends'=>$friends,
+            'incoming'=>$incoming,
+            'outgoing'=>$outgoing,
+            'pagination'=>[
+                'page'=>$page,'limit'=>$limit,
+                'total_friends'=>$totalFriends, 'pages_friends'=>(int)ceil($totalFriends/$limit),
+                'total_incoming'=>$totalIncoming, 'pages_incoming'=>(int)ceil($totalIncoming/$limit),
+                'total_outgoing'=>$totalOutgoing, 'pages_outgoing'=>(int)ceil($totalOutgoing/$limit),
+            ],
+        ]);
     }
 
     if ($method !== 'POST') json_response(['error'=>'Método não suportado.'],405);

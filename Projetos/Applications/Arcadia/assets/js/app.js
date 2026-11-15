@@ -14,6 +14,16 @@
     chatWith: 0,
     chatLastId: 0,
     chatMessages: [],
+    chatSSE: null,
+    presenceSSE: null,
+    presence: {},
+    typingTimer: null,
+    chatGroups: [],
+    currentGroup: 0,
+    groupMessages: [],
+    voiceCall: null,
+    localStream: null,
+    peerConnection: null,
   };
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [
@@ -254,6 +264,46 @@
           false,
         );
   }
+  let catalogSearchSerial = 0;
+  async function loadCatalog(query = "", featured = false) {
+    const platform = $("#catalog-platform")?.value || "steam";
+    const serial = ++catalogSearchSerial;
+    try {
+      const url = query
+        ? `api/catalog.php?platform=${encodeURIComponent(platform)}&search=${encodeURIComponent(query)}`
+        : `api/catalog.php?platform=${encodeURIComponent(platform)}&featured=1`;
+      const data = await request(url);
+      if (serial !== catalogSearchSerial) return;
+      const label = query || (featured ? `Em destaque na ${platform.charAt(0).toUpperCase() + platform.slice(1)}` : "");
+      renderCatalog(data.catalog || data.results || [], label, platform);
+    } catch (e) {
+      $("#catalog-error").textContent = e.message;
+      $("#catalog-grid").innerHTML = "";
+      $("#catalog-result-count").textContent = "0 jogos";
+    }
+  }
+  function renderCatalog(games, label = "", platform = "steam") {
+    const grid = $("#catalog-grid");
+    const platformLabels = { steam: "Steam", playstation: "PlayStation", xbox: "Xbox" };
+    const platformLabel = platformLabels[platform] || platform;
+    if (games.length) {
+      grid.innerHTML = games.map((g) => {
+        const cover = (g.tiny_image || g.image)
+          ? `<img src="${escapeHtml(g.tiny_image || g.image)}" alt="${escapeHtml(g.name)}" loading="lazy" style="width:100%;height:100%;object-fit:cover">`
+          : `<div class="cover-placeholder" aria-label="Sem capa">${escapeHtml(g.name.slice(0, 1).toUpperCase())}</div>`;
+        const externalId = g.appid ?? g.id ?? g.external_id ?? 0;
+        return `<article class="game-card" data-appid="${externalId}" data-platform="${platform}"><div class="cover-wrap">${cover}<span class="game-status status-backlog">${escapeHtml(platformLabel)}</span></div><div class="card-info"><h3 class="card-title" title="${escapeHtml(g.name)}">${escapeHtml(g.name)}</h3><div class="card-meta">${escapeHtml(platformLabel)} · ID ${externalId}</div><div class="card-foot"><span class="card-actions"><button class="card-action" data-add-store="${externalId}" data-platform="${platform}">Adicionar à biblioteca</button></span></div></div></article>`;
+      }).join("");
+      $("#catalog-result-count").textContent = `${games.length} ${games.length === 1 ? "jogo" : "jogos"}`;
+    } else {
+      grid.innerHTML = empty(
+        label ? `Nenhum jogo encontrado para "${label}"` : "Nenhum jogo encontrado",
+        "Experimenta pesquisar por outro termo ou volta mais tarde.",
+        true,
+      );
+      $("#catalog-result-count").textContent = "0 jogos";
+    }
+  }
   function render() {
     updateFilters();
     renderDashboard();
@@ -275,6 +325,7 @@
       library: "A minha biblioteca",
       wishlist: "Lista de desejos",
       collections: "Coleções",
+      catalog: "Catálogo de Lojas",
       friends: "Amigos",
       chat: "Mensagens",
       notifications: "Notificações",
@@ -287,8 +338,16 @@
       loadFriends();
       loadFriendSuggestions();
     }
-    if (page === "chat") loadChatList();
+    if (page === "chat") {
+      loadChatList();
+      connectPresenceSSE();
+    }
+    if (page === "chat-groups") {
+      loadGroups();
+      if (!state.presenceSSE) connectPresenceSSE();
+    }
     if (page === "notifications") loadNotifications(true);
+    if (page === "catalog") loadCatalog();
   }
   const friendEscape = escapeHtml;
   function friendCard(person, mode) {
@@ -459,6 +518,124 @@
     if (data.unread !== undefined) updateNotificationBadge(Number(data.unread));
     else updateNotificationBadge(0);
   }
+
+  // --- SSE para mensagens em tempo real (substitui polling) ---
+  function connectChatSSE(withUserId) {
+    if (state.chatSSE) {
+      state.chatSSE.close();
+      state.chatSSE = null;
+    }
+    const es = new EventSource(`api/chat-sse.php?with=${withUserId}`);
+    es.onmessage = (event) => {
+      try {
+        const data = JSON.parse(event.data);
+        if (data.type === 'presence') return; // ignora eventos de presença aqui
+        state.chatMessages.push(data);
+        state.chatLastId = Number(data.id);
+        renderChatMessages();
+        if (data.mine !== true && document.visibilityState !== 'visible') {
+          showDesktopNotification(data);
+        }
+        loadChatList();
+        loadNotifications(false);
+      } catch (e) {
+        // ignora mensagens malformadas
+      }
+    };
+    es.onerror = () => {
+      es.close();
+      state.chatSSE = null;
+      // Reconectar após 5s se ainda estiver na conversa
+      if (state.chatWith === withUserId) {
+        setTimeout(() => connectChatSSE(withUserId), 5000);
+      }
+    };
+    state.chatSSE = es;
+    return es;
+  }
+
+  // --- SSE para presença (online/typing) dos amigos ---
+  function connectPresenceSSE() {
+    if (state.presenceSSE) {
+      state.presenceSSE.close();
+      state.presenceSSE = null;
+    }
+    const es = new EventSource('api/presence-sse.php');
+    es.onmessage = (event) => {
+      try {
+        const data = JSON.parse(event.data);
+        if (data.type !== 'presence') return;
+        state.presence[data.user_id] = {
+          is_online: data.is_online,
+          last_seen: data.last_seen,
+          is_typing: data.is_typing,
+        };
+        renderChatList();
+        if (state.chatWith === data.user_id) {
+          renderChatHeaderTyping();
+        }
+      } catch (e) {
+        // ignora
+      }
+    };
+    es.onerror = () => {
+      es.close();
+      state.presenceSSE = null;
+      setTimeout(connectPresenceSSE, 5000);
+    };
+    state.presenceSSE = es;
+    return es;
+  }
+
+  function disconnectSSEs() {
+    if (state.chatSSE) {
+      state.chatSSE.close();
+      state.chatSSE = null;
+    }
+    if (state.presenceSSE) {
+      state.presenceSSE.close();
+      state.presenceSSE = null;
+    }
+  }
+
+  // --- Indicador de "digitando..." ---
+  function sendTyping(isTyping) {
+    const form = new FormData();
+    form.set("action", "typing");
+    form.set("is_typing", isTyping ? "1" : "0");
+    if (state.chatWith) form.set("recipient_id", state.chatWith);
+    post("api/presence.php", form).catch(() => {});
+  }
+
+  function renderChatHeaderTyping() {
+    if (!state.chatWith) return;
+    const presence = state.presence[state.chatWith];
+    const typingText = presence && presence.is_typing ? "está a escrever…" : "";
+    const typingEl = $("#chat-header-typing");
+    if (typingEl) {
+      typingEl.textContent = typingText;
+      typingEl.hidden = !typingText;
+    }
+  }
+
+  // --- Notificações de desktop ---
+  async function requestDesktopPermission() {
+    if (!("Notification" in window)) return false;
+    if (Notification.permission === "granted") return true;
+    if (Notification.permission === "denied") return false;
+    const permission = await Notification.requestPermission();
+    return permission === "granted";
+  }
+
+  function showDesktopNotification(message) {
+    if (!("Notification" in window) || Notification.permission !== "granted") return;
+    new Notification(message.friend?.username || "Nova mensagem", {
+      body: message.body,
+      icon: "favicon.ico",
+      tag: `chat-${message.sender_id}`,
+    });
+  }
+
   async function loadChatList() {
     try {
       const data = await request("api/chat.php");
@@ -473,8 +650,12 @@
       $("#chat-contacts").innerHTML = state.chatFriends.length
         ? state.chatFriends
             .map(
-              (f) =>
-                `<button class="chat-contact ${Number(f.id) === state.chatWith ? "active" : ""}" data-chat-user="${f.id}"><span class="avatar friend-avatar">${escapeHtml(f.username.slice(0, 1).toLocaleUpperCase())}</span><span class="chat-contact-copy"><strong>${escapeHtml(f.username)}</strong><small>${escapeHtml(f.last_message?.body || "Começa uma conversa")}</small></span>${f.unread ? `<span class="chat-unread">${f.unread}</span>` : ""}</button>`,
+              (f) => {
+                const pres = state.presence[f.id] || {};
+                const isTyping = pres.is_typing ? " <span class=" + "'" + "typing-badge" + "'" + ">está a escrever…</span>" : "";
+                const statusClass = pres.is_online ? "online" : "offline";
+                return `<button class="chat-contact ${Number(f.id) === state.chatWith ? "active" : ""}" data-chat-user="${f.id}"><span class="avatar friend-avatar ${statusClass}">${escapeHtml(f.username.slice(0, 1).toLocaleUpperCase())}</span><span class="chat-contact-copy"><strong>${escapeHtml(f.username)}</strong><small>${escapeHtml(f.last_message?.body || "Começa uma conversa")}${isTyping}</small></span>${f.unread ? `<span class="chat-unread">${f.unread}</span>` : ""}</button>`;
+              },
             )
             .join("")
         : empty(
@@ -534,6 +715,7 @@
     $("#chat-empty").textContent = "A carregar conversa…";
     await loadChatList();
     await loadConversation(state.chatWith, false);
+    connectChatSSE(state.chatWith);
   }
   $("#chat-form").addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -559,7 +741,16 @@
     } finally {
       button.disabled = false;
       input.focus();
+      sendTyping(false);
     }
+  });
+
+  // Indicador de "digitando..."
+  $("#chat-input").addEventListener("input", () => {
+    if (!state.chatWith) return;
+    sendTyping(true);
+    if (state.typingTimer) clearTimeout(state.typingTimer);
+    state.typingTimer = setTimeout(() => sendTyping(false), 3000);
   });
   $("#mark-notifications-read").addEventListener("click", async () => {
     try {
@@ -597,10 +788,17 @@
   let notificationPoll = 0;
   setInterval(() => {
     if (state.page === "chat") {
-      if (state.chatWith) loadConversation(state.chatWith, true);
-      else loadChatList();
-    } else if (++notificationPoll % 3 === 0) loadNotifications(false);
+      // Usa SSE para mensagens em tempo real; apenas atualiza lista de contatos
+      if (!state.chatWith) loadChatList();
+    } else if (++notificationPoll % 3 === 0) {
+      loadNotifications(false);
+      // Conectar presença SSE quando não está na página de chat
+      if (!state.presenceSSE) connectPresenceSSE();
+    }
   }, 5000);
+
+  // Solicitar permissão de notificações desktop ao carregar
+  requestDesktopPermission();
   const friendSearch = $("#friend-search");
   function runFriendSearch() {
     clearTimeout(friendSearchTimer);
@@ -711,9 +909,28 @@
         form.elements[key].value = game[key] ?? "";
       form.elements.favorite.checked = game.favorite;
       form.elements.is_wishlist.checked = game.is_wishlist;
+      // Marcar coleções a que o jogo já pertence
+      const gameCollectionIds = state.memberships
+        .filter((m) => Number(m.game_id) === Number(game.id))
+        .map((m) => Number(m.collection_id));
+      for (const opt of form.elements.collections) {
+        opt.checked = gameCollectionIds.includes(Number(opt.value));
+      }
     } else {
       form.elements.is_wishlist.checked = wishlist || state.page === "wishlist";
+      // Desmarcar todas as coleções ao adicionar novo
+      for (const opt of form.elements.collections) {
+        opt.checked = false;
+      }
     }
+    // Popular select de coleções
+    const collectionsSelect = $("#modal-collections");
+    collectionsSelect.innerHTML = state.collections
+      .map(
+        (c) =>
+          `<option value="${c.id}">${escapeHtml(c.name)}</option>`
+      )
+      .join("");
     const modal = $("#game-modal");
     modal.classList.add("open");
     modal.setAttribute("aria-hidden", "false");
@@ -993,6 +1210,29 @@
       }
       return;
     }
+    const addStore = event.target.closest("[data-add-store]");
+    if (addStore) {
+      const externalId = addStore.dataset.addStore;
+      const platform = addStore.dataset.platform || "steam";
+      const card = addStore.closest(".game-card");
+      const titleEl = card.querySelector(".card-title");
+      const title = titleEl ? titleEl.textContent : "";
+      const name = prompt(`Digite o título para “${title}” na tua biblioteca (${platform}):`, title);
+      if (!name?.trim()) return;
+      try {
+        const form = new FormData();
+        form.set("action", "add_from_store");
+        form.set("platform", platform);
+        form.set("external_id", externalId);
+        form.set("title", name.trim());
+        await post("api/catalog.php", form);
+        await load();
+        toast(`Jogo da ${platform.charAt(0).toUpperCase() + platform.slice(1)} adicionado à tua biblioteca.`);
+      } catch (e) {
+        toast(e.message);
+      }
+      return;
+    }
     if (event.target.id === "mobile-menu")
       $("#sidebar").classList.toggle("open");
     if (event.target.dataset.view) {
@@ -1047,6 +1287,30 @@
     $("#library-search").value = state.search;
     renderLibrary();
   });
+  $("#catalog-search").addEventListener("input", (event) => {
+    const query = event.target.value.trim();
+    if (query.length >= 2) {
+      loadCatalog(query);
+    } else if (query === "") {
+      loadCatalog("", true);
+    }
+  });
+  $("#catalog-search").addEventListener("search", (event) => {
+    $("#catalog-search").value = "";
+    loadCatalog("", true);
+  });
+  $("#catalog-featured").addEventListener("click", () => {
+    loadCatalog("", true);
+    $("#catalog-search").value = "";
+  });
+  $("#catalog-clear").addEventListener("click", () => {
+    $("#catalog-search").value = "";
+    loadCatalog("", true);
+  });
+  $("#catalog-platform").addEventListener("change", () => {
+    $("#catalog-search").value = "";
+    loadCatalog("", true);
+  });
   document.addEventListener("keydown", (event) => {
     if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
       event.preventDefault();
@@ -1064,6 +1328,353 @@
     settingsForm.elements.theme.value = theme;
     settingsForm.requestSubmit();
   });
-  loadNotifications(false);
-  load();
-})();
+  // ================= GRUPOS DE CHAT =================
+  async function loadGroups() {
+    try {
+      const data = await request("api/chat-groups.php?action=list");
+      state.chatGroups = data.groups || [];
+      renderGroups();
+    } catch (e) {
+      if (e.status !== 401) toast(e.message);
+    }
+  }
+  function renderGroups() {
+    const container = $("#groups-list");
+    if (state.chatGroups.length) {
+      container.innerHTML = state.chatGroups
+        .map(
+          (g) => `
+          <button class="group-item ${Number(g.id) === Number(state.currentGroup) ? "active" : ""}" data-group-id="${g.id}">
+            <div class="avatar group-avatar">${escapeHtml(g.name.slice(0, 1).toUpperCase())}</div>
+            <div class="group-info">
+              <strong>${escapeHtml(g.name)}</strong>
+              <small>${g.member_count} ${g.member_count === 1 ? "membro" : "membros"}</small>
+            </div>
+            <span class="group-members-count">${g.member_count}</span>
+          </button>
+        `
+        )
+        .join("");
+    } else {
+      container.innerHTML = `<div class="empty-groups">Sem grupos. Cria o teu primeiro grupo.</div>`;
+    }
+  }
+  async function loadGroupMessages(groupId) {
+    state.currentGroup = groupId;
+    state.chatWith = 0;
+    disconnectSSEs();
+    $("#chat-header").hidden = true;
+    $("#chat-header-actions").hidden = true;
+    $("#chat-empty").hidden = true;
+    $("#chat-form").hidden = true;
+    $("#page-chat").classList.remove("active");
+    $("#page-chat-groups").classList.add("active");
+    $("#breadcrumb-current").textContent = "Grupos de Chat";
+    const container = $("#group-messages");
+    container.hidden = true;
+    container.innerHTML = "";
+    try {
+      const data = await request(`api/chat-groups.php?action=messages&group_id=${groupId}`);
+      state.groupMessages = data.messages || [];
+      renderGroupMessages();
+      container.hidden = false;
+    } catch (e) {
+      toast(e.message);
+    }
+  }
+  function renderGroupMessages() {
+    const container = $("#group-messages");
+    if (state.groupMessages.length) {
+      container.innerHTML = state.groupMessages
+        .map(
+          (m) => {
+            const isMine = Number(m.sender_id) === Number(state.user.id);
+            return `
+            <div class="group-message ${isMine ? "mine" : ""}">
+              <div class="message-body">
+                ${isMine ? "" : `<div class="message-sender">${escapeHtml(m.sender_name)}</div>`}
+                <div>${escapeHtml(m.body)}</div>
+                <div class="message-time">${escapeHtml(m.created_at)}</div>
+              </div>
+            </div>
+          `;
+          }
+        )
+        .join("");
+    } else {
+      container.innerHTML = `<div class="empty-state" style="grid-column: 1/-1;"><div><div class="empty-icon">✦</div><strong>Sem mensagens</strong><p>Inicia a conversa neste grupo.</p></div></div>`;
+    }
+    container.scrollTop = container.scrollHeight;
+  }
+  // ================= CHAMADAS DE VOZ =================
+  const iceServers = {
+    iceServers: [
+      { urls: "stun:stun.l.google.com:19302" },
+      { urls: "stun:stun1.l.google.com:19302" },
+    ],
+  };
+
+  function sendSignal(callId, action, payload = {}) {
+    const form = new FormData();
+    form.set("action", action);
+    form.set("call_id", callId);
+    for (const [key, value] of Object.entries(payload)) {
+      form.set(key, value);
+    }
+    return post("api/call-signal.php", form);
+  }
+
+  async function startVoiceCall(targetId, isGroup = false, groupId = 0) {
+    try {
+      state.localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+    } catch (e) {
+      toast("Não foi possível aceder ao microfone.");
+      return;
+    }
+    try {
+      const form = new FormData();
+      form.set("action", "create");
+      form.set("call_type", "voice");
+      if (isGroup) {
+        form.set("group_id", groupId);
+      } else {
+        form.set("receiver_id", targetId);
+      }
+      const data = await post("api/call-signal.php", form);
+      state.voiceCall = {
+        id: data.call_id,
+        targetId,
+        isGroup,
+        groupId,
+      };
+      showVoiceCallUI("A ligar…", false);
+      initPeerConnection(data.call_id, "offer");
+    } catch (e) {
+      toast(e.message);
+    }
+  }
+
+  async function initPeerConnection(callId, role) {
+    state.peerConnection = new RTCPeerConnection(iceServers);
+    if (state.localStream) {
+      state.localStream.getTracks().forEach((track) => state.peerConnection.addTrack(track, state.localStream));
+    }
+    state.peerConnection.onicecandidate = (event) => {
+      if (event.candidate) {
+        sendSignal(callId, "signal", {
+          sdp: JSON.stringify(event.candidate.candidate),
+          type: "candidate",
+        }).catch(() => {});
+      }
+    };
+    state.peerConnection.ontrack = (event) => {
+      let audio = document.getElementById("voice-call-remote-audio");
+      if (!audio) {
+        audio = document.createElement("audio");
+        audio.id = "voice-call-remote-audio";
+        audio.autoplay = true;
+        document.getElementById("voice-call-content").appendChild(audio);
+      }
+      audio.srcObject = event.streams[0];
+    };
+    if (role === "offer") {
+      const offer = await state.peerConnection.createOffer();
+      await state.peerConnection.setLocalDescription(offer);
+      await sendSignal(callId, "signal", {
+        sdp: JSON.stringify(offer.sdp),
+        type: "offer",
+      });
+      waitForSignal(callId, "answer");
+    }
+  }
+
+  async function waitForSignal(callId, expectedType) {
+    let attempts = 0;
+    const maxAttempts = 30;
+    const check = async () => {
+      attempts++;
+      try {
+        const form = new FormData();
+        form.set("action", "get_signal");
+        form.set("call_id", callId);
+        const data = await post("api/call-signal.php", form);
+        if (data.signal && data.signal.type === expectedType) {
+          const signal = JSON.parse(data.signal.sdp);
+          if (expectedType === "answer") {
+            await state.peerConnection.setRemoteDescription(new RTCSessionDescription(signal));
+          } else if (expectedType === "candidate") {
+            await state.peerConnection.addIceCandidate(new RTCIceCandidate(signal));
+            setTimeout(() => check(), 1000);
+            return;
+          }
+        } else if (attempts < maxAttempts) {
+          setTimeout(() => check(), 500);
+        }
+      } catch (e) {
+        if (attempts < maxAttempts) setTimeout(() => check(), 500);
+      }
+    };
+    check();
+  }
+
+  async function answerVoiceCall(callId) {
+    try {
+      state.localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+    } catch (e) {
+      toast("Não foi possível aceder ao microfone.");
+      return;
+    }
+    const form = new FormData();
+    form.set("action", "get_signal");
+    form.set("call_id", callId);
+    const data = await post("api/call-signal.php", form);
+    if (!data.signal) {
+      toast("Não foi possível obter a oferta da chamada.");
+      return;
+    }
+    const offer = JSON.parse(data.signal.sdp);
+    state.peerConnection = new RTCPeerConnection(iceServers);
+    if (state.localStream) {
+      state.localStream.getTracks().forEach((track) => state.peerConnection.addTrack(track, state.localStream));
+    }
+    state.peerConnection.onicecandidate = (event) => {
+      if (event.candidate) {
+        sendSignal(callId, "signal", {
+          sdp: JSON.stringify(event.candidate.candidate),
+          type: "candidate",
+        }).catch(() => {});
+      }
+    };
+    state.peerConnection.ontrack = (event) => {
+      let audio = document.getElementById("voice-call-remote-audio");
+      if (!audio) {
+        audio = document.createElement("audio");
+        audio.id = "voice-call-remote-audio";
+        audio.autoplay = true;
+        document.getElementById("voice-call-content").appendChild(audio);
+      }
+      audio.srcObject = event.streams[0];
+    };
+    await state.peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
+    const answer = await state.peerConnection.createAnswer();
+    await state.peerConnection.setLocalDescription(answer);
+    await sendSignal(callId, "signal", {
+      sdp: JSON.stringify(answer.sdp),
+      type: "answer",
+    });
+    const form2 = new FormData();
+    form2.set("action", "answer");
+    form2.set("call_id", callId);
+    await post("api/call-signal.php", form2);
+    state.voiceCall = { id: callId, targetId: 0, isGroup: false, groupId: 0 };
+    showVoiceCallUI("Em chamada", true);
+  }
+
+  function endVoiceCall() {
+    if (state.voiceCall) {
+      const form = new FormData();
+      form.set("action", "end");
+      form.set("call_id", state.voiceCall.id);
+      post("api/call-signal.php", form).catch(() => {});
+    }
+    if (state.localStream) {
+      state.localStream.getTracks().forEach((t) => t.stop());
+      state.localStream = null;
+    }
+    if (state.peerConnection) {
+      state.peerConnection.close();
+      state.peerConnection = null;
+    }
+    state.voiceCall = null;
+    hideVoiceCallUI();
+  }
+
+  function showVoiceCallUI(status, inCall) {
+    const modal = $("#voice-call-modal");
+    const statusEl = $("#voice-call-status");
+    const declineBtn = $("#voice-call-decline");
+    const endBtn = $("#voice-call-end");
+    const muteBtn = $("#voice-call-mute");
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    statusEl.textContent = status;
+    declineBtn.hidden = inCall;
+    endBtn.hidden = !inCall;
+    muteBtn.hidden = !inCall;
+  }
+
+  function hideVoiceCallUI() {
+    const modal = $("#voice-call-modal");
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+  }
+
+  // ================= EVENT LISTENERS GRUPOS E CHAMADAS =================
+  $("#btn-create-group").addEventListener("click", () => {
+    $("#create-group-modal").classList.add("open");
+    $("#create-group-modal").setAttribute("aria-hidden", "false");
+    $("#create-group-form").reset();
+    $("#create-group-error").textContent = "";
+  });
+
+  $("#create-group-form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    form.set("action", "create");
+    try {
+      await post("api/chat-groups.php", form);
+      toast("Grupo criado.");
+      $("#create-group-modal").classList.remove("open");
+      $("#create-group-modal").setAttribute("aria-hidden", "true");
+      await loadGroups();
+    } catch (e) {
+      $("#create-group-error").textContent = e.message;
+    }
+  });
+
+  document.addEventListener("click", async (event) => {
+    const groupItem = event.target.closest(".group-item");
+    if (groupItem) {
+      const groupId = Number(groupItem.dataset.groupId);
+      await loadGroupMessages(groupId);
+      return;
+    }
+    const chatCallVoice = event.target.closest("#chat-call-voice");
+    if (chatCallVoice) {
+      if (!state.chatWith) {
+        toast("Seleciona um amigo primeiro.");
+        return;
+      }
+      startVoiceCall(state.chatWith, false, 0);
+      return;
+    }
+    const voiceCallEnd = event.target.closest("#voice-call-end");
+    if (voiceCallEnd) {
+      endVoiceCall();
+      return;
+    }
+    const voiceCallDecline = event.target.closest("#voice-call-decline");
+    if (voiceCallDecline) {
+      const action = voiceCallDecline.dataset.action;
+      const form = new FormData();
+      form.set("action", action);
+      form.set("call_id", state.voiceCall ? state.voiceCall.id : 0);
+      try {
+        await post("api/call-signal.php", form);
+      } catch (e) {}
+      hideVoiceCallUI();
+      return;
+    }
+    const voiceCallMute = event.target.closest("#voice-call-mute");
+    if (voiceCallMute) {
+      const muted = voiceCallMute.dataset.muted === "1";
+      voiceCallMute.dataset.muted = muted ? "0" : "1";
+      voiceCallMute.textContent = muted ? "🔇 Mutar" : "🔊 Ativar som";
+      if (state.localStream) {
+        state.localStream.getAudioTracks().forEach((t) => (t.enabled = !muted));
+      }
+      return;
+    }
+  });
+
+

@@ -2,7 +2,18 @@
 declare(strict_types=1);
 require dirname(__DIR__) . '/includes/bootstrap.php';
 try {
-    $pdo=db(); $user=require_login(); $uid=(int)$user['id']; require_csrf();
+    $pdo=db(); $user=require_login(); $uid=(int)$user['id'];
+    $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+    if ($method === 'GET') {
+        $page = max(1, (int)($_GET['page'] ?? 1));
+        $limit = max(1, min(100, (int)($_GET['limit'] ?? 50)));
+        $offset = ($page - 1) * $limit;
+        $q=$pdo->prepare('SELECT c.id,c.name,c.created_at,COUNT(gc.game_id) AS game_count FROM collections c LEFT JOIN game_collections gc ON gc.collection_id=c.id WHERE c.user_id=? GROUP BY c.id ORDER BY c.name LIMIT ? OFFSET ?');
+        $q->execute([$uid, $limit, $offset]); $collections=$q->fetchAll();
+        $q=$pdo->prepare('SELECT COUNT(*) AS total FROM collections WHERE user_id=?'); $q->execute([$uid]); $total=(int)$q->fetchColumn();
+        json_response(['collections'=>$collections, 'pagination'=>['page'=>$page,'limit'=>$limit,'total'=>$total,'pages'=>(int)ceil($total/$limit)]]);
+    }
+    require_csrf();
     $action=$_POST['action']??'create';
     if ($action==='create') {
         $name=clean_text($_POST['name']??'',80);

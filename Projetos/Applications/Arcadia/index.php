@@ -169,8 +169,20 @@ try {
 
     $profilePublicId = (string) $identityQuery->fetchColumn();
 
+    if ($profilePublicId === '') {
+        // Se o utilizador não tem public_id (ex.: BD antiga sem a coluna), gera um agora.
+        do {
+            $profilePublicId = 'AR-' . strtoupper(bin2hex(random_bytes(4)));
+            $check = $identityDb->prepare('SELECT 1 FROM users WHERE public_id=?');
+            $check->execute([$profilePublicId]);
+        } while ($check->fetchColumn());
+        $identityDb->prepare('UPDATE users SET public_id=? WHERE id=?')->execute([$profilePublicId, current_user()['id']]);
+    }
+
     $_SESSION['user']['public_id'] = $profilePublicId;
-} catch (Throwable) {
+} catch (Throwable $e) {
+    $profilePublicId = 'ID indisponível';
+    error_log('Arcadia public_id error: ' . $e->getMessage());
 }
 ?>
 
@@ -238,6 +250,11 @@ try {
                 <button class="nav-item" data-page="collections">
                     <span class="nav-icon">▤</span>
                     Coleções
+                </button>
+
+                <button class="nav-item" data-page="catalog">
+                    <span class="nav-icon">🎮</span>
+                    Catálogo Steam
                 </button>
 
                 <button class="nav-item" data-page="friends">
@@ -589,6 +606,57 @@ try {
                 <div class="collection-grid" id="collection-grid"></div>
             </section>
 
+            <!-- CATÁLOGO DE LOJAS -->
+            <section class="page" id="page-catalog">
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">DESCOBRIR NOVOS JOGOS</p>
+                        <h1>Catálogo de Lojas</h1>
+                        <p class="subheading">
+                            Explora jogos da Steam, PlayStation Store e Xbox Store
+                            e adiciona-os à tua biblioteca.
+                        </p>
+                    </div>
+
+                    <label class="field">
+                        <span>Loja</span>
+                        <select id="catalog-platform">
+                            <option value="steam">Steam</option>
+                            <option value="playstation">PlayStation Store</option>
+                            <option value="xbox">Xbox Store</option>
+                        </select>
+                    </label>
+
+                    <label class="search-field">
+                        <span>⌕</span>
+                        <input
+                            id="catalog-search"
+                            type="search"
+                            placeholder="Pesquisar jogos…"
+                        >
+                    </label>
+
+                    <button
+                        class="button button-outline"
+                        id="catalog-featured"
+                        type="button"
+                    >
+                        ⭐ Em destaque
+                    </button>
+                </div>
+
+                <div class="result-line">
+                    <span id="catalog-result-count">0 jogos</span>
+                    <button class="text-button clear-filters" id="catalog-clear">
+                        Limpar
+                    </button>
+                </div>
+
+                <div class="game-grid library-grid" id="catalog-grid"></div>
+
+                <div id="catalog-error" class="form-error" role="alert" style="margin-top: 12px;"></div>
+            </section>
+
             <!-- AMIGOS -->
             <section class="page" id="page-friends">
                 <div class="page-heading">
@@ -682,6 +750,25 @@ try {
                         </div>
 
                         <header id="chat-header" class="chat-header" hidden></header>
+                        <div id="chat-header-typing" hidden></div>
+                        <div id="chat-header-actions" hidden>
+                            <button
+                                class="button button-outline"
+                                id="chat-call-voice"
+                                type="button"
+                                title="Ligar voz"
+                            >
+                                📞
+                            </button>
+                            <button
+                                class="button button-outline"
+                                id="chat-new-group"
+                                type="button"
+                                title="Novo grupo"
+                            >
+                                👥
+                            </button>
+                        </div>
 
                         <div
                             id="chat-messages"
@@ -706,6 +793,84 @@ try {
                     </section>
                 </div>
             </section>
+
+            <!-- GRUPOS DE CHAT -->
+            <section class="page" id="page-chat-groups">
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">GRUPOS DE CHAT</p>
+                        <h1>Grupos</h1>
+                        <p class="subheading">
+                            As tuas conversas de grupo.
+                        </p>
+                    </div>
+                    <button class="button button-primary" id="btn-create-group">
+                        ＋ Novo grupo
+                    </button>
+                </div>
+                <div id="groups-list" class="groups-list"></div>
+                <div id="group-messages" class="group-messages" hidden></div>
+            </section>
+
+            <!-- MODAL CRIAR GRUPO -->
+            <div class="modal-backdrop" id="create-group-modal" aria-hidden="true">
+                <section class="modal" role="dialog" aria-modal="true" aria-labelledby="create-group-title">
+                    <header class="modal-header">
+                        <div>
+                            <p class="eyebrow">NOVO GRUPO</p>
+                            <h2 id="create-group-title">Criar grupo de chat</h2>
+                        </div>
+                        <button class="close-button" data-close>×</button>
+                    </header>
+                    <form id="create-group-form">
+                        <div class="form-grid">
+                            <label class="field full">
+                                <span>Nome do grupo <i>*</i></span>
+                                <input
+                                    name="name"
+                                    required
+                                    maxlength="100"
+                                    placeholder="Ex.: Minha equipa de jogos"
+                                >
+                            </label>
+                        </div>
+                        <div class="form-error" id="create-group-error" role="alert"></div>
+                        <footer class="modal-footer">
+                            <button type="button" class="button button-outline" data-close>Cancelar</button>
+                            <button type="submit" class="button button-primary">Criar grupo</button>
+                        </footer>
+                    </form>
+                </section>
+            </div>
+
+            <!-- MODAL CHAMADA DE VOZ -->
+            <div class="modal-backdrop" id="voice-call-modal" aria-hidden="true">
+                <section class="modal voice-call-modal" role="dialog" aria-modal="true">
+                    <header class="modal-header">
+                        <div>
+                            <p class="eyebrow">CHAMADA DE VOZ</p>
+                            <h2 id="voice-call-title">A ligar…</h2>
+                        </div>
+                        <button class="close-button" id="voice-call-decline" data-action="decline">Recusar</button>
+                    </header>
+                    <div class="voice-call-content">
+                        <div id="voice-call-status">A aguardar resposta…</div>
+                        <div class="voice-call-controls">
+                            <button class="button button-outline" id="voice-call-mute" data-muted="0">
+                                🔇 Mutar
+                            </button>
+                            <button class="button button-outline" id="voice-call-end" data-action="end">
+                                ❌ Desligar
+                            </button>
+                        </div>
+                    </div>
+                    <div id="voice-call-error" class="form-error" role="alert"></div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL DE JOGOS -->
 
             <!-- NOTIFICAÇÕES -->
             <section class="page" id="page-notifications">
@@ -1087,6 +1252,17 @@ try {
                         <input name="is_wishlist" type="checkbox" value="1">
                         <span>＋</span>
                         Guardar na lista de desejos
+                    </label>
+
+                    <label class="field full">
+                        <span>Coleções</span>
+                        <select
+                            name="collections[]"
+                            multiple
+                            id="modal-collections"
+                            size="4"
+                        ></select>
+                        <small>Seleciona uma ou mais coleções para este jogo.</small>
                     </label>
                 </div>
 

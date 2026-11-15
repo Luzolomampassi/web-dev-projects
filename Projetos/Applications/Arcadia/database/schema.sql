@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS games (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id INT UNSIGNED NOT NULL,
   title VARCHAR(160) NOT NULL,
   platform VARCHAR(80) NOT NULL DEFAULT '',
   genre VARCHAR(80) NOT NULL DEFAULT '',
@@ -29,8 +30,10 @@ CREATE TABLE IF NOT EXISTS games (
   steam_app_id INT UNSIGNED NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  INDEX idx_games_title (title), INDEX idx_games_status (status), INDEX idx_games_created (created_at), INDEX idx_games_steam_app (steam_app_id)
-) ENGINE=InnoDB;
+  INDEX idx_games_user (user_id),
+  INDEX idx_games_title (title), INDEX idx_games_status (status), INDEX idx_games_created (created_at), INDEX idx_games_steam_app (steam_app_id),
+  CONSTRAINT fk_games_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS user_settings (
   user_id INT UNSIGNED NOT NULL PRIMARY KEY,
@@ -83,9 +86,13 @@ CREATE TABLE IF NOT EXISTS chat_messages (
 
 CREATE TABLE IF NOT EXISTS collections (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(80) NOT NULL UNIQUE,
-  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+  user_id INT UNSIGNED NOT NULL,
+  name VARCHAR(80) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY uniq_collections_user_name (user_id, name),
+  INDEX idx_collections_user (user_id),
+  CONSTRAINT fk_collections_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS game_collections (
   collection_id INT UNSIGNED NOT NULL,
