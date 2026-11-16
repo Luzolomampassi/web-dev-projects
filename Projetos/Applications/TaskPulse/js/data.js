@@ -26,7 +26,6 @@ export function salvarTarefas(tarefas) {
 }
 
 
-
 export function obterArquivadas(){
 
     try {
@@ -40,6 +39,25 @@ export function obterArquivadas(){
     }
     
 }
+
+
+export function dadosArquivadas(tarefasSalvas = obterArquivadas()){
+     const tarefasConcluidas = tarefasSalvas.filter(
+        tarefa => tarefa.status === true
+    );
+
+    const tarefasArquivadas = tarefasSalvas.filter(
+        tarefa => tarefa.arquivada === true
+    );
+
+    const tarefasAbertas = tarefasSalvas.filter(
+        tarefa => tarefa.status !== true
+    );
+
+   
+    
+}
+
 
 export function calcularDados(tarefasSalvas = obterTarefas()) {
 

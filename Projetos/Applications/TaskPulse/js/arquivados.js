@@ -1,4 +1,4 @@
-import {obterArquivadas ,obterTarefas} from "./data.js"
+import {obterArquivadas ,obterTarefas , dadosArquivadas } from "./data.js"
 
 const tarefas = obterTarefas()
 const tarefasArquivadas = obterArquivadas()
@@ -258,9 +258,8 @@ btnPrevious.addEventListener("click", () =>{
     tasksPageCurrent.textContent =  currentPage
     renderizarTarefas()
 })
-
 btnNext.addEventListener("click", () =>{
-    let limite = Math.ceil(tarefas.length / pageSize)
+    let limite = Math.ceil(tarefasArquivadas.length / pageSize)
     if(currentPage >=  limite){  
         return
     }
@@ -271,19 +270,19 @@ btnNext.addEventListener("click", () =>{
     renderizarTarefas()
 })
 
-
 function renderizarTarefas() {
     listaTarefas.replaceChildren();
 
     const inicio = Math.max(0, Math.trunc(startIndex));
 
-    const fim = Math.min(endIndex,inicio + 9,tarefas.length - 1
+    const fim = Math.min(endIndex,inicio + 9,tarefasArquivadas.length - 1
     );
 
     for (let i = inicio; i <= fim; i++) {
-        listaTarefas.appendChild(criarTarefa(tarefas[i]));
+        listaTarefas.appendChild(criarTarefa(tarefasArquivadas[i]));
     }
 }
+
 renderizarTarefas()
 
 function salvarArquivadas() {
@@ -292,3 +291,10 @@ function salvarArquivadas() {
 function salvarTarefas() {
     localStorage.setItem("tarefas", JSON.stringify(tarefas));
 }
+
+const {tarefasConcluidas  , tarefasAbertas} = dadosArquivadas()
+
+
+console.log(tarefasConcluidas)
+console.log(tarefasConcluidas)
+console.log(tarefasAbertas)
