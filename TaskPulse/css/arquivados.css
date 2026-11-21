@@ -635,6 +635,11 @@ body {
     cursor: pointer;
 }
 
+.pagination-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
 .pagination-button:hover {
     background-color: var(--color-background);
 }
@@ -818,6 +823,11 @@ body {
     display: flex;
 }
 
+.task-actions-list button:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 1px;
+}
+
 .task-actions-list button {
     display: flex;
     align-items: center;
@@ -958,6 +968,10 @@ body {
 
 .void-section.is-active {
     display: flex;
+}
+
+[hidden] {
+    display: none !important;
 }
 
 .vazio {
@@ -1325,7 +1339,7 @@ textarea:focus-visible {
 }
 
 .tarefas {
-    overflow: hidden;
+    overflow: visible;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     background-color: var(--color-surface);
@@ -1337,7 +1351,13 @@ textarea:focus-visible {
 }
 
 .task {
+    position: relative;
+    z-index: 0;
     min-width: 0;
+}
+
+.task:has(.task-actions-list.show) {
+    z-index: 2;
 }
 
 .task h3,

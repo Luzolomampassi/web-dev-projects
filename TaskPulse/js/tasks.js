@@ -1,4 +1,4 @@
-import { calcularDados, obterTarefas, obterArquivadas} from "./data.js";
+import { calcularDados, obterTarefas, obterArquivadas, obterCategorias } from "./data.js";
 const tarefas = obterTarefas();
 const tarefasArquivadas = obterArquivadas()
 // ============================================================
@@ -13,6 +13,30 @@ const campoCategoria = document.querySelector("#categoria");
 const campoVencimento = document.querySelector("#data");
 const campoHorario = document.querySelector("#time");
 const campoPrioridade = document.querySelector("#prioridade");
+
+function preencherCategoriasTarefa() {
+    const atuais = [
+        ["Estudo", "estudo"], ["Projeto", "projeto"],
+        ["Saúde", "saude"], ["Carreira", "carreira"]
+    ];
+    const todas = [...tarefas, ...tarefasArquivadas];
+    const candidatas = [
+        ...atuais.map(([titulo, valor]) => ({ titulo, valor })),
+        ...todas.map(tarefa => ({ titulo: tarefa.categoria, valor: tarefa.categoria })),
+        ...obterCategorias().map(categoria => ({ titulo: categoria.titulo, valor: categoria.titulo }))
+    ];
+    const vistas = new Set();
+    const opcoes = candidatas.filter(opcao => {
+        const chave = String(opcao.valor ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
+        if (!chave || vistas.has(chave)) return false;
+        vistas.add(chave);
+        return true;
+    });
+    if (!vistas.has("sem categoria")) opcoes.push({ titulo: "Sem categoria", valor: "Sem categoria" });
+    campoCategoria.replaceChildren(...opcoes.map(opcao => new Option(opcao.titulo, opcao.valor)));
+}
+
+preencherCategoriasTarefa();
 
 // Modal
 const modalTarefa = document.querySelector("#modal");
@@ -291,6 +315,13 @@ function criarTarefa(dadosTarefa) {
     badgeCategoria.classList.add("badge");
     elementoTarefa.dataset.categoria = dadosTarefa.categoria;
     badgeCategoria.textContent = dadosTarefa.categoria;
+    const classeCategoria = {
+        estudo: "badge-categoria-estudo",
+        projeto: "badge-categoria-projeto",
+        saude: "badge-categoria-saude",
+        carreira: "badge-categoria-carreira"
+    }[String(dadosTarefa.categoria ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase()];
+    if (classeCategoria) badgeCategoria.classList.add(classeCategoria);
 
     const badgeVencimento = document.createElement("div");
     badgeVencimento.classList.add("badge");

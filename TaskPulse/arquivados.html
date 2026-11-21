@@ -101,7 +101,7 @@
                     <i class="fa-solid fa-box-archive fa-xl icon-card" aria-hidden="true"></i>
                     <div>
                         <p>Total arquivadas</p>
-                        <h2 data-resumo="pendentes">0</h2>
+                        <h2 data-resumo="total-arquivadas">0</h2>
                     </div>
                 </div>
                 <div class="card">
@@ -115,7 +115,7 @@
                     <i class="fa-solid fa-clock fa-xl icon-card" aria-hidden="true"></i>
                     <div>
                         <p>Sem conclusão</p>
-                        <h2 data-resumo="pendentes">0</h2>
+                        <h2 data-resumo="sem-conclusao">0</h2>
                     </div>
                 </div>
             </div>
@@ -133,7 +133,7 @@
             </div>
             <form id="form-task" action="#">
                 <label for="tarefa">Título</label>
-                <input type="text" name="tarefa" id="tarefa" placeholder="Ex.: Rever a documentação da API">
+                <input type="text" name="tarefa" id="tarefa" placeholder="Ex.: Rever a documentação da API" required>
 
                 <label for="descricao">Descrição</label>
                 <textarea name="descricao" id="descricao" placeholder="Descreva brevemente a tarefa "></textarea>
@@ -242,9 +242,9 @@
             <div class="vazio-icon" aria-hidden="true">
                 <i class="fa-solid fa-list-check"></i>
             </div>
-            <h1>Nenhuma tarefa por aqui</h1>
-            <p>Organize suas ideias e acompanhe seus objetivos, uma tarefa de cada vez.</p>
-            <button type="button" class="btn-add"><i class="fa-solid fa-plus"></i> Criar primeira tarefa</button>
+            <h1>Ainda não há tarefas arquivadas</h1>
+            <p>Quando arquivares uma tarefa, ela ficará disponível aqui para consulta ou restauro.</p>
+            <button type="button" class="btn-add">Ver tarefas</button>
         </article>
     </section>
 

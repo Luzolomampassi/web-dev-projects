@@ -160,7 +160,7 @@ function normalizarData(data) {
 
     return data.slice(0, 10);
 }
-function obterCategorias(){
+export function obterCategorias(){
     try{
         const dadosJson = localStorage.getItem("categorias") ?? "[]"
 

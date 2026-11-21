@@ -27,6 +27,19 @@
     --color-info-rgb: 2, 132, 199;
     --color-info-light: #e0f2fe;
 
+    --category-estudo-text: #1d4ed8;
+    --category-estudo-bg: #dbeafe;
+    --category-estudo-border: #93c5fd;
+    --category-projeto-text: #6d28d9;
+    --category-projeto-bg: #ede9fe;
+    --category-projeto-border: #c4b5fd;
+    --category-saude-text: #15803d;
+    --category-saude-bg: #dcfce7;
+    --category-saude-border: #86efac;
+    --category-carreira-text: #c2410c;
+    --category-carreira-bg: #ffedd5;
+    --category-carreira-border: #fdba74;
+
     --shadow-sm: 0 2px 8px rgba(24, 34, 64, 0.06);
     --shadow-md: 0 6px 18px rgba(24, 34, 64, 0.08);
     --shadow-lg: 0 14px 34px rgba(24, 34, 64, 0.12);
@@ -73,6 +86,19 @@ html.dark {
     --color-info-rgb: 56, 189, 248;
     --color-info-light: #0c4a6e;
 
+    --category-estudo-text: #bfdbfe;
+    --category-estudo-bg: #1e3a8a;
+    --category-estudo-border: #3b82f6;
+    --category-projeto-text: #ddd6fe;
+    --category-projeto-bg: #4c1d95;
+    --category-projeto-border: #8b5cf6;
+    --category-saude-text: #bbf7d0;
+    --category-saude-bg: #14532d;
+    --category-saude-border: #22c55e;
+    --category-carreira-text: #fed7aa;
+    --category-carreira-bg: #7c2d12;
+    --category-carreira-border: #f97316;
+
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.22);
     --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 14px 34px rgba(0, 0, 0, 0.4);
@@ -89,6 +115,30 @@ html,
 body {
     min-height: 100%;
     background-color: var(--color-background);
+}
+
+.badge.badge-categoria-estudo {
+    color: var(--category-estudo-text);
+    background-color: var(--category-estudo-bg);
+    border-color: var(--category-estudo-border);
+}
+
+.badge.badge-categoria-projeto {
+    color: var(--category-projeto-text);
+    background-color: var(--category-projeto-bg);
+    border-color: var(--category-projeto-border);
+}
+
+.badge.badge-categoria-saude {
+    color: var(--category-saude-text);
+    background-color: var(--category-saude-bg);
+    border-color: var(--category-saude-border);
+}
+
+.badge.badge-categoria-carreira {
+    color: var(--category-carreira-text);
+    background-color: var(--category-carreira-bg);
+    border-color: var(--category-carreira-border);
 }
 
 body {

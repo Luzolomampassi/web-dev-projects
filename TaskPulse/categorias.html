@@ -25,7 +25,7 @@
     <!-- HEADER -->
 <header>
     <div class="header-content">
-        <button id="btn-menu" aria-label="Abrir menu">
+        <button id="btn-menu" aria-label="Abrir menu" aria-expanded="false">
             <i class="fa-solid fa-bars fa-xl"></i>
         </button>
 
@@ -172,7 +172,7 @@
 
                     <option value="todas">Todas as tarefas</option>
                     <option value="muitas">Muitas tarefas (&gt;10)</option>
-                    <option value="pouca">Poucas tarefas (&lt;10)</option>
+                    <option value="pouca">Poucas tarefas (até 10)</option>
 
                 </select>
 
@@ -184,7 +184,7 @@
 
                     <option value="alfabeticamente">Ordenar: A-Z</option>
                     <option value="muitas">Ordenar: mais tarefas</option>
-                    <option value="pouca">Ordenar: progresso</option>
+                    <option value="pouca">Ordenar: maior progresso</option>
 
                 </select>
 
@@ -206,7 +206,9 @@
                         name="nome"
                         id="nome"
                         class="nome"
-                        placeholder="Ex.: Marketing, Saúde">
+                        placeholder="Ex.: Marketing, Saúde"
+                        maxlength="60"
+                        required>
 
                 </div>
                 <p id="alert" class="alert">Insira o nome da categoria</p>
@@ -294,7 +296,7 @@
                         <button type="button"
                         class="icon-color cor-roxa"
                         aria-label="Selecionar cor roxa"
-                        data-color="roxa"></button>
+                        data-color="roxo"></button>
 
                         <button type="button"
                             class="icon-color cor-verde"
@@ -402,6 +404,14 @@
 
             </button>
 
+            <article id="categorias-vazio" class="categorias-vazio" hidden>
+                <h2>Ainda não há categorias</h2>
+                <p>Cria uma categoria para começares a organizar as tuas tarefas.</p>
+                <button type="button" id="limpar-filtros-categorias" class="btn-add-categoria" hidden>
+                    Limpar filtros
+                </button>
+            </article>
+
 
         </section>
 
@@ -411,8 +421,6 @@
     <!-- JAVASCRIPT -->
     <script src="js/categories/categorias.js"></script>
     <script type="module" src="js/categories/categoriesAdd.js"></script>
-    <script type="module" src="js/data.js"></script>
-
 </body>
 
 </html>

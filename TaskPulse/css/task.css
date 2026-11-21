@@ -751,6 +751,30 @@ transform: scale(1.15);
     opacity: 0.75;
 }
 
+.task:has(.check:checked) .badge.badge-categoria-estudo {
+    color: var(--category-estudo-text);
+    background-color: var(--category-estudo-bg);
+    border-color: var(--category-estudo-border);
+}
+
+.task:has(.check:checked) .badge.badge-categoria-projeto {
+    color: var(--category-projeto-text);
+    background-color: var(--category-projeto-bg);
+    border-color: var(--category-projeto-border);
+}
+
+.task:has(.check:checked) .badge.badge-categoria-saude {
+    color: var(--category-saude-text);
+    background-color: var(--category-saude-bg);
+    border-color: var(--category-saude-border);
+}
+
+.task:has(.check:checked) .badge.badge-categoria-carreira {
+    color: var(--category-carreira-text);
+    background-color: var(--category-carreira-bg);
+    border-color: var(--category-carreira-border);
+}
+
 .task:has(.check:checked) .badge::before {
     color: var(--color-text-muted);
 }

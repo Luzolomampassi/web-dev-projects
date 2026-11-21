@@ -1,7 +1,8 @@
 
 import {
     obterTarefas,
-    salvarTarefas
+    salvarTarefas,
+    obterCategorias
 } from "./data.js";
 
 // ============================================================
@@ -42,6 +43,40 @@ const tituloMes = document.querySelector("#mes-atual");
 const filtroCategoria = document.querySelector("#filtro-categoria");
 const listaProximasTarefas = document.querySelector("#lista-proximas-tarefas");
 const listaTarefasDia = document.querySelector("#lista-tarefas-dia");
+
+function normalizarCategoria(valor) {
+    const categoria = String(valor ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
+    return categoria || "sem categoria";
+}
+
+function preencherCategoriasCalendario() {
+    const tarefas = obterTarefas();
+    const categorias = [
+        { titulo: "Estudo", valor: "estudo" },
+        { titulo: "Projeto", valor: "projeto" },
+        { titulo: "Saúde", valor: "saude" },
+        { titulo: "Carreira", valor: "carreira" },
+        ...tarefas.map(tarefa => ({ titulo: tarefa.categoria, valor: tarefa.categoria })),
+        ...obterCategorias().map(categoria => ({ titulo: categoria.titulo, valor: categoria.titulo }))
+    ];
+    const unicas = new Map();
+    categorias.forEach(categoria => {
+        const chave = normalizarCategoria(categoria.valor);
+        if (chave && !unicas.has(chave)) unicas.set(chave, categoria);
+    });
+    if (!unicas.has("sem categoria")) {
+        unicas.set("sem categoria", { titulo: "Sem categoria", valor: "Sem categoria" });
+    }
+    const selecionada = filtroCategoria.value;
+    const opcoes = [...unicas.values()].map(categoria => new Option(categoria.titulo, categoria.valor));
+    campoCategoria.replaceChildren(...opcoes.map(opcao => opcao.cloneNode(true)));
+    filtroCategoria.replaceChildren(new Option("Todas", "todas"), ...opcoes);
+    filtroCategoria.value = [...filtroCategoria.options].some(option => normalizarCategoria(option.value) === normalizarCategoria(selecionada))
+        ? selecionada
+        : "todas";
+}
+
+preencherCategoriasCalendario();
 
 // ============================================================
 // ESTADO
@@ -111,7 +146,7 @@ function obterEventos() {
                 return true;
             }
 
-            return tarefa.categoria === categoriaSelecionada;
+            return normalizarCategoria(tarefa.categoria) === normalizarCategoria(categoriaSelecionada);
         })
         .filter(tarefa => Boolean(tarefa.vencimento))
         .map(converterTarefaParaEvento);
@@ -473,7 +508,7 @@ function obterTarefasFiltradas() {
     }
 
     return tarefas.filter(
-        tarefa => tarefa.categoria === filtroCategoria.value
+        tarefa => normalizarCategoria(tarefa.categoria) === normalizarCategoria(filtroCategoria.value)
     );
 }
 
